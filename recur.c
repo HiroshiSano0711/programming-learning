@@ -12,7 +12,7 @@ int main()
 void p(int n){
   if(n > 0){
     p(n - 2);
-    p(n -1);
     printf("%3d", n);
+    p(n -1);
   }
 }
