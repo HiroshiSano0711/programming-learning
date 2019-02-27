@@ -26,7 +26,7 @@ int main()
     }
 
     do{
-        printf("\nEnter i, j, n to compare the subsequebnce\n");
+        printf("\nEnter i, j, n to compare the subsequence\n");
         printf("a[i], a[i + 1], ... a[i + n - 1] and \n");
         printf("b[j], b[j + 1], ... b[j + n - 1] with each other \n");
         printf("Restrictions: i + n <= %d\n", na);

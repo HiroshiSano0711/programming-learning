@@ -13,6 +13,6 @@ void p(int n){
   if(n > 0){
     p(n - 2);
     printf("%3d", n);
-    p(n -1);
+    p(n - 1);
   }
 }
