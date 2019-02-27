@@ -17,7 +17,7 @@ int main()
 }
 
 int rdint(void){
-  int i, neg, d, number; // getchar()の戻り値はunsigned charからintに変換されて渡される
+  int i, i0, k, neg, d, number; // getchar()の戻り値はunsigned charからintに変換されて渡される
 
   do {
     number = getchar();
@@ -36,7 +36,26 @@ int rdint(void){
   i = number - '0'; // 数字は文字コードが連番なので、'0'をひけば数値に変換できる
   while(number = getchar(), isdigit(number)){ //2文字目以降を読み込む
     d = number - '0'; // それぞれ数値に変換
-    i = 10 * i + d; // 入力された数字の分だけ10をかけていって、どんどん桁数をあげていく（ホーナーの方法）
+    i0 = i;
+
+    // 整数のオーバーフローテスト
+    for(k = 0; k < 5; k++){
+      if(k == 2){
+        i += i0;
+      }else if(k == 4){
+        i += d;
+      }else{
+        i <<= 1;
+      }
+
+      printf("number: %d\n", i);
+
+      if(i < 0){
+        printf("Too large number"); exit(1);
+      }
+    }
+
+    // i = 10 * i + d; // 入力された数字の分だけ10をかけていって、どんどん桁数をあげていく（ホーナーの方法）
   }
 
   ungetc(number, stdin); // 入力ストリームに1文字返却
