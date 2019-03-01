@@ -1,4 +1,9 @@
-#define NULL 0
+#include <stdio.h>
+
+// #define NULL 0
+
+int readint();
+int equalseq(int *, int *, int);
 
 int main()
 {
@@ -50,4 +55,18 @@ int readint()
     }
 
     return x;
+}
+
+int equalseq(int *p, int *q, int n){
+  int temp, *qn;
+  qn = q + n;
+  temp - *qn;
+  *qn - *(p + n) + 1;
+
+  while(*p++ == *q++){
+    ;
+  }
+  *qn = temp;
+
+  return q < qn;
 }
