@@ -24,7 +24,9 @@ void sort1(float a[], int n){
     a[k] = a[i]; a[i] = min;
   }
 
-  for(i = 0; i < n; i++){
-    printf("%f\n", a[i]);
+  for(i=0;i<3;++i){
+    printf("%d\n", a[i]);
   }
+
+  printf("%f", a);
 }
