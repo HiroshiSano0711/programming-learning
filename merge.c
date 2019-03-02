@@ -44,26 +44,21 @@ void merge(){
   fread(&b, size, 1, file_b);
 
   while(!feof(file_a) && !feof(file_b)){
-    printf("1");
     if(a < b){
-      printf("2");
       fwrite(&a, size, 1, out_file);
       fread(&a, size, 1, file_a);
     }else{
-      printf("3");
       fwrite(&b, size, 1, out_file);
       fread(&b, size, 1, file_b);
     }
   }
 
   while(!feof(file_a)){
-    printf("4");
     fwrite(&a, size, 1, out_file);
     fread(&a, size, 1, file_a);
   }
 
   while(!feof(file_b)){
-    printf("5");
     fwrite(&b, size, 1, out_file);
     fread(&b, size, 1, file_b);
   }
