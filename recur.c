@@ -1,18 +1,16 @@
 #include <stdio.h>
+void r(int);
 
-void p(int);
-
-int main()
-{
-  p(5);
-
+int main(){
+  r(4);
   return 0;
 }
 
-void p(int n){
+// 再帰（recursion）の省略形
+void r(int n){
   if(n > 0){
-    p(n - 1);
-    printf("%3d", n);
-    p(n - 2);
+    r(n - 2); // 再帰呼び出し
+    printf("%3d", n); // 引数のnを出力するだけ
+    r(n - 1); // 再帰呼び出し
   }
 }
