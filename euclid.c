@@ -2,10 +2,9 @@
 
 int gcd(int, int);
 
-int main()
-{
+int main(){
   int n;
-  n = gcd(1900, 700);
+  n = gcd(2300, 400);
 
   printf("%d\n", n);
 
@@ -31,7 +30,6 @@ int gcd(int x, int y){
     x = y;
     y = r;
   }
-
   return x;
 }
 

@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <time.h>
 
-int recfac(int);
-int itfac(int);
+double recursion(double);
+double iteration(double);
 
-int main()
-{
+int main(){
   clock_t start, stop;
   double diff;
   int n, k, i;
-
   double f;
 
   printf("Enter the value of n, to compute n!: ");
@@ -20,7 +18,7 @@ int main()
 
   start = clock();
   for(i = 0 ; i < k; i++){
-    f = recfac(n);
+    f = recursion(n);
   }
   stop = clock();
   diff = (double)(stop - start) / CLOCKS_PER_SEC;
@@ -29,9 +27,8 @@ int main()
 
   start = clock();
   for(i = 0 ; i < k; i++){
-    f = itfac(n);
+    f = iteration(n);
   }
-
   stop = clock();
   diff = (double)(stop - start) / CLOCKS_PER_SEC;
 
@@ -39,12 +36,15 @@ int main()
   return 0;
 }
 
-int recfac(int n){
-  return n > 1 ? n * recfac(n - 1) : 1;
+// nの階乗をk回計算し続けるプログラム
+// 再帰版
+double recursion(double n){
+  return n > 1 ? n * recursion(n - 1) : 1.0;
 }
 
-int itfac(int n){
-  int d = 1;
+// 繰り返し版
+double iteration(double n){
+  double d = 1.0;
   while(n > 1){
     d *= n--;
   }
