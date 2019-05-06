@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 // typedef int * intPtr_t;
 
@@ -59,31 +60,73 @@
 //   return 0;
 // }
 
-struct performance {
-  int no;
-  char name[20];
-  double average;
-};
+// struct performance {
+//   int no;
+//   char name[20];
+//   double average;
+// };
 
-int main(){
-  int i;
-  struct performance student[20] = {
-    {1, "HIROPON1", 89.3},
-    {2, "HIROPON2", 50.5},
-    {3, "HIROPON3", 75.6},
-  };
+// int main(){
+//   int i;
+//   struct performance student[20] = {
+//     {1, "HIROPON1", 89.3},
+//     {2, "HIROPON2", 50.5},
+//     {3, "HIROPON3", 75.6},
+//   };
 
-  struct performance *p;
-  p = student;
+//   struct performance *p;
+//   p = student;
 
-  for(i = 0; i < 3; i++){
-    printf("%s\n", (p + i)->name);
+//   for(i = 0; i < 3; i++){
+//     printf("%s\n", (p + i)->name);
+//   }
+
+//   for(i = 0; i < 3; i++){
+//     printf("%s\n", p->name);
+//     ++p;
+//   }
+
+//   return 0;
+// }
+
+// struct node {
+//   int num;
+//   struct node *left;
+// }*p;
+
+// int main(int argc, char const *argv[])
+// {
+//   p = (struct node *)malloc(sizeof(p));
+//   return 0;
+// }
+
+// #define STUDENT_NAME_LEN 15
+
+// struct Student_tag {
+//   char  name[STUDENT_NAME_LEN];
+//   struct Score_tag {
+//     int math;
+//     int english;
+//   } score;
+// } student;
+
+// int main(){
+//   student.score.math = 75;
+//   student.score.english = 85;
+//   strcpy(student.name, "さのひろし");
+
+//   printf("%d", student.score.math);
+//   printf("%d", student.score.english);
+//   printf("%s", student.name);
+//   return 0;
+// }
+
+int main(int argc, char const *argv[])
+{
+  int i, j;
+
+  for(i = 0, j = 20; i < j; i++){
+    printf("%d", i);
   }
-
-  for(i = 0; i < 3; i++){
-    printf("%s\n", p->name);
-    ++p;
-  }
-
   return 0;
 }
