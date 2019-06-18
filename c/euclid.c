@@ -2,22 +2,25 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int gcd(int, int);
+int gcd(unsigned int, int);
 
 int main(){
   int n;
+  long int m = -2147483648;
 
-  n = gcd(2300, 400);
+  n = gcd(m, 400);
 
   printf("%d\n", n);
 
   return 0;
 }
 
-int gcd(int x, int y){
+int gcd(unsigned int x, int y){
   int r;
+  printf("%d\n", x);
   if (x < 0) {
     x = -x;
+    printf("%d\n", x);
   }
   if (y < 0) {
     y = -y;
@@ -25,7 +28,7 @@ int gcd(int x, int y){
   if (y == 0) {
     return x;
   }
-  r = x % y;
+  r = x % y; // 
   while(r){
     x = y;
     y = r;

@@ -15,6 +15,7 @@ int main(){
     root = pbtree(n);
     fclose(fp);
     return 0;
+}
 
 struct node *pbtree(int n){
     int nleft, nright;
@@ -32,6 +33,6 @@ struct node *pbtree(int n){
     fscanf(fp, "%d", &p->num);
     p->right = pbtree(nright);
 
-    printf("%d", &p->left);
+    printf("%d\n", p->num);
     return p;
 }
