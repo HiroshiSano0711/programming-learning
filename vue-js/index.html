@@ -8,13 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 </head>
 <body>
-    <div id="app"></div>
-    <script>
-        new Vue({
-            template: '<p>{{ msg }}</p>',
-            data: { msg: 'hello world' }
-        }).$mount('#app')
-    </script>
+    <div id="app">
+        <p>{{ items[0].name }}</p>
+    </div>
+    <script src="./js/app.js"></script>
 </body>
 
 </html>
