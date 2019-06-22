@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue.js</title>
+    <title>Vue.jsの学習</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 </head>
 <body>
     <div id="app">
-        <p>{{ items[0].name }}</p>
+        <div v-for='item in items' :key='item.name'>
+            <p>{{ item.name }}: {{ item.price }} x {{ items.quantity }}</p>
+            <p>3桁区切りのフィルター {{ item.price | withDelimiter }}</p>
+        </div>
+
+        <p>合計： {{ totalPrice }}円</p>
+        <p>合計（税込）： {{ totalPriceWithTax }}円</p>
+        <p>{{ min_purchase_price | withDelimiter }}以上からご購入できます</p>
+        <button :title='loggedInButton' v-if="canBuy">購入</button>
     </div>
-    <button id="b-button" :title='loggedInButton' :disabled="!canBuy">購入</button>
+
     <script src="./js/app.js"></script>
 </body>
 </html>
