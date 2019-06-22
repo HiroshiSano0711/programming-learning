@@ -1,18 +1,21 @@
 let items = [
     {
+        id: 1,
         name: '鉛筆',
         price: 100,
-        quantity: 1,
+        quantity: 0,
     },
     {
+        id: 2,
         name: 'ノート',
         price: 200,
-        quantity: 2,
+        quantity: 0,
     },
     {
+        id: 3,
         name: '消しゴム',
         price: 500,
-        quantity: 1,
+        quantity: 0,
     },
 ]
 
@@ -41,6 +44,17 @@ let vm = new Vue({
         },
         canBuy: function(){
             return this.totalPrice >= this.min_purchase_price
+        },
+        errorMessageclass: function(){
+            return { error: !this.canBuy }
         }
+    },
+    methods: {
+        buy: function(){
+            alert(this.totalPriceWithTax + '円のお買い上げ')
+            this.items.forEach(item => {
+                item.quantity = 0
+            })
+        },
     },
 })
