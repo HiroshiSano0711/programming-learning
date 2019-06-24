@@ -16,7 +16,6 @@ describe('login', function(){
         vm.userid = 'testuser'
         vm.password = 'password'
         var result = vm.login()
-        console.log(vm.login())
         assert.deepStrictEqual(result, { userid: 'testuser', password: 'password' })
     })
 })

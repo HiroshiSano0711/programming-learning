@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.jsの学習</title>
+    <link rel="stylesheet" href="css/transition.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="isShown = !isShown">表示の切り替え</button>
+        <transition>
+            <p v-show="isShown">Hello, world</p>
+        </transition>
+    </div>
+    <script src="./js/transition.js"></script>
+</body>
+</html>
