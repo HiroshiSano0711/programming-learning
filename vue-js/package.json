@@ -1,0 +1,21 @@
+{
+  "name": "vue-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-core": "^3.4.0",
+    "karma": "^4.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1",
+    "mocha": "^6.1.4",
+    "vue": "^2.6.10",
+    "webpack": "^4.35.0"
+  }
+}
