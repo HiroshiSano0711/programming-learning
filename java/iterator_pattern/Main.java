@@ -1,4 +1,4 @@
-public class Main {
+class Main {
     public static void main(String[] args) {
         MagazineShelf magazineShelf = new MagazineShelf(4);
         magazineShelf.appendMagazine(new Magazine("Javaで学ぶデザインパターン1"));
@@ -11,5 +11,5 @@ public class Main {
             Magazine magazine = (Magazine)it.next();
             System.out.println(magazine.getName());
         }
-    }   
+    } 
 }

@@ -1,6 +1,6 @@
-public class Main {
+public class AdaptorMain {
     public static void main(String[] args) {
-        Pring p = new PrintBanner("Hello");
+        Print p = new PrintBanner("Hello");
         p.printWeak();
         p.printStrong();
     }
