@@ -1,4 +1,5 @@
 // 雑誌棚のスキャンを行うクラス。
+import java.util.ArrayList;
 
 public class MagazineShelfIterator implements Iterator {
     private MagazineShelf magazineShelf;

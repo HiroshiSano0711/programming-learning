@@ -1,24 +1,23 @@
 // 雑誌棚を表すクラス。このクラスを集合体として扱う。
+import java.util.ArrayList;
 
 public class MagazineShelf implements Aggregate {
-    private Magazine[] magazines;
-    private int last = 0;
+    private ArrayList magazines;
 
-    public MagazineShelf(int maxsize) {
-        this.magazines = new Magazine[maxsize];
+    public MagazineShelf(int initialsize) {
+        this.magazines = new ArrayList(initialsize);
     }
 
     public Magazine getMagazineAt(int index) {
-        return magazines[index];
+        return (Magazine)magazines.get(index);
     }
 
     public void appendMagazine(Magazine magazine) {
-        this.magazines[last] = magazine;
-        last++;
+        magazines.add(magazine);
     }
 
     public int getSize() {
-        return last;
+        return magazines.size();
     }
 
     public Iterator iterator() {
