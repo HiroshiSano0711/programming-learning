@@ -1,6 +1,5 @@
 import framework.*;
 import idcard.*;
-import computer.*;
 
 public class FactoryMain {
     public static void main(String[] args) {
@@ -12,9 +11,5 @@ public class FactoryMain {
         card1.use();
         card2.use();
         card3.use();
-
-        // Factory factory2 = new PCFactory();
-        // Product pc = factory2.create("Apple");
-        // pc.use();
     }
 }
