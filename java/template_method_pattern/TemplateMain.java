@@ -1,3 +1,5 @@
+// 動作確認用のクラス
+
 public class TemplateMain {
     public static void main(String[] args) {
         AbstractDisplay d1 = new ChartDisplay('H');
