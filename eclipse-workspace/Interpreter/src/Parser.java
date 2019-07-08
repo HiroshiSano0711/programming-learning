@@ -98,6 +98,16 @@ public class Parser {
 			code = new JTInt((Integer)lex.value());
 			getToken();
 			break;
+		case TokenType.SYMBOL:
+			JTSymbol sym = (JTSymbol)lex.value();
+			getToken();
+			if (advanced_token == '=') {
+				getToken();
+				code = new JTAssign(sym, expr());
+			} else {
+				code = sym; 
+			}
+			break;
 		case '-':
 			getToken();
 			code = new JTMinus(factor());

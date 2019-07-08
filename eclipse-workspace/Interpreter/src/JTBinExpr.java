@@ -1,8 +1,8 @@
 
 public class JTBinExpr extends JTCode {
 	private int op;
-	private JTCode code1;
-	private JTCode code2;
+	protected JTCode code1;
+	protected JTCode code2;
 	
 	public JTBinExpr(int operator, JTCode c1, JTCode c2) {
 		op = operator;

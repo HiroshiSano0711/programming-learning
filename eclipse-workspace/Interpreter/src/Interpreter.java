@@ -2,10 +2,23 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.InputStreamReader;
-
-import javax.print.attribute.standard.PagesPerMinute;
+import java.util.Hashtable;
 
 public class Interpreter {
+	public static Hashtable<JTSymbol, JTCode> Globals = new Hashtable<JTSymbol, JTCode>();
+	
+	public static boolean hasSymbol(JTSymbol sym) {
+		return Globals.contains(sym);
+	}
+	
+	public static JTCode getSymbolValue(JTSymbol sym) {
+		return (JTCode)Globals.get(sym);
+	}
+	
+	public static void set(JTSymbol sym, JTCode code) {
+		Globals.put(sym, code);
+	}
+
 	static void usage() {
 		System.out.println("Usage: java Interpreter [source_file_name]");
 	}
