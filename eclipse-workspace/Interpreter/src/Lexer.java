@@ -30,11 +30,27 @@ public class Lexer {
 			case '+':
 			case '-':
 			case '*':
-			case '/':
 			case '(':
 			case ')':
 			case '=':
 				tok = ch;
+				break;
+			case '/':
+				ch = reader.read();
+				if (ch == '/') {
+					skipLineComment();
+					return advance();
+				} else if (ch == '*') {
+					skipComment();
+					return advance();
+				} else {
+					reader.unread(ch);
+					tok = '/';
+				}
+				break;
+			case '"':
+				lexString();
+				tok = TokenType.STRING;
 				break;
 			default:
 				if (Character.isDigit((char)ch)) {
@@ -85,7 +101,7 @@ public class Lexer {
 	
 	private void lexSymbol() throws Exception {
 		tok = TokenType.SYMBOL;
-		StringBuffer buffer = new StringBuffer();
+		StringBuffer buf = new StringBuffer();
 		while (true) {
 			int c = reader.read();
 			if (c < 0) {
@@ -95,17 +111,63 @@ public class Lexer {
 				reader.unread(c);
 				break;
 			}
-			buffer.append((char)c);
+			buf.append((char)c);
 		}
-		String s = buffer.toString();
+		String s = buf.toString();
 		val = JTSymbol.intern(s);
 	}
 	
+	private void lexString() throws Exception {
+		StringBuffer buf = new StringBuffer();
+		while(true) {
+			int c = reader.read();
+			if (c < 0) {
+				throw new Exception("文字列中でファイルの終わりに到達しました");
+			}
+			if (c == '"') {
+				break;
+			} else if (c == '\\') {
+				c = reader.read();
+				if (c < 0) {
+					throw new Exception("文字列中でファイルの終わりに到達しました");
+				}
+			}
+			buf.append((char)c);
+		}
+		val = buf.toString();
+	}
+
 	private void skipWhiteSpace() throws Exception {
 		int ch = reader.read();
 		while((ch != -1) && Character.isWhitespace(ch)) {
 			ch = reader.read();
 		}
 		reader.unread(ch);
+	}
+
+	private void skipLineComment() throws Exception {
+		int c;
+		while((c = reader.read()) != '\n') {
+			if (c < 0) {
+				throw new Exception("コメント中にファイルの終端に到達しました。");
+			}
+		}
+		reader.unread(c);
+	}
+
+	private void skipComment() throws Exception {
+		int c = '\0';
+		while(true) {
+			c = reader.read();
+			if (c < 0) {
+				throw new Exception("コメント中にファイルの終端に到達しました。");
+			}
+			if (c == '*') {
+				c = reader.read();
+				if (c == '/') {
+					break;
+				}
+			}
+		}
 	}
 }
