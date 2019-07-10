@@ -1,18 +1,21 @@
 #include <stdio.h>
 
-int main()
-{
-  int data;
-  int *ptr;
+int main() {
+  int hoge = 5;
+  int *hoge_p;
 
-  data = 5;
+  printf("hogeの値 %d\n", hoge); // hoge変数のアドレス
+  printf("&hogeのアドレス %p\n", &hoge); // hoge変数のアドレス
+  printf("hoge_pポインタの値 %p\n", hoge_p); // hoge_p変数の値
+  printf("hoge_pの値（初期値） %d\n", *hoge_p); // hoge_p変数の値
+  printf("hoge_pのアドレス %p\n", &hoge_p); // hoge_p変数の値
 
-  printf("整数型の変数dataの値= %d\n", data);
-  printf("整数型の変数dataのアドレス= %p\n", &data);
+  hoge_p = &hoge;
+  printf("&hoge_p = %p\n", hoge_p); // hogeのアドレスを代入したhoge_pのアドレス
+  printf("hoge_p = %d\n", *hoge_p); // hoge_p変数の値
+  printf("hoge_pのアドレス %p\n", &hoge_p); // hoge_p変数の値
 
-  ptr = &data;
-
-  printf("ポインタ型の変数ptr = %p\n", ptr);
-  printf("ptrが指す場所に保存されている値= %d\n", *ptr);
+  *hoge_p = 10;
+  printf("hoge = %d\n", hoge); // hoge_pを経由してhogeに代入したあとのhoge変数の値
   return 0;
 }
