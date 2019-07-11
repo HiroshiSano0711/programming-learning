@@ -50,6 +50,12 @@ public class Parser {
 		case '{':
 			code = block();
 			break;
+		case TokenType.FUNCTION:
+			code = func();
+			break;
+		case TokenType.DEFINITION:
+			code = def();
+			break;
 		default:
 			code = expr();
 		}
@@ -89,6 +95,61 @@ public class Parser {
 		getToken();
 		JTCode st = statement();
 		return new JTWhile(cond, st);
+	}
+	
+	private JTCode func() throws Exception {
+		getToken();
+		if (advanced_token != TokenType.SYMBOL) {
+			throw new Exception("文法エラーです。");
+		}
+		JTSymbol symbol = (JTSymbol)lex.value();
+		getToken();
+		if (advanced_token != '(') {
+			throw new Exception("文法エラーです。");
+		}
+		getToken();
+		ArrayList list = symbols();
+		if (advanced_token != ')') {
+			throw new Exception("文法エラーです。");
+		}
+		getToken();
+		JTBlock blk = (JTBlock)block();
+		return new JTUserFunc(symbol, list, blk);
+	}
+	
+	private ArrayList symbols() throws Exception {
+		ArrayList list = null;
+		if (advanced_token != ')') {
+			list = new ArrayList();
+			list.add(expr());
+			while (advanced_token != ')') {
+				if (advanced_token != ',') {
+					throw new Exception("文法エラーです。");
+				}
+				getToken();
+				if (advanced_token != TokenType.SYMBOL) {
+					throw new Exception("文法エラーです。");
+				}
+				list.add(lex.value());
+				getToken();
+			}
+		}
+		return list;
+	}
+	
+	private JTCode def() throws Exception {
+		getToken();
+		if (advanced_token != TokenType.SYMBOL) {
+			throw new Exception("文法エラーです。");
+		}
+		JTSymbol sym =  (JTSymbol)lex.value();
+		getToken();
+		JTCode code = null;
+		if (advanced_token == '=') {
+			getToken();
+			code = expr();
+		}
+		return new JTDefVar(sym, code);
 	}
 	
 	private JTCode block() throws Exception {
@@ -199,6 +260,32 @@ public class Parser {
 		return result;
 	}
 	
+	private JTCode methodCall(JTSymbol sym) throws Exception {
+		getToken();
+		ArrayList list = args();
+		if (advanced_token != ')') {
+			throw new Exception("文法エラー");
+		}
+		getToken();
+		return new JTFuncall(sym, list);
+	}
+	
+	private ArrayList args() throws Exception {
+		ArrayList list = null;
+		if (advanced_token != ')') {
+			list = new ArrayList();
+			list.add(expr());
+			while(advanced_token != ')') {
+				if (advanced_token != ',') {
+					throw new Exception("文法エラー");
+				}
+				getToken();
+				list.add(expr());
+			}
+		}
+		return list;
+	}
+	
 	private JTCode factor() throws Exception {
 		JTCode code = null;
 		switch (advanced_token) {
@@ -214,6 +301,8 @@ public class Parser {
 			if (advanced_token == '=') {
 				getToken();
 				code = new JTAssign(sym, expr());
+			} else if(advanced_token == '(') {
+				code = methodCall(sym);
 			} else {
 				code = sym; 
 			}

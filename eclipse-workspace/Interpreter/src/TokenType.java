@@ -17,5 +17,7 @@ public class TokenType {
 	// statement
 	public static final int IF = 268;
 	public static final int ELSE = 269;
-    public static final int WHILE = 270;
+	public static final int WHILE = 270;
+	public static final int FUNCTION = 271;
+    public static final int DEFINITION = 272;
 }

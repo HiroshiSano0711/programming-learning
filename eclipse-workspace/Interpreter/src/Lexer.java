@@ -21,6 +21,8 @@ public class Lexer {
 		reserved.put("if", new Integer(TokenType.IF));
 		reserved.put("else", new Integer(TokenType.ELSE));
 		reserved.put("while", new Integer(TokenType.WHILE));
+		reserved.put("func", new Integer(TokenType.FUNCTION));
+		reserved.put("def", new Integer(TokenType.DEFINITION));
 	}
 	
 	// readerはトークンの読込先
@@ -44,6 +46,7 @@ public class Lexer {
 			case ')':
 			case '{':
 			case '}':
+			case ',':
 				tok = ch;
 		        break;
 			case '=':
