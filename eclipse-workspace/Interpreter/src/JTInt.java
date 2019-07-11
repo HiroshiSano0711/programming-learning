@@ -57,4 +57,68 @@ public class JTInt extends JTCode {
 		result = new JTInt(value / i.getValue());
 		return result;
 	}
+	
+	public JTCode less(JTCode code) throws Exception {
+		JTCode result = null;
+		if (code.getClass() != JTInt.class) {
+			throw new Exception("数値以外のものを比較しようとしました");
+		}
+		JTInt i = (JTInt)code;
+		if (value < i.getValue()) {
+			result = JTBool.True;
+		} else {
+			result = JTBool.False;
+		}
+		return result;
+	}
+	
+	public JTCode less_than(JTCode code) throws Exception {
+		JTCode result = null;
+		if (code.getClass() != JTInt.class) {
+			throw new Exception("数値以外のものを比較しようとしました");
+		}
+		JTInt i = (JTInt)code;
+		if (value <= i.getValue()) {
+			result = JTBool.True;
+		} else {
+			result = JTBool.False;
+		}
+		return result;
+	}
+	
+	public JTCode greater(JTCode code) throws Exception {
+		JTCode result = null;
+		if (code.getClass() != JTInt.class) {
+			throw new Exception("数値以外のものを比較しようとしました");
+		}
+		JTInt i = (JTInt)code;
+		if (value > i.getValue()) {
+			result = JTBool.True;
+		} else {
+			result = JTBool.False;
+		}
+		return result;
+	}
+	
+	public JTCode greater_than(JTCode code) throws Exception {
+		JTCode result = null;
+		if (code.getClass() != JTInt.class) {
+			throw new Exception("数値以外のものを比較しようとしました");
+		}
+		JTInt i = (JTInt)code;
+		if (value <= i.getValue()) {
+			result = JTBool.True;
+		} else {
+			result = JTBool.False;
+		}
+		return result;
+	}
+	
+	public boolean equals(Object code) {
+		if (code.getClass() != JTInt.class) {
+			return false;
+		}
+		JTInt i = (JTInt)code;
+		return value == i.getValue();
+	}
 }

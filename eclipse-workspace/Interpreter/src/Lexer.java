@@ -7,11 +7,21 @@
 */
 
 import java.io.Reader;
+import java.util.Hashtable;
 
 public class Lexer {
 	private int tok;
 	private Object val;
 	private LexerReader reader;
+	private static Hashtable<String, Integer> reserved = new Hashtable<String, Integer>();
+	
+	static {
+		reserved.put("true", new Integer(TokenType.TRUE));
+		reserved.put("false", new Integer(TokenType.FALSE));
+		reserved.put("if", new Integer(TokenType.IF));
+		reserved.put("else", new Integer(TokenType.ELSE));
+		reserved.put("while", new Integer(TokenType.WHILE));
+	}
 	
 	// readerはトークンの読込先
 	public Lexer(Reader r) {
@@ -32,8 +42,61 @@ public class Lexer {
 			case '*':
 			case '(':
 			case ')':
-			case '=':
+			case '{':
+			case '}':
 				tok = ch;
+		        break;
+			case '=':
+				ch = reader.read();
+				if (ch == '=') {
+					tok = TokenType.EQUAL;
+				} else {
+					reader.unread(ch);
+					tok = '=';
+				}
+				break;
+			case '!':
+				ch = reader.read();
+				if (ch == '=') {
+					tok = TokenType.NOT_EQUAL;
+				} else {
+					reader.unread(ch);
+					tok = '!';
+				}
+				break;
+			case '<':
+				ch = reader.read();
+				if (ch == '=') {
+					tok = TokenType.LESS_THAN;
+				} else {
+					reader.unread(ch);
+					tok = '<';
+				}
+				break;
+			case '>':
+				ch = reader.read();
+				if (ch == '=') {
+					tok = TokenType.GREATER_THAN;
+				} else {
+					reader.unread(ch);
+					tok = '>';
+				}
+				break;
+			case '&':
+				ch = reader.read();
+				if (ch == '&') {
+					tok = TokenType.AND;
+				} else {
+					throw new Exception("演算子＆は使えません。");
+				}
+				break;
+			case '|':
+				ch = reader.read();
+				if (ch == '|') {
+					tok = TokenType.OR;
+				} else {
+					throw new Exception("演算子|は使えません。");
+				}
 				break;
 			case '/':
 				ch = reader.read();
@@ -115,6 +178,10 @@ public class Lexer {
 		}
 		String s = buf.toString();
 		val = JTSymbol.intern(s);
+		
+		if (reserved.containsKey(s)) {
+			tok = ((Integer)reserved.get(s)).intValue();
+		}
 	}
 	
 	private void lexString() throws Exception {
