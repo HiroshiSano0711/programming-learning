@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class JTFuncall extends JTCode {
 	private JTSymbol symbol;
-	private ArrayList list;
+	private ArrayList<JTCode> list;
 	
-	public JTFuncall(JTSymbol sym, ArrayList l) {
+	public JTFuncall(JTSymbol sym, ArrayList<JTCode> l) {
 		symbol = sym;
 		list = l;
 	}
@@ -19,7 +19,7 @@ public class JTFuncall extends JTCode {
 		}
 		
 		JTFun func = (JTFun)c;
-		ArrayList list2 = new ArrayList();
+		ArrayList<JTCode> list2 = new ArrayList<JTCode>();
 		for (int i = 0; i < list.size(); i++) {
 			JTCode c2 = ((JTCode)list.get(i)).run();
 			list2.add(c2);

@@ -36,7 +36,7 @@ public class Lexer {
 			skipWhiteSpace(); // スペースを排除する
 			int ch = reader.read();
 			if (ch < 0) { return false;	}
-			
+
 			switch (ch) {
 			case ';':
 			case '+':

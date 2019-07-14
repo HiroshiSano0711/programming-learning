@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Parser {
 	private Lexer lex;
 	private int advanced_token; // 先読みしたトークンを保存する
-	
+
 	public JTCode parse(Lexer lexer) {
 		JTCode code = null;
 		lex = lexer;
@@ -24,7 +24,7 @@ public class Parser {
 			advanced_token = TokenType.EOS;
 		}
 	}
-	
+
 	private JTCode program() throws Exception {
 		JTCode code = statement();
 		if (code != null) {
@@ -37,7 +37,7 @@ public class Parser {
 		}
 		return code;
 	}
-	
+
 	private JTCode statement() throws Exception {
 		JTCode code = null;
 		switch (advanced_token) {
@@ -61,7 +61,7 @@ public class Parser {
 		}
 		return code;
 	}
-	
+
 	private JTCode if_statement() throws Exception {
 		getToken();
 		if(advanced_token != '('){
@@ -81,7 +81,7 @@ public class Parser {
 		}
 		return new JTIf(cond, st1, st2);
 	}
-	
+
 	private JTCode while_statement() throws Exception {
 		getToken();
 		if (advanced_token != '(') {
@@ -96,13 +96,13 @@ public class Parser {
 		JTCode st = statement();
 		return new JTWhile(cond, st);
 	}
-	
+
 	private JTCode func() throws Exception {
 		getToken();
 		if (advanced_token != TokenType.SYMBOL) {
 			throw new Exception("文法エラーです。");
 		}
-		JTSymbol symbol = (JTSymbol)lex.value();
+		JTSymbol sym = (JTSymbol)lex.value();
 		getToken();
 		if (advanced_token != '(') {
 			throw new Exception("文法エラーです。");
@@ -114,9 +114,9 @@ public class Parser {
 		}
 		getToken();
 		JTBlock blk = (JTBlock)block();
-		return new JTUserFunc(symbol, list, blk);
+		return new JTUserFunc(sym, list, blk);
 	}
-	
+
 	private ArrayList symbols() throws Exception {
 		ArrayList list = null;
 		if (advanced_token != ')') {
@@ -136,7 +136,7 @@ public class Parser {
 		}
 		return list;
 	}
-	
+
 	private JTCode def() throws Exception {
 		getToken();
 		if (advanced_token != TokenType.SYMBOL) {
@@ -151,7 +151,7 @@ public class Parser {
 		}
 		return new JTDefVar(sym, code);
 	}
-	
+
 	private JTCode block() throws Exception {
 		ArrayList list = null;
 		getToken();
@@ -169,7 +169,7 @@ public class Parser {
 		getToken();
 		return new JTBlock(list);
 	}
-	
+
 	private JTCode expr() throws Exception {
 		JTCode code = simpleExpr();
 		switch (advanced_token) {
@@ -184,7 +184,7 @@ public class Parser {
 		}
 		return code;
 	}
-	
+
 	private JTCode term() throws Exception {
 		JTCode code = factor();
 		switch (advanced_token) {
@@ -196,7 +196,7 @@ public class Parser {
 		}
 		return code;
 	}
-	
+
 	private JTBinExpr expr2(JTCode code) throws Exception {
 		JTBinExpr result = null;
 		while ((advanced_token == '<') ||
@@ -217,7 +217,7 @@ public class Parser {
 		}
 		return result;
 	}
-	
+
 	private JTCode term2(JTCode code) throws Exception {
 		JTBinExpr result = null;
 		while ((advanced_token == '*') || (advanced_token == '/') ) {
@@ -232,7 +232,7 @@ public class Parser {
 		}
 		return result;
 	}
-	
+
 	private JTCode simpleExpr() throws Exception {
 		JTCode code = term();
 		switch (advanced_token) {
@@ -244,7 +244,7 @@ public class Parser {
 		}
 		return code;
 	}
-	
+
 	private JTCode simpleExpr2(JTCode code) throws Exception {
 		JTBinExpr result = null;
 		while ((advanced_token == '+') || (advanced_token == '-') || (advanced_token == TokenType.OR)) {
@@ -259,10 +259,10 @@ public class Parser {
 		}
 		return result;
 	}
-	
+
 	private JTCode methodCall(JTSymbol sym) throws Exception {
 		getToken();
-		ArrayList list = args();
+		ArrayList<JTCode> list = args();
 		if (advanced_token != ')') {
 			throw new Exception("文法エラー");
 		}
@@ -270,10 +270,10 @@ public class Parser {
 		return new JTFuncall(sym, list);
 	}
 	
-	private ArrayList args() throws Exception {
-		ArrayList list = null;
+	private ArrayList<JTCode> args() throws Exception {
+		ArrayList<JTCode> list = null;
 		if (advanced_token != ')') {
-			list = new ArrayList();
+			list = new ArrayList<JTCode>();
 			list.add(expr());
 			while(advanced_token != ')') {
 				if (advanced_token != ',') {

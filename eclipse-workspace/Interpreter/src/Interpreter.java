@@ -58,6 +58,7 @@ public class Interpreter {
 	public static void main(String[] args) {
 		boolean interactive = false;
 		
+		// 標準入力の引数が2個以上あったら使い方を示す出力をだして処理を終える。
 		if (args.length >= 2) {
 			usage();
 			return;
