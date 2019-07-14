@@ -7,8 +7,7 @@ typedef struct {
     double double2;
 } Hoge;
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
     Hoge hoge;
 
     printf("hoge size %lu\n", sizeof(Hoge));
