@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 struct node {
   char *name;
@@ -13,9 +14,12 @@ NODE *root = NULL;
 FILE *fp;
 long itemcount = 0;
 char strbuf[100];
-int intbuf;
+long intbuf;
 
 void loadtree();
+void printtree(NODE *);
+void savetree(void);
+void writetree(NODE *);
 
 int main(int argc, char const *argv[]){
   char ch;
@@ -26,8 +30,10 @@ int main(int argc, char const *argv[]){
     if(strbuf[0] == '.'){
       switch (toupper(strbuf[1])){
       case 'L': loadtree(); break;
-      case 'P': printf("\n\nContents: \n\n");
-                printtree(root); break;
+      case 'P':
+        printf("\n\nContents: \n\n");
+        printtree(root);
+        break;
       case 'Q': exit(0);
       case 'S': savetree(); break;
       default: printf("\nWrong command; user L P Q or S\n");
@@ -75,7 +81,7 @@ void loadtree(){
   if (fp == NULL){
     printf("Unknown file\n"); return;
   }
-  if (fscanf(fp, "%d", &itemcount) == 0){
+  if (fscanf(fp, "%ld", &itemcount) == 0){
     printf("File %s does not begin with an item count\n", filnam);
     return;
   }
@@ -131,10 +137,48 @@ NODE *add_or_change(NODE *p){
 }
 
 char *my_alloc(int n) {
-  char *p, *malloc;
+  char *p;
   p = malloc(n);
   if (p == NULL){
     printf("Not enough memory\n"); exit(1);
   }
-  
+  return p;
+}
+
+void printtree(NODE *p){
+  if (p != NULL){
+    printtree(p->left);
+    if (p->num != -1L){
+      printf("%-40s %8ld\n", p->name, p->num);
+    }
+    printtree(p->right);
+  }
+}
+
+NODE *search(NODE *p){
+  int indic;
+  if (p == NULL){
+    return NULL;
+  }
+  indic = strcmp(strbuf, p->name);
+  return indic < 0 ? search(p->left) : indic > 0 ? search(p->right) : p->num == -1L ? NULL : p;
+}
+
+void savetree(void){
+  char filnam[50];
+  printf("File name: "); scanf("%s", filnam);
+  fp = fopen(filnam, "w");
+  fprintf(fp, "%ld\n", itemcount);
+  writetree(root);
+  fclose(fp);
+}
+
+void writetree(NODE *p){
+  if (p != NULL){
+    writetree(p->left);
+    if (p->num != -1L){
+      fprintf(fp, "%s %ld\n", p->name, p->num);
+    }
+    writetree(p->right);
+  }
 }
