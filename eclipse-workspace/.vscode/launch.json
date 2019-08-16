@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Interpreter",
+            "request": "launch",
+            "mainClass": "Interpreter",
+            "projectName": "Interpreter"
+        }
+    ]
+}

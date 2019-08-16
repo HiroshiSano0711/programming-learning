@@ -19,7 +19,7 @@ public class Parser {
 	// トークンを1つ先読みする
 	private void getToken() {
 		if (lex.advance()) {
-			advanced_token = (Integer)lex.token();
+			advanced_token = (Integer) lex.token();
 		} else {
 			advanced_token = TokenType.EOS;
 		}
@@ -64,7 +64,7 @@ public class Parser {
 
 	private JTCode if_statement() throws Exception {
 		getToken();
-		if(advanced_token != '('){
+		if (advanced_token != '(') {
 			throw new Exception("文法エラーです。");
 		}
 		getToken();
@@ -89,7 +89,7 @@ public class Parser {
 		}
 		getToken();
 		JTCode cond = expr();
-		if(advanced_token != ')') {
+		if (advanced_token != ')') {
 			throw new Exception("文法エラーです。");
 		}
 		getToken();
@@ -102,7 +102,7 @@ public class Parser {
 		if (advanced_token != TokenType.SYMBOL) {
 			throw new Exception("文法エラーです。");
 		}
-		JTSymbol sym = (JTSymbol)lex.value();
+		JTSymbol sym = (JTSymbol) lex.value();
 		getToken();
 		if (advanced_token != '(') {
 			throw new Exception("文法エラーです。");
@@ -113,7 +113,7 @@ public class Parser {
 			throw new Exception("文法エラーです。");
 		}
 		getToken();
-		JTBlock blk = (JTBlock)block();
+		JTBlock blk = (JTBlock) block();
 		return new JTUserFunc(sym, list, blk);
 	}
 
@@ -142,7 +142,7 @@ public class Parser {
 		if (advanced_token != TokenType.SYMBOL) {
 			throw new Exception("文法エラーです。");
 		}
-		JTSymbol sym =  (JTSymbol)lex.value();
+		JTSymbol sym = (JTSymbol) lex.value();
 		getToken();
 		JTCode code = null;
 		if (advanced_token == '=') {
@@ -155,9 +155,9 @@ public class Parser {
 	private JTCode block() throws Exception {
 		ArrayList list = null;
 		getToken();
-		while(advanced_token != '}') {
+		while (advanced_token != '}') {
 			JTCode c = statement();
-			if(advanced_token != ';') {
+			if (advanced_token != ';') {
 				throw new Exception("文法エラーです");
 			}
 			getToken();
@@ -199,13 +199,9 @@ public class Parser {
 
 	private JTBinExpr expr2(JTCode code) throws Exception {
 		JTBinExpr result = null;
-		while ((advanced_token == '<') ||
-			   (advanced_token == '>') || 
-			   (advanced_token == TokenType.EQUAL) ||
-			   (advanced_token == TokenType.NOT_EQUAL) ||
-			   (advanced_token == TokenType.LESS_THAN) ||
-			   (advanced_token == TokenType.GREATER_THAN))
-		{
+		while ((advanced_token == '<') || (advanced_token == '>') || (advanced_token == TokenType.EQUAL)
+				|| (advanced_token == TokenType.NOT_EQUAL) || (advanced_token == TokenType.LESS_THAN)
+				|| (advanced_token == TokenType.GREATER_THAN)) {
 			int op = advanced_token;
 			getToken();
 			JTCode code2 = simpleExpr();
@@ -220,7 +216,7 @@ public class Parser {
 
 	private JTCode term2(JTCode code) throws Exception {
 		JTBinExpr result = null;
-		while ((advanced_token == '*') || (advanced_token == '/') ) {
+		while ((advanced_token == '*') || (advanced_token == '/')) {
 			int op = advanced_token;
 			getToken();
 			JTCode code2 = term();
@@ -269,13 +265,13 @@ public class Parser {
 		getToken();
 		return new JTFuncall(sym, list);
 	}
-	
+
 	private ArrayList<JTCode> args() throws Exception {
 		ArrayList<JTCode> list = null;
 		if (advanced_token != ')') {
 			list = new ArrayList<JTCode>();
 			list.add(expr());
-			while(advanced_token != ')') {
+			while (advanced_token != ')') {
 				if (advanced_token != ',') {
 					throw new Exception("文法エラー");
 				}
@@ -285,30 +281,30 @@ public class Parser {
 		}
 		return list;
 	}
-	
+
 	private JTCode factor() throws Exception {
 		JTCode code = null;
 		switch (advanced_token) {
 		case TokenType.EOS:
 			break;
 		case TokenType.INT:
-			code = new JTInt((Integer)lex.value());
+			code = new JTInt((Integer) lex.value());
 			getToken();
 			break;
 		case TokenType.SYMBOL:
-			JTSymbol sym = (JTSymbol)lex.value();
+			JTSymbol sym = (JTSymbol) lex.value();
 			getToken();
 			if (advanced_token == '=') {
 				getToken();
 				code = new JTAssign(sym, expr());
-			} else if(advanced_token == '(') {
+			} else if (advanced_token == '(') {
 				code = methodCall(sym);
 			} else {
-				code = sym; 
+				code = sym;
 			}
 			break;
 		case TokenType.STRING:
-			code = new JTString((String)lex.value());
+			code = new JTString((String) lex.value());
 			getToken();
 			break;
 		case TokenType.TRUE:
@@ -341,21 +337,3 @@ public class Parser {
 		return code;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
