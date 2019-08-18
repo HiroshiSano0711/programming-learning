@@ -1,7 +1,7 @@
 .text
 
-.globl _main
-_main:
+.globl start
+start:
     movq  %rsp, %rbp
 
     movq $1, %rax
