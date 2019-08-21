@@ -1,0 +1,91 @@
+ustr.o:	file format Mach-O 64-bit x86-64
+
+Disassembly of section __TEXT,__text:
+_toustr:
+; /Users/hiro2/programming/assembly/ustr.c:4
+; char *toustr(char *str) {
+       0:	55 	pushq	%rbp
+       1:	48 89 e5 	movq	%rsp, %rbp
+       4:	48 83 ec 20 	subq	$32, %rsp
+       8:	48 89 7d f8 	movq	%rdi, -8(%rbp)
+; /Users/hiro2/programming/assembly/ustr.c:7
+; p = str;
+       c:	48 8b 7d f8 	movq	-8(%rbp), %rdi
+      10:	48 89 7d f0 	movq	%rdi, -16(%rbp)
+; /Users/hiro2/programming/assembly/ustr.c:9
+; while ((c = *p) != 0){
+      14:	48 8b 45 f0 	movq	-16(%rbp), %rax
+      18:	0f be 08 	movsbl	(%rax), %ecx
+      1b:	89 4d ec 	movl	%ecx, -20(%rbp)
+      1e:	83 f9 00 	cmpl	$0, %ecx
+      21:	0f 84 32 00 00 00 	je	50 <_toustr+0x59>
+; /Users/hiro2/programming/assembly/ustr.c:10
+; if (islower(c)){
+      27:	8b 7d ec 	movl	-20(%rbp), %edi
+      2a:	e8 00 00 00 00 	callq	0 <_toustr+0x2f>
+      2f:	83 f8 00 	cmpl	$0, %eax
+      32:	0f 84 1c 00 00 00 	je	28 <_toustr+0x54>
+; /Users/hiro2/programming/assembly/ustr.c:11
+; *p = (char)toupper(c);
+      38:	8b 7d ec 	movl	-20(%rbp), %edi
+      3b:	e8 00 00 00 00 	callq	0 <_toustr+0x40>
+      40:	88 c1 	movb	%al, %cl
+      42:	48 8b 55 f0 	movq	-16(%rbp), %rdx
+      46:	88 0a 	movb	%cl, (%rdx)
+; /Users/hiro2/programming/assembly/ustr.c:12
+; p++;
+      48:	48 8b 55 f0 	movq	-16(%rbp), %rdx
+      4c:	48 83 c2 01 	addq	$1, %rdx
+      50:	48 89 55 f0 	movq	%rdx, -16(%rbp)
+; /Users/hiro2/programming/assembly/ustr.c:9
+; while ((c = *p) != 0){
+      54:	e9 bb ff ff ff 	jmp	-69 <_toustr+0x14>
+; /Users/hiro2/programming/assembly/ustr.c:16
+; return str;
+      59:	48 8b 45 f8 	movq	-8(%rbp), %rax
+      5d:	48 83 c4 20 	addq	$32, %rsp
+      61:	5d 	popq	%rbp
+      62:	c3 	retq
+      63:	66 2e 0f 1f 84 00 00 00 00 00 	nopw	%cs:(%rax,%rax)
+      6d:	0f 1f 00 	nopl	(%rax)
+
+_main:
+; /Users/hiro2/programming/assembly/ustr.c:19
+; int main() {
+      70:	55 	pushq	%rbp
+      71:	48 89 e5 	movq	%rsp, %rbp
+      74:	48 83 ec 30 	subq	$48, %rsp
+      78:	48 8d 7d e0 	leaq	-32(%rbp), %rdi
+      7c:	48 8b 05 00 00 00 00 	movq	(%rip), %rax
+      83:	48 8b 00 	movq	(%rax), %rax
+      86:	48 89 45 f8 	movq	%rax, -8(%rbp)
+      8a:	c7 45 dc 00 00 00 00 	movl	$0, -36(%rbp)
+; /Users/hiro2/programming/assembly/ustr.c:20
+; char a[] = "Hello Good Night";
+      91:	48 8b 05 58 00 00 00 	movq	88(%rip), %rax
+      98:	48 89 45 e0 	movq	%rax, -32(%rbp)
+      9c:	48 8b 05 08 00 00 00 	movq	8(%rip), %rax
+      a3:	48 89 45 e8 	movq	%rax, -24(%rbp)
+      a7:	8a 0d 10 00 00 00 	movb	16(%rip), %cl
+      ad:	88 4d f0 	movb	%cl, -16(%rbp)
+; /Users/hiro2/programming/assembly/ustr.c:21
+; printf("s=%s\n", toustr(a));
+      b0:	e8 00 00 00 00 	callq	0 <_main+0x45>
+      b5:	48 8d 3d 45 00 00 00 	leaq	69(%rip), %rdi
+      bc:	48 89 c6 	movq	%rax, %rsi
+      bf:	b0 00 	movb	$0, %al
+      c1:	e8 00 00 00 00 	callq	0 <_main+0x56>
+      c6:	48 8b 35 00 00 00 00 	movq	(%rip), %rsi
+      cd:	48 8b 36 	movq	(%rsi), %rsi
+      d0:	48 8b 7d f8 	movq	-8(%rbp), %rdi
+      d4:	48 39 fe 	cmpq	%rdi, %rsi
+      d7:	89 45 d8 	movl	%eax, -40(%rbp)
+      da:	0f 85 08 00 00 00 	jne	8 <_main+0x78>
+      e0:	31 c0 	xorl	%eax, %eax
+; /Users/hiro2/programming/assembly/ustr.c:22
+; return 0;
+      e2:	48 83 c4 30 	addq	$48, %rsp
+      e6:	5d 	popq	%rbp
+      e7:	c3 	retq
+      e8:	e8 00 00 00 00 	callq	0 <_main+0x7d>
+      ed:	0f 0b 	ud2

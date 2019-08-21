@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 struct _PERSON {
-    int id;
     int age;
+    char name[12];
 };
 typedef struct _PERSON Person;
 
 int main(void){
-    Person member[5] = { {1, 100}, {2, 101}, {3, 102} };
+    Person member[5] = { {1, "ken"}, {2, "ryu"}, {3, "gairu"} };
     int i;
 
     for (i = 0; i < 3; i++){
-        member[i].id = 10;
-        member[i].age = 1000;
+        printf("member[i].name= %s", member[i].name);
+        printf("member[i].age= %d", member[i].age);
     }
 
     return 0;
