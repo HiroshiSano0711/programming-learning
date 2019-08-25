@@ -1,3 +1,12 @@
+/*
+参考サイト
+
+低レイヤを知りたい人のためのCコンパイラ作成入門
+Rui Ueyama <ruiu@cs.stanford.edu>
+https://www.sigbus.info/compilerbook
+
+*/
+
 #include <ctype.h>
 #include <stdarg.h>
 #include <stdbool.h>
