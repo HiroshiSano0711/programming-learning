@@ -22,10 +22,16 @@ struct Token {
 };
 Token *token;
 
-// 途中でエラーが起こった場合に呼ぶ処理
-void error(char *format, ...) { // ...は可変長引数
+char *user_input;
+
+void error_at(char *loc, char *format, ...){
   va_list ap; // 可変長引数を受け取る va_listの中身＝＞ typedef char* va_list
   va_start(ap, format); // 可変長引数を１個の変数にまとめる
+
+  int pos = loc - user_input;
+  fprintf(stderr, "%s\n", user_input);
+  fprintf(stderr, "%*s", pos, " ");
+  fprintf(stderr, "^");
   vfprintf(stderr, format, ap); // まとめられた変数で出力する
   fprintf(stderr, "\n"); // 改行を出力して
   exit(1); // 異常終了する
@@ -33,6 +39,7 @@ void error(char *format, ...) { // ...は可変長引数
 
 // 次のトークンが期待している記号の時は、トークンを１つ読み進めて真を返す。それ以外は偽を返す。
 bool consume(char op){
+  // expect_number()関数でtoken->nextを実行しているので、この関数のtokenは次のトークンを指している
   if (token->kind != TK_RESERVED || token->str[0] != op){
     return false;
   }
@@ -43,7 +50,7 @@ bool consume(char op){
 // 次のトークンが期待している記号の時は、トークンを１つ読み進めて真を返す。それ以外はエラー。
 void expect(char op) {
   if (token->kind != TK_RESERVED || token->str[0] != op){
-    error("'%c'ではありません。", op);
+    error_at(token->str, "'%c'ではありません。");
   }
   token = token->next;
 }
@@ -51,7 +58,7 @@ void expect(char op) {
 // 次のトークンが数値の時は、トークンを１つ読み進める。現在の数値を返す。
 int expect_number(){
   if (token->kind != TK__NUM){ // トークンの種類が数値出ない場合、エラー
-    error("数ではありません。");
+    error_at(token->str, "数ではありません。");
   }
   int val = token->val; // 現在の数値を保持する
   token = token->next; // トークンを１つ読み進める
@@ -84,7 +91,7 @@ Token *tokenize(char *p){
       continue;
     }
 
-    if (*p == '+' || *p == '-'){
+    if (*p == '+' || *p == '-' || *p == '*' || *p == '/' || *p == '(' || *p == ')'){
       cur = new_token(TK_RESERVED, cur, p++); // 新しいトークンを作成して、かえってきた新しいトークンをcurに代入
       continue;
     }
@@ -95,36 +102,142 @@ Token *tokenize(char *p){
       continue;
     }
 
-    error("トークナイズできません。");
+    error_at(token->str, "トークナイズできません。");
   }
 
   new_token(TK_EOF, cur, p);
   return head.next;
 }
 
+typedef enum {
+  ND_ADD, // +
+  ND_SUB, // -
+  ND_MUL, // *
+  ND_DIV, // /
+  ND_NUM, // 整数
+} NodeKind;
+
+typedef struct Node Node;
+
+struct Node {
+  NodeKind kind; // ノードの型
+  Node *lhs; // 左辺 left hand side(自己参照ポインタ)
+  Node *rhs; // 右辺 right hand side(自己参照ポインタ)
+  int val; // kindがND_NUMの場合のみ使う。演算する数字の値が入る
+};
+
+Node *new_node(NodeKind, Node *, Node *);
+Node *new_node_num(int);
+Node *expr();
+Node *mul();
+Node *term();
+
+// 新しいノードを作成して、型と左辺、右辺を代入する
+Node *new_node(NodeKind kind, Node *lhs, Node *rhs){
+  Node *node = calloc(1, sizeof(Node));
+  node->kind = kind;
+  node->lhs = lhs;
+  node->rhs = rhs;
+  return node;
+}
+
+Node *new_node_num(int val){
+  Node *node = calloc(1, sizeof(Node));
+  node->kind = ND_NUM;
+  node->val = val;
+  return node;
+}
+
+// EBNF expr = mul ("+" mul | "-" mul)* のコード化
+Node *expr(){
+  Node *node = mul();
+
+  for (;;){
+    if (consume('+')){ // consume()関数でtoken->nextを実行しているので+の次のトークンを指す
+      node = new_node(ND_ADD, node, mul());
+    }else if(consume('-')){
+      node = new_node(ND_SUB, node, mul());
+    }else{
+      return node;
+    }
+  }
+}
+
+// EBNF mul = term ("*" term | "/" term)* のコード化
+Node *mul(){
+  Node *node = term();
+
+  for (;;){
+    if (consume('*')){
+      node = new_node(ND_MUL, node, term());
+    }else if(consume('/')){
+      node = new_node(ND_DIV, node, term());
+    }else{
+      return node;
+    }
+  }
+}
+
+// EBNF term = "(" expr ")" | num のコード化
+Node *term(){
+  if (consume('(')){
+    Node *node = expr();
+    expect(')');
+    return node;
+  }
+  return new_node_num(expect_number());
+}
+
+void gen(Node *node){
+  if (node->kind == ND_NUM){
+    printf("  push %d\n", node->val);
+    return;
+  }
+
+  gen(node->lhs);
+  gen(node->rhs);
+
+  printf("  pop rdi\n");
+  printf("  pop rax\n");
+
+  switch (node->kind){
+  case ND_ADD:
+    printf("  add rax, rdi\n");
+    break;
+  case ND_SUB:
+    printf("  sub rax, rdi\n");
+    break;
+  case ND_MUL:
+    printf("  imul rax, rdi\n");
+    break;
+  case ND_DIV:
+    printf("  cqo\n");
+    printf("  idiv rdi\n");
+    break;
+  }
+
+  printf("  push rax\n");
+}
+
 int main(int argc, char *argv[]){
   if(argc != 2){
-    error("引数の個数が正しくありません");
+    fprintf(stderr, "引数の個数が正しくありません");
     return 1;
   }
 
-  token = tokenize(argv[1]);
+  user_input = argv[1];
+  token = tokenize(user_input);
+  Node *node = expr();
 
   printf(".intel_syntax noprefix\n");
   printf(".global main\n");
   printf("main:\n");
-  printf("  mov rax, %d\n", expect_number());
 
-  while (!at_eof()){
-    if (consume('+')){
-      printf("  add rax, %d\n", expect_number());
-      continue;
-    }
+  // 構文木を下りながらコード生成
+  gen(node);
 
-    expect('-');
-    printf("  sub rax, %d\n", expect_number());
-  }
-
+  // 最終的に計算結果がraxにあるはずなので関数の返り値とする
+  printf("  pop rax\n");
   printf("  ret\n");
   return 0;
 }
