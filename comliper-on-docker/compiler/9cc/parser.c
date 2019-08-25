@@ -63,5 +63,6 @@ Node *term(){
     expect(')');
     return node;
   }
+  // consume()の結果、どの演算子にも該当しなければ数字のはず
   return new_node_num(expect_number());
 }
