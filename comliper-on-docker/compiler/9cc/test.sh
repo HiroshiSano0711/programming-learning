@@ -4,7 +4,7 @@ try() {
   expected="$1"
   input="$2"
 
-  gcc -o 9cc 9cc.c
+  gcc -o 9cc 9cc.c codegen.c parser.c main.c
   ./9cc "$input" > tmp.s
   gcc -o tmp tmp.s
   ./tmp
