@@ -139,7 +139,8 @@ Node *new_node(NodeKind, Node *, Node *);
 Node *new_node_num(int);
 Node *expr();
 Node *mul();
-Node *term();
+Node *unary(); // 単項演算子か二項演算子を判別する
+Node *primary();
 
 // 新しいノードを作成して、型と左辺、右辺を代入する
 Node *new_node(NodeKind kind, Node *lhs, Node *rhs){
@@ -172,23 +173,33 @@ Node *expr(){
   }
 }
 
-// EBNF mul = term ("*" term | "/" term)* のコード化
+// EBNF mul = primary ("*" primary | "/" primary)* のコード化
 Node *mul(){
-  Node *node = term();
+  Node *node = unary();
 
   for (;;){
     if (consume('*')){
-      node = new_node(ND_MUL, node, term());
+      node = new_node(ND_MUL, node, unary());
     }else if(consume('/')){
-      node = new_node(ND_DIV, node, term());
+      node = new_node(ND_DIV, node, unary());
     }else{
       return node;
     }
   }
 }
 
-// EBNF term = "(" expr ")" | num のコード化
-Node *term(){
+Node *unary(){
+  if (consume('+')){
+    return primary();
+  }
+  if (consume('-')){
+    return new_node(ND_SUB, new_node_num(0), primary());
+  }
+  return primary();
+}
+
+// EBNF primary = "(" expr ")" | num のコード化
+Node *primary(){
   if (consume('(')){
     Node *node = expr();
     expect(')');
