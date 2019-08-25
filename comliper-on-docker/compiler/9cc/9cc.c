@@ -7,6 +7,16 @@ https://www.sigbus.info/compilerbook
 
 */
 
+/*
+文法の優先順位（低い順）
+  1. == !=
+  2. < <= > >=
+  3. + -
+  4. * /
+  5. 単項+ 単項-
+  6. ()
+*/
+
 #include <ctype.h>
 #include <stdarg.h>
 #include <stdbool.h>
@@ -140,7 +150,7 @@ Node *new_node_num(int);
 Node *expr();
 Node *mul();
 Node *unary(); // 単項演算子か二項演算子を判別する
-Node *primary();
+Node *term();
 
 // 新しいノードを作成して、型と左辺、右辺を代入する
 Node *new_node(NodeKind kind, Node *lhs, Node *rhs){
@@ -173,7 +183,7 @@ Node *expr(){
   }
 }
 
-// EBNF mul = primary ("*" primary | "/" primary)* のコード化
+// EBNF mul = term ("*" term | "/" term)* のコード化
 Node *mul(){
   Node *node = unary();
 
@@ -190,16 +200,16 @@ Node *mul(){
 
 Node *unary(){
   if (consume('+')){
-    return primary();
+    return term();
   }
   if (consume('-')){
-    return new_node(ND_SUB, new_node_num(0), primary());
+    return new_node(ND_SUB, new_node_num(0), term());
   }
-  return primary();
+  return term();
 }
 
-// EBNF primary = "(" expr ")" | num のコード化
-Node *primary(){
+// EBNF term = "(" expr ")" | num のコード化
+Node *term(){
   if (consume('(')){
     Node *node = expr();
     expect(')');
