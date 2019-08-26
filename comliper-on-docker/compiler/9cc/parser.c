@@ -16,29 +16,66 @@ Node *new_node_num(int val){
   return node;
 }
 
-// EBNF expr = mul ("+" mul | "-" mul)* のコード化
+// expr = equality
 Node *expr(){
-  Node *node = mul();
+  return equality();
+}
 
-  for (;;){
-    if (consume('+')){ // consume()関数でtoken->nextを実行しているので+の次のトークンを指す
-      node = new_node(ND_ADD, node, mul());
-    }else if(consume('-')){
-      node = new_node(ND_SUB, node, mul());
-    }else{
+Node *equality(){
+  Node *node = relational();
+
+  for (;;) {
+    if (consume("==")) {
+      node = new_node(ND_EQ, node, relational());
+    } else if (consume("!=")) {
+      node = new_node(ND_NE, node, relational());
+    } else {
       return node;
     }
   }
 }
 
-// EBNF mul = term ("*" term | "/" term)* のコード化
+Node *relational() {
+  Node *node = add();
+
+  for (;;) {
+    if (consume("<")) {
+      node = new_node(ND_LT, node, add());
+    } else if (consume("<=")) {
+      node = new_node(ND_LE, node, add());
+    } else if (consume(">")) {
+      node = new_node(ND_LT, add(), node);
+    } else if (consume(">=")) {
+      node = new_node(ND_LE, add(), node);
+    } else {
+      return node;
+    }
+  }
+}
+
+Node *add() {
+  Node *node = mul();
+
+  for (;;){
+    if (consume("+")) {
+      node = new_node(ND_ADD, node, mul());
+    } else if(consume("-")){
+      node = new_node(ND_SUB, node, mul());
+    } else{
+      return node;
+    }
+  }
+}
+
+
+// EBNF mul = unary ("*" unary | "/" unary)* のコード化
 Node *mul(){
   Node *node = unary();
 
   for (;;){
-    if (consume('*')){
+    if (consume("*")){
       node = new_node(ND_MUL, node, unary());
-    }else if(consume('/')){
+    }else if(consume("/")){
       node = new_node(ND_DIV, node, unary());
     }else{
       return node;
@@ -47,10 +84,10 @@ Node *mul(){
 }
 
 Node *unary(){
-  if (consume('+')){
+  if (consume("+")){
     return term();
   }
-  if (consume('-')){
+  if (consume("-")){
     return new_node(ND_SUB, new_node_num(0), term());
   }
   return term();
@@ -58,11 +95,11 @@ Node *unary(){
 
 // EBNF term = "(" expr ")" | num のコード化
 Node *term(){
-  if (consume('(')){
+  if (consume("(")){
     Node *node = expr();
-    expect(')');
+    expect(")");
     return node;
   }
-  // consume()の結果、どの演算子にも該当しなければ数字のはず
+  // 再帰的なconsume()を実行した結果、どの演算子にも該当しなければ数字のはず
   return new_node_num(expect_number());
 }

@@ -17,9 +17,11 @@ void error_at(char *loc, char *format, ...){
 }
 
 // 次のトークンが期待している記号の時は、トークンを１つ読み進めて真を返す。それ以外は偽を返す。
-bool consume(char op){
+bool consume(char *op){
   // expect_number()関数でtoken->nextを実行しているので、この関数のtokenは次のトークンを指している
-  if (token->kind != TK_RESERVED || token->str[0] != op){
+  if (token->kind != TK_RESERVED ||
+      strlen(op) != token->len ||
+      memcmp(token->str, op, token->len)){
     return false;
   }
   token = token->next;
@@ -27,8 +29,10 @@ bool consume(char op){
 }
 
 // 次のトークンが期待している記号の時は、トークンを１つ読み進めて真を返す。それ以外はエラー。
-void expect(char op) {
-  if (token->kind != TK_RESERVED || token->str[0] != op){
+void expect(char *op) {
+  if (token->kind != TK_RESERVED ||
+      strlen(op) != token->len ||
+      memcmp(token->str, op, token->len)){
     error_at(token->str, "'%c'ではありません。");
   }
   token = token->next;
@@ -50,14 +54,18 @@ bool at_eof(){
 }
 
 // 新しいトークンを生成して、curにつなげる
-Token *new_token(TokenKind kind, Token *cur, char *str){
+Token *new_token(TokenKind kind, Token *cur, char *str, int len){
   Token *tok = calloc(1, sizeof(Token));
   tok->kind = kind; // 種類を代入
-  tok->str = str; // 文字をを代入
+  tok->str = str; // 文字を代入
+  tok->len = len;
   cur->next = tok; // curの次につなげる
   return tok;
 }
 
+bool startswith(char *p, char *q) {
+  return memcmp(p, q, strlen(q)) == 0;
+}
 // 入力文字列pをトークナイズしてそれを返す
 Token *tokenize(char *p){
   Token head;
@@ -70,20 +78,31 @@ Token *tokenize(char *p){
       continue;
     }
 
-    if (*p == '+' || *p == '-' || *p == '*' || *p == '/' || *p == '(' || *p == ')'){
-      cur = new_token(TK_RESERVED, cur, p++); // 新しいトークンを作成して、かえってきた新しいトークンをcurに代入
+    if (startswith(p, "==") || startswith(p, "!=") ||
+        startswith(p, "<=") || startswith(p, ">=")) {
+      cur = new_token(TK_RESERVED, cur, p, 2);
+      p += 2;
+      continue;
+    }
+
+    if (strchr("+-*/()<>", *p)) {
+      cur = new_token(TK_RESERVED, cur, p++, 1);
       continue;
     }
 
     if (isdigit(*p)){
-      cur = new_token(TK__NUM, cur, p);
-      cur->val = strtol(p, &p, 10); // strtol: string to long 文字列を10進数を基数にロング型の数値へ変換する関する
+      cur = new_token(TK__NUM, cur, p, 0);
+      char *q = p;
+      // 文字列中に変換不可能な文字があった場合，その文字列へのポインタを endptr（第2引数 &p） に格納する
+      // strtol: string to long 文字列を10進数を基数にロング型の数値へ変換する関する
+      cur->val = strtol(p, &p, 10); // この処理で10+300のような一桁以上の数字もトークン化できる
+      cur->len = p - q;
       continue;
     }
 
     error_at(token->str, "トークナイズできません。");
   }
 
-  new_token(TK_EOF, cur, p);
+  new_token(TK_EOF, cur, p, 0);
   return head.next;
 }
