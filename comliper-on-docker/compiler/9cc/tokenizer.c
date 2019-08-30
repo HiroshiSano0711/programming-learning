@@ -40,7 +40,7 @@ void expect(char *op) {
 
 // 次のトークンが数値の時は、トークンを１つ読み進める。現在の数値を返す。
 int expect_number(){
-  if (token->kind != TK__NUM){ // トークンの種類が数値出ない場合、エラー
+  if (token->kind != TK_NUM){ // トークンの種類が数値出ない場合、エラー
     error_at(token->str, "数ではありません。");
   }
   int val = token->val; // 現在の数値を保持する
@@ -79,6 +79,11 @@ Token *tokenize(char *p){
       continue;
     }
 
+    if ('a' <= *p && *p <= 'z') {
+      cur = new_token(TK_IDENT, cur, p++, 1);
+      continue;
+    }
+
     if (startswith(p, "==") || startswith(p, "!=") ||
         startswith(p, "<=") || startswith(p, ">=")) {
       cur = new_token(TK_RESERVED, cur, p, 2);
@@ -92,7 +97,7 @@ Token *tokenize(char *p){
     }
 
     if (isdigit(*p)){
-      cur = new_token(TK__NUM, cur, p, 0);
+      cur = new_token(TK_NUM, cur, p, 0);
       char *q = p;
       // 文字列中に変換不可能な文字があった場合，その文字列へのポインタを endptr（第2引数 &p） に格納する
       // strtol: string to long 文字列を10進数を基数にロング型の数値へ変換する関する

@@ -27,7 +27,8 @@ https://www.sigbus.info/compilerbook
 // トークナイズで使用する。トークンの種類を表す
 typedef enum {
   TK_RESERVED, // 記号
-  TK__NUM, // 整数トークン
+  TK_NUM, // 整数
+  TK_IDENT, // 識別子
   TK_EOF, // 入力の終わりを表すトークン
 } TokenKind;
 
@@ -48,6 +49,8 @@ typedef enum {
   ND_SUB, // -
   ND_MUL, // *
   ND_DIV, // /
+  ND_ASSIGN, // =
+  ND_LVAR, // 変数
   ND_EQ,  // ==
   ND_NE,  // !=
   ND_LT,  // <
@@ -62,10 +65,15 @@ struct Node {
   Node *lhs; // 左辺 left hand side(自己参照ポインタ)
   Node *rhs; // 右辺 right hand side(自己参照ポインタ)
   int val; // kindがND_NUMの場合のみ使う。演算する数字の値が入る
+  int offset; // kindがND_LVARの場合のみ使う
 };
 
+extern Node *code[100];
 Node *new_node(NodeKind, Node *, Node *);
 Node *new_node_num(int);
+void program();
+Node *stmt();
+Node *assign();
 Node *expr();
 Node *equality();
 Node *relational();

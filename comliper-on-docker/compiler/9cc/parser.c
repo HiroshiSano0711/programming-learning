@@ -16,9 +16,50 @@ Node *new_node_num(int val){
   return node;
 }
 
-// expr = equality
+/*
+
+文法規則
+program    = stmt*
+stmt       = expr ";"
+expr       = assign
+assign     = equality ("=" assign)?
+equality   = relatinal ("==" relational | "!=" relational)*
+relational = add ("<" add | "<=" add | ">" add | ">=" add)
+add        = mul ("+" mul | "-" mul)*
+mul        = unary ("*" unary | "/" unary)*
+unary      = ("+" | "-")? term
+term       = num | ident | "(" expr ")"
+
+*/
+
+Node *code[100];
+
+void program(){
+  int i = 0;
+  while (!at_eof()){
+    code[i] = stmt();
+    i++;
+  }
+  code[i] = NULL;
+}
+
+Node *stmt() {
+  Node *node = expr();
+  expect(";");
+  return node;
+}
+
 Node *expr(){
-  return equality();
+  return assign();
+}
+
+Node *assign(){
+  Node *node = equality();
+
+  if (consume("=")) {
+    node = new_node(ND_ASSIGN, node, assign());
+  }
+  return node;
 }
 
 Node *equality(){
