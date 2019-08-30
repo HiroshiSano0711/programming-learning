@@ -10,11 +10,20 @@ _main:                                  ## @main
 	.cfi_offset %rbp, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register %rbp
-	leaq	L_.str(%rip), %rdi
+	subq	$16, %rsp
+	movl	$0, -4(%rbp)
+	movl	$2400, %edi             ## imm = 0x960
 	movl	$400, %esi              ## imm = 0x190
-	xorl	%eax, %eax
+	callq	_gcd
+	movl	%eax, -8(%rbp)
+	movl	-8(%rbp), %esi
+	leaq	L_.str(%rip), %rdi
+	movb	$0, %al
 	callq	_printf
-	xorl	%eax, %eax
+	xorl	%esi, %esi
+	movl	%eax, -12(%rbp)         ## 4-byte Spill
+	movl	%esi, %eax
+	addq	$16, %rsp
 	popq	%rbp
 	retq
 	.cfi_endproc
@@ -29,26 +38,23 @@ _gcd:                                   ## @gcd
 	.cfi_offset %rbp, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register %rbp
-	movl	%edi, %eax
-	testl	%esi, %esi
-	je	LBB1_1
-## %bb.2:
-	movl	%esi, %edx
-	.p2align	4, 0x90
-LBB1_3:                                 ## =>This Inner Loop Header: Depth=1
-	movl	%edx, %ecx
+	movl	%edi, -4(%rbp)
+	movl	%esi, -8(%rbp)
+LBB1_1:                                 ## =>This Inner Loop Header: Depth=1
+	cmpl	$0, -8(%rbp)
+	je	LBB1_3
+## %bb.2:                               ##   in Loop: Header=BB1_1 Depth=1
+	movl	-4(%rbp), %eax
 	cltd
-	idivl	%ecx
-	movl	%ecx, %eax
-	testl	%edx, %edx
-	jne	LBB1_3
-## %bb.4:
-	movl	%ecx, %eax
-	popq	%rbp
-	retq
-LBB1_1:
-	movl	%eax, %ecx
-	movl	%ecx, %eax
+	idivl	-8(%rbp)
+	movl	%edx, -12(%rbp)
+	movl	-8(%rbp), %edx
+	movl	%edx, -4(%rbp)
+	movl	-12(%rbp), %edx
+	movl	%edx, -8(%rbp)
+	jmp	LBB1_1
+LBB1_3:
+	movl	-4(%rbp), %eax
 	popq	%rbp
 	retq
 	.cfi_endproc

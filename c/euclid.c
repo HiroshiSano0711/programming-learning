@@ -2,39 +2,16 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int gcd(unsigned int, int);
+int gcd(int x, int y);
 
 int main(){
   int n;
-  long int m = -2147483648;
 
-  n = gcd(m, 400);
+  n = gcd(2400, 400);
 
   printf("%d\n", n);
 
   return 0;
-}
-
-int gcd(unsigned int x, int y){
-  int r;
-  printf("%d\n", x);
-  if (x < 0) {
-    x = -x;
-    printf("%d\n", x);
-  }
-  if (y < 0) {
-    y = -y;
-  }
-  if (y == 0) {
-    return x;
-  }
-  r = x % y; // 
-  while(r){
-    x = y;
-    y = r;
-    r = x % y;
-  }
-  return y;
 }
 
 // 擬似コード（効率の悪いコード）＝＞　効率の良いコード
@@ -66,8 +43,6 @@ int gcd(unsigned int x, int y){
 
 // int gcd(int x, int y){
 //   int r;
-//   x = abs(x);
-//   y = abs(y);
 
 //   while(y){
 //     r = x % y;
@@ -77,7 +52,7 @@ int gcd(unsigned int x, int y){
 //   return x;
 // }
 
-// // 再帰版
-// int gcd(int x, int y){
-//   return y ? gcd(y, x % y) : x;
-// }
+// 再帰版
+int gcd(int x, int y){
+  return y ? gcd(y, x % y) : x;
+}

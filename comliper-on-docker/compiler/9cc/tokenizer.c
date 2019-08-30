@@ -66,6 +66,7 @@ Token *new_token(TokenKind kind, Token *cur, char *str, int len){
 bool startswith(char *p, char *q) {
   return memcmp(p, q, strlen(q)) == 0;
 }
+
 // 入力文字列pをトークナイズしてそれを返す
 Token *tokenize(char *p){
   Token head;
@@ -104,5 +105,6 @@ Token *tokenize(char *p){
   }
 
   new_token(TK_EOF, cur, p, 0);
-  return head.next;
+  token = head.next;
+  return token;
 }
