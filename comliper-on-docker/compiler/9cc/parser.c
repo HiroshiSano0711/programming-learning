@@ -45,7 +45,7 @@ void program(){
 
 Node *stmt() {
   Node *node = expr();
-  expect(";");
+  // expect(";");
   return node;
 }
 
@@ -108,8 +108,6 @@ Node *add() {
   }
 }
 
-
-// EBNF mul = unary ("*" unary | "/" unary)* のコード化
 Node *mul(){
   Node *node = unary();
 
@@ -134,7 +132,7 @@ Node *unary(){
   return term();
 }
 
-// EBNF term = "(" expr ")" | num のコード化
+// term = num | ident | "(" expr ")"
 Node *term(){
   if (consume("(")){
     Node *node = expr();

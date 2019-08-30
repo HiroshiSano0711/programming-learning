@@ -28,6 +28,16 @@ bool consume(char *op){
   return true;
 }
 
+// Token *consume_ident(){
+//   if (token->kind != TK_IDENT){
+//     return NULL;
+//   }
+
+//   Token *t = token;
+//   token = token->next;
+//   return t;
+// }
+
 // 次のトークンが期待している記号の時は、トークンを１つ読み進めて真を返す。それ以外はエラー。
 void expect(char *op) {
   if (token->kind != TK_RESERVED ||
@@ -68,17 +78,17 @@ bool startswith(char *p, char *q) {
 }
 
 // 入力文字列pをトークナイズしてそれを返す
-Token *tokenize(char *p){
+Token *tokenize(){
   Token head;
   head.next = NULL; // 次のトークンは最初ないのでNULLで初期化しておく
   Token *cur = &head; // cur変数を生成。新しいトークンをポインタ経由で操作するため。
+  char *p = user_input;
 
   while (*p){
     if (isspace(*p)){
       p++;
       continue;
     }
-
     if ('a' <= *p && *p <= 'z') {
       cur = new_token(TK_IDENT, cur, p++, 1);
       continue;

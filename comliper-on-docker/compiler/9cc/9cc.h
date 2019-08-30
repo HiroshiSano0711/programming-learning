@@ -79,15 +79,16 @@ Node *equality();
 Node *relational();
 Node *add();
 Node *mul();
-Node *unary(); // 単項演算子か二項演算子を判別する
+Node *unary();
 Node *term();
 
 void error_at(char *loc, char *format, ...);
 bool startswith(char *p, char *q);
 bool consume(char *op);
+Token *consume_ident();
 void expect(char *op);
 int expect_number();
 bool at_eof();
 Token *new_token(TokenKind kind, Token *cur, char *str, int len);
-Token *tokenize(char *p);
+Token *tokenize();
 void gen(Node *node);
