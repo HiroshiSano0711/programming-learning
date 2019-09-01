@@ -34,6 +34,7 @@ term       = num | ident | "(" expr ")"
 
 Node *code[100];
 
+// program    = stmt*
 void program(){
   int i = 0;
   while (!at_eof()){
@@ -43,16 +44,19 @@ void program(){
   code[i] = NULL;
 }
 
+// stmt       = expr ";"
 Node *stmt() {
   Node *node = expr();
-  // expect(";");
+  expect(";");
   return node;
 }
 
+// expr       = assign
 Node *expr(){
   return assign();
 }
 
+// assign     = equality ("=" assign)?
 Node *assign(){
   Node *node = equality();
 
@@ -62,6 +66,7 @@ Node *assign(){
   return node;
 }
 
+// equality   = relatinal ("==" relational | "!=" relational)*
 Node *equality(){
   Node *node = relational();
 
@@ -76,6 +81,7 @@ Node *equality(){
   }
 }
 
+// relational = add ("<" add | "<=" add | ">" add | ">=" add)
 Node *relational() {
   Node *node = add();
 
@@ -94,6 +100,7 @@ Node *relational() {
   }
 }
 
+//  add        = mul ("+" mul | "-" mul)*
 Node *add() {
   Node *node = mul();
 
@@ -108,6 +115,7 @@ Node *add() {
   }
 }
 
+// mul        = unary ("*" unary | "/" unary)*
 Node *mul(){
   Node *node = unary();
 
@@ -122,6 +130,7 @@ Node *mul(){
   }
 }
 
+// unary      = ("+" | "-")? term
 Node *unary(){
   if (consume("+")){
     return term();
@@ -132,13 +141,23 @@ Node *unary(){
   return term();
 }
 
-// term = num | ident | "(" expr ")"
+// term       = num | ident | "(" expr ")"
 Node *term(){
   if (consume("(")){
     Node *node = expr();
     expect(")");
     return node;
   }
+
+  // identの処理
+  Token *tok = consume_ident();
+  if (tok){
+    Node *node = calloc(1, sizeof(Node));
+    node->kind = ND_LVAR;
+    node->offset = (tok->str[0] - 'a' +1) * 8;
+    return node;
+  }
+
   // 再帰的なconsume()を実行した結果、どの演算子にも該当しなければ数字のはず
   return new_node_num(expect_number());
 }

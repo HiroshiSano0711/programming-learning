@@ -3,6 +3,14 @@
 Token *token;
 char *user_input;
 
+void error(char *fmt, ...) {
+  va_list ap;
+  va_start(ap, fmt);
+  vfprintf(stderr, fmt, ap);
+  fprintf(stderr, "\n");
+  exit(1);
+}
+
 void error_at(char *loc, char *format, ...){
   va_list ap; // 可変長引数を受け取る va_listの中身＝＞ typedef char* va_list
   va_start(ap, format); // 可変長引数を１個の変数にまとめる
@@ -28,15 +36,15 @@ bool consume(char *op){
   return true;
 }
 
-// Token *consume_ident(){
-//   if (token->kind != TK_IDENT){
-//     return NULL;
-//   }
+Token *consume_ident(){
+  if (token->kind != TK_IDENT){
+    return NULL;
+  }
 
-//   Token *t = token;
-//   token = token->next;
-//   return t;
-// }
+  Token *t = token;
+  token = token->next;
+  return t;
+}
 
 // 次のトークンが期待している記号の時は、トークンを１つ読み進めて真を返す。それ以外はエラー。
 void expect(char *op) {
@@ -79,10 +87,10 @@ bool startswith(char *p, char *q) {
 
 // 入力文字列pをトークナイズしてそれを返す
 Token *tokenize(){
+  char *p = user_input;
   Token head;
   head.next = NULL; // 次のトークンは最初ないのでNULLで初期化しておく
   Token *cur = &head; // cur変数を生成。新しいトークンをポインタ経由で操作するため。
-  char *p = user_input;
 
   while (*p){
     if (isspace(*p)){
@@ -102,6 +110,11 @@ Token *tokenize(){
     }
 
     if (strchr("+-*/()<>", *p)) {
+      cur = new_token(TK_RESERVED, cur, p++, 1);
+      continue;
+    }
+
+    if (ispunct(*p)) {
       cur = new_token(TK_RESERVED, cur, p++, 1);
       continue;
     }

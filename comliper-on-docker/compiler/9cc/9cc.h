@@ -1,22 +1,3 @@
-/*
-参考サイト
-
-低レイヤを知りたい人のためのCコンパイラ作成入門
-Rui Ueyama <ruiu@cs.stanford.edu>
-https://www.sigbus.info/compilerbook
-
-*/
-
-/*
-文法の優先順位（低い順）
-  1. == !=
-  2. < <= > >=
-  3. + -
-  4. * /
-  5. 単項+ 単項-
-  6. ()
-*/
-
 #include <ctype.h>
 #include <stdarg.h>
 #include <stdbool.h>
@@ -82,6 +63,8 @@ Node *mul();
 Node *unary();
 Node *term();
 
+// Reports an error and exit.
+void error(char *fmt, ...);
 void error_at(char *loc, char *format, ...);
 bool startswith(char *p, char *q);
 bool consume(char *op);
@@ -92,3 +75,4 @@ bool at_eof();
 Token *new_token(TokenKind kind, Token *cur, char *str, int len);
 Token *tokenize();
 void gen(Node *node);
+void gen_lval(Node *node);
