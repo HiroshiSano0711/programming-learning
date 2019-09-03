@@ -1,4 +1,16 @@
 #include "9cc.h"
+Node *code[100];
+
+typedef struct LVar LVar;
+struct LVar {
+  LVar *next;
+  char *name;
+  int len;
+  int offset;
+};
+
+LVar *locals = NULL;
+LVar *find_lvar(Token *tok);
 
 // 新しいノードを作成して、型と左辺、右辺を代入する
 Node *new_node(NodeKind kind, Node *lhs, Node *rhs){
@@ -16,6 +28,30 @@ Node *new_node_num(int val){
   return node;
 }
 
+LVar *new_lvar(Token *tok){
+  LVar *lvar = calloc(1, sizeof(LVar));
+  lvar->name = tok->str;
+  lvar->len = tok->len;
+
+  if (locals){
+    lvar->offset = locals->offset + 8;
+    locals->next = lvar;
+  } else {
+    lvar->offset = 8;
+    locals = lvar;
+  }
+  return lvar;
+}
+
+LVar *find_lvar(Token *tok){
+  for (LVar *var = locals; var; var = var->next){
+    if (var->len == tok->len && !memcmp(tok->str, var->name, var->len)){
+      return var;
+    }
+  }
+  return NULL;
+}
+
 /*
 
 文法規則
@@ -31,8 +67,6 @@ unary      = ("+" | "-")? term
 term       = num | ident | "(" expr ")"
 
 */
-
-Node *code[100];
 
 // program    = stmt*
 void program(){
@@ -149,12 +183,18 @@ Node *term(){
     return node;
   }
 
-  // identの処理
   Token *tok = consume_ident();
   if (tok){
     Node *node = calloc(1, sizeof(Node));
     node->kind = ND_LVAR;
-    node->offset = (tok->str[0] - 'a' +1) * 8;
+
+    LVar *lvar = find_lvar(tok);
+    if (lvar){
+      node->offset = lvar->offset;
+    } else {
+      lvar = new_lvar(tok);
+      node->offset = lvar->offset;
+    } 
     return node;
   }
 

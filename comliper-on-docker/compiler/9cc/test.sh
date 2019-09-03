@@ -44,5 +44,6 @@ assert 1 "1 >= 1;"
 assert 0 "1 >= 2;"
 
 assert 10 "a = 2; a * 5;"
+assert 10 "foo = 2; bar = 5; foo * bar;"
 
 echo ok
