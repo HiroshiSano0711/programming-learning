@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# for debug with gdb command
+# $ gcc -g3 9cc tokenizer.c codegen.c parser.c main.c
 assert() {
   expected="$1"
   input="$2"
@@ -45,5 +47,8 @@ assert 0 "1 >= 2;"
 
 assert 10 "a = 2; a * 5;"
 assert 10 "foo = 2; bar = 5; foo * bar;"
+assert 10 "foo = 2; bar = 5; return foo * bar;"
+assert 13 "return 3 + 10;"
+assert 26 "return (3 + 10) * 2;"
 
 echo ok

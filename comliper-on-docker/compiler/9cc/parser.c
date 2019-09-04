@@ -1,16 +1,16 @@
 #include "9cc.h"
 Node *code[100];
 
-typedef struct LVar LVar;
-struct LVar {
-  LVar *next;
+typedef struct Lvar Lvar;
+struct Lvar {
+  Lvar *next;
   char *name;
   int len;
   int offset;
 };
 
-LVar *locals = NULL;
-LVar *find_lvar(Token *tok);
+Lvar *locals = NULL;
+Lvar *find_lvar(Token *tok);
 
 // 新しいノードを作成して、型と左辺、右辺を代入する
 Node *new_node(NodeKind kind, Node *lhs, Node *rhs){
@@ -28,8 +28,8 @@ Node *new_node_num(int val){
   return node;
 }
 
-LVar *new_lvar(Token *tok){
-  LVar *lvar = calloc(1, sizeof(LVar));
+Lvar *new_lvar(Token *tok){
+  Lvar *lvar = calloc(1, sizeof(Lvar));
   lvar->name = tok->str;
   lvar->len = tok->len;
 
@@ -43,9 +43,13 @@ LVar *new_lvar(Token *tok){
   return lvar;
 }
 
-LVar *find_lvar(Token *tok){
-  for (LVar *var = locals; var; var = var->next){
-    if (var->len == tok->len && !memcmp(tok->str, var->name, var->len)){
+bool equal_assign_str(Token *tok, Lvar *var) {
+  return var->len == tok->len && !memcmp(tok->str, var->name, var->len);
+}
+
+Lvar *find_lvar(Token *tok){
+  for (Lvar *var = locals; var; var = var->next){
+    if (equal_assign_str(tok, var)){
       return var;
     }
   }
@@ -56,7 +60,7 @@ LVar *find_lvar(Token *tok){
 
 文法規則
 program    = stmt*
-stmt       = expr ";"
+stmt       = expr ";" | "return" expr ";"
 expr       = assign
 assign     = equality ("=" assign)?
 equality   = relatinal ("==" relational | "!=" relational)*
@@ -80,8 +84,19 @@ void program(){
 
 // stmt       = expr ";"
 Node *stmt() {
-  Node *node = expr();
-  expect(";");
+  Node *node;
+
+  if (consume_return(TK_RETURN)){
+    node = calloc(1, sizeof(Node));
+    node->kind = ND_RETURN;
+    node->lhs = expr();
+  } else {
+    node = expr();
+  }
+
+  if (!consume(";")){
+    error_at(token->str, "';'ではないトークンです");
+  }
   return node;
 }
 
@@ -188,7 +203,7 @@ Node *term(){
     Node *node = calloc(1, sizeof(Node));
     node->kind = ND_LVAR;
 
-    LVar *lvar = find_lvar(tok);
+    Lvar *lvar = find_lvar(tok);
     if (lvar){
       node->offset = lvar->offset;
     } else {

@@ -10,6 +10,7 @@ typedef enum {
   TK_RESERVED, // 記号
   TK_NUM, // 整数
   TK_IDENT, // 識別子
+  TK_RETURN, // return
   TK_EOF, // 入力の終わりを表すトークン
 } TokenKind;
 
@@ -32,6 +33,7 @@ typedef enum {
   ND_DIV, // /
   ND_ASSIGN, // =
   ND_LVAR, // 変数
+  ND_RETURN, // return
   ND_EQ,  // ==
   ND_NE,  // !=
   ND_LT,  // <
@@ -63,11 +65,11 @@ Node *mul();
 Node *unary();
 Node *term();
 
-// Reports an error and exit.
 void error(char *fmt, ...);
 void error_at(char *loc, char *format, ...);
 bool startswith(char *p, char *q);
 bool consume(char *op);
+bool consume_return(int kind);
 Token *consume_ident();
 void expect(char *op);
 int expect_number();

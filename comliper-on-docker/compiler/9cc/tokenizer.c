@@ -27,9 +27,16 @@ void error_at(char *loc, char *format, ...){
 // 次のトークンが期待している記号の時は、トークンを１つ読み進めて真を返す。それ以外は偽を返す。
 bool consume(char *op){
   // expect_number()関数でtoken->nextを実行しているので、この関数のtokenは次のトークンを指している
-  if (token->kind != TK_RESERVED ||
-      strlen(op) != token->len ||
-      memcmp(token->str, op, token->len)){
+  if ((token->kind != TK_RETURN && token->kind != TK_RESERVED) || strlen(op) != token->len || memcmp(token->str, op, token->len)){
+    return false;
+  }
+  token = token->next;
+  return true;
+}
+
+bool consume_return(int kind){
+  // expect_number()関数でtoken->nextを実行しているので、この関数のtokenは次のトークンを指している
+  if (token->kind != TK_RETURN || token->len != 6 || memcmp(token->str, "return", token->len)){
     return false;
   }
   token = token->next;
@@ -86,7 +93,9 @@ bool startswith(char *p, char *q) {
 }
 
 bool is_alpha(char c) {
-  return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || c == '_';
+  return ('a' <= c && c <= 'z') ||
+         ('A' <= c && c <= 'Z') ||
+         (c == '_');
 }
 
 bool is_alnum(char c) {
@@ -103,6 +112,12 @@ Token *tokenize(){
   while (*p){
     if (isspace(*p)){
       p++;
+      continue;
+    }
+
+    if (strncmp(p, "return", 6) == 0 && !is_alnum(p[6])){
+      cur = new_token(TK_RETURN, cur, p, 6);
+      p += 6;
       continue;
     }
 
