@@ -82,7 +82,7 @@ void program(){
   code[i] = NULL;
 }
 
-// stmt       = expr ";"
+// stmt       = expr ";" | "return" expr ";"
 Node *stmt() {
   Node *node;
 
@@ -95,7 +95,7 @@ Node *stmt() {
   }
 
   if (!consume(";")){
-    error_at(token->str, "';'ではないトークンです");
+    error_at(token->str, "';'が抜けています");
   }
   return node;
 }
