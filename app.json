@@ -1,0 +1,23 @@
+{
+  "name": "ec-sample",
+  "scripts": {
+    "postdeploy": "bundle exec rails db:migrate dev:fixtures:all dev:ranking"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-postgresql",
+    "sendgrid"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
