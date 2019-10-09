@@ -47,12 +47,12 @@ void action(){
 }
 
 // 再帰的
-// void lookfun(int k){
-//   if(k == n){
-//     action();
-//   }else{
-//     for(r[k] = lower[k]; r[k] <= upper[k]; r[k]++){
-//       lookfun(k + 1);
-//     }
-//   }
-// }
+void lookfun(int k){
+  if(k == n){
+    action();
+  }else{
+    for(r[k] = lower[k]; r[k] <= upper[k]; r[k]++){
+      lookfun(k + 1);
+    }
+  }
+}
