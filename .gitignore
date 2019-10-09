@@ -1,4 +1,4 @@
 *.out
 .vscode/*
-
 vue-js/node_modules/
+rust/**/target/*
