@@ -13,3 +13,9 @@ fn gcd(mut n: u64, mut m: u64) -> u64 {
     }
     n
 }
+
+#[test]
+fn test_gcd(){
+    assert_eq!(gcd(14, 15), 1);
+    assert_eq!(gcd(2 * 4 * 5 * 11 * 17, 3 * 7 * 11 * 13 * 19), 11);
+}
