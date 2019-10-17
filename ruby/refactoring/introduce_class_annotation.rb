@@ -1,11 +1,11 @@
 # before
-# class SearchCriteria
-#   def initialize(hash)
-#     @author_id = hash[:author_id]
-#     @publisher_id = hash[:publisher_id]
-#     @isbn = hash[:isbn]
-#   end
-# end
+class SearchCriteria
+  def initialize(hash)
+    @author_id = hash[:author_id]
+    @publisher_id = hash[:publisher_id]
+    @isbn = hash[:isbn]
+  end
+end
 
 # after
 module CustomInitializers
@@ -24,6 +24,3 @@ Class.send :include, CustomInitializers
 class SearchCriteria
   hash_initializer :author_id, :publisher_id, :isbn
 end
-
-a = SearchCriteria.new({author_id: 'sano'})
-p a

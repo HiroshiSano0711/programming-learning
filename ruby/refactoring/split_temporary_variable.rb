@@ -34,8 +34,42 @@ def distance_traveled(time)
   secondary_time = time - @delay
   if (secondary_time > 0)
     primary_vel = primary_acc * @delay
-    secondary_acc = (@primary_force * @secondary_time) / @mass
-    result += primary_vel * secondary_time + 5 secondary_acc * secondary_time * secondary_time
+    seconedary_acc = (@primary_force * @secondary_time) / @mass
+    result += primary_vel * secondary_time + 5 seconedary_acc * secondary_time * secondary_time
   end
   result
+end
+
+# after
+def distance_traveled(time)
+  result = primary_distance(time)
+  secondary_time = time - @delay
+  if secondary_time > 0
+    result += secondary_distance(secondary_time)
+  end
+  result
+end
+
+def primary_distance(time)
+  0.5 * primary_acc * primary_time(time) * primary_time
+end
+
+def primary_acc
+  @primary_force / @mass
+end
+
+def primary_time(time)
+  [time, @delay].min
+end
+
+def primary_vel
+  primary_acc * @delay
+end
+
+def secondary_distance(time)
+  (primary_vel * time) + (5 * secondary_acc * time * time)
+end
+
+def secondary_acc
+  (@primary_force * @secondary_force) / @mass
 end
