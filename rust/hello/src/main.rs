@@ -1,4 +1,3 @@
-// トレイトをスコープに取り込む。型が実装できるメソッドの集合。
 use std::io::Write;
 use std::str::FromStr;
 

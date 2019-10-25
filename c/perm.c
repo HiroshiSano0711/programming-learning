@@ -7,11 +7,13 @@ int n, r[LEN];
 void permut(int);
 void action();
 
-int main(int argc, char const *argv[])
-{
+int main(){
   int i;
-  printf("Enter n (< %d)", LEN); scanf("%d", &n);
+  printf("Enter n (< %d)", LEN);
+  scanf("%d", &n);
+
   if(n >= LEN){
+    printf("Too large number\n");
     exit(1);
   }
   for(i = 1; i <= n; i++){
