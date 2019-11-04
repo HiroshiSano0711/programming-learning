@@ -5,3 +5,4 @@ rust/**/target/*
 os/*_day/**
 os/bin/
 os/z_tools/
+lex-yacc-compiler/unix_utf8/

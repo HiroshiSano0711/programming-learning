@@ -60,6 +60,12 @@ void get_token(Token *token) {
     } else if (current_char == '/'){
       token->kind = DIV_OPERATOR_TOKEN;
       return;
+    } else if (current_char == '('){
+      token->kind = LEFT_PAREN_TOKEN;
+      return;
+    } else if (current_char == ')'){
+      token->kind = RIGHT_PAREN_TOKEN;
+      return;
     } else if (isdigit(current_char)){
       if (status == INITIAL_STATUS){
         status = IN_INT_PART_STATUS;
@@ -83,26 +89,4 @@ void get_token(Token *token) {
 void set_line(char *line) {
   st_line = line;
   st_line_pos = 0;
-}
-
-void parse_line(char *buf){
-  Token token;
-  set_line(buf);
-
-  for (;;){
-    get_token(&token);
-    if (token.kind == END_OF_LINE_TOKEN){
-      break;
-    } else {
-      printf("kind..%d str..%s\n", token.kind, token.str);
-    }
-  }
-}
-
-int main(int argc, char **agarv){
-  char buf[1024];
-  while (fgets(buf, 1024, stdin) != NULL){
-    parse_line(buf);
-  }
-  return 0;
 }
