@@ -2,3 +2,6 @@
 .vscode/*
 vue-js/node_modules/
 rust/**/target/*
+os/*_day/**
+os/bin/
+os/z_tools/
