@@ -13,38 +13,16 @@
 <body>
   <div id="app">
     <h2 class="title has-text-centered dividing-header">UpVote!</h2>
-    
+
     <div class="section">
-      <article class="media" v-for="submission in sortedSubmissions"
-        v-bind:key="submission.id"
+      <article v-for="submission in sortedSubmissions"
+        :key="submission.id"
         class="media"
-        v-bind:class="{ 'blue-border': submission.votes >= 20 }">
-        <figure class="media-left">
-          <img class="image is-64x64" v-bind:src="submission.submissionImage">
-        </figure>
-        <div class="media-content">
-          <p>
-            <strong>
-              <a v-bind:href="submission.url" class="has-text-info">
-                {{ submission.title }}
-              </a>
-              <span class="tag is-small">#{{ submission.id }}</span>
-            </strong>
-            <br>
-              {{ submission.description }}
-            <br>
-            <small class="is-size-7">
-              Submitted by:
-              <img v-bind:src="submission.avatar" class="image is-24x24">
-            </small>
-          </p>
-        </div>
-        <div class="media-right">
-          <span class="icon is-small" v-on:click="upvote(submission.id)">
-            <i class="fa fa-chevron-up"></i>
-            <strong class="has-text-info">{{ submission.votes }}</strong>
-          </span>
-        </div>
+        :class="{ 'blue-border': submission.votes >= 20 }">
+        <submission-component
+          :submission="submission"
+          :submissions="sortedSubmissions">
+        </submission-component>
       </article>
     </div>
   </div>
