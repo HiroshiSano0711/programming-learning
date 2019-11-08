@@ -17,5 +17,9 @@
     "mocha": "^6.1.4",
     "vue": "^2.6.10",
     "webpack": "^4.35.0"
+  },
+  "dependencies": {
+    "nativescript": "^6.2.0",
+    "vue-cli": "^2.9.6"
   }
 }

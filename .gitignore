@@ -1,8 +1,9 @@
 *.out
 .vscode/*
-vue-js/node_modules/
 rust/**/target/*
 os/*_day/**
 os/bin/
 os/z_tools/
 lex-yacc-compiler/unix_utf8/
+vue-js/beginner/node_modules/
+vue-js/fullstack-vue/fullstack-vue-code/
