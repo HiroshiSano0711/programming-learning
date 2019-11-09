@@ -18,21 +18,28 @@ const (
 	SLASH     = "/"
 	COMMA     = ","
 	SEMICOLON = ";"
-	LPAREN    = "("
-	RPAREN    = ")"
-	LBRACE    = "{"
-	RBRACE    = "}"
-	LT        = "<"
-	GT        = ">"
-	EQ        = "=="
-	NOT_EQ    = "!="
-	FUNCTION  = "FUNCTION"
-	LET       = "LET"
-	TRUE      = "TRUE"
-	FALSE     = "FALSE"
-	IF        = "IF"
-	ELSE      = "ELSE"
-	RETURN    = "RETURN"
+
+	// Delimiter
+	LPAREN = "("
+	RPAREN = ")"
+	LBRACE = "{"
+	RBRACE = "}"
+
+	// Condition operator
+	LT = "<"
+	GT = ">"
+
+	EQ     = "=="
+	NOT_EQ = "!="
+
+	// キーワード
+	FUNCTION = "FUNCTION"
+	LET      = "LET"
+	TRUE     = "TRUE"
+	FALSE    = "FALSE"
+	IF       = "IF"
+	ELSE     = "ELSE"
+	RETURN   = "RETURN"
 )
 
 // Token is syntax token
