@@ -175,13 +175,61 @@ class Assign < Struct.new(:name, :expression)
   end
 end
 
+class If < Struct.new(:condition, :consequence, :alternative)
+  def to_s
+    "if (#{condition}) { #{consequence} } else { #{alternative} }"
+  end
+
+  def inspect
+    "<<#{self}>>"
+  end
+
+  def reducible?
+    true
+  end
+
+  def reduce(environment)
+    if condition.reducible?
+      [If.new(condition.reduce(environment), consequence, alternative), environment]
+    else
+      case condition
+      when Boolean.new(true)
+        [consequence, environment]
+      when Boolean.new(false)
+        [alternative, environment]
+      end
+    end
+  end
+end
+
+class Sequence < Struct.new(:first, :second)
+  def to_s
+    "#{first} }; { #{second} }"
+  end
+
+  def inspect
+    "<<#{self}>>"
+  end
+
+  def reducible?
+    true
+  end
+
+  def reduce(environment)
+    case first
+    when DoNothing.new
+      [second, environment]
+    else
+      reduced_first, reduced_environment = first.reduce(environment)
+      [Sequence.new(reduced_first, second), reduced_environment]
+    end
+  end
+end
+
 Machine.new(
-  Assign.new(
-    :x,
-    Add.new(
-      Variable.new(:x),
-      Number.new(1)
-    )
+  Sequence.new(
+    Assign.new(:x, Add.new(Number.new(1), Number.new(2))),
+    Assign.new(:y, Add.new(Variable.new(:x), Number.new(3)))
   ),
-  { x: Number.new(2) }
+  {}
 ).run
