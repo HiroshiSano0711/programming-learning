@@ -1,7 +1,3 @@
-require 'pry'
-
-# Object.send(:remove_const, :Machine)
-
 class Machine < Struct.new(:statement, :environment)
   def step
     self.statement, self.environment = statement.reduce(environment)
@@ -244,7 +240,6 @@ class While < Struct.new(:condition, :body)
   end
 end
 
-binding.pry
 Machine.new(
   While.new(
     LessThan.new(Variable.new(:x), Number.new(5)),
