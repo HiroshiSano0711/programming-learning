@@ -244,6 +244,7 @@ class While < Struct.new(:condition, :body)
   end
 end
 
+binding.pry
 Machine.new(
   While.new(
     LessThan.new(Variable.new(:x), Number.new(5)),
