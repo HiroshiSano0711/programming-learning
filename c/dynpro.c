@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NULl 0
+#define NULL 0
 
 typedef int *pint;
 int n, *d, *getints();
@@ -13,7 +13,8 @@ int *solution(int s);
 int main(int argc, char const *argv[]){
   int s, i, j, m, *row, *solution();
 
-  printf("Enter the desired sum: "); scanf("%d", &s);
+  printf("Enter the desired sum: ");
+  scanf("%d", &s);
   printf("Enter n, followed by the n given  ");
   printf("intergers themselves:\n");
   scanf("%d", &n);

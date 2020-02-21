@@ -58,23 +58,7 @@ void tokenize(char *p);
 int main(int argc, char const *argv[]) {
   char *file_contents = read_file("main.txt");
   tokenize(file_contents);
-  program();
   return 0;
-}
-
-/*
-
-文法規則
-stmt     = expr ";"
-expr     = add
-add      = num ("+" num)*
-
-*/
-void statement(){
-  // 式が１つ以上
-  Node *node = expr();
-  // 次の文字がセミコロン
-
 }
 
 void tokenize(char *p) {
@@ -90,12 +74,14 @@ void tokenize(char *p) {
     if (strchr("+", *p)) {
       list = new_token(ADD, list);
       strncpy(list->str, p, 1);
+      printf("%s\n", list->str);
       p++;
       continue;
     }
     if (isdigit(*p)){
       list = new_token(NUMBER, list);
       list->value = strtol(p, &p, 10);
+      printf("%d\n", list->value);
       continue;
     }
     printf("文法エラー： この文字は使えません。 %s", p);

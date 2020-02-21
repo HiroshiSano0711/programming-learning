@@ -19,25 +19,6 @@ int main(){
   lookfun(0);
   return 0;
 }
-
-// 非再帰的
-void lookfun(a){
-  int i, n1 = n - 1;
-  for(i = 0; i < n; i++)
-    if((r[i] = lower[i]) > upper[i])
-      return;
-  while(1)
-    action();
-    i = n1;
-    while(1)
-      if(r[i] < upper[i])
-        r[i]++;
-        break; 
-      r[i] = lower[i];
-      if(--i < 0)
-        return;
-}
-
 void action(){
   int i;
   for(i = 0; i < n; i++){
@@ -56,3 +37,21 @@ void lookfun(int k){
     }
   }
 }
+
+// 非再帰的
+// void lookfun(a){
+//   int i, n1 = n - 1;
+//   for(i = 0; i < n; i++)
+//     if((r[i] = lower[i]) > upper[i])
+//       return;
+//   while(1)
+//     action();
+//     i = n1;
+//     while(1)
+//       if(r[i] < upper[i])
+//         r[i]++;
+//         break; 
+//       r[i] = lower[i];
+//       if(--i < 0)
+//         return;
+// }

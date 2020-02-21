@@ -2,7 +2,6 @@
 #include <stdlib.h>
 int exactsum(int, int);
 int *d, n;
-
 int main(){
   int s, i;
   printf("Enter the desired sum: ");
@@ -15,13 +14,10 @@ int main(){
   if(d == NULL){
     printf("Not enough memory"); exit(1);
   }
-
   for (i = 0; i < n; i++){
     scanf("%d", d + i);
   }
-
   printf("\nOutput:\n");
-  
   if(exactsum(s, 0)){
     printf("\nThe problem has been solved");
   }else{
@@ -31,6 +27,9 @@ int main(){
 }
 
 int exactsum(t, i) {
+  printf("t=%d\n", t);
+  printf("i=%d\n", i);
+  printf("d[i]=%d\n", d[i]);
   if (t == 0){
     return 1;    
   } else if (t < 0 || i == n) {

@@ -57,17 +57,16 @@ rulebook = DFARuleBook.new([
   FARule.new(3, 'a', 3), FARule.new(3, 'b', 3)
 ])
 
-# dfa = DFA.new(1, [3], rulebook)
-# p dfa.accepting? #=> false
-# dfa.read_character('b')
-# p dfa.accepting? #=> false
-# 3.times do dfa.read_character('a') end
-# p dfa.accepting? #=> false
-# dfa.read_character('b')
-# p dfa.accepting? #=> true
-# dfa.read_string('baaab')
-# p dfa.accepting?
-
+dfa = DFA.new(1, [3], rulebook)
+p dfa.accepting? #=> false
+dfa.read_character('b')
+p dfa.accepting? #=> false
+3.times do dfa.read_character('a') end
+p dfa.accepting? #=> false
+dfa.read_character('b')
+p dfa.accepting? #=> true
+dfa.read_string('baaab')
+p dfa.accepting?
 dfa_design = DFADesign.new(1, [3], rulebook)
 p dfa_design.accepts?('a')
 p dfa_design.accepts?('baa')
