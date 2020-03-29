@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define NULL 0
-
 typedef int *pint;
 int n, *d, *getints();
 pint *p;
@@ -83,16 +81,3 @@ int *solution(int s){
   }
   return p[s];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
