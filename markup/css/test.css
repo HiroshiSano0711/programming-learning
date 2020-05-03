@@ -1,0 +1,177 @@
+
+/*
+		1. Data Attribute (unqualified)
+  */
+	/* [data-select] {
+		color: red;
+	} */
+
+	/*
+		2. Data Attribute (qualified)
+	
+
+	a[data-select] {
+		color: red;
+	}
+	*/
+	
+
+	/*
+		3. Data Attribute (unqualified with value)
+	
+
+	[data-select="link"] {
+		color: red;
+	}
+	*/
+
+
+	/*
+		4. Data Attribute (qualified with value)
+	
+
+	a[data-select="link"] {
+		color: red;
+	}
+	*/
+
+
+	/*
+		5. Multiple Data Attributes (qualified with values)
+	
+
+	div[data-div="layer1"] a[data-select="link"] {
+		color: red;
+	}
+	*/
+
+
+	/*
+		6. Solo Pseudo selector
+	
+
+	a:after {
+		content: "after";
+		color: red;
+	}
+	*/
+
+
+	/*
+		7. Combined classes
+	
+
+	.tagA.link {
+		color: red;
+	}
+	*/
+
+
+	/*
+		8. Multiple classes 
+	
+
+	.tagUl .link {
+		color: red;
+	}
+	*/
+
+
+	/*
+		9. Multiple classes (using child selector)
+	
+	.tagB > .tagA {
+		color: red;
+	}
+	*/
+
+
+	/*
+		10. Partial attribute matching
+
+	[class^="wrap"] {
+		color: red;
+	}	
+	*/
+
+
+	/*
+		11. Nth-child selector
+	
+	.div:nth-of-type(1) a {
+		color: red;
+	}
+	*/
+
+
+	/*
+		12. Nth-child selector followed by nth-child selector
+	
+	.div:nth-of-type(1) .div:nth-of-type(1) a {
+		color: red;
+	}
+	*/
+
+
+	/*
+		13. Insanity selection (unlucky for some)
+	
+	div.wrapper > div.tagDiv > div.tagDiv.layer2 > ul.tagUL > li.tagLi > b.tagB > a.TagA.link {
+		color: red;
+	}
+	*/
+
+
+	/*
+		14. Slight insanity
+	
+	.tagLi .tagB a.TagA.link {
+		color: red;
+	}
+	*/
+
+
+	/*
+		15. Universal */
+	
+	div * {
+		color: red;
+	}
+
+	/*
+		16. Element single
+	*/
+	/* a {
+		color: red;
+	} */
+	/* */
+	
+		/* 17. Element double */
+	
+	/* div a {
+		color: red;
+	} */
+
+
+	/*
+		18. Element treble
+ */
+	/* div ul a {
+		color: red;
+	} */
+	/* */
+
+		/* 19. Element treble pseudo */
+	
+	/* div ul a:after {
+		content: "after";
+		color: red;
+	} */
+
+	
+		/* 20. Single class */
+	
+	/* .link {
+		color: red;
+	} */
+/* */
