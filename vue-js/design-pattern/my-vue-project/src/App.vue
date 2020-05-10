@@ -7,9 +7,9 @@
 <script>
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
-      message: 'Hello, World'
+      message: '警告メッセージ'
     }
   },
   methods: {

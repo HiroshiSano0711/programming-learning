@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>my-vue-project</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="/dist/build.js"></script>
-  </body>
+<html>
+<head>
+  <title>Vue Data</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+  <div id="app">
+  </div>
+  <script src="/dist/build.js"></script>
+
+  <script>
+
+    // const app = new Vue({
+    //   el: '#app',
+    //   data() {
+    //     return {
+    //       firstName: 'Yamada',
+    //     }
+    //   }
+    // });
+
+    // const app = {};
+    // let fullName = 'Yamada Taro';
+    
+    // Object.defineProperty(app, 'fullName', {
+    //   configurable: true,
+    //   enumerable: true,
+    //   get() {
+    //     return fullName;
+    //   },
+    //   set(value) {
+    //     fullName = value;
+    //   }
+    // });
+    // console.log(app.fullName); // => Yamada Taro
+    // app.fullName = "Yamada";
+    // console.log(app.fullName); // => Yamada
+  </script>
+</body>
 </html>
