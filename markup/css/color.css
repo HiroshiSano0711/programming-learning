@@ -1,0 +1,26 @@
+.box {
+  height: 300px;
+  width: 500px;
+  padding: 30px;
+  background-image: url('../images/sample.png');
+  text-align: center;
+  color: white;
+
+}
+/* 
+.text {
+  height: 200px;
+  width: 300px;
+  padding: 15px;
+  background-color: #9b115f;
+  box-shadow: 5px 5px 3px rgb(255, 255, 255, .6);
+}
+
+.rgba {
+  background-color: rgb(155, 17, 95, .6);
+}
+
+.opaticy {
+  background-color: #9b115f;
+  opacity: .6;
+} */

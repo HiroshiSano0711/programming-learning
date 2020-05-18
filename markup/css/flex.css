@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  width: 600px;
+}
+
+.flex-item {
+  flex-grow: 1;
+  height: 200px;
+  width: 150px;
+  background-color: aqua;
+  background-image: url('./images/sample.png');
+}
+
+.flex-item:nth-child(even) {
+  background-color: gray;
+}
