@@ -1,3 +1,10 @@
+/*
+この学習はECMAScript2015を元にしている。
+IE11ではES6がサポートされていないがES6は多くのブラウザで使えるけど、ECMAScript2015で行う。
+新しい構文を学ぶことが目的ではなくJavaScriptのオブジェクト、関数、クロージャについて理解することが目的。
+基本的な概念を押さえれば、あとは差分で学習できるため。
+
+*/
 // 単純なアサート
 // function assert(value, desc){
 //   var li = document.createElement('li');
@@ -163,65 +170,65 @@
 // }
 // alert(x);
 
-assert(true, '|--------outerの前-------|');
-assert(typeof outer === 'function', 'outer()はスコープ内にある');
-assert(typeof inner === 'function', 'inner()はスコープ内にある');
-assert(typeof a === 'number', 'aはスコープ内にある');
-assert(typeof b === 'number', 'bはスコープ内にある');
-assert(typeof c === 'number', 'cはスコープ内にある');
+// assert(true, '|--------outerの前-------|');
+// assert(typeof outer === 'function', 'outer()はスコープ内にある');
+// assert(typeof inner === 'function', 'inner()はスコープ内にある');
+// assert(typeof a === 'number', 'aはスコープ内にある');
+// assert(typeof b === 'number', 'bはスコープ内にある');
+// assert(typeof c === 'number', 'cはスコープ内にある');
 
-function outer() {
-  assert(true, '|--------outerの中。aの前-------|');
-  assert(typeof outer === 'function', 'outer()はスコープ内にある');
-  assert(typeof inner === 'function', 'inner()はスコープ内にある');
-  assert(typeof a === 'number', 'aはスコープ内にある');
-  assert(typeof b === 'number', 'bはスコープ内にある');
-  assert(typeof c === 'number', 'cはスコープ内にある');
+// function outer() {
+//   assert(true, '|--------outerの中。aの前-------|');
+//   assert(typeof outer === 'function', 'outer()はスコープ内にある');
+//   assert(typeof inner === 'function', 'inner()はスコープ内にある');
+//   assert(typeof a === 'number', 'aはスコープ内にある');
+//   assert(typeof b === 'number', 'bはスコープ内にある');
+//   assert(typeof c === 'number', 'cはスコープ内にある');
 
-  var a = 1;
+//   var a = 1;
 
-  assert(true, '|--------outerの中。aの後-------|');
-  assert(typeof outer === 'function', 'outer()はスコープ内にある');
-  assert(typeof inner === 'function', 'inner()はスコープ内にある');
-  assert(typeof a === 'number', 'aはスコープ内にある');
-  assert(typeof b === 'number', 'bはスコープ内にある');
-  assert(typeof c === 'number', 'cはスコープ内にある');
+//   assert(true, '|--------outerの中。aの後-------|');
+//   assert(typeof outer === 'function', 'outer()はスコープ内にある');
+//   assert(typeof inner === 'function', 'inner()はスコープ内にある');
+//   assert(typeof a === 'number', 'aはスコープ内にある');
+//   assert(typeof b === 'number', 'bはスコープ内にある');
+//   assert(typeof c === 'number', 'cはスコープ内にある');
 
-  function inner() { }
-  var b = 2;
+//   function inner() { }
+//   var b = 2;
 
-  assert(true, '|--------outerの中。inner()とbの後-------|');
-  assert(typeof outer === 'function', 'outer()はスコープ内にある');
-  assert(typeof inner === 'function', 'inner()はスコープ内にある');
-  assert(typeof a === 'number', 'aはスコープ内にある');
-  assert(typeof b === 'number', 'bはスコープ内にある');
-  assert(typeof c === 'number', 'cはスコープ内にある');
+//   assert(true, '|--------outerの中。inner()とbの後-------|');
+//   assert(typeof outer === 'function', 'outer()はスコープ内にある');
+//   assert(typeof inner === 'function', 'inner()はスコープ内にある');
+//   assert(typeof a === 'number', 'aはスコープ内にある');
+//   assert(typeof b === 'number', 'bはスコープ内にある');
+//   assert(typeof c === 'number', 'cはスコープ内にある');
 
-  if(a == 1) {
-    var c = 3;
-    assert(true, '|--------outerの中。ifの内側-------|');
-    assert(typeof outer === 'function', 'outer()はスコープ内にある');
-    assert(typeof inner === 'function', 'inner()はスコープ内にある');
-    assert(typeof a === 'number', 'aはスコープ内にある');
-    assert(typeof b === 'number', 'bはスコープ内にある');
-    assert(typeof c === 'number', 'cはスコープ内にある');
-  }
-  assert(true, '|--------outerの中。ｃの後-------|');
-  assert(typeof outer === 'function', 'outer()はスコープ内にある');
-  assert(typeof inner === 'function', 'inner()はスコープ内にある');
-  assert(typeof a === 'number', 'aはスコープ内にある');
-  assert(typeof b === 'number', 'bはスコープ内にある');
-  assert(typeof c === 'number', 'cはスコープ内にある');
-}
+//   if(a == 1) {
+//     var c = 3;
+//     assert(true, '|--------outerの中。ifの内側-------|');
+//     assert(typeof outer === 'function', 'outer()はスコープ内にある');
+//     assert(typeof inner === 'function', 'inner()はスコープ内にある');
+//     assert(typeof a === 'number', 'aはスコープ内にある');
+//     assert(typeof b === 'number', 'bはスコープ内にある');
+//     assert(typeof c === 'number', 'cはスコープ内にある');
+//   }
+//   assert(true, '|--------outerの中。ｃの後-------|');
+//   assert(typeof outer === 'function', 'outer()はスコープ内にある');
+//   assert(typeof inner === 'function', 'inner()はスコープ内にある');
+//   assert(typeof a === 'number', 'aはスコープ内にある');
+//   assert(typeof b === 'number', 'bはスコープ内にある');
+//   assert(typeof c === 'number', 'cはスコープ内にある');
+// }
 
-outer();
+// outer();
 
-assert(true, '|--------outerの後-------|');
-assert(typeof outer === 'function', 'outer()はスコープ内にある');
-assert(typeof inner === 'function', 'inner()はスコープ内にある');
-assert(typeof a === 'number', 'aはスコープ内にある');
-assert(typeof b === 'number', 'bはスコープ内にある');
-assert(typeof c === 'number', 'cはスコープ内にある');
+// assert(true, '|--------outerの後-------|');
+// assert(typeof outer === 'function', 'outer()はスコープ内にある');
+// assert(typeof inner === 'function', 'inner()はスコープ内にある');
+// assert(typeof a === 'number', 'aはスコープ内にある');
+// assert(typeof b === 'number', 'bはスコープ内にある');
+// assert(typeof c === 'number', 'cはスコープ内にある');
 
 /*
 Q. テストブロックをコピペする代わりにそれらを含むテスト関数を作成して、必要な時に呼び出すのではどうしていけないのか？
@@ -231,3 +238,186 @@ outerは常にスコープ内で参照できるがinnerは常に参照できな�
 a, b, cの変数は関数内のローカル変数なので常に参照できなくなる
 
 */
+
+//// argumentsとthis /////
+// function queue(a,b) {
+//   console.log(a);
+//   console.log(b);
+//   console.log(arguments[0]);
+//   console.log(arguments[1]);
+// }
+// queue(100, 200);
+
+// function creep() { return this; }
+// assert(creep() === window, 'Creeping in the window');
+
+// var sneak = creep;
+// assert(sneak() === window, 'Sneaking in the window');
+
+// var ninja1 = {
+//   skulk: creep
+// };
+// assert(ninja1.skulk() === ninja1, 'The first ninja is skulking');
+
+// var ninja2 = {
+//   skulk: creep
+// };
+// assert(ninja2.skulk() === ninja2, 'The 2nd ninja is skulking');
+
+/*
+コンストラクの特殊な能力
+・新しい、空のオブジェクトが作成される。
+・そのオブジェクトがthisパラメータとしてコンストラクタに渡される。したがって、その新しいオブジェクトがコンストラクタの呼び出しコンテキストになる。
+・関数に明示的な戻り値がなければ、その新しいオブジェクトがコンストラクタお値として返される。
+
+*/
+
+// コンストラクタを使った関数呼び出し
+// function Ninja() {
+//   this.skulk = function() { return this; };
+// }
+
+// var ninja1 = new Ninja();
+// var ninja2 = new Ninja();
+// assert(ninja1.skulk() === ninja1, 'The 1st ninja is skulking');
+// assert(ninja2.skulk() === ninja2, 'The 2nd ninja is skulking');
+
+// function juggle() {
+//   var result = 0;
+//   for (var n = 0; n < arguments.length; n++) {
+//     result += arguments[n];
+//   }
+//   this.result = result;
+// }
+
+// var ninja1 = {};
+// var ninja2 = {};
+
+// // applyは引数群を配列で渡す
+// juggle.apply(ninja1, [1,2,3,4]);
+// // callは引数群をリストで渡す
+// juggle.call(ninja2, 5,6,7,8);
+// assert(ninja1.result === 10, 'apply');
+// assert(ninja2.result === 26, 'call');
+
+// function forEach(list, callback){
+//   for (let n = 0; n < list.length; n++) {
+//     callback.call(list[n], n);
+//   }
+// }
+// let weapons = ['shuriken', 'katana', 'nunchucks'];
+
+// forEach(weapons, function(index) {
+//   assert(this == weapons[index], weapons[index] + 'は期待した値');
+// });
+
+// 無名関数の一般的な使い方
+// window.onload = function() { assert(true, 'power'); };
+
+// var ninja = {
+//   shout: function() {
+//     assert(true, 'Ninja');
+//   }
+// };
+
+// ninja.shout();
+
+// setTimeout(function() { assert(true, 'Forever'); }, 500);
+
+// 名前付き関数での再帰
+// function isPalindrome(text) {
+//   if(text.length <= 1) return true;
+//   if(text.charAt(0) != text.charAt(text.length - 1)) return false;
+//   return isPalindrome(text.substr(1, text.length - 2));
+// }
+// console.log(isPalindrome('シンブンシ'))
+// => true
+
+// function chirp(n) {
+//   return n > 1 ? chirp(n - 1) + '-chirp' : 'chirp';
+// }
+
+// assert(chirp(3) == 'chirp-chirp-chirp', '予想通り');
+
+// let ninja = {
+//   chirp: function(n) {
+//     return n > 1 ? ninja.chirp(n - 1) + '-chirp' : 'chirp';
+//   }
+// }
+// assert(ninja.chirp(3) == 'chirp-chirp-chirp', '予想通り');
+
+// thisを使うことで参照を維持する。オブジェクトの違いを吸収する
+// let ninja = {
+//   chirp: function(n) {
+//     return n > 1 ? this.chirp(n - 1) + '-chirp' : 'chirp';
+//   }
+// }
+// let samurai = { chirp: ninja.chirp };
+// ninja = {}; // 参照が失われる
+
+// try {
+//   assert(samurai.chirp(3) == 'chirp-chirp-chirp', '予想通り');
+// }
+// catch {
+//   assert(false, 'うまくいかない');
+// }
+
+// インライン関数を使うことでプロパティの違いを吸収する
+// let ninja = {
+//   chirp: function signal(n) {
+//     return n > 1 ? signal(n - 1) + '-chirp' : 'chirp';
+//   }
+// }
+// let samurai = { chirp: ninja.chirp };
+// ninja = {}; // ninjaを初期化して参照を失わせる
+
+// try {
+//   assert(samurai.chirp(3) == 'chirp-chirp-chirp', '予想通り');
+// }
+// catch {
+//   assert(false, 'うまくいかない');
+// }
+
+// let ninja = function myNinja() {
+//   assert(ninja == myNinja, 'この関数は2つの名前をもつ')
+// }
+// ninja()
+
+// assert(typeof myNinja == 'undefined', 'その側からは参照できない名前')
+
+// var ninja = {
+//   chirp: function(n) {
+//     return n > 1 ? arguments.callee(n - 1) + '-chirp' : 'chirp';
+//   }
+// }
+// assert(ninja.chirp(3) == 'chirp-chirp-chirp', 'arguments.calleeはそれ自身');
+//
+// ただし非推奨なので使わない方がよい。詳細は↓
+// https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/arguments/callee
+
+// var obj = {};
+// var fn = function() {};
+// obj.prop = 'hitsuke(destraction)';
+// fn.prop = 'tanuki(climbing)';
+
+// console.log(obj);
+// console.log(fn);
+// console.log(obj.prop);
+// console.log(fn.prop);
+
+let store = {
+  nextId: 1, // ←次に割り当てるべきIDを追跡管理する。
+  cache: {}, // ←関数を格納する「キャッシュ」オブジェクトを作成する。
+  add: function(fn){ // 関数がユニークである場合のみキャッシュに関数を追加する
+    if(!fn.id){
+      fn.id = store.nextId++
+      return !!(store.cache[fn.id] = fn)
+    }
+  }
+};
+
+function ninja() {}
+console.log(ninja.id)
+assert(store.add(ninja), '関数は安全に追加された')
+console.log(ninja.id)
+assert(!store.add(ninja), 'ただし追加は一度だけ')
