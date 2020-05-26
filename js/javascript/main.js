@@ -1,7 +1,6 @@
 /*
-この学習はECMAScript2015を元にしている。
-IE11ではES6がサポートされていないがES6は多くのブラウザで使えるけど、ECMAScript2015で行う。
-新しい構文を学ぶことが目的ではなくJavaScriptのオブジェクト、関数、クロージャについて理解することが目的。
+この学習はJavaScript Ninjaの極意（ECMAScript2015）を元にしています。
+ECMAScript2016以降の新しい構文を学ぶことが目的ではなくJavaScriptのオブジェクト、関数、クロージャについて理解することが目的。
 基本的な概念を押さえれば、あとは差分で学習できるため。
 
 */
@@ -405,19 +404,307 @@ a, b, cの変数は関数内のローカル変数なので常に参照できな�
 // console.log(obj.prop);
 // console.log(fn.prop);
 
-let store = {
-  nextId: 1, // ←次に割り当てるべきIDを追跡管理する。
-  cache: {}, // ←関数を格納する「キャッシュ」オブジェクトを作成する。
-  add: function(fn){ // 関数がユニークである場合のみキャッシュに関数を追加する
-    if(!fn.id){
-      fn.id = store.nextId++
-      return !!(store.cache[fn.id] = fn)
+// let store = {
+//   nextId: 1, // ←次に割り当てるべきIDを追跡管理する。
+//   cache: {}, // ←関数を格納する「キャッシュ」オブジェクトを作成する。
+//   add: function(fn){ // 関数がユニークである場合のみキャッシュに関数を追加する
+//     if(!fn.id){
+//       fn.id = store.nextId++
+//       return !!(store.cache[fn.id] = fn)
+//     }
+//   }
+// };
+
+// function ninja() {}
+// console.log(ninja.id)
+// assert(store.add(ninja), '関数は安全に追加された')
+// console.log(ninja.id)
+// assert(!store.add(ninja), 'ただし追加は一度だけ')
+
+// function isPrime(value){
+//   if(!isPrime.answers) isPrime.answers = {};
+//   if (isPrime.answers[value] != null) {
+//     return isPrime.answers[value];
+//   }
+//   var prime = value != 1;
+//   for(var i = 2; i < value; i++) {
+//     if(value % i == 0){
+//       prime = false;
+//       break;
+//     }
+//   }
+//   return isPrime.answers[value] = prime;
+// }
+
+// assert(isPrime(5), '５は素数であること')
+// assert(isPrime.answers[5], '答えはキャッシュされていること')
+
+// function getElements(name) {
+//   if(!getElements.cache) getElements.cache = {};
+//   return getElements.cache[name] =
+//     getElements.cache[name] || document.getElementsByTagName(name);
+// }
+// assert(getElements('ul').length != 0, 'ulのDOMが見つかること');
+// assert(getElements.cache['ul'].length != 0, 'ulのDOMがキャッシュされていること');
+
+// var elems = {
+//   length: 0,
+//   add: function(elem) {
+//     Array.prototype.push.call(this, elem);
+//   },
+//   gather: function(id) {
+//     this.add(document.getElementById(id));
+//   },
+// }
+
+// console.log(elems);
+// elems.gather('first');
+// console.log(elems);
+// assert(elems.length == 1 && elems[0].nodeType, '要素の獲得を確認');
+// elems.gather('second');
+// console.log(elems);
+// assert(elems.length == 2 && elems[1].nodeType, 'もう一つの挿入を確認');
+
+// function smallest(array) {
+//   return Math.min.apply(Math, array);
+// }
+// function largest(array) {
+//   return Math.max.apply(Math, array);
+// }
+
+// assert(smallest([0,1,2,3,]) == 0, '最小値の0を返すこと');
+// assert(largest([0,1,2,3,]) == 3, '最大値の3を返すこと');
+
+// function merge(root) {
+//   for (let i = 0; i < arguments.length; i++) {
+//     for (let key in arguments[i]) {
+//       root[key] = arguments[i][key];
+//     }
+//   }
+//   return root;
+// }
+
+// let merged = merge({name: 'hiro'}, {city: 'Tokyo'});
+// assert(merged.name == 'hiro', '元の名前と同じ');
+// assert(merged.city == 'Tokyo', 'cityもコピーされている');
+
+// function multiMax(multi) {
+//   return multi * Math.max.apply(Math, Array.prototype.slice.call(arguments, 1));
+// }
+// assert(multiMax(3,1,2,3) == 9, '3*3=9 最初の引数が最大値');
+
+// 関数のlengthプロパティ
+// function makeNinja(name) {}
+// function makeSamurai(name, rank) {}
+// assert(makeNinja.length == 1, '1個の引数を期待している');
+// assert(makeSamurai.length == 2, '2個の引数を期待している');
+
+// function addMethod(object, name, fn){
+//   let def = object[name];
+//   object[name] = function(){
+//     if (fn.length == arguments.length) {
+//       return fn.apply(this, arguments);
+//     } else if(typeof def == 'function'){
+//       return def.apply(this, arguments);
+//     }
+//   }
+// }
+
+// let ninja = {
+//   values: ["Dean Edwards", "Sam Stephenson", "Alex Russell"]
+// };
+
+// addMethod(ninja, 'find', function(){
+//   return this.values;
+// });
+
+// addMethod(ninja, 'find', function(name){
+//   let ret = [];
+//   for (let i = 0; i < this.values.length; i++) {
+//     if(this.values[i].indexOf(name) == 0){
+//       ret.push(this.values[i]);
+//     }
+//   }
+//   return ret;
+// });
+
+// addMethod(ninja, 'find', function(firstName, lastName){
+//   let ret = [];
+//   for (let i = 0; i < this.values.length; i++) {
+//     if(this.values[i] == (`${firstName} ${lastName}`)){
+//       ret.push(this.values[i]);
+//     }
+//   }
+//   return ret;
+// });
+
+// assert(ninja.find().length == 3, 'すべての忍者を見つけた');
+// assert(ninja.find("Sam").length == 1, 'first nameの忍者を見つけた');
+// assert(ninja.find("Alex", "Russell").length == 1, '姓と名で忍者を見つけた');
+// assert(ninja.find("Alex", "Russell", "Jr") == null, 'No忍者');
+
+//////// クロージャ ////////
+/*
+クロージャは関数と密接な関係。
+クロージャを使えば、ページに高度な機能を追加するのに必要なスクリプトの量や複雑さを軽減できる。
+実現不可能な（あるいは複雑すぎて手に負えない）機能も実装可能。
+*/
+
+// クロージャとは関数が外部変数にアクセスし操作することを可能にするスコープ
+
+// let outerValue = 'ninja';
+// let later;
+
+// function outerFunction(){
+//   let innerValue = 'samurai';
+
+//   function innerFunction(paramValue){
+//     assert(outerValue, 'ninjaが見える');
+//     assert(innerValue, 'samuraiが見える');
+//     assert(paramValue, '内側からparamValueの値が見える');
+//     assert(tooLate, '内側からtooLateの値が見える');
+//   }
+
+//   later = innerFunction;
+// }
+
+// // assert(!tooLate, '外からtooLateは見えない'); letだとこれはエラーになるのでコメントアウト。var宣言だと大丈夫
+// let tooLate = 'rouin';
+
+// outerFunction();
+// later('paramValue');
+
+// function Ninja(){
+//   let feints = 0;
+
+//   this.getsFeints = function(){
+//     return feints;
+//   };
+
+//   this.feint = function(){
+//     feints++;
+//   };
+// }
+
+// let ninja = new Ninja();
+// assert(ninja.getsFeints() == 0, 'フェイント回数をアクセサから読み出せる. インクリメント前');
+// ninja.feint(); // 内部変数のfeintsをインクリメント
+
+// assert(ninja.getsFeints() == 1, 'フェイント回数をアクセサから読み出せる');
+// assert(ninja.feints === undefined, 'プライベートデータはアクセスできない');
+
+//// インターバルタイマのコールバックでクロージャを使う ////
+// function animateIt(elementId) {
+//   var elem = document.getElementById(elementId);
+//   var tick = 0; // アニメーションのtick（ステップ）を追跡管理するためのカウンタを設定する。
+
+//   var timer = setInterval(function() {
+//     if (tick < 100) {
+//       elem.style.left = elem.style.top = tick + "px";
+//       tick++;
+//     } else {
+//       clearInterval(timer);
+//       assert(tick == 100, 'tickはクロージャ経由でアクセスできる');
+//       assert(elem, '要素もクロージャ経由でアクセスできる');
+//       assert(timer, 'タイマのリファレンスもクロージャ経由で取得できる');
+//     }
+//   }, 10);
+// }
+
+// animateIt('box');
+
+//// 呼び出しコンテキストをバインドする ////
+// ボタンの状態を保持するオブジェクトを定義する。ボタンがクリックされたかどうかを追跡管理する
+// var button = {
+//   clicked: false,
+//   // クリックハンドラとして使うメソッドを宣言する。オブジェクトのメソッドなので、thisを使えばそのオブジェクトを参照できる
+//   click: function() {
+//     console.log(this);
+//     this.clicked = true;
+//     assert(button.clicked, 'ボタンがクリックされた');
+//   }
+// };
+// var elem = document.getElementById('test');
+// elem.addEventListener('click', button.click, false);
+
+// イベントハンドラに特定のコンテキストをバインドして上記の問題を解決する
+// function bind(context, name){
+//   return function() {
+//     return context[name].apply(context, arguments);
+//   }
+// }
+// var button = {
+//   clicked: false,
+//   click: function() {
+//     console.log(this);
+//     this.clicked = true;
+//     assert(button.clicked, 'ボタンがクリックされた');
+//   }
+// };
+// var elem = document.getElementById('test');
+// elem.addEventListener('click', bind(button, 'click'), false);
+
+// Function.prototype.bind = function() {
+//   var fn = this;
+//   var args = Array.prototype.slice.call(arguments)
+//   var object = args.shift();
+
+//   return function() {
+//     return fn.apply(object, args.concat(Array.prototype.slice.call(arguments)));
+//   }
+// };
+
+// var myObject = {};
+// function myFunction(){
+//   return this == myObject;
+// }
+
+// assert(!myFunction(), 'まだコンテキストは設定されていない');
+
+// var aFunction = myFunction.bind(myObject);
+// assert(aFunction(), 'コンテキストは設定された');
+
+Function.prototype.partial = function(){
+  var fn = this, args = Array.prototype.slice.call(arguments);
+  return function(){
+    var arg = 0;
+    for (var i = 0; i < args.length && arg < arguments.length; i++) {
+      if (args[i] === undefined) {
+        args[i] = arguments[arg++];
+      }
     }
+    return fn.apply(this, args);
   }
 };
+var delay = setTimeout.partial(undefined, 10);
+delay(function(){ assert(true, 'この関数の呼び出しは、10ms遅延される'); });
 
-function ninja() {}
-console.log(ninja.id)
-assert(store.add(ninja), '関数は安全に追加された')
-console.log(ninja.id)
-assert(!store.add(ninja), 'ただし追加は一度だけ')
+var bindClick = document.body.addEventListener.partial('click', undefined, false);
+bindClick(function(){
+  assert(true, 'カリー化された関数を介して、クリックイベントがバインドされた');
+});
+
+// String.prototype.csv = String.prototype.split.partial(/,\s*/);
+// var results = ('Mugen, Jin, Fuu').csv();
+// assert(
+//   results[0] == 'Mugen' &&
+//   results[1] == 'Jin' &&
+//   results[2] == 'Fuu',
+//   'テキストは正常に分割された'
+// );
+
+// Prototypeライブラリがどのように部分適用／カリー化のメソッドを実装しているかの例
+// Function.prototype.curry = function() {
+//   var fn = this,
+//   args = Array.prototype.slice.call(arguments);
+//   return function() {
+//     return fn.apply(this, args.concat(Array.prototype.slice.call(arguments)));
+//   };
+// };
+
+
+
+
+
+
+

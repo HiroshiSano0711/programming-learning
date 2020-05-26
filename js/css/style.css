@@ -1,2 +1,10 @@
 #results li.pass { color: green; }
 #results li.fail { color: red; }
+#box {
+  position: absolute;
+  border: 3px solid blue;
+  width: 200px;
+  height: 200px;
+  background-color: #6495ed;
+  font-size: 2em;
+}
