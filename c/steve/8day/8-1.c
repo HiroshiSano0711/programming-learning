@@ -50,7 +50,6 @@ char buff[100];
 //   }
 // }
 
-// for Twitter Engineer
 void write_line(int col, char a, char b) {
     printf("%c", a);
     for(int i = 0; i < col; i++) {
@@ -75,13 +74,13 @@ void write_square(int col, int row) {
 
 int main(){
   int row, col;
-
+ 
   /* 縦横何マスにするか入力してもらう */
-  printf("縦は何行にしますか？\n");
+  printf("何行にしますか？\n");
   fgets(buff, sizeof(buff), stdin);
   sscanf(buff, "%d", &row);
 
-  printf("横は何列にしますか？\n");
+  printf("何列にしますか？\n");
   fgets(buff, sizeof(buff), stdin);
   sscanf(buff, "%d", &col);
 
