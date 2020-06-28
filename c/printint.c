@@ -22,9 +22,9 @@ void printint(int w, int x){
     x /= 10;
   } while(x);
 
-  i = w - n;
+  i = w - n; // i = 空き文字数
   if(neg){
-    i--;
+    i--; // マイナスの場合は「-」の記号を入れないといけないので空き文字を1文字減らしている
   }
 
   while(i-- > 0){

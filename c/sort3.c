@@ -2,9 +2,8 @@
 
 void sort3(float *, int);
 
-int main()
-{
-  // sort3(float *a, int);
+int main(){
+  sort3(float *a, int);
   return 0;
 }
 
