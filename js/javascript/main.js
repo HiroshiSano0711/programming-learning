@@ -664,25 +664,25 @@ a, b, cの変数は関数内のローカル変数なので常に参照できな�
 // var aFunction = myFunction.bind(myObject);
 // assert(aFunction(), 'コンテキストは設定された');
 
-Function.prototype.partial = function(){
-  var fn = this, args = Array.prototype.slice.call(arguments);
-  return function(){
-    var arg = 0;
-    for (var i = 0; i < args.length && arg < arguments.length; i++) {
-      if (args[i] === undefined) {
-        args[i] = arguments[arg++];
-      }
-    }
-    return fn.apply(this, args);
-  }
-};
-var delay = setTimeout.partial(undefined, 10);
-delay(function(){ assert(true, 'この関数の呼び出しは、10ms遅延される'); });
+// Function.prototype.partial = function(){
+//   var fn = this, args = Array.prototype.slice.call(arguments);
+//   return function(){
+//     var arg = 0;
+//     for (var i = 0; i < args.length && arg < arguments.length; i++) {
+//       if (args[i] === undefined) {
+//         args[i] = arguments[arg++];
+//       }
+//     }
+//     return fn.apply(this, args);
+//   }
+// };
+// var delay = setTimeout.partial(undefined, 10);
+// delay(function(){ assert(true, 'この関数の呼び出しは、10ms遅延される'); });
 
-var bindClick = document.body.addEventListener.partial('click', undefined, false);
-bindClick(function(){
-  assert(true, 'カリー化された関数を介して、クリックイベントがバインドされた');
-});
+// var bindClick = document.body.addEventListener.partial('click', undefined, false);
+// bindClick(function(){
+//   assert(true, 'カリー化された関数を介して、クリックイベントがバインドされた');
+// });
 
 // String.prototype.csv = String.prototype.split.partial(/,\s*/);
 // var results = ('Mugen, Jin, Fuu').csv();
@@ -702,9 +702,158 @@ bindClick(function(){
 //   };
 // };
 
+// 関数のためのメモ化メソッド
+// Function.prototype.memoized = function(key) {
+//   this._values = this._values || {}; // 初期化
+//   // すでにキャッシュがあったらその値を返す。そうでなければ関数を呼び出し計算された値をキャッシュする
+//   return this._values[key] !== undefined ? this._values[key] : this._values[key] = this.apply(this, arguments);
+// };
 
+// function isPrime(num) {
+//   var prime = num != 1;
+//   for (var i = 2; i < num; i++) {
+//     if(num % i == 0){
+//       prime = false;
+//       break;
+//     }
+//   }
+//   return prime;
+// }
 
+// assert(isPrime.memoized(5), '関数は機能している：５は素数');
+// assert(isPrime._values[5], '答えはキャッシュされている');
 
+// Function.prototype.memoized = function(key) {
+//   this._values = this._values || {}; // 初期化
+//    // すでにキャッシュがあったらその値を返す。そうでなければ関数を呼び出し計算された値をキャッシュする
+//   return this._values[key] !== undefined ?
+//     this._values[key] :
+//     this._values[key] = this.apply(this, arguments);
+// };
 
+// Function.prototype.memorize = function() {
+//   // 呼び出しコンテキストをクロージャにするために変数へ代入する。thisはクロージャに含まれない。
+//   var fn = this;
+//   return function() { // 元の関数をメモ化関数でラップする
+//     return fn.memoized.apply(fn, arguments);
+//   };
+// };
 
+// var isPrime = (function(num) {
+//   var prime = num != 1;
+//   for (var i = 2; i < num; i++) {
+//     if(num % i == 0){
+//       prime = false;
+//       break;
+//     }
+//   }
+//   return prime;
+// }).memorize();
 
+// assert(isPrime(17), '17は素数'); // 通常の関数と同じように呼び出される。呼び出し側でメモ化を意識する必要がない。
+
+// ProtoTypeライブラリにおけるreadAttributeメソッド用のラッパー
+// 古い関数をラップして機能の一部を更新する。
+// function wrap(object, method, wrapper) {
+//   var fn = object[method];
+
+//   return object[method] = function() {
+//     return wrapper.apply(this, [fn.bind(this)].concat(Array.prototype.slice.call(arguments)));
+//   };
+// }
+
+// if(Prototype.Browser.Opera) {
+//   wrap(Element.Methods, 'readAttribute', function(original, elem, attr) {
+//     return attr == 'title' ? elem.title : original(elem, attr);
+//   });
+// }
+
+//// 即時関数 ////
+// 式全体に適用する()は演算子
+// (function() {})()
+// var someFunction = function(){ ... };
+// result = someFunction();
+// // ↓
+// var someFunction = function(){ ... };
+// // (someFunction)のカッコは区切りのカッコで演算子ではない
+// result = (someFunction)();
+
+// 1. 関数のインスタンスを作る
+// 2. その関数を実行する
+// 3. その関数を捨てる（文の実行終了後はもう参照しないため）
+
+// 一時的なスコープとプライベート変数
+
+// numClicks変数は他のどこからも参照できない
+// (function() {
+//   var numClicks = 0;
+//   document.addEventListener('click', function(){
+//     alert(++numClicks);
+//   }, false);
+// })();
+
+// 即時関数である機能を囲い込むシンプルなラッパーが作れる。モジュール化に最適
+// document.addEventListener('click', function() {
+//   var numClicks = 0;
+//   return function() {
+//     alert(++numClicks);
+//   };
+// })(), false;
+
+// $ = function() { alert('jQueryじゃない！')};
+
+// (function($) {
+//   $('img').on('click', function(event){
+//     $(event.target).addClass('clickdOn');
+//   });
+// })(jQuery);
+
+// クロージャ内のイテレーターが思ったように動作しないコード
+// var divs = document.getElementsByTagName('div');
+
+// for (var i = 0; i < divs.length; i++) {
+//   // クロージャに入っている変数iは、変数への参照であって作成されたときの値ではない
+//   divs[i].addEventListener('click', function() {
+//     alert('div' + i + '番目がクリックされました');
+//   }, false);
+// }
+
+// クロージャと即時関数を組み合わせてスコープを細かく調整することができる
+// var divs = document.getElementsByTagName('div');
+
+// for (var i = 0; i < divs.length; i++) (function(n) {
+//   divs[n].addEventListener('click', function() {
+//     alert('div' + n + '番目がクリックされました');
+//   }, false);
+// })(i);
+
+// ライブラリのラッピング
+// (function() {
+//   var jQuery = window.jQuery = function() {
+//     // 初期化処理
+//   };
+//   // ...
+// })();
+
+// var jQuery = (function() {
+//   function jQuery(){
+//     // 初期化処理
+//   }
+//   // ...
+//   return jQuery;
+// })();
+
+// 実体化とプロトタイプ
+function Ninja() {} // 何もせず何も返さない関数
+
+Ninja.prototype.swingSword = function() {
+  return true;
+};
+
+var ninja1 = Ninja();
+assert(ninja1 === undefined, 'Ninjaインスタンスは作成されていない');
+
+var ninja2 = new Ninja();
+assert(ninja2 &&
+  ninja2.swingSword &&
+  ninja2.swingSword(), 'Ninjaインスタンスが存在し、メソッドを呼び出せる');
