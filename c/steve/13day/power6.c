@@ -25,4 +25,3 @@ int main(){
   printf("%f\n", r);
   return 0;
 }
-
