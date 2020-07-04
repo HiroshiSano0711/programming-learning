@@ -844,16 +844,189 @@ a, b, cの変数は関数内のローカル変数なので常に参照できな�
 // })();
 
 // 実体化とプロトタイプ
-function Ninja() {} // 何もせず何も返さない関数
+// function Ninja() {} // 何もせず何も返さない関数
 
-Ninja.prototype.swingSword = function() {
-  return true;
-};
+// Ninja.prototype.swingSword = function() {
+//   return true;
+// };
 
-var ninja1 = Ninja();
-assert(ninja1 === undefined, 'Ninjaインスタンスは作成されていない');
+// var ninja1 = Ninja();
+// assert(ninja1 === undefined, 'Ninjaインスタンスは作成されていない');
 
-var ninja2 = new Ninja();
-assert(ninja2 &&
-  ninja2.swingSword &&
-  ninja2.swingSword(), 'Ninjaインスタンスが存在し、メソッドを呼び出せる');
+// var ninja2 = new Ninja();
+// assert(ninja2 &&
+//   ninja2.swingSword &&
+//   ninja2.swingSword(), 'Ninjaインスタンスが存在し、メソッドを呼び出せる');
+
+// 初期化の優先順位を調査する
+// function Ninja(){
+//   this.swung = false;
+//   this.swingSword = function(){
+//     return !this.swung;
+//   };
+// }
+
+// Ninja.prototype.swingSword = function(){
+//   return this.swung;
+// };
+
+// var ninja = new Ninja();
+// assert(ninja.swingSword(), '呼び出すのはインスタンスメソッド。プロトタイプのメソッドではない');
+
+// function Ninja(){
+//   this.swung = true;
+// }
+
+// var ninja = new Ninja();
+
+// Ninja.prototype.swingSword = function(){
+//   return this.swung;
+// };
+
+// assert(ninja.swingSword(), '順序が逆でもメソッドは存在する');
+
+// function Ninja(){
+//   this.swung = false;
+//   this.swingSword = function(){
+//     return !this.swung;
+//   };
+// }
+
+// var ninja = new Ninja();
+
+// Ninja.prototype.swingSword = function(){
+//   return this.swung;
+// };
+
+// assert(ninja.swingSword(), '呼び出されたのはインスタンスメソッド。プロトタイプメソッドではない');
+
+// function Ninja(){}
+// var ninja = new Ninja();
+
+// assert(typeof ninja == 'object', 'インスタンスの型はobject');
+// あるインスタンスがある特定の関数コンストラクタによって作成されたものかどうかを確実に知りたいときinstanceofが使える
+// assert(ninja instanceof Ninja, 'instanceofはコンストラクタを識別する');
+// assert(ninja.constructor == Ninja, 'このninjaオブジェクトはNinja関数によって作られた');
+
+// function Ninja(){}
+// var ninja = new Ninja();
+// var ninja2 = new ninja.constructor();
+
+// assert(ninja2 instanceof Ninja, 'こいつはNinjaだ');
+// assert(ninja !== ninja2, 'だが同じNinjaではない');
+
+// function Person(){}
+// Person.prototype.dance = function(){};
+// function Ninja(){}
+
+// // Personプロトタイプからdanceメソッドをコピーすることで、NinjaにPersonを継承させようと試みる
+// Ninja.prototype = { dance: Person.prototype.dance };
+
+// var ninja = new Ninja();
+// assert(ninja instanceof Ninja, 'ninjaはその機能をNinjaプロトタイプから継承している');
+// assert(ninja instanceof Person, 'Personプロトタイプからも'); // このテストが落ちる。なぜか？
+// assert(ninja instanceof Object, 'Objectプロトタイプからも');
+// 継承ではなくただのコピーになっているから
+// 特に何もしなくても全てのオブジェクトがObjectのインスタンスになることにも注目する
+
+// プロトタイプによって継承を実現する
+
+// function Person(){}
+// Person.prototype.dance = function(){};
+// function Ninja(){}
+
+// // PersonをNinjaに継承させるためにPersonのインスタンスをNinjaのプロトタイプにする
+// Ninja.prototype = new Person();
+// var ninja = new Ninja();
+// assert(ninja instanceof Ninja, 'ninjaはその機能をNinjaプロトタイプから継承している');
+// assert(ninja instanceof Person, 'Personプロトタイプからも'); // 今度は落ちない
+// assert(ninja instanceof Object, 'Objectプロトタイプからも');
+
+// forEachメソッドを実装してみる
+// if(!Array.prototype.forEach) {
+//   Array.prototype.forEach = function(callback, context) {
+//     for (var i = 0; i < this.length; i++) {
+//       callback.call(context || null, this[i], i, this);
+//     }
+//   }
+// }
+
+// ['a', 'b', 'c'].forEach(function(value, index, array) {
+//  assert(value, `現在の位置は${index}/${array.length - 1}`)
+// });
+
+// プロトタイプはひとつしかないので、名前が衝突する可能性がある
+// また、予測した実装が完全な実装と異なる場合もある
+
+// HTMLElement.prototype.remove = function() {
+//   if(this.parentNode)
+//     this.parentNode.removeChild(this);
+// };
+
+// var a = document.getElementById('a');
+// a.parentNode.removeChild(a);
+
+// document.getElementById('b').remove();
+
+// assert(!document.getElementById('a'), 'aは消えた');
+// assert(!document.getElementById('b'), 'bは消えた');
+
+// Objectプロトタイプにプロパティを追加すると予測しない振る舞いをする
+// Object.prototype.keys = function() {
+//   var keys = [];
+//   for (var p in this) keys.push(p);
+//   return keys;
+// };
+
+// var obj = { a: 1, b: 2, c: 3 };
+// assert(obj.keys().length == 3, 'このオブジェクトには3つのプロパティがある'); // 落ちる
+// ["a", "b", "c", "keys"]とkeys自身も入ってしまう
+
+// Object.prototype.keys = function() {
+//   var keys = [];
+//   for (var i in this) {
+//     if (this.hasOwnProperty(i)) keys.push(i);
+//   }
+//   return keys;
+// };
+
+// var obj = { a: 1, b: 2, c: 3 };
+// assert(obj.keys().length == 3, 'このオブジェクトには3つのプロパティがある');
+
+// Number.prototype.add = function(num) {
+//   return this + num
+// };
+// var n = 5;
+// assert(n.add(3) == 8, '数値が変数内にあるときは使える');
+// assert((5).add(3) == 8, 'カッコがある場合は？？');
+// assert(5.add(3) == 8, 'リテラルの場合は？'); // 構文解析に失敗する
+
+// function MyArray(){}
+// MyArray.prototype = new Array();
+
+// var mine = new MyArray();
+// mine.push(1,2,3);
+
+// assert(mine.length == 3, '全部の項目が配列のサブクラスに存在する');
+// assert(mine instanceof Array, 'Arrayの機能を継承したことを確認する');
+
+// lengthプロパティは特殊でIEの古い実装でいじくり回すとうまく反応してくれない
+
+// ネイティブオブジェクトの機能を個別に実装する方が、丸ごと継承するよりも良い戦略
+function MyArray(){}
+MyArray.prototype.length = 0;
+
+(function(){
+  var methods = ['push', 'pop', 'shift', 'unshidt', 'slice', 'splice', 'join'];
+
+  for (var i = 0; i < methods.length; i++)(function(name){
+    MyArray.prototype[name] = function(){
+      return Array.prototype[name].apply(this, arguments);
+    };
+  })(methods[i]);
+})();
+
+var mine = new MyArray();
+mine.push(1,2,3);
+assert(mine.length == 3, '全部の項目が我々の配列クラスに存在する');
+assert(!(mine instanceof Array), 'ただしArrayを継承したわけではない');
