@@ -1013,20 +1013,222 @@ a, b, cの変数は関数内のローカル変数なので常に参照できな�
 // lengthプロパティは特殊でIEの古い実装でいじくり回すとうまく反応してくれない
 
 // ネイティブオブジェクトの機能を個別に実装する方が、丸ごと継承するよりも良い戦略
-function MyArray(){}
-MyArray.prototype.length = 0;
+// function MyArray(){}
+// MyArray.prototype.length = 0;
 
-(function(){
-  var methods = ['push', 'pop', 'shift', 'unshidt', 'slice', 'splice', 'join'];
+// (function(){
+//   var methods = ['push', 'pop', 'shift', 'unshidt', 'slice', 'splice', 'join'];
 
-  for (var i = 0; i < methods.length; i++)(function(name){
-    MyArray.prototype[name] = function(){
-      return Array.prototype[name].apply(this, arguments);
-    };
-  })(methods[i]);
-})();
+//   for (var i = 0; i < methods.length; i++)(function(name){
+//     MyArray.prototype[name] = function(){
+//       return Array.prototype[name].apply(this, arguments);
+//     };
+//   })(methods[i]);
+// })();
 
-var mine = new MyArray();
-mine.push(1,2,3);
-assert(mine.length == 3, '全部の項目が我々の配列クラスに存在する');
-assert(!(mine instanceof Array), 'ただしArrayを継承したわけではない');
+// var mine = new MyArray();
+// mine.push(1,2,3);
+// assert(mine.length == 3, '全部の項目が我々の配列クラスに存在する');
+// assert(!(mine instanceof Array), 'ただしArrayを継承したわけではない');
+
+// function User(first, last){
+//   this.name = first + " " + last;
+// }
+
+// var user = User("Ichigo", "Kurosaki");
+
+// assert(user, 'ユーザーが実体化された');
+// assert(user.name == 'Ichigo Kurosaki', 'ユーザー名が正しく代入された');
+
+// コンストラクトして呼び出すべき関数を通常の関数として呼び出してしまう
+// var user = new User("Ichigo", "Kurosaki"); // newをつけるのが正しい
+
+// function User(first, last){
+//   this.name = first + " " + last;
+// }
+
+// var name = 'Rukia';
+// var user = User("Ichigo", "Kurosaki");
+// assert(name == 'Rukia', 'Rukiaがnameに設定されているはず');
+
+// function Test(){
+//   return this instanceof arguments.callee;
+// }
+// assert(!Test(), '実体化していないからfalseが返される');
+// assert(new Test(), '実体化したのでtrueが返される');
+
+/*
+現在実行している関数への参照は、arguments.calleeを介して取得できる。
+通常の関数の呼び出しコンテキストは、（誰かが変更しない限り）グローバルスコープである。
+構築されたオブジェクトにinstanceof演算子を使うとそのコンストラクタのテストができる。
+*/
+
+
+// function User(first, last) {
+//   if (!(this instanceof arguments.callee)) {
+//     return new User(first, last);
+//   }
+//   this.name = first + ' ' + last;
+// }
+
+// var name = 'Rukia';
+// var user = User('Ichigo', 'Kurosaki');
+
+// assert(name == 'Rukia', 'nameがRukiaに設定されている');
+// assert(user instanceof User, 'Userが実体化されている');
+// assert(user.name == 'Ichigo Kurosaki', 'ユーザー名が正しく代入された');
+
+// var Person = Object.subClass({
+//   init: function(isDancing){
+//     this.dancing = isDancing;
+//   },
+//   dance: function(){
+//     return this.dancing;
+//   }
+// });
+
+// var Ninja = Person.subClass({
+//   init: function(){
+//     this._super(false);
+//   },
+//   dance: function(){
+//     return this._super();
+//   },
+//   swingSword: function(){
+//     return true;
+//   }
+// });
+
+// var Person = Object.subClass({                           //#1
+//   init: function(isDancing) {
+//     this.dancing = isDancing;
+//   },
+//   dance: function() {
+//     return this.dancing;
+//   }
+// });
+
+// var Ninja = Person.subClass({                            //#2
+//   init: function() {
+//     this._super(false);                                  //#3
+//   },
+//   dance: function() {
+//     // 忍者固有の振る舞いを、ここに入れる
+//     return this._super();
+//   },
+//   swingSword: function() {
+//     return true;
+//   }
+// });
+
+// var person = new Person(true);
+// assert(person.dance(), 'この人は踊っている');
+
+// var ninja = new Ninja();
+// assert(ninja.swingSword(), '刀を振るっているが');
+// assert(!ninja.dance(), 'この忍者は踊っていない');
+// assert(person instanceof Person, 'この人はPersonである');
+// assert(ninja instanceof Ninja && ninja instanceof Person, '忍者であるPersonである');
+
+// (function(){
+//   var initializing = false;
+//   // 関数シリアライズがサポートされているかどうかをテストしている
+//   var superPettern = /xyz/.test(function(){ xyz; }) ? /\b_super\b/ : /.*/;
+
+//   Object.subClass = function(properties){
+//     var _super = this.prototype;
+
+//     initializing = true;
+//     var proto = new this();
+//     initializing = false;
+
+//     for(var name in properties) {
+//       proto[name] = typeof properties[name] == "function" &&
+//                     typeof _super[name] == "function" &&
+//                     superPettern.test(properties[name]) ?
+//         (function(name, fn){
+//           return function(){
+//             var tmp = this._super;
+
+//             this._super = _super[name];
+
+//             var ret = fn.apply(this, arguments);
+//             this._super = tmp;
+
+//             return ret;
+//           }
+//         })(name, properties[name]) : properties[name];
+
+//       function Class(){
+//         if (!initializing && this.init)
+//           this.init.apply(this, arguments);
+//       }
+    
+//       Class.prototype = proto;
+//       Class.constructor = Class;
+//       console.log(arguments.callee);
+//       Class.subClass = arguments.callee;
+    
+//       return Class;
+//     };
+//   };
+// })();
+
+//// 第7章：正規表現 ////
+// コンパイルされた正規表現を作る2つの方法
+// var re1 = /test/i;
+// var re2 = new RegExp('test', 'i');
+// assert(re1.toString() === '/test/i', '式の内容を確認');
+// assert(re1.test('TesT'), '大文字と小文字を区別しない');
+// assert(re2.test('TesT'), 'こちらでも同じ');
+// assert(re1.toString() === re2.toString(), '2つの正規表現は等しい');
+// assert(re1 !== re2, '両者は別々のオブジェクトである');
+
+// function findClasInElements(className, type){
+//   var elems = document.getElementsByTagName(type || '*');
+//   var regex = new RegExp("(^|\\s)" + className + "(\\s|$)");
+
+//   var results = [];
+
+//   for(var i = 0, length = elems.length; i < length; i++){
+//     if (regex.test(elems[i].className)){
+//       results.push(elems[i]);
+//     }
+//   }
+//   return results;
+// }
+// assert(findClasInElements('ninja', 'div').length == 2, '正しい数のdivを見つける');
+// assert(findClasInElements('ninja', 'span').length == 1, '正しい数のdivを見つける');
+// assert(findClasInElements('ninja').length == 3, '正しい数のdivを見つける');
+
+// match()によるグローバル検索とローカル検索の違い
+// var html = "<div class='test'><b>こんにちは</b> <i>world!</i></div>";
+// var results = html.match(/<(\/?)(\w+)([^>]*?)>/);
+
+// console.log(results);
+// assert(results[0] == "<div class='test'>", 'マッチ全体');
+// assert(results[1] == "", '欠けているスラッシュ');
+// assert(results[2] == "div", 'タグ名');
+// assert(results[3] == " class='test'", '属性');
+
+// var all = html.match(/<(\/?)(\w+)([^>]*?)>/g);
+// console.log(all);
+// assert(all[0] == "<div class='test'>", 'divの開始タグ');
+// assert(all[1] == "<b>", 'bの開始タグ');
+// assert(all[2] == "</b>", 'bの終了タグ');
+// assert(all[3] == "<i>", 'iの開始タグ');
+// assert(all[4] == "</i>", 'iの終了タグ');
+// assert(all[5] == "</div>", 'divの終了タグ');
+
+// exec()メソッドを使って、キャプチャとグローバルサーチの両方を行う。
+var html = "<div class='test'><b>こんにちは</b> <i>world!</i></div>";
+var tag = /<(\/?)(\w+)([^>]*?)>/g;
+var match;
+var num = 0;
+
+while((match = tag.exec(html)) !== null){
+  console.log(match);
+  assert(match.length == 4, '毎回のマッチでタグと3個のキャプチャが見つかる');
+  num++;
+}
+assert(num == 6, '3個の開始タグと3個の終了タグが見つかる');
