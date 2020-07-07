@@ -1221,14 +1221,98 @@ a, b, cの変数は関数内のローカル変数なので常に参照できな�
 // assert(all[5] == "</div>", 'divの終了タグ');
 
 // exec()メソッドを使って、キャプチャとグローバルサーチの両方を行う。
-var html = "<div class='test'><b>こんにちは</b> <i>world!</i></div>";
-var tag = /<(\/?)(\w+)([^>]*?)>/g;
-var match;
-var num = 0;
+// var html = "<div class='test'><b>こんにちは</b> <i>world!</i></div>";
+// var tag = /<(\/?)(\w+)([^>]*?)>/g;
+// var match;
+// var num = 0;
 
-while((match = tag.exec(html)) !== null){
-  console.log(match);
-  assert(match.length == 4, '毎回のマッチでタグと3個のキャプチャが見つかる');
-  num++;
-}
-assert(num == 6, '3個の開始タグと3個の終了タグが見つかる');
+// while((match = tag.exec(html)) !== null){
+//   console.log(match);
+//   assert(match.length == 4, '毎回のマッチでタグと3個のキャプチャが見つかる');
+//   num++;
+// }
+// assert(num == 6, '3個の開始タグと3個の終了タグが見つかる');
+
+// キャプチャを作らないグループ化。受動的な部分式を使う。
+// var pettern = /((?:ninja-)+)sword/;
+// var ninjas = 'ninja-ninja-sword'.match(pettern);
+// console.log(ninjas);
+// assert(ninjas.length == 2, 'キャプチャは一個だけ返された');
+// assert(ninjas[1] == 'ninja-ninja-', '両方の単語にマッチ。余分なキャプチャはない');
+
+// ハイフン繋ぎの文字列をキャメルケースに変換する
+// function upper(all, letter) { return letter.toUpperCase(); }
+// assert('border-bottom-width'.replace(/-(\w)/g, upper) == 'borderBottomWidth',
+//   'ハイフン繋ぎの文字列をキャメルケースに変換した');
+
+// クエリ文字列を圧縮するテクニック
+// function compress(source){
+//   var keys = {};
+//   source.replace(
+//     /([^=&]+)=([^&]*)/g,
+//     function(full, key, value){
+//       keys[key] = (keys[key] ? keys[key] + ',' : '') + value;
+//       return '';
+//     }
+//   );
+  
+//   var result = [];
+//   for(var key in keys){
+//     result.push(key + '=' + keys[key]);
+//   }
+
+//   return result.join('&');
+// }
+
+// assert(compress('foo=1&foo=2&hoge=a&hoge=b&foo=3') == 'foo=1,2,3&hoge=a,b',
+//   'クエリ文字列が圧縮された'
+// );
+
+// 文字列の前後から空白を取り除く一般的なソリューション
+// trim()を持たない古いブラウザのためにライブラリで実装して提供されていた
+// 短い文字列が多いのでよく使われる実装方法
+// function trim(str) {
+//   return (str || '').replace(/^\s+|\s+$/g, '');
+// }
+// assert(trim(' #id div.class ') == '#id div.class', '前後の空白が取り除かれた');
+
+// 2つの置換によるtrimの実装例
+// function trim(str) {
+//   return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+// }
+// assert(trim(' #id div.class ') == '#id div.class', '前後の空白が取り除かれた');
+
+// 文字列の末尾をsliceする実装
+// function trim(str) {
+//   var str = str.replace(/^\s\s*/, ''),
+//       ws = /\s/,
+//       i = str.length;
+//   while(ws.test(str.charAt(--i)));
+//   return str.slice(0, i + 1);
+// }
+// console.log(trim(' #id div.class '));
+// assert(trim(' #id div.class ') == '#id div.class', '前後の空白が取り除かれた');
+
+// 改行を含むあらゆる文字にマッチ
+// var html = '<b>Hello</b>\n<i>world!</i>';
+// assert(/.*/.exec(html)[0] === '<b>Hello</b>', '通常のキャプチャは行末まで');
+// assert(/[\S\s]*/.exec(html)[0] === '<b>Hello</b>\n<i>world!</i>', '文字集合を使って全ての文字にマッチさせる');
+// assert(/(?:.|\s)*/.exec(html)[0] === '<b>Hello</b>\n<i>world!</i>', 'キャプチャ梨グループを使って全ての文字にマッチさせる');
+
+// Unicode
+// var text = '\u5FCD\u8005\u30D1\u30EF\u30FC';
+// var matchAll = /[\w\u0080-\uFFFF_-]+/;
+// assert((text).match(matchAll), '正規表現がUnicodeにマッチした');
+
+// var pattern = /^((\w+)|(\\.))+$/;
+// var tests = [
+//   'formUpdate',
+//   'form\\.update\\.whatever',
+//   'form\\:update',
+//   'f\\o\\r\\m\\u\\p\\d\\a\\t\\e',
+//   'form:update', // このテストは落ちる
+// ];
+
+// for(var n = 0; n < tests.length; n++){
+//   assert(pattern.test(tests[n]), tests[n] + ' は有効な識別子');
+// }
