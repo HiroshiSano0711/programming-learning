@@ -1316,3 +1316,248 @@ a, b, cの変数は関数内のローカル変数なので常に参照できな�
 // for(var n = 0; n < tests.length; n++){
 //   assert(pattern.test(tests[n]), tests[n] + ' は有効な識別子');
 // }
+
+// スレッドとタイマの使い方
+
+// setTimeoutとsetIntervalの違い
+// setTimeout(function repreatMe(){
+//   // 長いコードブロック（省略）...
+//   setTimeout(repreatMe, 10);
+// }, 10);
+
+// setInterval(function(){
+//   // 長いコードブロック（省略）...  
+// }, 10);
+
+/*
+この2つは機能的に等価に思えるがそうではない。
+setTimeoutを使うコードは前回のコールバックを実行した後に、少なくも10msの遅延時間を必ず入れる。
+それより長くなることはあるが少なくなることはない。
+ところが、setIntervalを使うコードはいつ最後のコールバックが呼び出されたかに関係なく10msごとにコールバックを実行しようとする。
+
+単発タイマのコールバックは、いつ実行されるか保証されない。
+インターバルタイマのように10msごとに発火されるわけではない。
+*/
+
+/*
+長期タスクの例。
+JavaScriptが実行されている間、ページをレンダリングするための更新がすべてサスペンド（延期）される。
+インターフェースの応答性を維持するためには実行に何百ミリ秒もかかる複雑な処理を、もっと小さく扱いやすい部分に分ける必要がある。
+一部のブラウザでは一定時間スクリプトがノンストップで実行されると無応答の警告を出す場合がある。
+しかし大量のデータを処理しないといけない場合はある。
+そういうときはタイマの助けを借りる
+*/
+// var tbody = document.getElementsByTagName('tbody')[0];
+
+// for (var i = 0; i < 20000; i++) {
+//   var tr = document.createElement('tr');
+  
+//   for (var t = 0; t < 6; t++) {
+//     var td = document.createElement('td');
+//     td.appendChild(document.createTextNode(i + "," + t));
+//     tr.appendChild(td);
+//   }
+//   tbody.appendChild(tr);
+// }
+
+// var rowCount = 20000;
+// var divideInto = 4;
+// var chunkSize = rowCount / divideInto;
+// var iteration = 0;
+
+// var table = document.getElementsByTagName('tbody')[0];
+
+// setTimeout(function generateRows(){
+//   var base = (chunkSize) * iteration;
+//   for (var i = 0; i < chunkSize; i++) {
+//     var tr = document.createElement('tr');
+//     for (var t = 0; t < 6; t++) {
+//       var td = document.createElement('td');
+//       td.appendChild(document.createTextNode(i + ',' + t + ',' + iteration));
+//       tr.appendChild(td);
+//     }
+//     table.appendChild(tr);
+//     iteration++;
+//     if(iteration < divideInto){
+//       setTimeout(generateRows, 0);
+//     }
+//   }
+// });
+
+/*
+複数のタイマを管理するのが難しい理由
+・数多くのインターバルタイマへの参照を管理する必要がある（遅かれ早かれキャンセルが生じる）
+・ブラウザの通常の動作を妨げないようにする必要もある
+・ガベージコレクション（JavaScriptエンジンの通常の流れの外側で（ブラウザスレッドを使って）タイマが管理されるから
+
+集中タイマ制御
+・ページで一度に実行する必要があるタイマは1つだけでよい。
+・タイマの実行を必要に応じて中断・再開することが可能になる。
+・コールバック関数を削除するプロセスが非常に簡単になる。
+*/
+// var timers = {
+//   timerId: 0,
+//   timers: [],
+
+//   add: function(fn){
+//     this.timers.push(fn);
+//   },
+
+//   start: function(){
+//     if(this.timerId) return;
+//     (function runNext(){
+//       if (timers.timers.length > 0) {
+//         for (var i = 0; i < timers.timers.length; i++) {
+//           if(timers.timers[i]() === false){
+//             timers.timers.splice(i, 1);
+//             i--;
+//           }
+//         }
+//         timers.timerId = setTimeout(runNext, 100);
+//       }
+//     })();
+//   },
+
+//   stop: function(){
+//     clearTimeout(this.timerId);
+//     this.timerId = 0;
+//   }
+// };
+
+// var box = document.getElementById('box'), x = 0, y = 20;
+// timers.add(function(){
+//   box.style.left = x + 'px';
+//   if(++x > 50) return false;
+// });
+// timers.add(function(){
+//   box.style.top = y + 'px';
+//   y += 2;
+//   if(y > 120) return false;
+// });
+
+// timers.start();
+
+// 集中タイマ制御は非同期テストを行いたいときにも役立つ
+// (function(){
+//   var queue = [], paused = false;
+
+//   this.test = function(fn){
+//     queue.push(fn);
+//     runTest();
+//   };
+
+//   this.paused = function(){
+//     paused = true;
+//   };
+
+//   this.resume = function(){
+//     paused = false;
+//     setTimeout(runTest, 1);
+//   }
+
+//   function runTest(){
+//     if(!paused && queue.length){
+//       queue.shift()();
+//       if(!paused) resume();
+//     }
+//   }
+// })();
+
+/*
+実行時のコード評価
+・eval()関数 => セキュリティ的に危ないから推奨されていない。なぜかは後で学んでいく
+・関数コンストラクタ
+・タイマ
+・<script>要素
+*/
+
+// eval()
+// assert(eval('5 + 5') === 10, '5と5を足して10になる');
+// assert(eval('var ninja = 5;') === undefined, '何も値を返さない');
+// assert(ninja === 5, '副作用でninja変数が作成された');
+
+// (function(){
+//   eval('var ninja = 6;');
+//   assert(ninja === 6, '現在のスコープ内で評価された');
+// })();
+
+// assert(window.ninja === 5, 'グローバルスコープへの影響なし');
+// assert(ninja === 5, 'グローバルスコープへの影響なし');
+
+// eval()から返される値のテスト
+// var ninja = eval("({name: 'Ninja'})");
+// assert(ninja != undefined, 'ninjaが作成された');
+// assert(ninja.name === 'Ninja', '期待したプロパティを持っている');
+
+// var fn = eval("(function(){return 'Ninja';})");
+// assert(typeof fn === 'function', '関数が作成された');
+// assert(fn() === 'Ninja', '期待した値を返す');
+
+// var ninja2 = eval("{name: 'Ninja'}");
+// assert(ninja2 != undefined, 'ninja2が作成された');
+// assert(ninja2.name === 'Ninja', '期待したプロパティを持っている'); // このテストは失敗する
+
+// globalスコープでコードを評価する。
+// function globalEval(data){
+//   data = data.replace(/^\s|\s*$/g, '');
+//   if(data){
+//     var head = document.getElementsByTagName('head')[0] ||
+//                document.documentElement,
+//         script = document.createElement('script');
+//     script.type = 'text/javascript';
+//     script.text = data;
+
+//     head.appendChild(script);
+//     head.removeChild(script);
+//   }
+// }
+
+// window.onload = function(){
+//   (function(){
+//     globalEval('var test = 5;');
+//   })();
+//   assert(test === 5, 'コードはグローバルに評価された');
+// };
+
+/*
+安全なコード評価
+・無限ループを実行するもの
+・必要なDOM要素を削除してしまうもの
+・重要なデータを踏みにじるもの
+・悪意をもった連中がセキュリティを危うくするコードを意図的に注入する
+それでも安全に評価できるのか
+一般的な答えはノー
+侵入する手段はあまりに多すぎて手に負えない。
+完全に封じることは不可能。
+
+Caja（カハ）というGoogleプロジェクト、より安全な形式に変換するトランスレータを作成している。
+*/
+
+// 関数の逆コンパイル
+// コンパイルはこの文脈では正確ではないが、他に良い呼び方がないので使う。
+// function test(a) { return a + a; }
+
+// assert(test.toString() === 'function test(a) { return a + a; }', '関数を逆コンパイルした');
+
+// 関数の引数名を判定する関数
+// function argumentsNames(fn){
+//   var found = /^[\s\(]*function[^(]*\(\s*([^)]*?)\s*\)/.exec(fn.toString());
+//   return found && found[1] ? found[1].split(/,\s*/) : [];
+// }
+// 　
+// assert(argumentsNames(function(){}).length === 0, '引数無しの関数で確認');
+// assert(argumentsNames(function(x){}).length === 1, '引数1個の関数で確認');
+// var results = argumentsNames(function(a,b,c,d,e){});
+// assert(
+//   results[0] === 'a' &&
+//   results[1] === 'b' &&
+//   results[2] === 'c' &&
+//   results[3] === 'd' &&
+//   results[4] === 'e',
+//   '複数の引数で動作を確認'
+// )
+
+// let what = document.getElementById('form').action;
+// document.getElementById('form').submit();
+// console.log(what);
+

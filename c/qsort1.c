@@ -4,7 +4,7 @@ void qsort1(float *, float *);
 
 int main()
 {
-  static float a[8] = {23, 398, 34, 100, 57, 67, 55, 320};
+  static float a[8] = {120, 120, 120, 100, 120, 120, 120, 120};
   qsort1(a, a + 7);
   for(int i = 0; i < 8; i++){
     printf("%1.0f\n", a[i]);
@@ -13,30 +13,21 @@ int main()
 }
 
 void qsort1(float *left, float *right){
-  float *p = left, *q = right, w,
-    x = *(left + ((right - left) >> 1));
+  float *p = left, *q = right, w, x = *(left + ((right - left) >> 1));
 
   do {
-    while(*p < x){
+    while(*p < x)
       p++;
-    }
-    while(*q > x){
+    while(*q > x)
       q--;
-    }
-
-    if(p > q){
+    if(p > q)
       break;
-    }
     w = *p;
     *p = *q;
     *q = w;
   }while(++p <= --q);
-
-  if(left < q){
+  if(left < q)
     qsort1(left, q);
-  }
-
-  if(p < right){
+  if(p < right)
     qsort1(p, right);
-  }
 }
