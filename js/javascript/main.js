@@ -1544,7 +1544,7 @@ Caja（カハ）というGoogleプロジェクト、より安全な形式に変�
 //   var found = /^[\s\(]*function[^(]*\(\s*([^)]*?)\s*\)/.exec(fn.toString());
 //   return found && found[1] ? found[1].split(/,\s*/) : [];
 // }
-// 　
+//
 // assert(argumentsNames(function(){}).length === 0, '引数無しの関数で確認');
 // assert(argumentsNames(function(x){}).length === 1, '引数1個の関数で確認');
 // var results = argumentsNames(function(a,b,c,d,e){});
