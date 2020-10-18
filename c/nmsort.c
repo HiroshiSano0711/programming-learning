@@ -12,7 +12,8 @@ FILE *working_file, *fa, *fb; // 作業するファイル
 
 char tmpfil[25], tmpfila[25], tmpfilb[25];
 
-int main(){
+int main()
+{
   char infil[25], outfil[25];
   FILE *fpin, *fpout;
   float x;
@@ -63,7 +64,8 @@ int main(){
   return 0;
 }
 
-void nmsort(){
+void nmsort()
+{
   do
   {
     distribute();
@@ -74,7 +76,8 @@ void nmsort(){
   fb = fopen(tmpfilb, "wb"); fclose(fb);
 }
 
-void distribute(){
+void distribute()
+{
   float x;
   working_file = fopen(tmpfil, "rb");
   fa = fopen(tmpfila, "rb");
@@ -92,10 +95,10 @@ void distribute(){
   fclose(working_file); fclose(fa); fclose(fb);
 }
 
-void copyarun(FILE *in, FILE *out, float *pnext){
+void copyarun(FILE *in, FILE *out, float *pnext)
+{
   float old;
-  do
-  {
+  do {
     fwrite(pnext, size, 1, out);
     old = *pnext;
     fread(pnext, size, 1, in);
@@ -103,7 +106,8 @@ void copyarun(FILE *in, FILE *out, float *pnext){
   number_of_runs++;
 }
 
-void merge(){
+void merge()
+{
   float a, b, old;
   number_of_runs = 0;
 
@@ -141,10 +145,3 @@ void merge(){
 
   fclose(working_file); fclose(fa); fclose(fb);
 }
-
-
-
-
-
-
-

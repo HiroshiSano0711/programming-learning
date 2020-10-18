@@ -11,15 +11,14 @@ unsigned int BIT_MASK = 8191;
 int main(){
   unsigned int virtual_addr;
 
-  // PARは全て0。 全て0〜8191の範囲にマッピングされる
   unsigned int PAR[PAGE_COUNT] = {
-    MAX_BLOCK_PER_PAGE * 7, // 128 * 64 → 8192 * ページ数
-    MAX_BLOCK_PER_PAGE * 6,
-    MAX_BLOCK_PER_PAGE * 5,
-    MAX_BLOCK_PER_PAGE * 4,
-    MAX_BLOCK_PER_PAGE * 3,
-    MAX_BLOCK_PER_PAGE * 2,
-    MAX_BLOCK_PER_PAGE * 1,
+    MAX_BLOCK_PER_PAGE * 0, // 128 * 64 → 8192 * ページ数
+    MAX_BLOCK_PER_PAGE * 0,
+    MAX_BLOCK_PER_PAGE * 0,
+    MAX_BLOCK_PER_PAGE * 0,
+    MAX_BLOCK_PER_PAGE * 0,
+    MAX_BLOCK_PER_PAGE * 0,
+    MAX_BLOCK_PER_PAGE * 0,
     MAX_BLOCK_PER_PAGE * 0
   };
   for (virtual_addr = 0; virtual_addr < 65536; virtual_addr++){

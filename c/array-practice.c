@@ -7,7 +7,7 @@ int main(int argc, char const *argv[])
   int i;
 
   for(i = 0; i < 5; i++){
-    array[i] = i;
+      array[i] = i;
   }
 
   for(p = &array[0]; p != &array[5]; p++){

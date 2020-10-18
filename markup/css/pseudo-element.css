@@ -1,0 +1,142 @@
+/*
+疑似要素
+・選択された要素の「特定の部分」にスタイル付けできるようにするもの
+::first-line
+::selection
+
+::before, ::after
+と、それ以外では考え方が変わる。
+*/
+
+/* p {
+  color: red;
+  background-color: yellow;
+} */
+
+/* Aut   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+CSS
+見映えを変える、見た目を変える、装飾
+1. 対象自体をいじる
+2. 対象に飾り付けを行う
+
+対象→人間
+1. 人間自体をいじる → ダイエット、筋トレ、髪型を変える、整形
+2. 人間に飾り付けを行う → ドレスを着る、髪飾りをつける、ネックレスをする
+
+対象 → クリスマスツリー
+1. ツリー自体をいじる → ツリーの大きさを変える、ツリーの色を変える
+2. 星、靴下の飾りをツリーに追加する→装飾
+
+CSS
+対象→ボックス
+1. ボックス自体をいじる
+2. ボックスに飾り付けをしてる → ::before, ::after
+
+複数の要素が必要なスタイリングのとき
+↓
+文書構造上、意味のない要素を追加しないといけない場合
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+.heading {
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+}
+
+.heading:before, .heading:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+.heading:before {
+  left:0;
+}
+.heading:after {
+  right: 0;
+}
+
+.balloon {
+  position: relative;
+  background: pink;
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.balloon:before {
+  position: absolute;
+  content: '';
+  border-top: 20px solid pink;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  top: 98%;
+}

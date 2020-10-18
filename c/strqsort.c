@@ -11,7 +11,7 @@ void strqsort(int, int);
 
 int main()
 {
-  int n = 0, i;
+  int n = 0, i; // nは要素数、iは〇番目、p,qはポインタが多い
   char *q;
   FILE *fpin, *fpout;
 
@@ -75,27 +75,3 @@ void strqsort(int left, int right){
     }
   }while(left < right);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
