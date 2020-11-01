@@ -8,12 +8,18 @@ void copyarun();
 void merge();
 
 int size = sizeof(float), number_of_runs;
-FILE *working_file, *fa, *fb; // 作業するファイル
-
+FILE *working_file, *fa, *fb;
 char tmpfil[25], tmpfila[25], tmpfilb[25];
 
-int main()
-{
+/*
+ファイルのエラー処理
+10バイトのファイルを100バイト読み込んでみる。
+- freadの返り値
+- feofの値
+- ferrorの値
+*/
+
+int main(){
   char infil[25], outfil[25];
   FILE *fpin, *fpout;
   float x;
@@ -33,7 +39,7 @@ int main()
     printf("Unknown name\n"); exit(1);
   }
 
-  working_file= fopen(tmpfil, "wb");
+  working_file = fopen(tmpfil, "wb");
 
   while(fscanf(fpin, "%f", &x) > 0){
     fwrite(&x, size, 1, working_file); count++;
@@ -43,12 +49,12 @@ int main()
 
   start = clock();
   nmsort();
-  stop = clock();; diff_time = stop - start;
+  stop = clock(); diff_time = stop - start;
   printf("nmsort n = %d, computing time: %d s\n", count, diff_time);
 
   fpout = fopen(outfil, "w");
-
   working_file = fopen(tmpfil, "rb");
+
   while(fread(&x, size, 1, working_file) > 0){
     fprintf(fpout, "%8.2f", x); i++;
     if(i == 10){
@@ -64,10 +70,9 @@ int main()
   return 0;
 }
 
-void nmsort()
-{
-  do
-  {
+// natural merge sortの略
+void nmsort(){
+  do {
     distribute();
     merge();
   } while (number_of_runs > 1);
@@ -76,12 +81,12 @@ void nmsort()
   fb = fopen(tmpfilb, "wb"); fclose(fb);
 }
 
-void distribute()
-{
+// 連を分ける
+void distribute(){
   float x;
   working_file = fopen(tmpfil, "rb");
-  fa = fopen(tmpfila, "rb");
-  fb = fopen(tmpfilb, "rb");
+  fa = fopen(tmpfila, "wb");
+  fb = fopen(tmpfilb, "wb");
   fread(&x, size, 1, working_file);
 
   while(!feof(working_file)){
@@ -95,19 +100,19 @@ void distribute()
   fclose(working_file); fclose(fa); fclose(fb);
 }
 
-void copyarun(FILE *in, FILE *out, float *pnext)
-{
+// ファイルから読み込んで書き込む
+void copyarun(FILE *in, FILE *out, float *pnext){
   float old;
   do {
     fwrite(pnext, size, 1, out);
     old = *pnext;
     fread(pnext, size, 1, in);
-  } while (!(feof(in)) || *pnext < old);
+  } while (!(feof(in) || *pnext < old));
   number_of_runs++;
 }
 
-void merge()
-{
+// 2つのファイルから値を読み込んで比較し1つのファイルにマージする
+void merge(){
   float a, b, old;
   number_of_runs = 0;
 
@@ -123,14 +128,14 @@ void merge()
       fwrite(&a, size, 1, working_file);
       old = a;
       fread(&a, size, 1, fa);
-      if(feof(fa) || a < old){
+      if(feof(fa) || a < old){ // ファイルの終了時 or 次の連の判定
         copyarun(fb, working_file, &b);
       }
     }else{
       fwrite(&b, size, 1, working_file);
       old = b;
       fread(&b, size, 1, fb);
-      if(feof(fb) || b < old){
+      if(feof(fb) || b < old){ // ファイルの終了時 or 次の連の判定
         copyarun(fa, working_file, &a);
       }
     }
