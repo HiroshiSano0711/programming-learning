@@ -1,4 +1,4 @@
-require 'svg'
+require './svg'
 
 class Sparkline
 

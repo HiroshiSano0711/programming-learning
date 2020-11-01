@@ -1,4 +1,4 @@
-require 'sparkline'
+require './sparkline'
 
 def zero_or_one() rand(2) end
 

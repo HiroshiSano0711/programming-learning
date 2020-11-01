@@ -1,7 +1,11 @@
+require 'pry'
+
 NUMBER_OF_TOSSES = 1000
 BORDER_WIDTH = 50
 
+# 2か-2かを返す
 def toss
+  binding.pry
   2 * (rand(2)*2 - 1)
 end
 
@@ -20,6 +24,8 @@ def spark(centre_x, centre_y, value)
     fill=\"red\" >#{value}</text>"
 end
 
+
+# 
 $tosses = values(NUMBER_OF_TOSSES)
 points = []
 $tosses.each_index { |i| points << "#{i},#{200-$tosses[i]}" }
