@@ -8,15 +8,20 @@ void copyarun();
 void merge();
 
 int size = sizeof(float), number_of_runs;
-FILE *working_file, *fa, *fb;
+FILE *f, *fa, *fb;
 char tmpfil[25], tmpfila[25], tmpfilb[25];
 
 /*
-ファイルのエラー処理
-10バイトのファイルを100バイト読み込んでみる。
+
+TODO: ファイルのエラー処理を確認する
+10バイトのファイルを100バイト読み込んでみて
 - freadの返り値
 - feofの値
 - ferrorの値
+を確認する。
+
+その上で、どのようにエラーを処理すれば良いかを考える
+
 */
 
 int main(){
@@ -39,13 +44,13 @@ int main(){
     printf("Unknown name\n"); exit(1);
   }
 
-  working_file = fopen(tmpfil, "wb");
+  f = fopen(tmpfil, "wb");
 
   while(fscanf(fpin, "%f", &x) > 0){
-    fwrite(&x, size, 1, working_file); count++;
+    fwrite(&x, size, 1, f); count++;
   }
 
-  fclose(fpin); fclose(working_file);
+  fclose(fpin); fclose(f);
 
   start = clock();
   nmsort();
@@ -53,9 +58,9 @@ int main(){
   printf("nmsort n = %d, computing time: %d s\n", count, diff_time);
 
   fpout = fopen(outfil, "w");
-  working_file = fopen(tmpfil, "rb");
+  f = fopen(tmpfil, "rb");
 
-  while(fread(&x, size, 1, working_file) > 0){
+  while(fread(&x, size, 1, f) > 0){
     fprintf(fpout, "%8.2f", x); i++;
     if(i == 10){
       fprintf(fpout, "\n"); i = 0;
@@ -63,9 +68,9 @@ int main(){
   }
 
   fclose(fpout);
-  fclose(working_file);
-  working_file = fopen(tmpfil, "wb");
-  fclose(working_file);
+  fclose(f);
+  f = fopen(tmpfil, "wb");
+  fclose(f);
 
   return 0;
 }
@@ -84,20 +89,18 @@ void nmsort(){
 // 連を分ける
 void distribute(){
   float x;
-  working_file = fopen(tmpfil, "rb");
+  f = fopen(tmpfil, "rb");
   fa = fopen(tmpfila, "wb");
   fb = fopen(tmpfilb, "wb");
-  fread(&x, size, 1, working_file);
+  fread(&x, size, 1, f);
 
-  while(!feof(working_file)){
-    copyarun(working_file, fa, &x);
-
-    if(feof(working_file)){
+  while(!feof(f)){
+    copyarun(f, fa, &x);
+    if(feof(f))
       break;
-    }
-    copyarun(working_file, fb, &x);
+    copyarun(f, fb, &x);
   }
-  fclose(working_file); fclose(fa); fclose(fb);
+  fclose(f); fclose(fa); fclose(fb);
 }
 
 // ファイルから読み込んで書き込む
@@ -118,35 +121,35 @@ void merge(){
 
   fa = fopen(tmpfila, "rb");
   fb = fopen(tmpfilb, "rb");
-  working_file = fopen(tmpfil, "wb");
+  f = fopen(tmpfil, "wb");
 
   fread(&a, size, 1, fa);
   fread(&b, size, 1, fb);
 
   while(!feof(fa) && !feof(fb)){
     if(a < b){
-      fwrite(&a, size, 1, working_file);
+      fwrite(&a, size, 1, f);
       old = a;
       fread(&a, size, 1, fa);
       if(feof(fa) || a < old){ // ファイルの終了時 or 次の連の判定
-        copyarun(fb, working_file, &b);
+        copyarun(fb, f, &b);
       }
     }else{
-      fwrite(&b, size, 1, working_file);
+      fwrite(&b, size, 1, f);
       old = b;
       fread(&b, size, 1, fb);
       if(feof(fb) || b < old){ // ファイルの終了時 or 次の連の判定
-        copyarun(fa, working_file, &a);
+        copyarun(fa, f, &a);
       }
     }
   }
 
   while(!feof(fa)){
-    copyarun(fa, working_file, &a);
+    copyarun(fa, f, &a);
   }
   while(!feof(fb)){
-    copyarun(fb, working_file, &b);
+    copyarun(fb, f, &b);
   }
 
-  fclose(working_file); fclose(fa); fclose(fb);
+  fclose(f); fclose(fa); fclose(fb);
 }
