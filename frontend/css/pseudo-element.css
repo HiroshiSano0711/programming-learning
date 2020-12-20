@@ -1,111 +1,50 @@
 /*
+疑似クラス/疑似要素
+
+1. ドキュメントの構造以外の情報や、推論が必要なもの
+に基づいてスタイルを適用できるセレクター（セレクターに付加するキーワード）
+
+
 疑似要素
-・選択された要素の「特定の部分」にスタイル付けできるようにするもの
+・選択された要素の「特定の部分」を装飾するもの
 ::first-line
 ::selection
-
 ::before, ::after
-と、それ以外では考え方が変わる。
+
+::before, ::afterは考え方（捉え方）を変えないと理解が難しい。
 */
-
-/* p {
-  color: red;
-  background-color: yellow;
-} */
-
-/* Aut   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 CSS
-見映えを変える、見た目を変える、装飾
+Webページを、装飾する／見た目を変える／見映えを変える
 1. 対象自体をいじる
 2. 対象に飾り付けを行う
 
-対象→人間
-1. 人間自体をいじる → ダイエット、筋トレ、髪型を変える、整形
-2. 人間に飾り付けを行う → ドレスを着る、髪飾りをつける、ネックレスをする
+対象 → 僕（ひろポン）
+1. ひろポン自体をいじる → ダイエット、筋トレ、髪型を変える
+2. ひろポンに飾り付けを行う → 髪飾りをつける、ネックレスをする
 
 対象 → クリスマスツリー
 1. ツリー自体をいじる → ツリーの大きさを変える、ツリーの色を変える
 2. 星、靴下の飾りをツリーに追加する→装飾
 
 CSS
-対象→ボックス
-1. ボックス自体をいじる
+対象→ボックス（要素）
+1. ボックス自体をいじる→margin, padding, border, background, color
 2. ボックスに飾り付けをしてる → ::before, ::after
 
-複数の要素が必要なスタイリングのとき
-↓
-文書構造上、意味のない要素を追加しないといけない場合
+/* 
+::before, ::afterの使い所
+
+1. 1つの要素では実現できないスタイル
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
 .heading {
   position: relative;
   display: inline-block;
   padding: 0 55px;
 }
 
-.heading:before, .heading:after {
+.heading::before, .heading::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -116,10 +55,10 @@ CSS
   border-bottom: solid 1px black;
 }
 
-.heading:before {
+.heading::before {
   left:0;
 }
-.heading:after {
+.heading::after {
   right: 0;
 }
 
@@ -132,7 +71,7 @@ CSS
   margin-bottom: 30px;
 }
 
-.balloon:before {
+.balloon::before {
   position: absolute;
   content: '';
   border-top: 20px solid pink;
@@ -140,3 +79,53 @@ CSS
   border-left: 20px solid transparent;
   top: 98%;
 }
+
+/* 
+空のタグのじゃダメなの？
+
+文書構造と見た目はできるだけ分離する
+
+*/
+.link {
+  color: darkcyan;
+  text-decoration: none;
+}
+
+.download-link::after {
+  content: "\f019";  /* f381 */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+/*
+
+2. 共通部品にして再利用する
+例：「テキスト + アイコン」のボタン
+
+
+*/
+
+
+
+
+
+
+
+
+/*
+3. HTMLを解析するプログラムからするとわかりづらい
+検索エンジンのロボット、音声認識、リーダー
+↓
+文書構造上、意味のない要素を追加しないといけない場合
+
+
+
+.icon-link {
+  color: red;
+}
+
+
+4. float解除を::afterで行う
+
+*/
