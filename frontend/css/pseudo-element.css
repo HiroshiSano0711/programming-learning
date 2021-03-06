@@ -14,29 +14,46 @@
 ::before, ::afterは考え方（捉え方）を変えないと理解が難しい。
 */
 
+/* p::selection {
+  color: red;
+  background-color: yellow;
+} */
+
+
+
+
+
+
+
+/* p::before {
+  content: '♡';
+} */
+
+
+
+
 /*
 CSS
-Webページを、装飾する／見た目を変える／見映えを変える
-1. 対象自体をいじる
-2. 対象に飾り付けを行う
+Webページを[装飾する／見た目を変える／見映えを変える]
+1. 要素自体をいじる
+2. 要素に飾り付けを行う
 
-対象 → 僕（ひろポン）
+僕（ひろポン）の見た目を変える
 1. ひろポン自体をいじる → ダイエット、筋トレ、髪型を変える
 2. ひろポンに飾り付けを行う → 髪飾りをつける、ネックレスをする
 
-対象 → クリスマスツリー
-1. ツリー自体をいじる → ツリーの大きさを変える、ツリーの色を変える
-2. 星、靴下の飾りをツリーに追加する→装飾
-
 CSS
-対象→ボックス（要素）
-1. ボックス自体をいじる→margin, padding, border, background, color
-2. ボックスに飾り付けをしてる → ::before, ::after
+1. 要素（ボックス）自体をいじる → margin, padding, border, background, color
+2. 要素（ボックス）に飾り付けを行う → ::before, ::after
 
-/* 
+「クリスマスツリーの装飾で使われる飾り」のようなものだと考える
+1. ツリー自体をいじる → ツリーの大きさを変える、ツリーの色を変える
+2. 星、靴下などの飾りをツリーに追加する → 飾り付け
+/*
+
 ::before, ::afterの使い所
 
-1. 1つの要素では実現できないスタイル
+1. 1つの要素では実現できないデザイン
 */
 .heading {
   position: relative;
@@ -80,52 +97,67 @@ CSS
   top: 98%;
 }
 
-/* 
-空のタグのじゃダメなの？
 
-文書構造と見た目はできるだけ分離する
 
+/*
+3. 共通部品にして再利用する
+例：「テキスト + アイコン」
 */
+
 .link {
+  display: block;
   color: darkcyan;
   text-decoration: none;
 }
 
 .download-link::after {
-  content: "\f019";  /* f381 */
+  content: "\f381";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  margin-left: 5px;
+  margin-left: 8px;
 }
 
-/*
-
-2. 共通部品にして再利用する
-例：「テキスト + アイコン」のボタン
-
-
-*/
-
-
-
-
-
-
 
 
 /*
-3. HTMLを解析するプログラムからするとわかりづらい
-検索エンジンのロボット、音声認識、リーダー
+HTMLを解析するプログラムから意味が読み取れない
+
+検索エンジンのロボット、音声読み上げ機能など
+
+見た目のために要素を追加する場合
 ↓
-文書構造上、意味のない要素を追加しないといけない場合
+文書構造上、意味のない要素を追加する場合 → ::beforeと::afterを使う
 
 
 
-.icon-link {
-  color: red;
-}
 
+
+
+
+
+
+
+
+
+
+空のspanタグじゃダメなの？
+
+文書構造と見た目はできるだけ分離する
+
+
+/* 
 
 4. float解除を::afterで行う
 
 */
+
+.box {
+  float: left;
+  background-color: yellow;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
