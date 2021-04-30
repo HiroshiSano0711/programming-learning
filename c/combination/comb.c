@@ -10,12 +10,16 @@ void action();
 int main(){
   printf("Enter n ( < %d)", LEN);
   scanf("%d", &n);
-  if(n >= LEN)
-    printf("Too large"); exit(1);
+  if(n >= LEN){
+    printf("Too large");
+    exit(1);
+  }
   printf("Enter k ( < %d)", n + 1);
   scanf("%d", &k);
-  if(k > n)
-    printf("Too large"); exit(1);
+  if(k > n) {
+    printf("Too large");
+    exit(1);
+  }
   printf("\nOutput\n\n");
   combine(1);
   return 0;
