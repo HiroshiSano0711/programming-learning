@@ -1,5 +1,6 @@
 require 'pry'
 
+# 自然マージソートになっていないので書き換える必要がある
 input_array = (1..30).to_a.shuffle
 $f = input_array.dup
 $fa = []
