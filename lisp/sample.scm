@@ -276,11 +276,13 @@ b
 (define (g n) (A 1 n)) ; 2^n
 (define (h n) (A 2 n)) ; 2の累乗の累乗
 
-    2
-   2
-  2
- 2
-2
+; 
+; 肩にn個乗る形になる。
+;     2
+;    2
+;   2
+;  2
+; 2
 
 (define (k n) (* 5 n n))
 
@@ -297,10 +299,10 @@ b
 (A 0 (A 1 3))
 
 (define (fib n)
-(cond ((= n 0) 0)
-((= n 1) 1)
-(else (+ (fib (- n 1))
-		 (fib (- n 2))))))
+  (cond ((= n 0) 0)
+		((= n 1) 1)
+		(else (+ (fib (- n 1))
+				 (fib (- n 2))))))
 
 (fib 0)
 (fib 1)
@@ -308,12 +310,11 @@ b
 (fib 3)
 (fib 4)
 (fib 5)
-(fib 5)
 
 (define (count-change amount) (cc amount 5))
 (define (cc amount kinds-of-coins)
-        (cond ((= amount 0) 1)
-              ((or (< amount 0) (= kinds-of-coins 0)) 0)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= kinds-of-coins 0)) 0)
         (else (+ (cc amount (- kinds-of-coins 1))
                  (cc (- amount (first-denomination kinds-of-coins)) kinds-of-coins )))))
 
@@ -324,4 +325,134 @@ b
         ((= kinds-of-coins 4) 25)
 		((= kinds-of-coins 5) 50)))
 
- (count-change 25)
+(count-change 25)
+
+; 
+; 肩にn個乗る形になる。
+;     2
+;    2
+;   2
+;  2
+; 2
+
+(define (k n) (* 5 n n))
+
+(A 2 3)
+(A 1 (A 2 2))
+(A 1 (A 1 (A 2 1)))
+(A 1 (A 1 2))
+(A 1 (A 0 (A 1 1)))
+(A 1 (A 0 2))
+(A 1 4)
+(g 4)
+
+(h 4)
+(A 0 (A 1 3))
+
+(define (fib n)
+  (cond ((= n 0) 0)
+		((= n 1) 1)
+		(else (+ (fib (- n 1))
+				 (fib (- n 2))))))
+
+(fib 0)
+(fib 1)
+(fib 2)
+(fib 3)
+(fib 4)
+(fib 5)
+
+(define (count-change amount) (cc amount 5))
+(define (cc amount kinds-of-coins)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= kinds-of-coins 0)) 0)
+        (else (+ (cc amount (- kinds-of-coins 1))
+                 (cc (- amount (first-denomination kinds-of-coins)) kinds-of-coins )))))
+
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+        ((= kinds-of-coins 2) 5)
+        ((= kinds-of-coins 3) 10)
+        ((= kinds-of-coins 4) 25)
+		((= kinds-of-coins 5) 50)))
+
+(count-change 25)
+; 参考URL
+; https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%8C%E3%83%BC%E3%82%B9%E3%81%AE%E7%9F%A2%E5%8D%B0%E8%A1%A8%E8%A8%98
+; 冪乗の反復（テトレーション）
+; 肩にn個乗る形になる。
+;     2
+;    2
+;   2
+;  2
+; 2
+
+(define (k n) (* 5 n n))
+
+(A 2 3)
+(A 1 (A 2 2))
+(A 1 (A 1 (A 2 1)))
+(A 1 (A 1 2))
+(A 1 (A 0 (A 1 1)))
+(A 1 (A 0 2))
+(A 1 4)
+(g 4)
+
+(h 4)
+(A 0 (A 1 3))
+
+(define (fib n)
+  (cond ((= n 0) 0)
+		((= n 1) 1)
+		(else (+ (fib (- n 1))
+				 (fib (- n 2))))))
+
+(fib 0)
+(fib 1)
+(fib 2)
+(fib 3)
+(fib 4)
+(fib 5)
+
+(define (count-change amount) (cc amount 5))
+(define (cc amount kinds-of-coins)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= kinds-of-coins 0)) 0)
+        (else (+ (cc amount (- kinds-of-coins 1))
+                 (cc (- amount (first-denomination kinds-of-coins)) kinds-of-coins )))))
+
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+        ((= kinds-of-coins 2) 5)
+        ((= kinds-of-coins 3) 10)
+        ((= kinds-of-coins 4) 25)
+		((= kinds-of-coins 5) 50)))
+
+(count-change 25)
+
+
+;　練習問題1.11
+
+(define (f n)
+  (cond ((< n 3) n)
+		(else (+ (f (- n 1))
+                 (* 2 (f(- n 2)))
+				 (* 3 (f(- n 3)))
+			  )
+		)
+  )
+)
+
+; 4 + 3 + 2  3 + 2 + 1  2 + 1 0 1 0 -1
+(f 3)
+
+; 反復プロセス
+(define (f-i n)
+  (define (f-iter a b c count)
+    (cond ((< count 0) count)
+          ((= count 0) c)
+          ((= count 1) b)
+          (else (f-iter (+ a (* 2 b) (* 3 c)) a b (- count 1)))))
+  (f-iter 2 1 0 n))
+
+(f-i -10)
