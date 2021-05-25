@@ -325,7 +325,7 @@ b
         ((= kinds-of-coins 4) 25)
 		((= kinds-of-coins 5) 50)))
 
-(count-change 25)
+(count-change 10)
 
 ; 
 ; 肩にn個乗る形になる。
@@ -456,3 +456,21 @@ b
   (f-iter 2 1 0 n))
 
 (f-i -10)
+
+; 練習問題 1.12
+(define (pascal d)
+  (define (print-number d)
+	(cond ((> d 5) 1)
+		  (else (display d)(print-number (+ d 1)))
+	)
+  )
+  (print-number d)
+)
+
+(pascal 1)
+
+
+1
+11
+121
+1111
