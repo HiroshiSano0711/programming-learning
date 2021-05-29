@@ -1,9 +1,9 @@
 ## 確認
 `$ node -v`  
-v14.17.0
+`v14.17.0`
 
 `$ yarn -v`  
-1.22.10
+`1.22.10`
 
 ## vue CLIのインストール
 
@@ -15,7 +15,7 @@ v14.17.0
 
 @vue/cliが入ったことの確認  
 `$ vue --version`  
-@vue/cli 4.5.13
+`@vue/cli 4.5.13`
 
 
 ## プロジェクトの作成
@@ -24,7 +24,7 @@ $ vue create hello-world-v2
 $ cd hello-world-v2  
 $ yarn serve  
 
-でサーバーが起動する。
+でサーバーが起動する。  
 http://localhost:8080 にアクセスしてデフォルトの画面が出たらok。
 
 ## 必要なものをインストール
@@ -32,8 +32,8 @@ http://localhost:8080 にアクセスしてデフォルトの画面が出たらo
 $ npm install —save-dev @vue/test-utils vue-jest jest babel-jest @babel/core @babel/preset-env babel-core@bridge  
 $ yarn add --dev @vue/test-utils vue-jest jest babel-jest @babel/core @babel/preset-env babel-core@bridge
 
-### 簡単にインストールするライブラリの概要
-Vue3からはインストールするものが変わると思います。
+### インストールするライブラリの雑な概要
+Vue3からはインストールするものが変わると思います。  
 今回はVueのv2で構築していきます。  
 TypeScriptを使う場合は、また別途インストールしたり設定が必要です。  
 
@@ -77,6 +77,7 @@ package.jsonに`"jest"`の設定を追加。
   "testEnvironment": "jsdom"
 }
 ```
+
 - moduleFileExtensions
   - モジュールで使うファイルの拡張子を指定
 
@@ -96,7 +97,7 @@ env: {
 ```
 
 ## まずコンポーネントのマウント方法を学ぶ
-vueでjest使う場合はまずコンポーネントのマウントの仕方と、オプションについて学ぶと良さそうです。
+vueでjest使う場合はまずコンポーネントのマウントの仕方と、オプションについて学ぶと良さそうです。  
 
 簡単に関数とかのテストなら設定とかなしで簡単にかけますが、VueやReactのテストをする場合は、コンポーネントのテストがメインになると思われます。  
 
@@ -125,12 +126,12 @@ mountは親子まとめて関連するコンポーネントもレンダーしま
 以上の動作をすることから、結合テストではmount、単体テストではshallowMountを使うことが多そうです。  
 
 ## toMatchSnapshot()
-expect(cmp.element).toMatchSnapshot();
-といった具合にtoMatchSnapshot()メソッドを使うとスナップショットのテストができます。
+expect(cmp.element).toMatchSnapshot();  
+といった具合にtoMatchSnapshot()メソッドを使うとスナップショットのテストができます。  
 
-出力されるデータ構造をチェックできるので、HTML構造や状態などが意図せず変更された場合に気づけるようになります。
+出力されるデータ構造をチェックできるので、HTML構造や状態などが意図せず変更された場合に気づけるようになります。  
 
-スナップショットが確実に変更される場合は  
+スナップショットを意図的に変更する場合は  
 $ yarn test -u
 $ npm test -u
 
@@ -141,34 +142,34 @@ $ npm test -u
 ## --watchオプション
 `--watch`オプションをつかうと、テストが変更されるたび再実行することができます。  
 
-ただし、頻繁にテストが実行されることになるので、場合に応じて設定するで良いと思います。
+ただし、頻繁にテストが実行されることになるので、場合に応じて設定するで良いと思います。  
 
 ## Lintの導入
-簡単なのはエディタの拡張機能を使うことです。
-ESLint、StyleLintなどがほぼ使われるので、チーム内で合わせておけば良いと思います。
+簡単なのはエディタの拡張機能を使うことです。  
+ESLint、StyleLintなどがほぼ使われるので、チーム内で合わせておけば良いと思います。  
 
-eslintはVue CLIを使うならデフォルトでインストールされるはずなので、特に設定は不要です。
+eslintはVue CLIを使うならデフォルトでインストールされるはずなので、特に設定は不要です。  
 
 stylelintをインストールする場合は  
 `$ npm install --save-dev stylelint stylelint-config-standard`  
 `$ yarn add --dev stylelint stylelint-config-standard`  
-でインストールできます。
+でインストールできます。  
 
-stylelint-config-standardは標準的なruleを追加してくれるプラグインです。
+stylelint-config-standardは標準的なruleを追加してくれるプラグインです。  
 
 eslintやstylelintを使う場合は.eslintrc.jsonとか.stylelintrc.jsonというファイルをプロジェクトのルートに作成します。  
 プラグインによっては、違う設定方法が明示されていることもあります。  
 
-
 stylelint-config-standardを使う場合は.stylelintrc.jsonというファイルを作成して
+
 ```json
 {
   "extends": "stylelint-config-standard"
 }
 ```
-と拡張機能をつかう設定を書きます。
+と拡張機能をつかう設定を書きます。  
 
-pakage.jsonにstylelintを実行するコマンドを追加します。
+pakage.jsonにstylelintを実行するコマンドを追加します。  
 `"s-lint": "stylelint --fix ./src/**/*.css"`
 
 これで準備できたので、適当にCSSファイルを作成して試してみると良いでしょう。  
