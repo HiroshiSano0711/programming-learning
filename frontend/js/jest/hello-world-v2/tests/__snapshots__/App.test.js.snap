@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelloWorldコンポーネントのテスト 期待されるHTML構造であること 1`] = `
+<div
+  class="hello"
+>
+  <message-stub
+    message="abc"
+  />
+</div>
+`;
