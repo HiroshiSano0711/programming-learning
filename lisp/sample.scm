@@ -457,6 +457,7 @@ b
 
 (f-i -10)
 
+; 練習問題1.14はslackでといた
 ; 練習問題 1.12
 (define (pascal d)
   (define (print-number d)
@@ -469,8 +470,93 @@ b
 
 (pascal 1)
 
+; 練習問題1.15
+(define (cube x) (* x x x))
+(define (p x) (- (* 3 x) (* 4 (cube x))))
+(define (sine angle)
+  (if (not (> (abs angle) 0.1))
+	  angle
+	  (p (sine (/ angle 3.0)))))
 
-1
-11
-121
-1111
+(sine 12.15)
+(p (sine (4.05)))
+(p (p (sine (1.35))))
+(p (p (p (sine (0.45)))))
+(p (p (p (p (sine (0.15))))))
+(p (p (p (p (p (sine (0.05)))))))
+(p (p (p (p (p (0.05))))))
+(p (p (p (p (xxxx)))))
+(p (p (p xxxx)))
+(p (p xxxx))
+(p xxxx)
+xxxx
+
+(p (sine 4.05)) ; if文false
+(p (sine 1.35)) ; if文false
+(p (sine 0.45)) ; if文false
+(p (sine 0.15)) ; if文false
+(p (sine 0.05)) ; if文true→angle
+
+; 3倍にした。12.15 → 24.30
+(sine 24.30)
+(p (sine 8.1))
+(p (p (sine 2.7)))
+(p (p (p (sine 0.9))))
+(p (p (p (p (sine 0.3)))))
+(p (p (p (p (p (sine 0.1))))))
+(p (p (p (p (p (p (sine 0.0333..)))))))
+
+
+; 3倍にした。12.15 → 36.45
+; ステップ数は5回から6回に増えた
+(sine 36.45)
+(p (sine 12.15))
+(p (p (sine (4.05))))
+(p (p (p (sine (1.35)))))
+(p (p (p (p (sine (0.45))))))
+(p (p (p (p (p (sine (0.15)))))))
+(p (p (p (p (p (p (sine (0.05))))))))
+
+; 空間 O(log a)→ 関数 log3 a
+; ステップ数O(log a) → 関数 log3 a
+
+n^4
+log2 n = 2
+n^8
+log2 n = 3
+
+n^10
+n^5 * n^5
+(n * n^5-1) * (n * n^5-1)
+(n * n^4) * (n * n^4)
+(n * (n^2 * n^2) * (n * (n^2 * n^2)))
+(n * (n * n) * (n * n)) * (n * (n * n) * (n *n))
+
+log2 n = 3
+
+; より正確には、必要なかけ算の回数は、底を 2 とした n の対数から1を引いたもの
+; にnの2進数表現での1の数を⾜したものになります。
+; ↓わかりづらいので文章を直す
+; 底を2としたnの対数をとったものから1を引く
+; nの2進数表現でのビットが立っている個数を⾜す
+; 例
+; n = 100
+; log2 100 = 6
+; 1を引く
+; 6 - 1 = 5
+; 100の2進数表現
+; 1100100
+; 3つビットが立っている
+; 5 + 3 = 8回
+
+
+; 練習1.16
+; a = 1
+; b = 2
+; n = 6
+; 1 * 2^6 = 64
+; 1 * 4^3 = 64
+; 4 * 4^2 = 64
+; 4 * 16^1 = 64
+; 64 * 16^0 = 64 → return a
+
