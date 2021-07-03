@@ -560,3 +560,275 @@ log2 n = 3
 ; 4 * 16^1 = 64
 ; 64 * 16^0 = 64 → return a
 
+
+
+; 練習問題 1.19
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+
+(define (fib-iter a b p q count)
+  (cond ((= count 0) b)
+		((even? count)
+		 (fib-iter a
+				   b
+				   (+ (square p) (square q))
+				   (+ (* 2 p q) (square q))
+				   (/ count 2)))
+		(else (fib-iter (+ (* b q) (* a q) (* a p))
+						(+ (* b p) (* a q))
+						p
+						q
+						(- count 1)))))
+
+(fib 8)
+
+
+; 練習問題1.20 適用順序評価
+
+(define (gcd a b)
+  (if (= b 0)
+	  a
+	  (gcd b (remainder a b))))
+
+(if (= 40 0)
+	  206
+	  (gcd 40 6))
+
+(if (= 6 0)
+	40
+	 (gcd 6 4))
+
+(if (= 4 0)
+	6
+	 (gcd 4 2))
+
+(if (= 2 0)
+	4
+	 (gcd 2 0))
+
+; 正規順序評価
+(define (gcd a b)
+  (if (= b 0)
+	  a
+	  (gcd b (remainder a b))))
+
+
+(gcd 206 40)
+
+(if (= 40 0)
+	  206
+	  (gcd 40 (r 206 40))))
+
+
+(gcd 40 (r 206 40))
+  (if (= (r 206 40) 0) ; 1回
+	  40
+	  (gcd (r 206 40) (r 40 (r 206 40))))
+
+(gcd (r 206 40) (r 40 (r 206 40)))
+  (if (= (r 40 (r 206 40)) 0) ; 2回
+	  (r 206 40)
+	  (gcd (r 40 (r 206 40)) (r (r 206 40) (r 40 (r 206 40)))))
+
+(gcd (r 40 (r 206 40)) (r (r 206 40) (r 40 (r 206 40))))
+ (if (=  (r (r 206 40) (r 40 (r 206 40))) 0) ; 4回
+	  (r 40 (r 206 40))
+	  (gcd  (r (r 206 40) (r 40 (r 206 40))) (r (r 40 (r 206 40)) (r (r 206 40) (r 40 (r 206 40))))))
+
+(gcd  (r (r 206 40) (r 40 (r 206 40))) (r (r 40 (r 206 40)) (r (r 206 40) (r 40 (r 206 40)))))
+ (if (= (r (r 40 (r 206 40)) (r (r 206 40) (r 40 (r 206 40)))) 0) ;7回
+	 (r (r 206 40) (r 40 (r 206 40))) ; 4回
+     (gcd (r (r 40 (r 206 40)) (r (r 206 40) (r 40 (r 206 40)))) (r (r (r 206 40) (r 40 (r 206 40))) (r (r 40 (r 206 40)) (r (r 206 40) (r 40 (r 206 40)))))))
+; 1+2+4+7+4 = 18回の評価
+
+; 練習問題1.16
+
+; a * b^n = 不変
+
+; 1 * 2^10   = 1014     a 1 b 2 n 10 a^n = 1024
+; 2 * 2^9    = 1024     a 2 b 4 
+; 4 * 2^8    = 1024     a 4 * 8
+; 8 * 2^7    = 1024     a 8
+; 16 * 2^6   = 1024
+; 32 * 2^5   = 1024
+; 64 * 2^4   = 1024
+; 128 * 2^3  = 1024
+; 256 * 2^2  = 1024
+; 512 * 2^1  = 1024
+; 1024 * 2^0 = 1024
+
+; aは1から始まって基数をかけて状態変数として渡せば良さそう
+; a * b
+
+; a:状態変数 b:基数 n:乗数 
+
+; a: 1    b: 2   n: 10       ab^n = 1024
+; a: 1    b: 4   n: 5        ab^n = 1024
+; a: 4    b: 4   n: 4        ab^n = 1024
+; a: 4    b: 16  n: 2        ab^n = 1024
+; a: 4    b: 256 n: 1        ab^n = 1024
+; a: 1024 b: 256 n: 0        終了条件なので計算せず
+
+(define (fast-expt-iter a b n)
+    (cond ((= n 0) a)
+		  ((even? n) (fast-expt-iter a (square b) (/ n 2)))
+		  (else (fast-expt-iter (* a b) b (- n 1)))))
+
+(define (even? n)
+(= (remainder n 2) 0))
+
+(fast-expt-iter 1 2 6)
+
+
+; 練習問題1.17
+; a: 基数 b:足す回数
+; 5  10 = double(5 * 5)
+; 5 * 5 = 5 + (5 * 4)
+(define (fast-mul a n)
+(cond ((= n 0) a)
+	  ((even? n) (double (* a (halve n))))
+	  (else (+ a (fast-mul a (- n 1))))))
+
+(define (double n)(* n 2))
+(define (halve even_n)(/ even_n 2))
+
+(fast-mul 10 10)
+
+; 練習問題1.18
+; 5 * 10
+; a n
+; 偶数 double(5 * 5)
+; 奇数 (+ a (* a (- n 1)))
+; 5 * 5
+
+; a = 5 b = 10 n = 状態変数
+
+; 5 10 0 = 50
+; 10 5  0
+; 10 4  10 = 50
+; 20 2 10 
+; 40 1 10
+; 40 0 50 = 50
+; (a*b) + n = 不変量
+
+(define (iter a b n)
+	(cond ((= b 0) n)
+		  ((even? b) (iter (double a) (halve b) n))
+		  (else (iter a (- b 1) (+ a n)))))
+
+(iter 11 11 0)
+; 11 10 11
+; 22  5 11
+; 22  4 33
+; 44  2 33
+; 88  1 33
+; 88  0 121 => return n
+
+; 状態変数の考え方
+; n = 0;
+; for(i = 0, i < 10; i++){
+;   n += i;
+; }
+; return n;
+
+; n = 1, i = 0
+; n = 2, i = 1
+; n = 3, i = 2
+; n = 4, i = 3
+; n = 5, i = 4
+; n = 6, i = 5
+
+
+; 16 = 4 * 8
+; 1 2 4 8 16
+ ; フェルマーの⼩定理: n が素数で、a が n より⼩さい任意の正の整数であるとき、a の n 乗は法 n に関して a と合同である。
+
+; a = {1 2 3 4} n = 5  a^5%5 ≡ a%5
+; a^5 ≡ a (mod 5)
+
+
+(define (expmod base exp m)
+(cond ((= exp 0) 1)
+	  ((even? exp)
+	   (remainder
+		(square (expmod base (/ exp 2) m))
+		m))
+	  (else
+	   (remainder
+		(* base (expmod base (- exp 1) m))
+		m))))
+
+; (expmod 2 3 3)
+; (reminder(* 2 (expmod 2 2 3)) m)
+; (reminder(* 2 (reminder(square (expmod 2 1 3)) m) m)
+; (reminder(* 2 (reminder(square (reminder(* 2 (expmod 2 0 3)) m) m) m)
+;(reminder(* 2 (reminder(square (reminder(* 2 (expmod 2 0 3)) m) m) m)			
+; (reminder 2 3)
+; 2
+
+(define (smallest-divisor n) (find-divisor n 2))
+(define (find-divisor n test-divisor)
+(cond ((> (square test-divisor) n) n)
+	  ((divides? test-divisor n) test-divisor)
+	  (else (find-divisor n (+ test-divisor 1)))))
+
+(define (divides? a b) (= (remainder b a) 0))
+
+(smallest-divisor 199) ; 199 素数
+(smallest-divisor 1999) ; 1999 素数
+(smallest-divisor 19999) ; 7 素数ではない
+
+(define (prime? n)
+(= n (smallest-divisor n)))
+
+(prime? 19999)
+
+(use srfi-19) ; 便利なメソッドが使えるようにライブラリを読み込む
+
+(define (timed-prime-test n)
+  (newline)
+  (display n)
+  (start-prime-test n (current-time)))
+(define (start-prime-test n start-time)
+  (and (prime? n)
+       (report-prime (time-difference (current-time) start-time))))
+(define (report-prime elapsed-time)
+  (display " *** ")
+(display elapsed-time))
+
+
+(timed-prime-test 1009)  ; 0.000014
+(timed-prime-test 10007) ; 0.000032
+(timed-prime-test 100003); 0.000084 nが100倍で6倍
+(timed-prime-test 999983); 0.000216 
+
+
+; 指定範囲 1000 10000 100000
+; 指定の値n (今回は仮で1000)を渡す
+; nを素数判定に渡す
+; nからはじめて素数判定の結果をmaxに達するまで繰り返す
+; (+ n 1)
+
+(define (search-for-primes from to)
+  (define (repeat-search from to)
+	(timed-prime-test from)
+	(if (>= from to)
+		(display " 完了 ")
+		(repeat-search (+ from 1) to)))
+  (repeat-search from to))
+
+(search-for-primes 1000 1020)
+; 1009 0.000005 10万分の5
+; 1013 0.000004
+; 1019 0.000004
+
+(search-for-primes 10000 10040) ; 10007 10009 10037
+; 10007  0.000014
+; 10009  0.000014
+; 10037  0.000014
+
+
+(search-for-primes 100000 100050) ; 100003 100019 100043
+										; 100003 0.00009
+; 100019 0.000048
+; 100048 0.000048 
