@@ -1,5 +1,5 @@
 (define (square x) (* x x))
-
+ 
 (square 21)
 
 (square (+ 2 5))
@@ -785,7 +785,7 @@ log2 n = 3
 
 (use srfi-19) ; 便利なメソッドが使えるようにライブラリを読み込む
 
-(define (timed-prime-test n)
+fast-prime(define (timed-prime-test n)
   (newline)
   (display n)
   (start-prime-test n (current-time)))
@@ -827,8 +827,162 @@ log2 n = 3
 ; 10009  0.000014
 ; 10037  0.000014
 
-
 (search-for-primes 100000 100050) ; 100003 100019 100043
-										; 100003 0.00009
+; 100003 0.00009
 ; 100019 0.000048
-; 100048 0.000048 
+; 100043 0.000048 
+
+
+; 練習問題1.23
+; 
+(define (smallest-divisor n) (find-divisor n 2))
+(define (find-divisor n test-divisor)
+(cond ((> (square test-divisor) n) n)
+	  ((divides? test-divisor n) test-divisor)
+	  (else (find-divisor n (next test-divisor)))))
+
+(define (divides? a b) (= (remainder b a) 0))
+
+(define (next n)
+  (if (= n 2) 3
+	  (+ n 2)))
+
+(smallest-divisor 19999)
+
+(define (timed-prime-test n)
+  (newline)
+  (display n)
+  (start-prime-test n (current-time)))
+(define (start-prime-test n start-time)
+  (and (prime? n)
+       (report-prime (time-difference (current-time) start-time))))
+(define (report-prime elapsed-time)
+  (display " *** ")
+(display elapsed-time))
+
+(use srfi-19)
+(use srfi-27)
+(search-for-primes 1000 1020)
+; 1009 0.000005 → 0.000004
+; 1013 0.000004 → 0.000004
+; 1019 0.000004 → 0.000004
+
+(search-for-primes 10000 10040)
+; 10007  0.000014 → 0.000009
+; 10009  0.000014 → 0.000011
+; 10037  0.000014 → 0.000009
+
+
+(search-for-primes 100000 100050)
+; 100003 0.000048 → 0.000034
+; 100019 0.000048 → 0.000034
+; 100043 0.000048 → 0.000034
+
+; 実行時間の比率ははやくはなっているけど2倍ではない
+; それはなぜか？
+; 処理するnの数は半分になっているが、ステップ数が半分になっていないため。
+; 順に1からnまで実行する場合は、squareやdivides?の関数の評価があって、改善後はそれがifの評価に変わっている。1回の処理につきステップ数は1減っているが全体のステップ数は半分にはなっていない。
+
+; 練習問題1.24
+
+(define (expmod base exp m)
+(cond ((= exp 0) 1)
+	  ((even? exp)
+	   (remainder
+		(square (expmod base (/ exp 2) m))
+		m))
+	  (else
+	   (remainder
+		(* base (expmod base (- exp 1) m))
+		m))))
+
+(use srfi-27) ; random-integer
+(define (fermat-test n)
+  (define (try-it a)
+	(= (expmod a n n) a))
+(try-it (+ 1 (random-integer (- n 1)))))
+
+(define true #t)
+(define false #f)
+
+(define (fast-prime? n times)
+(cond ((= times 0) true)
+	  ((fermat-test n) (fast-prime? n (- times 1)))
+	  (else false)))
+
+(define (timed-prime-test n)
+  (newline)
+  (display n)
+  (start-prime-test n (current-time)))
+(define (start-prime-test n start-time)
+  (and (fast-prime? n 15)
+       (report-prime (time-difference (current-time) start-time))))
+(define (report-prime elapsed-time)
+  (display " *** ")
+(display elapsed-time))
+
+(search-for-primes 1000 1020)
+
+
+(search-for-primes 1000 1020)
+; 1009 0.000005 → 0.000004
+; 1013 0.000004 → 0.000004
+; 1019 0.000004 → 0.000004
+
+; フェルマーテスト
+; 1009  0.000018
+; 1013  0.000017
+; 1019  0.000017
+
+
+(search-for-primes 10000 10040)
+; 10007  0.000014 → 0.000009
+; 10009  0.000014 → 0.000011
+; 10037  0.000014 → 0.000009
+
+; フェルマーテスト
+; 10007 0.00002
+; 10009 0.000018
+; 10037 0.000021
+
+(search-for-primes 100000 100050)
+; 100003 0.000048 → 0.000034
+; 100019 0.000048 → 0.000034
+; 100048 0.000048 → 0.000034
+
+; フェルマーテスト
+; 100003  0.000048
+; 100019  0.000046
+; 100043  0.000048
+
+(search-for-primes 1000000 1000050)
+
+; 1000003 0.000040
+; 1000033 0.000034
+; 1000037 0.000034
+
+; 1009  0.000018
+; 1013  0.000017
+; 1019  0.000017
+
+; フェルマーテストは1000→1000000で実行時間約2倍のように見える。O(log n)っぽい？
+
+; 練習問題1.25
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+		((even? exp)
+		 (remainder
+		  (square (expmod base (/ exp 2) m)) m))
+		(else
+		 (remainder
+		  (* base (expmod base (- exp 1) m)) m))))
+
+; Hackerの書いたコード。ちゃんと素数判定できるか？できるならそれはなぜ？
+(define (expmod base exp m)
+  (remainder (fast-expt base exp) m))
+(define (fast-expt b n)
+  (cond ((= n 0) 1)
+		((even? n) (square (fast-expt b (/ n 2))))
+		(else (* b (fast-expt b (- n 1))))))
+
+(search-for-primes 1000 1110) ; 実行できない。固まる
