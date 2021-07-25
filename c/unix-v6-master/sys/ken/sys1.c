@@ -46,17 +46,21 @@ exec()
 		goto bad;
 
 	/*
-	 * pack up arguments into
-	 * allocated disk buffer
-	 */
+	 * 引数をバッファに詰める 
+	*/
+	cp = bp->b_addr; // バッファの先頭アドレス
+	na = 0; // 引数の数 number_of_augments
+	nc = 0; // 引数の総バイト数 number_of_character
 
-	cp = bp->b_addr;
-	na = 0;
-	nc = 0;
+	// fuword, fubyteはカーネル空間とユーザー空間でデータの読み書きをする命令
+	// fuwordは1バイト読み込む。読み込みに失敗したら-1を返す。
 	while(ap = fuword(u.u_arg[1])) {
-		na++;
-		if(ap == -1)
+		na++; // 読み込めたので引数の数を1プラスする
+		if(ap == -1) // fuwordの読み込みに失敗したかどうか
 			goto bad;
+		// 次の引数u_arg[2]を読み出すための準備。u_arg[1]のアドレスを2バイト進める
+		// u_argはint型の配列なので2つ進めている
+		// intの長さとポインタの長さが同じなので、in型だけどポインタを突っ込んで操作している。
 		u.u_arg[1] =+ 2;
 		for(;;) {
 			c = fubyte(ap++);

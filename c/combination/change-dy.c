@@ -11,7 +11,7 @@
 int coins[MAX_COIN_TYPE] = { 1, 5, 10, 50, 100, 500, 1000, 5000, 10000 };
 
 // 求めたコイン枚数をキャッシュしておくための配列 0 ≤ s ≤ 99
-int store[10000]; 
+int store[10000];
 
 // 両替に必要な最小のコイン枚数を求める関数F(s)
 int change(int exchange_money) {

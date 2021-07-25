@@ -13,45 +13,42 @@ int main(){
     printf("Each time, enter: \n\n");
     printf(" ! followed by an integer to be stored\n");
     printf(" ? (to print the oldest integer in the queue)\n");
+    printf(" $ (to stop program execution)\n");
 
     while(1){
-        do {
+        do
             ch = getchar();
-        }while(ch != '!' && ch != '?' && ch != '$');
+        while(ch != '!' && ch != '?' && ch != '$');
 
         if (ch == '!') {
             if (scanf("%d", &x) > 0) {
                 p = (struct node *)malloc(sizeof(struct  node));
-                if (p == NULL) {
+                if (p == NULL)
                     printf("Memory full: use ? first, or use $\n");
-                } else {
-                    if (new == NULL) {
+                else {
+                    if(new == NULL)
                         old = p;
-                    } else {
+                    else
                         new->link = p;
-                    }
                     p->num = x;
                     new = p;
                 }
-            } else {
+            } else
                 printf("Integer expected\n");
-            }
         } else if(ch == '?') {
-            if (new == NULL) {
+            if(new == NULL)
                 printf("Use !... first, or use $\n");
-            } else {
+            else {
                 printf("%30d\n", old->num);
                 p = old;
-                if (old == new) {
+                if(old == new)
                     new = NULL;
-                }else {
+                else
                     old = old->link;
-                }
                 free(p);
             }
-        } else {
+        } else
             break;
-        }
     }
     return 0;
 }
