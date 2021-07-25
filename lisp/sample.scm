@@ -1,4 +1,4 @@
-(define (square x) (* x x))
+)(define (square x) (* x x))
  
 (square 21)
 
@@ -835,6 +835,9 @@ fast-prime(define (timed-prime-test n)
 
 ; 練習問題1.23
 ; 
+
+; 1
+
 (define (smallest-divisor n) (find-divisor n 2))
 (define (find-divisor n test-divisor)
 (cond ((> (square test-divisor) n) n)
@@ -878,10 +881,14 @@ fast-prime(define (timed-prime-test n)
 ; 100019 0.000048 → 0.000034
 ; 100043 0.000048 → 0.000034
 
-; 実行時間の比率ははやくはなっているけど2倍ではない
+; 実行時間の比率は約3:2
 ; それはなぜか？
 ; 処理するnの数は半分になっているが、ステップ数が半分になっていないため。
 ; 順に1からnまで実行する場合は、squareやdivides?の関数の評価があって、改善後はそれがifの評価に変わっている。1回の処理につきステップ数は1減っているが全体のステップ数は半分にはなっていない。
+
+; n = 10 の場合
+; before (square divides? +) * 10 = 30回の評価
+; after  (square * 5) + (divides? * 5) (if 5) (+ 4) 19回
 
 ; 練習問題1.24
 
@@ -985,4 +992,146 @@ fast-prime(define (timed-prime-test n)
 		((even? n) (square (fast-expt b (/ n 2))))
 		(else (* b (fast-expt b (- n 1))))))
 
-(search-for-primes 1000 1110) ; 実行できない。固まる
+
+3 5 3 
+
+ (remainder (* 3 (expmod 3 (- 5 1) 3)) 3)
+ (remainder (* 3 (expmod 3 (- 5 1) 3)) 3)
+
+
+
+
+(use srfi-19)
+(use srfi-27) ; random-integer
+(define (fermat-test n)
+  (define (try-it a)
+	(= (expmod a n n) a))
+(try-it (+ 1 (random-integer (- n 1)))))
+
+(define (search-for-primes from to)
+  (define (repeat-search from to)
+	(timed-prime-test from)
+	(if (>= from to)
+		(display " 完了 ")
+		(repeat-search (+ from 1) to)))
+  (repeat-search from to))
+
+(define true #t)
+(define false #f)
+
+(define (fast-prime? n times)
+(cond ((= times 0) true)
+	  ((fermat-test n) (fast-prime? n (- times 1)))
+	  (else false)))
+
+(define (timed-prime-test n)
+  (newline)
+  (display n)
+  (start-prime-test n (current-time)))
+(define (start-prime-test n start-time)
+  (and (fast-prime? n 15)
+       (report-prime (time-difference (current-time) start-time))))
+(define (report-prime elapsed-time)
+  (display " *** ")
+(display elapsed-time))
+
+
+
+(search-for-primes 10000 10020)
+
+; 回答→結果は正しく求められるが、実行時間は著しく遅くなる。
+; 遅くなるのは、途中結果が膨大な数字になりメモリを大量に消費するから。
+										; キーワード→任意精度演算、多倍長整数
+
+
+; 練習問題1.26
+
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+		((even? exp)
+		 (remainder
+		  (square (expmod base (/ exp 2) m)) m))
+		(else
+		 (remainder
+		  (* base (expmod base (- exp 1) m)) m))))
+
+
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+		((even? exp)
+		 (remainder (* (expmod base (/ exp 2) m)
+					   (expmod base (/ exp 2) m))			
+					m))
+		(else
+		 (remainder (* base
+					   (expmod base (- exp 1) m))
+					m))))
+
+(remainder (* (exmod 2 2 2) (exmod 2 2 2)) 2)
+
+(exmod 2 16 2)                (exmod 2 16 2)
+(exmod 2 8 2)(exmod 2 8 2)    (exmod 2 8 2)(exmod 2 8 2)
+(exmod 2 4 2)(exmod 2 4 2)    (exmod 2 4 2)(exmod 2 4 2)
+(exmod 2 4 2)(exmod 2 4 2)    (exmod 2 4 2)(exmod 2 4 2)
+(exmod 2 2 2)(exmod 2 2 2)    (exmod 2 2 2)(exmod 2 2 2)
+(exmod 2 2 2)(exmod 2 2 2)    (exmod 2 2 2)(exmod 2 2 2)
+(exmod 2 2 2)(exmod 2 2 2)    (exmod 2 2 2)(exmod 2 2 2)
+(exmod 2 2 2)(exmod 2 2 2)    (exmod 2 2 2)(exmod 2 2 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+
+
+; 15
+(exmod 2 8 2)                 (exmod 2 8 2)
+(exmod 2 4 2)(exmod 2 4 2)    (exmod 2 4 2)(exmod 2 4 2)
+(exmod 2 2 2)(exmod 2 2 2)    (exmod 2 2 2)(exmod 2 2 2)
+(exmod 2 2 2)(exmod 2 2 2)    (exmod 2 2 2)(exmod 2 2 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)    (exmod 2 1 2)(exmod 2 1 2)
+
+; 10
+(exmod 2 4 2)               (exmod 2 4 2) 
+(exmod 2 2 2)(exmod 2 2 2)  (exmod 2 2 2)(exmod 2 2 2)
+(exmod 2 1 2)(exmod 2 1 2)  (exmod 2 1 2)(exmod 2 1 2)
+(exmod 2 1 2)(exmod 2 1 2)  (exmod 2 1 2)(exmod 2 1 2)
+
+(exmod 2 2 2)              (exmod 2 2 2)
+(exmod 2 1 2)(exmod 2 1 2) (exmod 2 1 2)(exmod 2 1 2)
+
+(exmod 2 3 2)
+(exmod 2 2 2)              (exmod 2 2 2)
+(exmod 2 1 2)(exmod 2 1 2) (exmod 2 1 2)(exmod 2 1 2)
+
+; O(log n )がO(log2^n)になってしまった。
+; O(log2^n) = O(n*log2) = O(n)    log2は定数につき省ける
+
+
+; 練習問題1.27
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+		((even? exp)
+		 (remainder
+		  (square (expmod base (/ exp 2) m)) m))
+		(else
+		 (remainder
+		  (* base (expmod base (- exp 1) m)) m))))
+
+(define (fermat-test a n)
+  (define (try-it a n)
+	(= (expmod a n n) a))
+  (define (repeat-try-it a n)
+	(cond ((>= a n) #t)
+		 ((try-it a n) (repeat-try-it (+ a 1) n))
+		 (else #f)))
+  (repeat-try-it a n))
+
+(fermat-test 2 6601)
+; 561, 1105, 1729, 2465, 2821, 6601
