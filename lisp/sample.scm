@@ -1,4 +1,4 @@
-)(define (square x) (* x x))
+(define (square x) (* x x))
  
 (square 21)
 
@@ -1131,7 +1131,51 @@ fast-prime(define (timed-prime-test n)
 	(cond ((>= a n) #t)
 		 ((try-it a n) (repeat-try-it (+ a 1) n))
 		 (else #f)))
-  (repeat-try-it a n))
 
 (fermat-test 2 6601)
 ; 561, 1105, 1729, 2465, 2821, 6601
+
+; p 奇素数　5
+; mod 5  11  11*11=121   6 6*6=36
+; mod 3  7 49 4 16  
+; 素数の場合はその素数を法とした場合、ある整数nの平方根の剰余は1か-1になる。
+
+; x^2 ≡ 1 (mod p)
+; x^2 - 1 ≡ 0 (mod p)
+; (x - 1)(x + 1) ≡ 0 (mod p)
+
+; mod 9 10  1   3 9 0   11  
+
+
+; mod 8 0 1 2 3 4 5 6 7
+; 25 ≡ 1 (mod 8)
+
+; mod 11 0 1 2 3 4 5 6 7 8 9 10(-1)
+; 1^2 ≡ 1 (mod 11)  -1^2 ≡ 1 (mod 11)
+
+
+; mod 15 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+; 
+
+; mod 3 0 1 2
+; 
+
+(define (expmod a n)
+  (cond ((and (not (= a 1))
+			  (not (= a (- n 1)))
+			  (= 1 (remainder (square a) n)))
+		 0)
+		(else 1)))
+
+(define (fermat-test a n)
+  (define (try-it a n)
+	(expmod a n))
+  (define (repeat-try-it a n)
+	(cond ((>= a n) #t)
+		  ((= 0 (try-it a n)) a)
+		  ((= 1 (try-it a n)) (repeat-try-it (+ a 1) n))
+		  (else #f)))
+  (repeat-try-it a n))
+(fermat-test 1 9)
+
+; mod 9   1 2 3 4 5 6 7 8
