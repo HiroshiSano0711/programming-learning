@@ -232,22 +232,29 @@ let paiType = [
 	// {"No":37,"paiName":"中","cssSprite":"ji7"}
 ];
 
-// function OutputSortTehai(id_name){
-// 	let OutputPlace = $(id_name);
-// 	OutputPlace.empty();
-
-//   shanten_1_kanko_2.forEach(element =>{
-//     let paiga = "<span class=\"" + paiType[element.haishi[0]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[1]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[2]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[3]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[4]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[5]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[6]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[7]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[8]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[9]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[10]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[11]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[12]].cssSprite + "\"></span>";
-//     OutputPlace.append(paiga);
-//     OutputPlace.append("<br>");
-//   })
-// }
-
 // import shanten_1_kanko_0 from "./chinitsu-pattern/shanten_1/kanko_0.json" assert { type: "json" };
 // import shanten_1_kanko_1 from "./chinitsu-pattern/shanten_1/kanko_1.json" assert { type: "json" };
-// import shanten_1_kanko_2 from "./chinitsu-pattern/shanten_1/kanko_2.json" assert { type: "json" };
-// import shanten_1_kanko_3 from "./chinitsu-pattern/shanten_1/kanko_3.json" assert { type: "json" };
+import shanten_1_kanko_2 from "./chinitsu-pattern/shanten_1/kanko_2.json" assert { type: "json" };
+import shanten_1_kanko_3 from "./chinitsu-pattern/shanten_1/kanko_3.json" assert { type: "json" };
 
-// $("#PaiMakeBtn").click(function() {
-// 	OutputSortTehai("#chinitsu_pattern");  
-// });
+window.addEventListener("DOMContentLoaded", function() {
+	const start_btn = document.getElementById("start_btn")
+
+	start_btn.addEventListener("click", (event) => {
+		OutputTehai()
+	})
+
+	function OutputTehai(){
+		const display_dom = document.getElementById("chinitsu_pattern")
+
+		shanten_1_kanko_3.forEach(element =>{
+			for (let index = 0; index < 13; index++) {
+				let paiga = document.createElement("span")
+				paiga.className = paiType[Number(element.haishi[index])].cssSprite
+				display_dom.appendChild(paiga)
+			}
+			let br = document.createElement("br");
+			display_dom.appendChild(br);
+		})
+	}
+});
