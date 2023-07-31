@@ -29,18 +29,22 @@ const Majiang = require('@kobalab/majiang-core');
 // })
 // console.log(all_chinitsu_json)
 
-// const group = chinitsu_string.reduce((accumulator, current) => {
-//   const element = accumulator.find((p) => p.shanten_count === current["shanten"]);
-//   if (element) {
-//     element.count ++;
-//   } else {
-//     accumulator.push({
-//       count: 1,
-//       shanten_count: current["shanten"]
-//     });
-//   }
-//   return accumulator;
-// }, []);
+import chinitsu_all_pattern from "./chinitsu-pattern/all.json" assert { type: "json" };
+
+const group = chinitsu_all_pattern.reduce((accumulator, current) => {
+  const element = accumulator.find((p) => p.shanten_count === current["shanten"]);
+  if (element) {
+    element.count ++;
+  } else {
+    accumulator.push({
+      count: 1,
+      shanten_count: current["shanten"]
+    });
+  }
+  return accumulator;
+}, []);
+
+console.log(group)
 
 const paiYama = [
 	{"No":0,"paiName":"一万","paiCode":"1m","paiNo":1},
@@ -228,22 +232,22 @@ let paiType = [
 	// {"No":37,"paiName":"中","cssSprite":"ji7"}
 ];
 
-function OutputSortTehai(id_name){
-	let OutputPlace = $(id_name);
-	OutputPlace.empty();
+// function OutputSortTehai(id_name){
+// 	let OutputPlace = $(id_name);
+// 	OutputPlace.empty();
 
-  shanten_1_kanko_2.forEach(element =>{
-    let paiga = "<span class=\"" + paiType[element.haishi[0]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[1]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[2]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[3]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[4]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[5]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[6]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[7]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[8]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[9]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[10]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[11]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[12]].cssSprite + "\"></span>";
-    OutputPlace.append(paiga);
-    OutputPlace.append("<br>");
-  })
-}
+//   shanten_1_kanko_2.forEach(element =>{
+//     let paiga = "<span class=\"" + paiType[element.haishi[0]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[1]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[2]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[3]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[4]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[5]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[6]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[7]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[8]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[9]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[10]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[11]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[12]].cssSprite + "\"></span>";
+//     OutputPlace.append(paiga);
+//     OutputPlace.append("<br>");
+//   })
+// }
 
-import shanten_1_kanko_0 from "./chinitsu-pattern/shanten_1/kanko_0.json" assert { type: "json" };
-import shanten_1_kanko_1 from "./chinitsu-pattern/shanten_1/kanko_1.json" assert { type: "json" };
-import shanten_1_kanko_2 from "./chinitsu-pattern/shanten_1/kanko_2.json" assert { type: "json" };
+// import shanten_1_kanko_0 from "./chinitsu-pattern/shanten_1/kanko_0.json" assert { type: "json" };
+// import shanten_1_kanko_1 from "./chinitsu-pattern/shanten_1/kanko_1.json" assert { type: "json" };
+// import shanten_1_kanko_2 from "./chinitsu-pattern/shanten_1/kanko_2.json" assert { type: "json" };
 // import shanten_1_kanko_3 from "./chinitsu-pattern/shanten_1/kanko_3.json" assert { type: "json" };
 
-$("#PaiMakeBtn").click(function() {
-	OutputSortTehai("#chinitsu_pattern");  
-});
+// $("#PaiMakeBtn").click(function() {
+// 	OutputSortTehai("#chinitsu_pattern");  
+// });
