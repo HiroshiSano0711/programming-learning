@@ -31,20 +31,27 @@ const Majiang = require('@kobalab/majiang-core');
 
 import chinitsu_all_pattern from "./chinitsu-pattern/all.json" assert { type: "json" };
 
-const group = chinitsu_all_pattern.reduce((accumulator, current) => {
-  const element = accumulator.find((p) => p.shanten_count === current["shanten"]);
-  if (element) {
-    element.count ++;
-  } else {
-    accumulator.push({
-      count: 1,
-      shanten_count: current["shanten"]
-    });
-  }
-  return accumulator;
-}, []);
+const new_data = chinitsu_all_pattern.map(element => {
+	console.log(element.machi)
+	
+	return element;
+})
+console.log(new_data)
 
-console.log(group)
+// const group = chinitsu_all_pattern.reduce((accumulator, current) => {
+//   const element = accumulator.find((p) => p.shanten_count === current["shanten"]);
+//   if (element) {
+//     element.count ++;
+//   } else {
+//     accumulator.push({
+//       count: 1,
+//       shanten_count: current["shanten"]
+//     });
+//   }
+//   return accumulator;
+// }, []);
+
+// console.log(group)
 
 const paiYama = [
 	{"No":0,"paiName":"一万","paiCode":"1m","paiNo":1},
@@ -232,29 +239,31 @@ let paiType = [
 	// {"No":37,"paiName":"中","cssSprite":"ji7"}
 ];
 
-// import shanten_1_kanko_0 from "./chinitsu-pattern/shanten_1/kanko_0.json" assert { type: "json" };
-// import shanten_1_kanko_1 from "./chinitsu-pattern/shanten_1/kanko_1.json" assert { type: "json" };
-import shanten_1_kanko_2 from "./chinitsu-pattern/shanten_1/kanko_2.json" assert { type: "json" };
-import shanten_1_kanko_3 from "./chinitsu-pattern/shanten_1/kanko_3.json" assert { type: "json" };
+// window.addEventListener("DOMContentLoaded", function() {
+// 	const start_btn = document.getElementById("start_btn")
 
-window.addEventListener("DOMContentLoaded", function() {
-	const start_btn = document.getElementById("start_btn")
+// 	start_btn.addEventListener("click", (event) => {
+// 		OutputTehai()
+// 	})
 
-	start_btn.addEventListener("click", (event) => {
-		OutputTehai()
-	})
+// 	function OutputTehai(){
+// 		const display_dom = document.getElementById("chinitsu_pattern")
 
-	function OutputTehai(){
-		const display_dom = document.getElementById("chinitsu_pattern")
-
-		shanten_1_kanko_3.forEach(element =>{
-			for (let index = 0; index < 13; index++) {
-				let paiga = document.createElement("span")
-				paiga.className = paiType[Number(element.haishi[index])].cssSprite
-				display_dom.appendChild(paiga)
-			}
-			let br = document.createElement("br");
-			display_dom.appendChild(br);
-		})
-	}
-});
+// 		tenpai_kanko_3.forEach(element =>{
+// 			for (let index = 0; index < 13; index++) {
+// 				let paiga = document.createElement("span")
+// 				paiga.className = paiType[Number(element.haishi[index])].cssSprite
+// 				display_dom.appendChild(paiga)
+// 			}
+// 			// for (let index = 0; index < element.machi.length; index++) {
+// 			// 	console.log(element.machi)
+// 			// 	console.log(element.machi[index])
+// 			// 	let machi = document.createElement("span")
+// 			// 	machi.classList.add([paiType[Number(element.machi[index])].cssSprite, "machi"])
+// 			// 	display_dom.appendChild(machi)
+// 			// }
+// 			let br = document.createElement("br");
+// 			display_dom.appendChild(br);
+// 		})
+// 	}
+// });
