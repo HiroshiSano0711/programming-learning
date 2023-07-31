@@ -184,35 +184,6 @@ let paiType = [
 	// {"No":37,"paiName":"中","cssSprite":"ji7"}
 ];
 
-const Majiang = require('@kobalab/majiang-core');
-
 $("#PaiMakeBtn").click(function() {
-	let chinitsu_hash = []
-	all_chinitsu_pattern.forEach(element => {
-		let chinitsu_string = ""
-		for(let j = 0; j < 9; j++){
-			if(element[j] != 0){
-				let num = (j + 1).toString().repeat(element[j])
-				chinitsu_string = chinitsu_string.concat(num)
-			}
-		}
-		if(chinitsu_string.length != 13){
-			console.log(chinitsu_string)
-		}
-		chinitsu_hash.push(chinitsu_string)
-	})
-	console.log(chinitsu_hash.reverse())
+	
 });
-
-
- 
-// {count: 676, machi_count: 0}
-// {count: 14193, machi_count: 1}
-// {count: 14493, machi_count: 2}
-// {count: 6739, machi_count: 3}
-// {count: 2948, machi_count: 4}
-// {count: 1335, machi_count: 5}
-// {count: 392, machi_count: 6}
-// {count: 79, machi_count: 7}
-// {count: 16, machi_count: 8}
-// {count: 1, machi_count: 9}
