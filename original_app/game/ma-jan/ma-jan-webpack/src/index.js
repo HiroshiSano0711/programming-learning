@@ -232,14 +232,18 @@ function OutputSortTehai(id_name){
 	let OutputPlace = $(id_name);
 	OutputPlace.empty();
 
-  chinitsu_string.forEach(element =>{
+  shanten_1_kanko_2.forEach(element =>{
     let paiga = "<span class=\"" + paiType[element.haishi[0]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[1]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[2]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[3]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[4]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[5]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[6]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[7]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[8]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[9]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[10]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[11]].cssSprite + "\"></span><span class=\"" + paiType[element.haishi[12]].cssSprite + "\"></span>";
     OutputPlace.append(paiga);
     OutputPlace.append("<br>");
   })
 }
 
-import chinitsu_string from "./chinitsu-pattern/shanten_2/all.json" assert { type: "json" };
+import shanten_1_kanko_0 from "./chinitsu-pattern/shanten_1/kanko_0.json" assert { type: "json" };
+import shanten_1_kanko_1 from "./chinitsu-pattern/shanten_1/kanko_1.json" assert { type: "json" };
+import shanten_1_kanko_2 from "./chinitsu-pattern/shanten_1/kanko_2.json" assert { type: "json" };
+// import shanten_1_kanko_3 from "./chinitsu-pattern/shanten_1/kanko_3.json" assert { type: "json" };
+
 $("#PaiMakeBtn").click(function() {
-	OutputSortTehai("#chinitsu_pattern");
+	OutputSortTehai("#chinitsu_pattern");  
 });

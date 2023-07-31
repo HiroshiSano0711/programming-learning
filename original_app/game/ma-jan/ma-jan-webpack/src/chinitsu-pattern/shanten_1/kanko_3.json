@@ -1072,16 +1072,6 @@
         "kanko_count": 3
     },
     {
-        "index": 7619,
-        "haishi": "1111444458888",
-        "shanten": 1,
-        "machi": [
-            "m3",
-            "m6"
-        ],
-        "kanko_count": 3
-    },
-    {
         "index": 7624,
         "haishi": "1111444466667",
         "shanten": 1,
@@ -1120,16 +1110,6 @@
         "machi": [
             "m5",
             "m8"
-        ],
-        "kanko_count": 3
-    },
-    {
-        "index": 7653,
-        "haishi": "1111444468888",
-        "shanten": 1,
-        "machi": [
-            "m5",
-            "m7"
         ],
         "kanko_count": 3
     },
@@ -1500,24 +1480,6 @@
         "kanko_count": 3
     },
     {
-        "index": 42386,
-        "haishi": "1222255558888",
-        "shanten": 1,
-        "machi": [
-            "m3"
-        ],
-        "kanko_count": 3
-    },
-    {
-        "index": 42390,
-        "haishi": "1222255559999",
-        "shanten": 1,
-        "machi": [
-            "m3"
-        ],
-        "kanko_count": 3
-    },
-    {
         "index": 42591,
         "haishi": "1222266667777",
         "shanten": 1,
@@ -1537,15 +1499,6 @@
             "m1",
             "m3",
             "m7"
-        ],
-        "kanko_count": 3
-    },
-    {
-        "index": 42605,
-        "haishi": "1222266669999",
-        "shanten": 1,
-        "machi": [
-            "m3"
         ],
         "kanko_count": 3
     },
@@ -1693,15 +1646,6 @@
             "m1",
             "m2",
             "m7"
-        ],
-        "kanko_count": 3
-    },
-    {
-        "index": 57941,
-        "haishi": "1333366669999",
-        "shanten": 1,
-        "machi": [
-            "m2"
         ],
         "kanko_count": 3
     },
@@ -2550,16 +2494,6 @@
         "kanko_count": 3
     },
     {
-        "index": 67300,
-        "haishi": "2222466669999",
-        "shanten": 1,
-        "machi": [
-            "m3",
-            "m5"
-        ],
-        "kanko_count": 3
-    },
-    {
         "index": 67356,
         "haishi": "2222477778888",
         "shanten": 1,
@@ -2665,16 +2599,6 @@
         "machi": [
             "m4",
             "m5",
-            "m7"
-        ],
-        "kanko_count": 3
-    },
-    {
-        "index": 67585,
-        "haishi": "2222566669999",
-        "shanten": 1,
-        "machi": [
-            "m4",
             "m7"
         ],
         "kanko_count": 3
