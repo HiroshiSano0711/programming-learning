@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-#paiYama > span , #paiTehai > span , #paiTehaiSort1 > span , #paiTehaiSort2 > span{
+#paiYama > span , #paiTehai > span , #allPattern > span{
   background-color:transparent;
   background-image:url(./pai.png);
   background-repeat:no-repeat;
