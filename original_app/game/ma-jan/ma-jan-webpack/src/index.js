@@ -361,30 +361,30 @@ window.addEventListener("DOMContentLoaded", function() {
 
 // const all_chinitsu_pattern = []
 
-// let all_data_with_pai_count = []
+let all_data_with_pai_count = []
 
-// shanten_1_all.forEach(element =>{
-// 	let count_1 = (element.haishi.match(/1/g) || []).length;
-// 	let count_2 = (element.haishi.match(/2/g) || []).length;
-// 	let count_3 = (element.haishi.match(/3/g) || []).length;
-// 	let count_4 = (element.haishi.match(/4/g) || []).length;
-// 	let count_5 = (element.haishi.match(/5/g) || []).length;
-// 	let count_6 = (element.haishi.match(/6/g) || []).length;
-// 	let count_7 = (element.haishi.match(/7/g) || []).length;
-// 	let count_8 = (element.haishi.match(/8/g) || []).length;
-// 	let count_9 = (element.haishi.match(/9/g) || []).length;
+shanten_1_kanko_3.forEach(element =>{
+	let count_1 = (element.haishi.match(/1/g) || []).length;
+	let count_2 = (element.haishi.match(/2/g) || []).length;
+	let count_3 = (element.haishi.match(/3/g) || []).length;
+	let count_4 = (element.haishi.match(/4/g) || []).length;
+	let count_5 = (element.haishi.match(/5/g) || []).length;
+	let count_6 = (element.haishi.match(/6/g) || []).length;
+	let count_7 = (element.haishi.match(/7/g) || []).length;
+	let count_8 = (element.haishi.match(/8/g) || []).length;
+	let count_9 = (element.haishi.match(/9/g) || []).length;
 
-// 	let for_cpp_data = `
-// 	{
-//     ${count_1},${count_2},${count_3},${count_4},${count_5},${count_6},${count_7},${count_8},${count_9},
-//     0,0,0,0,0,0,0,0,0,
-//     0,0,0,0,0,0,0,0,0,
-//     0,0,0,0,0,0,0
-//   }
-// 	`;
-// 	all_data_with_pai_count.push(for_cpp_data)
-// })
-// console.log(`${all_data_with_pai_count}`)
+	let for_cpp_data = `
+	{
+    ${count_1},${count_2},${count_3},${count_4},${count_5},${count_6},${count_7},${count_8},${count_9},
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0
+  }
+	`;
+	all_data_with_pai_count.push(for_cpp_data)
+})
+console.log(`${all_data_with_pai_count}`)
 
 // const group = tenpai_all.reduce((accumulator, current) => {
 // 	let agarihai_count = 0
