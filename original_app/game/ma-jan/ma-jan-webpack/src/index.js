@@ -1,4 +1,6 @@
-const Majiang = require('@kobalab/majiang-core');
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+// const Majiang = require('@kobalab/majiang-core');
 
 // all_chinitsu_json = []
 // chinitsu_string.forEach((element, index) => {
@@ -28,8 +30,6 @@ const Majiang = require('@kobalab/majiang-core');
 //   all_chinitsu_json.push(hash)
 // })
 // console.log(all_chinitsu_json)
-
-import chinitsu_all_pattern from "./chinitsu-pattern/all.json" assert { type: "json" };
 
 // const new_data = chinitsu_all_pattern.map(element => {
 // 	let new_machi = element.machi.map(e => {
@@ -242,39 +242,63 @@ let paiType = [
 	// {"No":37,"paiName":"中","cssSprite":"ji7"}
 ];
 
-// window.addEventListener("DOMContentLoaded", function() {
-// 	const start_btn = document.getElementById("start_btn")
+import chinitsu_all_pattern from "./data/all.json" assert { type: "json" };
+import tenpai_kanko_0 from "./data/tenpai/kanko-0.json" assert { type: "json" };
+import tenpai_kanko_1 from "./data/tenpai/kanko-1.json" assert { type: "json" };
+import tenpai_kanko_2 from "./data/tenpai/kanko-2.json" assert { type: "json" };
+import tenpai_kanko_3 from "./data/tenpai/kanko-3.json" assert { type: "json" };
+import shanten_1_kanko_0 from "./data/shanten_1/kanko-0.json" assert { type: "json" };
+import shanten_1_kanko_1 from "./data/shanten_1/kanko-1.json" assert { type: "json" };
+import shanten_1_kanko_2 from "./data/shanten_1/kanko-2.json" assert { type: "json" };
+import shanten_1_kanko_3 from "./data/shanten_1/kanko-3.json" assert { type: "json" };
+import shanten_2_kanko_0 from "./data/shanten_2/kanko-0.json" assert { type: "json" };
+import shanten_2_kanko_1 from "./data/shanten_2/kanko-1.json" assert { type: "json" };
+import shanten_2_kanko_2 from "./data/shanten_2/kanko-2.json" assert { type: "json" };
+import shanten_2_kanko_3 from "./data/shanten_2/kanko-3.json" assert { type: "json" };
 
-// 	start_btn.addEventListener("click", (event) => {
-// 		OutputTehai()
-// 	})
+console.log(tenpai_kanko_0.length)
+console.log(tenpai_kanko_1.length)
+console.log(tenpai_kanko_2.length)
+console.log(tenpai_kanko_3.length)
+console.log(shanten_1_kanko_0.length)
+console.log(shanten_1_kanko_1.length)
+console.log(shanten_1_kanko_2.length)
+console.log(shanten_1_kanko_3.length)
+console.log(shanten_2_kanko_0.length)
+console.log(shanten_2_kanko_1.length)
+console.log(shanten_2_kanko_2.length)
+console.log(shanten_2_kanko_3.length)
 
-// 	function OutputTehai(){
-// 		const display_dom = document.getElementById("chinitsu_pattern")
+window.addEventListener("DOMContentLoaded", function() {
+	const start_btn = document.getElementById("start_btn")
 
-// 		for (let z = 0; z < 100; z++) {
-// 			let element = chinitsu_all_pattern[z]
-// 			// chinitsu_all_pattern.forEach(element =>{
-// 			for (let index = 0; index < 13; index++) {
-// 				let paiga = document.createElement("span")
-// 				paiga.className = paiType[Number(element.haishi[index])].cssSprite
-// 				display_dom.appendChild(paiga)
-// 			}
+	start_btn.addEventListener("click", (event) => {
+		OutputTehai()
+	})
 
-// 			if(element.shanten == 0){
-// 				let span = document.createElement("span")
-// 				span.className = 'machi'
-// 				display_dom.appendChild(span)
+	function OutputTehai(){
+		const display_dom = document.getElementById("chinitsu_pattern")
 
-// 				for (let index = 0; index < element.machi.length; index++) {
-// 					let machi = document.createElement("span")
-// 					machi.className = paiType[Number(element.machi[index])].cssSprite
-// 					display_dom.appendChild(machi)
-// 				}
-// 			}
-// 			let br = document.createElement("br");
-// 			display_dom.appendChild(br);
-// 			// })
-// 		}
-// 	}
-// });
+		chinitsu_all_pattern.forEach(element =>{
+			for (let index = 0; index < 13; index++) {
+				let paiga = document.createElement("span")
+				paiga.className = paiType[Number(element.haishi[index])].cssSprite
+				display_dom.appendChild(paiga)
+			}
+
+			if(element.shanten == 0){
+				let span = document.createElement("span")
+				span.className = 'machi'
+				display_dom.appendChild(span)
+
+				for (let index = 0; index < element.machi.length; index++) {
+					let machi = document.createElement("span")
+					machi.className = paiType[Number(element.machi[index])].cssSprite
+					display_dom.appendChild(machi)
+				}
+			}
+			let br = document.createElement("br");
+			display_dom.appendChild(br);
+		})
+	}
+});
