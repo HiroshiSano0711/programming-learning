@@ -386,3 +386,50 @@ import shanten_2_kanko_3 from "./data/shanten_2/kanko-3.json" assert { type: "js
 // 	all_data_with_pai_count.push(for_cpp_data)
 // })
 // console.log(`${all_data_with_pai_count}`)
+
+// const group = tenpai_all.reduce((accumulator, current) => {
+// 	let agarihai_count = 0
+// 	current.machi.forEach(element => {
+// 		agarihai_count += 4
+// 		let used_count = (current.haishi.match(new RegExp(element, "g")) || []).length;
+// 		agarihai_count -= used_count
+// 	});
+//   const element = accumulator.find((p) => p.agarihai_count === agarihai_count);
+//   if (element) {
+//     element.count ++;
+//   } else {
+//     accumulator.push({
+//       count: 1,
+//       agarihai_count: agarihai_count
+//     });
+//   }
+//   return accumulator;
+// }, []);
+
+// console.log(group)
+
+// const new_all_data = chinitsu_all_pattern.map(element => {
+// 	let count_1 = (element.haishi.match(/1/g) || []).length;
+// 	let count_2 = (element.haishi.match(/2/g) || []).length;
+// 	let count_3 = (element.haishi.match(/3/g) || []).length;
+// 	let count_4 = (element.haishi.match(/4/g) || []).length;
+// 	let count_5 = (element.haishi.match(/5/g) || []).length;
+// 	let count_6 = (element.haishi.match(/6/g) || []).length;
+// 	let count_7 = (element.haishi.match(/7/g) || []).length;
+// 	let count_8 = (element.haishi.match(/8/g) || []).length;
+// 	let count_9 = (element.haishi.match(/9/g) || []).length;
+// 	element.pai_kind = [count_1, count_2, count_3, count_4, count_5, count_6, count_7, count_8, count_9]	
+// 	if(element.shanten == 0){
+// 		let agarihai_count = 0
+// 		element.machi.forEach(e => {
+// 			agarihai_count += 4
+// 			let used_count = (element.haishi.match(new RegExp(e, "g")) || []).length;
+// 			agarihai_count -= used_count
+// 		});
+// 		element.agarihai_count = agarihai_count
+// 	} else {
+// 		element.agarihai_count = 0
+// 	}
+// 	return element;
+// })
+// console.log(new_all_data)

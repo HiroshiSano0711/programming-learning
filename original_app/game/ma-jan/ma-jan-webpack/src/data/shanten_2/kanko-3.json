@@ -6,7 +6,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      1,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 4380,
@@ -15,7 +27,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      1,
+      0,
+      4,
+      0,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 4384,
@@ -24,7 +48,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      1,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 4976,
@@ -33,7 +69,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      1,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 4980,
@@ -42,7 +90,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      1,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 5195,
@@ -51,7 +111,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      1,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 6669,
@@ -61,7 +133,19 @@
       "2",
       "5"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      1,
+      4,
+      0,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 6673,
@@ -71,7 +155,19 @@
       "2",
       "5"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      1,
+      4,
+      0,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7265,
@@ -81,7 +177,19 @@
       "2",
       "4"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      1,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7269,
@@ -91,7 +199,19 @@
       "2",
       "4"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      1,
+      0,
+      4,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7484,
@@ -100,7 +220,19 @@
     "machi": [
       "2"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      1,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7609,
@@ -110,7 +242,19 @@
       "3",
       "6"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      1,
+      0,
+      4,
+      0,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7619,
@@ -120,7 +264,19 @@
       "3",
       "6"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      1,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7623,
@@ -130,7 +286,19 @@
       "3",
       "6"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      1,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7643,
@@ -140,7 +308,19 @@
       "5",
       "8"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      1,
+      4,
+      0,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7653,
@@ -150,7 +330,19 @@
       "5",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      1,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7657,
@@ -159,7 +351,19 @@
     "machi": [
       "5"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      1,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7658,
@@ -169,7 +373,19 @@
       "6",
       "9"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4,
+      1,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7659,
@@ -178,7 +394,19 @@
     "machi": [
       "8"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      1
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7667,
@@ -188,7 +416,19 @@
       "6",
       "9"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      1,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7671,
@@ -197,7 +437,19 @@
     "machi": [
       "8"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      1,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7672,
@@ -206,7 +458,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      4,
+      1
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 7675,
@@ -215,7 +479,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      1,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8146,
@@ -225,7 +501,19 @@
       "3",
       "6"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      1,
+      4,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8150,
@@ -235,7 +523,19 @@
       "3",
       "6"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      1,
+      4,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8365,
@@ -244,7 +544,19 @@
     "machi": [
       "5"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      1,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8465,
@@ -254,7 +566,19 @@
       "4",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      4,
+      1,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8469,
@@ -264,7 +588,19 @@
       "4",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      4,
+      1,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8479,
@@ -274,7 +610,19 @@
       "6",
       "9"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      4,
+      0,
+      1,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8483,
@@ -284,7 +632,19 @@
       "6",
       "8"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      4,
+      0,
+      1,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8484,
@@ -293,7 +653,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4,
+      1
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8487,
@@ -302,7 +674,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      1,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8650,
@@ -312,7 +696,19 @@
       "4",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      1,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8734,
@@ -322,7 +718,19 @@
       "5",
       "8"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      4,
+      1,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 8738,
@@ -331,7 +739,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      4,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      1,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 42386,
@@ -340,7 +760,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      1,
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 42390,
@@ -349,7 +781,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      1,
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 42605,
@@ -358,7 +802,19 @@
     "machi": [
       "3"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      1,
+      4,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 57941,
@@ -367,7 +823,19 @@
     "machi": [
       "2"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      1,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 66200,
@@ -377,7 +845,19 @@
       "1",
       "4"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      1,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 66204,
@@ -387,7 +867,19 @@
       "1",
       "4"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      1,
+      0,
+      4,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 66419,
@@ -397,7 +889,19 @@
       "1",
       "4"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      1,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67081,
@@ -407,7 +911,19 @@
       "3",
       "6"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      1,
+      4,
+      0,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67085,
@@ -417,7 +933,19 @@
       "3",
       "6"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      1,
+      4,
+      0,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67300,
@@ -427,7 +955,19 @@
       "3",
       "5"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      1,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67400,
@@ -437,7 +977,19 @@
       "4",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      4,
+      1,
+      0,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67404,
@@ -447,7 +999,19 @@
       "4",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      4,
+      1,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67414,
@@ -457,7 +1021,19 @@
       "6",
       "9"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      1,
+      4,
+      0
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67418,
@@ -467,7 +1043,19 @@
       "6",
       "8"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      1,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67419,
@@ -476,7 +1064,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4,
+      1
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67422,
@@ -485,7 +1085,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      1,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67585,
@@ -495,7 +1107,19 @@
       "4",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      1,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67669,
@@ -505,7 +1129,19 @@
       "5",
       "8"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      0,
+      4,
+      1,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 67673,
@@ -514,7 +1150,19 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      4,
+      0,
+      0,
+      0,
+      4,
+      0,
+      1,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 79466,
@@ -524,7 +1172,19 @@
       "1",
       "4"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      1,
+      4,
+      0,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 86536,
@@ -534,7 +1194,19 @@
       "2",
       "5"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      0,
+      4,
+      1,
+      0,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 86821,
@@ -544,7 +1216,19 @@
       "4",
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      0,
+      4,
+      0,
+      1,
+      4,
+      0,
+      0,
+      4
+    ],
+    "agarihai_count": 0
   },
   {
     "index": 86909,
@@ -553,6 +1237,18 @@
     "machi": [
       "7"
     ],
-    "kanko_count": 3
+    "kanko_count": 3,
+    "pai_kind": [
+      0,
+      0,
+      4,
+      0,
+      0,
+      4,
+      0,
+      1,
+      4
+    ],
+    "agarihai_count": 0
   }
 ]

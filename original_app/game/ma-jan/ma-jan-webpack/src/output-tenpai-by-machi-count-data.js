@@ -1,8 +1,3 @@
-// テンパイ カンコ０
-// テンパイ カンコ１
-// テンパイ カンコ２
-// テンパイ カンコ３
-
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
