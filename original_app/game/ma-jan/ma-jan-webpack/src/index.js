@@ -276,39 +276,38 @@ import shanten_2_kanko_3 from "./data/shanten_2/kanko-3.json" assert { type: "js
 // console.log(shanten_2_kanko_2.length)
 // console.log(shanten_2_kanko_3.length)
 
-// window.addEventListener("DOMContentLoaded", function() {
-// 	const start_btn = document.getElementById("start_btn")
+window.addEventListener("DOMContentLoaded", function() {
+	const start_btn = document.getElementById("start_btn")
 
-// 	start_btn.addEventListener("click", (event) => {
-// 		OutputTehai()
-// 	})
+	start_btn.addEventListener("click", (event) => {
+		OutputTehai()
+	})
 
-// 	function OutputTehai(){
-// 		const display_dom = document.getElementById("chinitsu_pattern")
+	function OutputTehai(){
+		const display_dom = document.getElementById("chinitsu_pattern")
 
-// 		shanten_2_all.forEach(element =>{
-// 			for (let index = 0; index < 13; index++) {
-// 				let paiga = document.createElement("span")
-// 				paiga.className = paiType[Number(element.haishi[index])].cssSprite
-// 				display_dom.appendChild(paiga)
-// 			}
+		tenpai_all.forEach(element =>{
+			if(element.agarihai_count == 23){
+				for (let index = 0; index < 13; index++) {
+					let paiga = document.createElement("span")
+					paiga.className = paiType[Number(element.haishi[index])].cssSprite
+					display_dom.appendChild(paiga)
+				}
+				let span = document.createElement("span")
+				span.className = 'machi'
+				display_dom.appendChild(span)
 
-// 			if(element.shanten == 0){
-// 				let span = document.createElement("span")
-// 				span.className = 'machi'
-// 				display_dom.appendChild(span)
-
-// 				for (let index = 0; index < element.machi.length; index++) {
-// 					let machi = document.createElement("span")
-// 					machi.className = paiType[Number(element.machi[index])].cssSprite
-// 					display_dom.appendChild(machi)
-// 				}
-// 			}
-// 			let br = document.createElement("br");
-// 			display_dom.appendChild(br);
-// 		})
-// 	}
-// });
+				for (let index = 0; index < element.machi.length; index++) {
+					let machi = document.createElement("span")
+					machi.className = paiType[Number(element.machi[index])].cssSprite
+					display_dom.appendChild(machi)
+				}
+				let br = document.createElement("br");
+				display_dom.appendChild(br);
+			}
+		})
+	}
+});
 
 // 反転データ
 // let hanten = []
