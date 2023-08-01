@@ -1,0 +1,415 @@
+[
+  {
+    "index": 7619,
+    "haishi": "1111444458888",
+    "shanten": 2,
+    "machi": [
+      "3",
+      "6"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7623,
+    "haishi": "1111444459999",
+    "shanten": 2,
+    "machi": [
+      "3",
+      "6"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7653,
+    "haishi": "1111444468888",
+    "shanten": 2,
+    "machi": [
+      "5",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7657,
+    "haishi": "1111444469999",
+    "shanten": 2,
+    "machi": [
+      "5"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7658,
+    "haishi": "1111444477778",
+    "shanten": 2,
+    "machi": [
+      "6",
+      "9"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7659,
+    "haishi": "1111444477779",
+    "shanten": 2,
+    "machi": [
+      "8"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7667,
+    "haishi": "1111444478888",
+    "shanten": 2,
+    "machi": [
+      "6",
+      "9"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7671,
+    "haishi": "1111444479999",
+    "shanten": 2,
+    "machi": [
+      "8"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7672,
+    "haishi": "1111444488889",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 7675,
+    "haishi": "1111444489999",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8146,
+    "haishi": "1111455558888",
+    "shanten": 2,
+    "machi": [
+      "3",
+      "6"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8150,
+    "haishi": "1111455559999",
+    "shanten": 2,
+    "machi": [
+      "3",
+      "6"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8365,
+    "haishi": "1111466669999",
+    "shanten": 2,
+    "machi": [
+      "5"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8465,
+    "haishi": "1111555568888",
+    "shanten": 2,
+    "machi": [
+      "4",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8469,
+    "haishi": "1111555569999",
+    "shanten": 2,
+    "machi": [
+      "4",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8479,
+    "haishi": "1111555578888",
+    "shanten": 2,
+    "machi": [
+      "6",
+      "9"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8483,
+    "haishi": "1111555579999",
+    "shanten": 2,
+    "machi": [
+      "6",
+      "8"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8484,
+    "haishi": "1111555588889",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8487,
+    "haishi": "1111555589999",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8650,
+    "haishi": "1111566669999",
+    "shanten": 2,
+    "machi": [
+      "4",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8734,
+    "haishi": "1111666679999",
+    "shanten": 2,
+    "machi": [
+      "5",
+      "8"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 8738,
+    "haishi": "1111666689999",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 42386,
+    "haishi": "1222255558888",
+    "shanten": 2,
+    "machi": [
+      "3"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 42390,
+    "haishi": "1222255559999",
+    "shanten": 2,
+    "machi": [
+      "3"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 42605,
+    "haishi": "1222266669999",
+    "shanten": 2,
+    "machi": [
+      "3"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 57941,
+    "haishi": "1333366669999",
+    "shanten": 2,
+    "machi": [
+      "2"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 66200,
+    "haishi": "2222355558888",
+    "shanten": 2,
+    "machi": [
+      "1",
+      "4"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 66204,
+    "haishi": "2222355559999",
+    "shanten": 2,
+    "machi": [
+      "1",
+      "4"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 66419,
+    "haishi": "2222366669999",
+    "shanten": 2,
+    "machi": [
+      "1",
+      "4"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67300,
+    "haishi": "2222466669999",
+    "shanten": 2,
+    "machi": [
+      "3",
+      "5"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67400,
+    "haishi": "2222555568888",
+    "shanten": 2,
+    "machi": [
+      "4",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67404,
+    "haishi": "2222555569999",
+    "shanten": 2,
+    "machi": [
+      "4",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67414,
+    "haishi": "2222555578888",
+    "shanten": 2,
+    "machi": [
+      "6",
+      "9"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67418,
+    "haishi": "2222555579999",
+    "shanten": 2,
+    "machi": [
+      "6",
+      "8"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67419,
+    "haishi": "2222555588889",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67422,
+    "haishi": "2222555589999",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67585,
+    "haishi": "2222566669999",
+    "shanten": 2,
+    "machi": [
+      "4",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67669,
+    "haishi": "2222666679999",
+    "shanten": 2,
+    "machi": [
+      "5",
+      "8"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 67673,
+    "haishi": "2222666689999",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 79466,
+    "haishi": "2333366669999",
+    "shanten": 2,
+    "machi": [
+      "1",
+      "4"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 86536,
+    "haishi": "3333466669999",
+    "shanten": 2,
+    "machi": [
+      "2",
+      "5"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 86821,
+    "haishi": "3333566669999",
+    "shanten": 2,
+    "machi": [
+      "4",
+      "7"
+    ],
+    "kanko_count": 3
+  },
+  {
+    "index": 86909,
+    "haishi": "3333666689999",
+    "shanten": 2,
+    "machi": [
+      "7"
+    ],
+    "kanko_count": 3
+  }
+]
