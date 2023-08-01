@@ -409,33 +409,6 @@
     "kanko_count": 3
   },
   {
-    "index": 4370,
-    "haishi": "1111244447777",
-    "shanten": 1,
-    "machi": [
-      "3"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 4380,
-    "haishi": "1111244448888",
-    "shanten": 1,
-    "machi": [
-      "3"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 4384,
-    "haishi": "1111244449999",
-    "shanten": 1,
-    "machi": [
-      "3"
-    ],
-    "kanko_count": 3
-  },
-  {
     "index": 4946,
     "haishi": "1111255556666",
     "shanten": 1,
@@ -459,24 +432,6 @@
     "kanko_count": 3
   },
   {
-    "index": 4976,
-    "haishi": "1111255558888",
-    "shanten": 1,
-    "machi": [
-      "3"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 4980,
-    "haishi": "1111255559999",
-    "shanten": 1,
-    "machi": [
-      "3"
-    ],
-    "kanko_count": 3
-  },
-  {
     "index": 5181,
     "haishi": "1111266667777",
     "shanten": 1,
@@ -496,15 +451,6 @@
       "2",
       "3",
       "7"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 5195,
-    "haishi": "1111266669999",
-    "shanten": 1,
-    "machi": [
-      "3"
     ],
     "kanko_count": 3
   },
@@ -885,26 +831,6 @@
     "kanko_count": 3
   },
   {
-    "index": 6669,
-    "haishi": "1111344448888",
-    "shanten": 1,
-    "machi": [
-      "2",
-      "5"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 6673,
-    "haishi": "1111344449999",
-    "shanten": 1,
-    "machi": [
-      "2",
-      "5"
-    ],
-    "kanko_count": 3
-  },
-  {
     "index": 7235,
     "haishi": "1111355556666",
     "shanten": 1,
@@ -929,26 +855,6 @@
     "kanko_count": 3
   },
   {
-    "index": 7265,
-    "haishi": "1111355558888",
-    "shanten": 1,
-    "machi": [
-      "2",
-      "4"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 7269,
-    "haishi": "1111355559999",
-    "shanten": 1,
-    "machi": [
-      "2",
-      "4"
-    ],
-    "kanko_count": 3
-  },
-  {
     "index": 7470,
     "haishi": "1111366667777",
     "shanten": 1,
@@ -968,15 +874,6 @@
       "2",
       "3",
       "7"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 7484,
-    "haishi": "1111366669999",
-    "shanten": 1,
-    "machi": [
-      "2"
     ],
     "kanko_count": 3
   },
@@ -1062,16 +959,6 @@
     "kanko_count": 3
   },
   {
-    "index": 7609,
-    "haishi": "1111444457777",
-    "shanten": 1,
-    "machi": [
-      "3",
-      "6"
-    ],
-    "kanko_count": 3
-  },
-  {
     "index": 7624,
     "haishi": "1111444466667",
     "shanten": 1,
@@ -1100,16 +987,6 @@
     "machi": [
       "5",
       "9"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 7643,
-    "haishi": "1111444467777",
-    "shanten": 1,
-    "machi": [
-      "5",
-      "8"
     ],
     "kanko_count": 3
   },
@@ -2445,26 +2322,6 @@
     "machi": [
       "3",
       "4",
-      "6"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 67081,
-    "haishi": "2222455558888",
-    "shanten": 1,
-    "machi": [
-      "3",
-      "6"
-    ],
-    "kanko_count": 3
-  },
-  {
-    "index": 67085,
-    "haishi": "2222455559999",
-    "shanten": 1,
-    "machi": [
-      "3",
       "6"
     ],
     "kanko_count": 3

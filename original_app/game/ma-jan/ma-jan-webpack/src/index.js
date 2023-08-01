@@ -243,18 +243,25 @@ let paiType = [
 ];
 
 import chinitsu_all_pattern from "./data/all.json" assert { type: "json" };
+import tenpai_all from "./data/tenpai/all.json" assert { type: "json" };
 import tenpai_kanko_0 from "./data/tenpai/kanko-0.json" assert { type: "json" };
 import tenpai_kanko_1 from "./data/tenpai/kanko-1.json" assert { type: "json" };
 import tenpai_kanko_2 from "./data/tenpai/kanko-2.json" assert { type: "json" };
 import tenpai_kanko_3 from "./data/tenpai/kanko-3.json" assert { type: "json" };
+import shanten_1_all from "./data/shanten_1/all.json" assert { type: "json" };
 import shanten_1_kanko_0 from "./data/shanten_1/kanko-0.json" assert { type: "json" };
 import shanten_1_kanko_1 from "./data/shanten_1/kanko-1.json" assert { type: "json" };
 import shanten_1_kanko_2 from "./data/shanten_1/kanko-2.json" assert { type: "json" };
 import shanten_1_kanko_3 from "./data/shanten_1/kanko-3.json" assert { type: "json" };
+import shanten_2_all from "./data/shanten_2/all.json" assert { type: "json" };
 import shanten_2_kanko_0 from "./data/shanten_2/kanko-0.json" assert { type: "json" };
 import shanten_2_kanko_1 from "./data/shanten_2/kanko-1.json" assert { type: "json" };
 import shanten_2_kanko_2 from "./data/shanten_2/kanko-2.json" assert { type: "json" };
 import shanten_2_kanko_3 from "./data/shanten_2/kanko-3.json" assert { type: "json" };
+
+console.log(tenpai_all.length)
+console.log(shanten_1_all.length)
+console.log(shanten_2_all.length)
 
 console.log(tenpai_kanko_0.length)
 console.log(tenpai_kanko_1.length)
@@ -269,36 +276,86 @@ console.log(shanten_2_kanko_1.length)
 console.log(shanten_2_kanko_2.length)
 console.log(shanten_2_kanko_3.length)
 
-window.addEventListener("DOMContentLoaded", function() {
-	const start_btn = document.getElementById("start_btn")
+// window.addEventListener("DOMContentLoaded", function() {
+// 	const start_btn = document.getElementById("start_btn")
 
-	start_btn.addEventListener("click", (event) => {
-		OutputTehai()
-	})
+// 	start_btn.addEventListener("click", (event) => {
+// 		OutputTehai()
+// 	})
 
-	function OutputTehai(){
-		const display_dom = document.getElementById("chinitsu_pattern")
+// 	function OutputTehai(){
+// 		const display_dom = document.getElementById("chinitsu_pattern")
 
-		chinitsu_all_pattern.forEach(element =>{
-			for (let index = 0; index < 13; index++) {
-				let paiga = document.createElement("span")
-				paiga.className = paiType[Number(element.haishi[index])].cssSprite
-				display_dom.appendChild(paiga)
-			}
+// 		shanten_2_all.forEach(element =>{
+// 			for (let index = 0; index < 13; index++) {
+// 				let paiga = document.createElement("span")
+// 				paiga.className = paiType[Number(element.haishi[index])].cssSprite
+// 				display_dom.appendChild(paiga)
+// 			}
 
-			if(element.shanten == 0){
-				let span = document.createElement("span")
-				span.className = 'machi'
-				display_dom.appendChild(span)
+// 			if(element.shanten == 0){
+// 				let span = document.createElement("span")
+// 				span.className = 'machi'
+// 				display_dom.appendChild(span)
 
-				for (let index = 0; index < element.machi.length; index++) {
-					let machi = document.createElement("span")
-					machi.className = paiType[Number(element.machi[index])].cssSprite
-					display_dom.appendChild(machi)
-				}
-			}
-			let br = document.createElement("br");
-			display_dom.appendChild(br);
-		})
-	}
-});
+// 				for (let index = 0; index < element.machi.length; index++) {
+// 					let machi = document.createElement("span")
+// 					machi.className = paiType[Number(element.machi[index])].cssSprite
+// 					display_dom.appendChild(machi)
+// 				}
+// 			}
+// 			let br = document.createElement("br");
+// 			display_dom.appendChild(br);
+// 		})
+// 	}
+// });
+
+// 反転データ
+// let hanten = []
+// shanten_2_all.forEach(element =>{
+// 	let haishi = element.haishi
+// 	let hanten_arr = []
+// 	Array.prototype.forEach.call(haishi, (h) =>{
+// 		if(h == '1'){
+// 			hanten_arr.unshift('9')
+// 		}
+// 		if(h == '2'){
+// 			hanten_arr.unshift('8')
+// 		}
+// 		if(h == '3'){
+// 			hanten_arr.unshift('7')
+// 		}
+// 		if(h == '4'){
+// 			hanten_arr.unshift('6')
+// 		}
+// 		if(h == '5'){
+// 			hanten_arr.unshift('5')
+// 		}
+// 		if(h == '6'){
+// 			hanten_arr.unshift('4')
+// 		}
+// 		if(h == '7'){
+// 			hanten_arr.unshift('3')
+// 		}
+// 		if(h == '8'){
+// 			hanten_arr.unshift('2')
+// 		}
+// 		if(h == '9'){
+// 			hanten_arr.unshift('1')
+// 		}
+// 	})
+// 	let hanten_haishi = hanten_arr.join('')
+
+// 	hanten.push(hanten_haishi)
+// 	console.log(hanten)
+// });
+// let moto_haishi = shanten_2_all.map((element) => {
+// 	 return element.haishi
+// })
+
+// hanten.forEach(element =>{
+// 	let indexSat = moto_haishi.indexOf(element);
+// 	if(indexSat == -1){
+// 		console.log(element);
+// 	}
+// })
