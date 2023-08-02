@@ -1757,28 +1757,6 @@
     "agarihai_count": 0
   },
   {
-    "index": 6659,
-    "haishi": "1111344447777",
-    "shanten": 1,
-    "machi": [
-      "2",
-      "5"
-    ],
-    "kanko_count": 3,
-    "pai_kind": [
-      4,
-      0,
-      1,
-      4,
-      0,
-      0,
-      4,
-      0,
-      0
-    ],
-    "agarihai_count": 0
-  },
-  {
     "index": 7235,
     "haishi": "1111355556666",
     "shanten": 1,
@@ -7091,28 +7069,6 @@
       1,
       4,
       0
-    ],
-    "agarihai_count": 0
-  },
-  {
-    "index": 86905,
-    "haishi": "3333666679999",
-    "shanten": 1,
-    "machi": [
-      "5",
-      "8"
-    ],
-    "kanko_count": 3,
-    "pai_kind": [
-      0,
-      0,
-      4,
-      0,
-      0,
-      4,
-      1,
-      0,
-      4
     ],
     "agarihai_count": 0
   },
