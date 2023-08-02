@@ -548,7 +548,7 @@ sortable.forEach((element) => {
 })
 
 try {
-  fs.writeFileSync("./src/data/tenpai/machi_pattern.json", JSON.stringify(total, null, "  "));
+  fs.writeFileSync("./src/data/stats/total_by_machi_pattern.json", JSON.stringify(total, null, "  "));
   console.log('出力成功');
 }catch(e){
   console.log(e);
