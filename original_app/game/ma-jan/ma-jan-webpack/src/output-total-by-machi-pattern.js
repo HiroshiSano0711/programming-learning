@@ -542,13 +542,20 @@ sortable.sort(function(a, b) {
 	return 0;
 });
 
-let total = []
+try {
+  fs.writeFileSync("./src/data/tenpai/machi/pattern.json", JSON.stringify(sortable, null, "  "));
+  console.log('出力成功');
+}catch(e){
+  console.log(e);
+}
+
+let stats_total = []
 sortable.forEach((element) => {
-  total.push({ [element[0]]: element[1].length })
+  stats_total.push({ [element[0]]: element[1].length })
 })
 
 try {
-  fs.writeFileSync("./src/data/stats/total_by_machi_pattern.json", JSON.stringify(total, null, "  "));
+  fs.writeFileSync("./src/data/stats/total_by_machi_pattern.json", JSON.stringify(stats_total, null, "  "));
   console.log('出力成功');
 }catch(e){
   console.log(e);
