@@ -259,22 +259,22 @@ import shanten_2_kanko_1 from "./data/shanten_2/kanko-1.json" assert { type: "js
 import shanten_2_kanko_2 from "./data/shanten_2/kanko-2.json" assert { type: "json" };
 import shanten_2_kanko_3 from "./data/shanten_2/kanko-3.json" assert { type: "json" };
 
-console.log(tenpai_all.length)
-console.log(shanten_1_all.length)
-console.log(shanten_2_all.length)
+// console.log(tenpai_all.length)
+// console.log(shanten_1_all.length)
+// console.log(shanten_2_all.length)
 
-console.log(tenpai_kanko_0.length)
-console.log(tenpai_kanko_1.length)
-console.log(tenpai_kanko_2.length)
-console.log(tenpai_kanko_3.length)
-console.log(shanten_1_kanko_0.length)
-console.log(shanten_1_kanko_1.length)
-console.log(shanten_1_kanko_2.length)
-console.log(shanten_1_kanko_3.length)
-console.log(shanten_2_kanko_0.length)
-console.log(shanten_2_kanko_1.length)
-console.log(shanten_2_kanko_2.length)
-console.log(shanten_2_kanko_3.length)
+// console.log(tenpai_kanko_0.length)
+// console.log(tenpai_kanko_1.length)
+// console.log(tenpai_kanko_2.length)
+// console.log(tenpai_kanko_3.length)
+// console.log(shanten_1_kanko_0.length)
+// console.log(shanten_1_kanko_1.length)
+// console.log(shanten_1_kanko_2.length)
+// console.log(shanten_1_kanko_3.length)
+// console.log(shanten_2_kanko_0.length)
+// console.log(shanten_2_kanko_1.length)
+// console.log(shanten_2_kanko_2.length)
+// console.log(shanten_2_kanko_3.length)
 
 window.addEventListener("DOMContentLoaded", function() {
 	const start_btn = document.getElementById("start_btn")
@@ -560,9 +560,6 @@ window.addEventListener("DOMContentLoaded", function() {
 // console.log(machi_4_to_8_pattern.length)
 // console.log('machi_5_to_9_pattern')
 // console.log(machi_5_to_9_pattern.length)
-
-// let machi_1_5_9_pattern = []
-// let machi_1_5_9 = ["1", "2", "5", "8", "9"]
 
 // tenpai_all.forEach(element => {	
 // 	if(element.shanten == 0){
