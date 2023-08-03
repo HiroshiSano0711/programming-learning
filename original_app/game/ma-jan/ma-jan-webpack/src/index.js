@@ -571,3 +571,69 @@ window.addEventListener("DOMContentLoaded", function() {
 
 // console.log('machi_1_2_5_9_pattern')
 // console.log(machi_1_5_9_pattern)
+
+
+
+let machi_1_count = 0
+let machi_2_count = 0
+let machi_3_count = 0
+let machi_4_count = 0
+let machi_5_count = 0
+let machi_6_count = 0
+let machi_7_count = 0
+let machi_8_count = 0
+let machi_9_count = 0
+
+
+tenpai_all.forEach(element => {	
+	if(element.shanten == 0){
+		console.log(element.machi)
+		console.log(element.machi.indexOf("8") !== -1)
+		if(element.machi.indexOf("1") !== -1){
+			machi_1_count +=1
+		}
+		if(element.machi.indexOf("2") !== -1){
+			machi_2_count +=1
+		}
+		if(element.machi.indexOf("3") !== -1){
+			machi_3_count +=1
+		}
+		if(element.machi.indexOf("4") !== -1){
+			machi_4_count +=1
+		}
+		if(element.machi.indexOf("5") !== -1){
+			machi_5_count +=1
+		}
+		if(element.machi.indexOf("6") !== -1){
+			machi_6_count +=1
+		}
+		if(element.machi.indexOf("7") !== -1){
+			machi_7_count +=1
+		}
+		if(element.machi.indexOf("8") !== -1){
+			machi_8_count +=1
+		}
+		if(element.machi.indexOf("9") !== -1){
+			machi_9_count +=1
+		}
+	}
+})
+
+console.log('machi_1_count')
+console.log(machi_1_count)
+console.log('machi_2_count')
+console.log(machi_2_count)
+console.log('machi_3_count')
+console.log(machi_3_count)
+console.log('machi_4_count')
+console.log(machi_4_count)
+console.log('machi_5_count')
+console.log(machi_5_count)
+console.log('machi_6_count')
+console.log(machi_6_count)
+console.log('machi_7_count')
+console.log(machi_7_count)
+console.log('machi_8_count')
+console.log(machi_8_count)
+console.log('machi_9_count')
+console.log(machi_9_count)

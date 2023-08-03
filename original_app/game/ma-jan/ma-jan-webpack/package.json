@@ -2,11 +2,11 @@
   "name": "ma-jan-webpack",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./index.js",
+  "exports": "./index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "output_all_data": "node src/output-by-shanten.js && node src/output-tenpai-kanko-data.js && node src/output-shanten-1-kanko-data.js && node src/output-shanten-2-kanko-data.js && node src/output-tenpai-by-machi-count-data.js"
+    "output_all_data": "node --mode development src/script/output-by-shanten.js && node src/script/output-tenpai-kanko-data.js && node src/script/output-shanten-1-kanko-data.js && node src/script/output-shanten-2-kanko-data.js && node src/script/output-tenpai-by-machi-count-data.js"
   },
   "keywords": [],
   "author": "",
