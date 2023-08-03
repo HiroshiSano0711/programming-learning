@@ -198,28 +198,28 @@ const paiYama = [
 	// {"No":135,"paiName":"中","paiCode":"7z","paiNo":37}
 ];
 
-let paiType = [
-	{"No":0,"paiName":"赤五万","cssSprite":"man0"},
-	{"No":1,"paiName":"一万","cssSprite":"man1"},
-	{"No":2,"paiName":"二万","cssSprite":"man2"},
-	{"No":3,"paiName":"三万","cssSprite":"man3"},
-	{"No":4,"paiName":"四万","cssSprite":"man4"},
-	{"No":5,"paiName":"五万","cssSprite":"man5"},
-	{"No":6,"paiName":"六万","cssSprite":"man6"},
-	{"No":7,"paiName":"七万","cssSprite":"man7"},
-	{"No":8,"paiName":"八万","cssSprite":"man8"},
-	{"No":9,"paiName":"九万","cssSprite":"man9"},
+let pai_type = [
+	// {"No":0,"paiName":"赤五万","cssSprite":"man0"},
+	// {"No":1,"paiName":"一万","cssSprite":"man1"},
+	// {"No":2,"paiName":"二万","cssSprite":"man2"},
+	// {"No":3,"paiName":"三万","cssSprite":"man3"},
+	// {"No":4,"paiName":"四万","cssSprite":"man4"},
+	// {"No":5,"paiName":"五万","cssSprite":"man5"},
+	// {"No":6,"paiName":"六万","cssSprite":"man6"},
+	// {"No":7,"paiName":"七万","cssSprite":"man7"},
+	// {"No":8,"paiName":"八万","cssSprite":"man8"},
+	// {"No":9,"paiName":"九万","cssSprite":"man9"},
 
-	// {"No":10,"paiName":"赤五筒","cssSprite":"pin0"},
-	// {"No":11,"paiName":"一筒","cssSprite":"pin1"},
-	// {"No":12,"paiName":"二筒","cssSprite":"pin2"},
-	// {"No":13,"paiName":"三筒","cssSprite":"pin3"},
-	// {"No":14,"paiName":"四筒","cssSprite":"pin4"},
-	// {"No":15,"paiName":"五筒","cssSprite":"pin5"},
-	// {"No":16,"paiName":"六筒","cssSprite":"pin6"},
-	// {"No":17,"paiName":"七筒","cssSprite":"pin7"},
-	// {"No":18,"paiName":"八筒","cssSprite":"pin8"},
-	// {"No":19,"paiName":"九筒","cssSprite":"pin9"},
+	{"No":10,"paiName":"赤五筒","cssSprite":"pin0"},
+	{"No":11,"paiName":"一筒","cssSprite":"pin1"},
+	{"No":12,"paiName":"二筒","cssSprite":"pin2"},
+	{"No":13,"paiName":"三筒","cssSprite":"pin3"},
+	{"No":14,"paiName":"四筒","cssSprite":"pin4"},
+	{"No":15,"paiName":"五筒","cssSprite":"pin5"},
+	{"No":16,"paiName":"六筒","cssSprite":"pin6"},
+	{"No":17,"paiName":"七筒","cssSprite":"pin7"},
+	{"No":18,"paiName":"八筒","cssSprite":"pin8"},
+	{"No":19,"paiName":"九筒","cssSprite":"pin9"},
 
 	// {"No":20,"paiName":"赤五索","cssSprite":"sou0"},
 	// {"No":21,"paiName":"一索","cssSprite":"sou1"},
@@ -242,22 +242,22 @@ let paiType = [
 	// {"No":37,"paiName":"中","cssSprite":"ji7"}
 ];
 
-import chinitsu_all_pattern from "./data/all.json" assert { type: "json" };
+// import chinitsu_all_pattern from "./data/all.json" assert { type: "json" };
 import tenpai_all from "./data/tenpai/all.json" assert { type: "json" };
-import tenpai_kanko_0 from "./data/tenpai/kanko-0.json" assert { type: "json" };
-import tenpai_kanko_1 from "./data/tenpai/kanko-1.json" assert { type: "json" };
-import tenpai_kanko_2 from "./data/tenpai/kanko-2.json" assert { type: "json" };
-import tenpai_kanko_3 from "./data/tenpai/kanko-3.json" assert { type: "json" };
-import shanten_1_all from "./data/shanten_1/all.json" assert { type: "json" };
-import shanten_1_kanko_0 from "./data/shanten_1/kanko-0.json" assert { type: "json" };
-import shanten_1_kanko_1 from "./data/shanten_1/kanko-1.json" assert { type: "json" };
-import shanten_1_kanko_2 from "./data/shanten_1/kanko-2.json" assert { type: "json" };
-import shanten_1_kanko_3 from "./data/shanten_1/kanko-3.json" assert { type: "json" };
-import shanten_2_all from "./data/shanten_2/all.json" assert { type: "json" };
-import shanten_2_kanko_0 from "./data/shanten_2/kanko-0.json" assert { type: "json" };
-import shanten_2_kanko_1 from "./data/shanten_2/kanko-1.json" assert { type: "json" };
-import shanten_2_kanko_2 from "./data/shanten_2/kanko-2.json" assert { type: "json" };
-import shanten_2_kanko_3 from "./data/shanten_2/kanko-3.json" assert { type: "json" };
+// import tenpai_kanko_0 from "./data/tenpai/kanko-0.json" assert { type: "json" };
+// import tenpai_kanko_1 from "./data/tenpai/kanko-1.json" assert { type: "json" };
+// import tenpai_kanko_2 from "./data/tenpai/kanko-2.json" assert { type: "json" };
+// import tenpai_kanko_3 from "./data/tenpai/kanko-3.json" assert { type: "json" };
+// import shanten_1_all from "./data/shanten_1/all.json" assert { type: "json" };
+// import shanten_1_kanko_0 from "./data/shanten_1/kanko-0.json" assert { type: "json" };
+// import shanten_1_kanko_1 from "./data/shanten_1/kanko-1.json" assert { type: "json" };
+// import shanten_1_kanko_2 from "./data/shanten_1/kanko-2.json" assert { type: "json" };
+// import shanten_1_kanko_3 from "./data/shanten_1/kanko-3.json" assert { type: "json" };
+// import shanten_2_all from "./data/shanten_2/all.json" assert { type: "json" };
+// import shanten_2_kanko_0 from "./data/shanten_2/kanko-0.json" assert { type: "json" };
+// import shanten_2_kanko_1 from "./data/shanten_2/kanko-1.json" assert { type: "json" };
+// import shanten_2_kanko_2 from "./data/shanten_2/kanko-2.json" assert { type: "json" };
+// import shanten_2_kanko_3 from "./data/shanten_2/kanko-3.json" assert { type: "json" };
 
 // console.log(tenpai_all.length)
 // console.log(shanten_1_all.length)
@@ -287,10 +287,11 @@ window.addEventListener("DOMContentLoaded", function() {
 		const display_dom = document.getElementById("chinitsu_pattern")
 
 		tenpai_all.forEach(element =>{
-			if(element.agarihai_count == 23){
+			if(JSON.stringify(element.machi) == JSON.stringify(["1", "2", "3", "5", "6", "7", "8"])){
+				console.log(element.haishi)
 				for (let index = 0; index < 13; index++) {
 					let paiga = document.createElement("span")
-					paiga.className = paiType[Number(element.haishi[index])].cssSprite
+					paiga.className = pai_type[Number(element.haishi[index])].cssSprite
 					display_dom.appendChild(paiga)
 				}
 				let span = document.createElement("span")
@@ -299,7 +300,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
 				for (let index = 0; index < element.machi.length; index++) {
 					let machi = document.createElement("span")
-					machi.className = paiType[Number(element.machi[index])].cssSprite
+					machi.className = pai_type[Number(element.machi[index])].cssSprite
 					display_dom.appendChild(machi)
 				}
 				let br = document.createElement("br");
@@ -574,66 +575,66 @@ window.addEventListener("DOMContentLoaded", function() {
 
 
 
-let machi_1_count = 0
-let machi_2_count = 0
-let machi_3_count = 0
-let machi_4_count = 0
-let machi_5_count = 0
-let machi_6_count = 0
-let machi_7_count = 0
-let machi_8_count = 0
-let machi_9_count = 0
+// let machi_1_count = 0
+// let machi_2_count = 0
+// let machi_3_count = 0
+// let machi_4_count = 0
+// let machi_5_count = 0
+// let machi_6_count = 0
+// let machi_7_count = 0
+// let machi_8_count = 0
+// let machi_9_count = 0
 
 
-tenpai_all.forEach(element => {	
-	if(element.shanten == 0){
-		console.log(element.machi)
-		console.log(element.machi.indexOf("8") !== -1)
-		if(element.machi.indexOf("1") !== -1){
-			machi_1_count +=1
-		}
-		if(element.machi.indexOf("2") !== -1){
-			machi_2_count +=1
-		}
-		if(element.machi.indexOf("3") !== -1){
-			machi_3_count +=1
-		}
-		if(element.machi.indexOf("4") !== -1){
-			machi_4_count +=1
-		}
-		if(element.machi.indexOf("5") !== -1){
-			machi_5_count +=1
-		}
-		if(element.machi.indexOf("6") !== -1){
-			machi_6_count +=1
-		}
-		if(element.machi.indexOf("7") !== -1){
-			machi_7_count +=1
-		}
-		if(element.machi.indexOf("8") !== -1){
-			machi_8_count +=1
-		}
-		if(element.machi.indexOf("9") !== -1){
-			machi_9_count +=1
-		}
-	}
-})
+// tenpai_all.forEach(element => {	
+// 	if(element.shanten == 0){
+// 		console.log(element.machi)
+// 		console.log(element.machi.indexOf("8") !== -1)
+// 		if(element.machi.indexOf("1") !== -1){
+// 			machi_1_count +=1
+// 		}
+// 		if(element.machi.indexOf("2") !== -1){
+// 			machi_2_count +=1
+// 		}
+// 		if(element.machi.indexOf("3") !== -1){
+// 			machi_3_count +=1
+// 		}
+// 		if(element.machi.indexOf("4") !== -1){
+// 			machi_4_count +=1
+// 		}
+// 		if(element.machi.indexOf("5") !== -1){
+// 			machi_5_count +=1
+// 		}
+// 		if(element.machi.indexOf("6") !== -1){
+// 			machi_6_count +=1
+// 		}
+// 		if(element.machi.indexOf("7") !== -1){
+// 			machi_7_count +=1
+// 		}
+// 		if(element.machi.indexOf("8") !== -1){
+// 			machi_8_count +=1
+// 		}
+// 		if(element.machi.indexOf("9") !== -1){
+// 			machi_9_count +=1
+// 		}
+// 	}
+// })
 
-console.log('machi_1_count')
-console.log(machi_1_count)
-console.log('machi_2_count')
-console.log(machi_2_count)
-console.log('machi_3_count')
-console.log(machi_3_count)
-console.log('machi_4_count')
-console.log(machi_4_count)
-console.log('machi_5_count')
-console.log(machi_5_count)
-console.log('machi_6_count')
-console.log(machi_6_count)
-console.log('machi_7_count')
-console.log(machi_7_count)
-console.log('machi_8_count')
-console.log(machi_8_count)
-console.log('machi_9_count')
-console.log(machi_9_count)
+// console.log('machi_1_count')
+// console.log(machi_1_count)
+// console.log('machi_2_count')
+// console.log(machi_2_count)
+// console.log('machi_3_count')
+// console.log(machi_3_count)
+// console.log('machi_4_count')
+// console.log(machi_4_count)
+// console.log('machi_5_count')
+// console.log(machi_5_count)
+// console.log('machi_6_count')
+// console.log(machi_6_count)
+// console.log('machi_7_count')
+// console.log(machi_7_count)
+// console.log('machi_8_count')
+// console.log(machi_8_count)
+// console.log('machi_9_count')
+// console.log(machi_9_count)
