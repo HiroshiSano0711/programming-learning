@@ -287,7 +287,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		const display_dom = document.getElementById("chinitsu_pattern")
 
 		tenpai_all.forEach(element =>{
-			if(JSON.stringify(element.machi) == JSON.stringify(["1", "2", "3", "4", "5", "6", "7"])){
+			if(JSON.stringify(element.machi) == JSON.stringify(["2", "3", "5", "6", "7", "8", "9"])){
 				console.log(element.haishi)
 				for (let index = 0; index < 13; index++) {
 					let paiga = document.createElement("span")
