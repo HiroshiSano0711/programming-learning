@@ -284,11 +284,12 @@ window.addEventListener("DOMContentLoaded", function() {
 	})
 
 	function OutputTehai(){
+    const count = []
 		const display_dom = document.getElementById("chinitsu_pattern")
-
 		tenpai_all.forEach(element =>{
-			if(JSON.stringify(element.machi) == JSON.stringify(["2", "3", "5", "6", "7", "8", "9"])){
+			if(JSON.stringify(element.machi) == JSON.stringify(["1", "3", "4", "6", "7", "9"])){
 				console.log(element.haishi)
+        count.push(element.haishi)
 				for (let index = 0; index < 13; index++) {
 					let paiga = document.createElement("span")
 					paiga.className = pai_type[Number(element.haishi[index])].cssSprite
@@ -307,6 +308,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				display_dom.appendChild(br);
 			}
 		})
+    console.log(count.length)
 	}
 });
 
