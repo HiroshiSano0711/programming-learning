@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-#chinitsu_pattern > span {
+.paiga {
   background-color:transparent;
   background-image:url(./pai.png);
   background-repeat:no-repeat;
@@ -9,174 +9,127 @@
   color:#000;
   margin-bottom: 8px;
 }
-#chinitsu_pattern > .machi {
+
+.machi {
   margin-left: 80px;
+}
+
+.tehai {
+  display: block;
+}
+
+.tehai > .ml {
+  margin-left: 80px;
+}
+
+.pai-size {
+  width: 66px;
+  height: 90px;
+}
+
+.pai-size-mini {
+  width: 33px;
+  height: 45px;
 }
 
 .man1{
   background-position: 0 0;
-  width: 66px;
-  height: 90px;
 }
 .man2{
   background-position: -70px 0;
-  width: 66px;
-  height: 90px;
 }
 .man3{
   background-position: -140px 0;
-  width: 66px;
-  height: 90px;
 }
 .man4{
   background-position: -210px 0;
-  width: 66px;
-  height: 90px;
 }
 .man5{
   background-position: -280px 0;
-  width: 66px;
-  height: 90px;
 }
 .man6{
   background-position: -350px 0;
-  width: 66px;
-  height: 90px;
 }
 .man7{
   background-position: -420px 0;
-  width: 66px;
-  height: 90px;
 }
 .man8{
   background-position: -490px 0;
-  width: 66px;
-  height: 90px;
 }
 .man9{
   background-position: -560px 0;
-  width: 66px;
-  height: 90px;
 }
 .pin1{
   background-position: 0 -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin2{
   background-position: -70px -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin3{
   background-position: -140px -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin4{
   background-position: -210px -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin6{
   background-position: -350px -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin7{
   background-position: -420px -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin8{
   background-position: -490px -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin9{
   background-position: -560px -94px;
-  width: 66px;
-  height: 90px;
 }
 .sou1{
   background-position: 0 -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou2{
   background-position: -70px -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou3{
   background-position: -140px -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou4{
   background-position: -210px -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou5{
   background-position: -280px -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou6{
   background-position: -350px -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou7{
   background-position: -420px -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou8{
   background-position: -490px -188px;
-  width: 66px;
-  height: 90px;
 }
 .sou9{
   background-position: -560px -188px;
-  width: 66px;
-  height: 90px;
 }
 .ji1{
   background-position: 0 -282px;
-  width: 66px;
-  height: 90px;
 }
 .ji2{
   background-position: -70px -282px;
-  width: 66px;
-  height: 90px;
 }
 .ji3{
   background-position: -140px -282px;
-  width: 66px;
-  height: 90px;
 }
 .ji4{
   background-position: -210px -282px;
-  width: 66px;
-  height: 90px;
 }
 .ji5{
   background-position: -349px -282px;
-  width: 66px;
-  height: 90px;
 }
 .ji6{
   background-position: -279px -282px;
-  width: 66px;
-  height: 90px;
 }
 .ji7{
   background-position: -419px -282px;
-  width: 66px;
-  height: 90px;
 }
 .man1-yoko{
   background-position: 0 -376px;
@@ -350,13 +303,9 @@
 }
 .pin5{
   background-position: -280px -94px;
-  width: 66px;
-  height: 90px;
 }
 .pin0{
   background-position: -559px -282px;
-  width: 66px;
-  height: 90px;
 }
 .aka1-yoko{
   background-position: -94px -656px;
@@ -365,8 +314,6 @@
 }
 .sou0{
   background-position: -629px -281px;
-  width: 66px;
-  height: 90px;
 }
 .aka2-yoko{
   background-position: -188px -656px;
@@ -375,8 +322,6 @@
 }
 .man0{
   background-position: -489px -282px;
-  width: 66px;
-  height: 90px;
 }
 .aka3-yoko{
   background-position: 0 -656px;

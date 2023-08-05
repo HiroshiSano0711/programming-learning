@@ -293,6 +293,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				for (let index = 0; index < 13; index++) {
 					let paiga = document.createElement("span")
 					paiga.className = pai_type[Number(element.haishi[index])].cssSprite
+          paiga.classList.add("paiga", "pai-size")
 					display_dom.appendChild(paiga)
 				}
 				let span = document.createElement("span")
@@ -302,6 +303,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				for (let index = 0; index < element.machi.length; index++) {
 					let machi = document.createElement("span")
 					machi.className = pai_type[Number(element.machi[index])].cssSprite
+          machi.classList.add("paiga", "pai-size")
 					display_dom.appendChild(machi)
 				}
 				let br = document.createElement("br");
