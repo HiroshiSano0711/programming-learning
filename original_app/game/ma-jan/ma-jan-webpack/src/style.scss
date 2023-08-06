@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+$pai-size: 50px;
+
 :root {
   font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 
@@ -32,12 +34,6 @@
   color: white;
 }
 
-.pin-2-mini {
-  background-position: -32px 0px;
-}
-
-$pai-size: 50px;
-
 .machi {
   margin-left: $pai-size;
 }
@@ -68,13 +64,13 @@ $sprite-base-position-y: -8px;
 
 @for $i from 0 through 8 {
   .man-#{$i + 1} {
-    background-position: -70px + $i 0;
+    background-position: -10px + $i * -60px -143;
   }
   .pin-#{$i + 1} {
     background-position: -10px + $i * -60px -8px;
   }
   .sou-#{$i + 1} {
-    background-position: -70px + $i -188px;
+    background-position: -10px + $i * -60px -76px;
   }
 }
 
