@@ -1,5 +1,5 @@
 const config = {
-  entry: `./src/index.js`,
+  entry: './src/index.js',
   mode: 'development',
   module: {
     rules: [
@@ -13,6 +13,10 @@ const config = {
           // Compiles Sass to CSS
           "sass-loader",
         ],
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
       },
     ]
   },

@@ -10,14 +10,35 @@ $pai-size: 50px;
   line-height: 2.25rem;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+	position: relative;
+	height: 25vh;
+  background: url(./header.jpg) center / cover;
+}
+
+footer {
+  text-align: center;
+  color: #999;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
 .container {
-  max-width: var( --size-content-small);
-  margin: auto;
+  flex: 1;
+  max-width: var(--size-content-small);
+  margin: 60px auto;
 }
 
 .container-large {
-  max-width: var( --size-content-large);
-  margin: auto;
+  flex: 1;
+  max-width: var(--size-content-large);
+  margin: 60px;
 }
 
 .paiga {
