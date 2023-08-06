@@ -258,7 +258,7 @@ window.addEventListener("DOMContentLoaded", function() {
     const count = []
 		const display_dom = document.getElementById("chinitsu_pattern")
 		tenpai_all.forEach(element =>{
-			if(JSON.stringify(element.machi) == JSON.stringify(["1", "3", "4", "6", "7", "9"])){
+			if(JSON.stringify(element.machi) == JSON.stringify(["1", "2", "3", "4", "5", "6", "7", "8", "9"])){
 				console.log(element.haishi)
         count.push(element.haishi)
 				for (let index = 0; index < 13; index++) {

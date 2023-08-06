@@ -5,12 +5,18 @@ $pai-size: 50px;
 :root {
   font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 
-  --size-content_small: 768px;
+  --size-content-small: 768px;
+  --size-content-large: 1200px;
   line-height: 2.25rem;
 }
 
-.content-center {
-  max-width: var( --size-content_small);
+.container {
+  max-width: var( --size-content-small);
+  margin: auto;
+}
+
+.container-large {
+  max-width: var( --size-content-large);
   margin: auto;
 }
 
