@@ -1,63 +1,4 @@
-import 'normalize.css';
 import "./style.scss";
-
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-// const Majiang = require('@kobalab/majiang-core');
-
-// all_chinitsu_json = []
-// chinitsu_string.forEach((element, index) => {
-//   s = Majiang.Shoupai.fromString('m' + element)
-//   shanten_count = Majiang.Util.xiangting(s)
-//   machi = Majiang.Util.tingpai(s)
-//   if (shanten_count == 0 && machi.length == 0) {
-//     shanten_count += 1
-//   }
-//   let kanko_1_count = (element.match(/1111/g) || []).length;
-//   let kanko_2_count = (element.match(/2222/g) || []).length;
-//   let kanko_3_count = (element.match(/3333/g) || []).length;
-//   let kanko_4_count = (element.match(/4444/g) || []).length;
-//   let kanko_5_count = (element.match(/5555/g) || []).length;
-//   let kanko_6_count = (element.match(/6666/g) || []).length;
-//   let kanko_7_count = (element.match(/7777/g) || []).length;
-//   let kanko_8_count = (element.match(/8888/g) || []).length;
-//   let kanko_9_count = (element.match(/9999/g) || []).length;
-//   let kanko_total = kanko_1_count + kanko_2_count + kanko_3_count + kanko_4_count + kanko_5_count + kanko_6_count + kanko_7_count + kanko_8_count + kanko_9_count
-//   let hash = {
-//     index: index + 1,
-//     haishi: element,
-//     shanten: shanten_count,
-//     machi: machi,
-//     kanko_count: kanko_total
-//   }
-//   all_chinitsu_json.push(hash)
-// })
-// console.log(all_chinitsu_json)
-
-// const new_data = chinitsu_all_pattern.map(element => {
-// 	let new_machi = element.machi.map(e => {
-// 		e = e.replace("m", "")
-// 		return e;
-// 	})
-// 	element.machi = new_machi.filter(machi => machi == '1' || machi == '2' || machi == '3' || machi == '4' || machi == '5' || machi == '6' || machi == '7' || machi == '8' || machi == '9');
-// 	return element;
-// })
-// console.log(new_data)
-
-// const group = chinitsu_all_pattern.reduce((accumulator, current) => {
-//   const element = accumulator.find((p) => p.shanten_count === current["shanten"]);
-//   if (element) {
-//     element.count ++;
-//   } else {
-//     accumulator.push({
-//       count: 1,
-//       shanten_count: current["shanten"]
-//     });
-//   }
-//   return accumulator;
-// }, []);
-
-// console.log(group)
 
 const paiYama = [
 	{"No":0,"paiName":"一万","paiCode":"1m","paiNo":1},
@@ -245,7 +186,6 @@ let pai_type = [
 	{"No":37,"paiName":"中","cssSprite":"ji-7"}
 ];
 
-// import chinitsu_all_pattern from "./data/all.json" assert { type: "json" };
 import tenpai_all from "./data/tenpai/all.json" assert { type: "json" };
 
 window.addEventListener("DOMContentLoaded", function() {

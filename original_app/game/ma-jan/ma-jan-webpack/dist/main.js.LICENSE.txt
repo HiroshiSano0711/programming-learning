@@ -1,7 +1,0 @@
-/*!
- *  @kobalab/majiang-core v1.1.0
- *
- *  Copyright(C) 2021 Satoshi Kobayashi
- *  Released under the MIT license
- *  https://github.com/kobalab/majiang-core/blob/master/LICENSE
- */
