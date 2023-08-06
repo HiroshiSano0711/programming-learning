@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+:root {
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+
+  --size-content_small: 768px;
+  line-height: 2.25rem;
+}
+
+.content-center {
+  max-width: var( --size-content_small);
+  margin: auto;
+}
+
+.paiga {
+  display: inline-block;
+  background-image: url(./paiga.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-attachment: scroll;
+  background-size: 1200px 800px;
+  color: white;
+}
+
+.paiga-mini {
+  display: inline-block;
+  background-image: url(./paiga.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-attachment: scroll;
+  background-size: 600px 400px;
+  color: white;
+}
+
+.pin-2-mini {
+  background-position: -32px 0px;
+}
+
+$pai-size: 50px;
+
+.machi {
+  margin-left: $pai-size;
+}
+
+.tehai {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.tehai > .ml {
+  margin-left: $pai-size;
+}
+
+
+.pai-size {
+  width: $pai-size;
+  height: 64px;
+}
+
+.pai-size-mini {
+  width: 26px;
+  height: 38px;
+  vertical-align: bottom;
+}
+
+$sprite-base-position-x: -10px;
+$sprite-base-position-y: -8px;
+
+@for $i from 0 through 8 {
+  .man-#{$i + 1} {
+    background-position: -70px + $i 0;
+  }
+  .pin-#{$i + 1} {
+    background-position: -10px + $i * -60px -8px;
+  }
+  .sou-#{$i + 1} {
+    background-position: -70px + $i -188px;
+  }
+}
+
+@for $i from 0 through 8 {
+  .man-#{$i + 1}-mini {
+    background-position: -32px + $i 0;
+  }
+  .pin-#{$i + 1}-mini {
+    background-position: -4px + $i * -30px 0;
+  }
+  .sou-#{$i + 1}-mini {
+    background-position: -70px + $i -188px;
+  }
+}
+// 赤5
+.man-0{
+  background-position: -489px -282px;
+}
+.pin-0{
+  background-position: -559px -282px;
+}
+.sou-0{
+  background-position: -629px -281px;
+}
+
+.ji1{
+  background-position: 0 -282px;
+}
+.ji2{
+  background-position: -70px -282px;
+}
+.ji3{
+  background-position: -140px -282px;
+}
+.ji4{
+  background-position: -210px -282px;
+}
+.ji5{
+  background-position: -349px -282px;
+}
+.ji6{
+  background-position: -279px -282px;
+}
+.ji7{
+  background-position: -419px -282px;
+}
