@@ -22,6 +22,7 @@
 
 			<section>
 				<h1>清一色/チンイツ検索</h1>
+				<p>いまのところテンパイ形40196通りのみ対応です。ノーテン形も含めて全パターン93600通り検索できるようにする予定です。</p>
 				<h3>表示する牌の種類（先に選んでください）</h3>
 				<form name="paiga_style_select_form">
 					<select name="paiga_style">
@@ -29,6 +30,12 @@
 						<option value="pin">ピンズで表示</option>
 						<option value="sou">ソウズで表示</option>
 					</select>
+				</form>
+
+				<h3>牌姿の一部で検索(半角数字1~13文字。例:1112)</h3>
+				<form name="tehai_search_input_form">
+					<input type="text" name="tehai" id="tehai_search_input">
+					<button type="button" id="tehai_search_btn">検索</button>
 				</form>
 
 				<h3>待ちの数で検索</h3>

@@ -46,9 +46,13 @@ import tenpai_all from "./data/tenpai/all.json" assert { type: "json" };
 
 window.addEventListener("DOMContentLoaded", function() {
 	const display_dom = document.getElementById("chinitsu_pattern")
+
 	const machi_search_btn = document.getElementById("machi_search_btn")
 	const machi_count_select_btn = document.getElementById("machi_count_select_btn")
+	const tehai_search_btn = document.getElementById("tehai_search_btn")
+
 	const search_form = document.search_form
+	const tehai_search_input_form = document.tehai_search_input_form
 	const machi_count_select_form = document.machi_count_select_form
 	const paiga_style_select_form = document.paiga_style_select_form
 	const paiga_style = paiga_style_select_form.paiga_style
@@ -72,6 +76,14 @@ window.addEventListener("DOMContentLoaded", function() {
 		display_pattern_by_machi_count(Number(machi_count_select_form.machi_count.value));
 	})
 
+	tehai_search_btn.addEventListener("click", (event) => {
+		const pattern = tehai_search_input_form.tehai_search_input.value
+
+		if(pattern && pattern.match(/[1-9]{1,13}/)) {
+			display_pattern_by_tehai(pattern);
+		}
+	})
+
 	function paiga_style_index() {
 		if (style_value === 'pin') {
 			return 10
@@ -79,6 +91,29 @@ window.addEventListener("DOMContentLoaded", function() {
 			return 20
 		}
 		return 0
+	}
+
+	function display_pattern_by_tehai(pattern){
+		let count = 0
+		const regex = new RegExp(pattern,"g")
+
+		remove_all_child_nodes(display_dom)
+
+		const fragment = new DocumentFragment()
+		tenpai_all.forEach(data =>{
+			if(data.haishi.match(new RegExp(pattern,"g"))){
+				count += 1
+				fragment.append(create_paiga_dom(data))
+			}
+		})
+		display_dom.append(fragment)
+
+		let search_result = document.getElementById("search_result")
+		if (count !== 0) {
+			search_result.textContent = `${count}件ヒットしました`;
+		} else {
+			search_result.textContent = "検索結果はありません。違う待ちをお試しください。";
+		}
 	}
 
 	function display_pattern_by_machi_count(machi_count){
