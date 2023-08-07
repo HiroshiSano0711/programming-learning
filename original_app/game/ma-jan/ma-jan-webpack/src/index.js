@@ -122,7 +122,7 @@ window.addEventListener("DOMContentLoaded", function() {
 		let haishi_layout = document.createElement("div")
 		let paiga_layout = document.createElement("div")
 		let machi_layout = document.createElement("div")
-		haishi_layout.className = "content-flex"
+		haishi_layout.classList.add("content-flex", "border-btm")
 		paiga_layout.className = "content-item"
 		machi_layout.className = "content-item"
 

@@ -105,7 +105,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0 $pai-size;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .tehai {
@@ -163,4 +163,8 @@ body {
   @include sp {
     margin-left: calc($pai-size / 2);
   }
+}
+
+.border-btm {
+  border-bottom: 1px solid #e5e7eb;
 }

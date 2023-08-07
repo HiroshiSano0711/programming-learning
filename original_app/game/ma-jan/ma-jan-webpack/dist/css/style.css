@@ -103,7 +103,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0 50px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .tehai {
@@ -432,6 +432,10 @@ body {
   .ml {
     margin-left: 25px;
   }
+}
+
+.border-btm {
+  border-bottom: 1px solid #e5e7eb;
 }
 
 /*# sourceMappingURL=style.css.map */
