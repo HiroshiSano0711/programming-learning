@@ -57,6 +57,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	paiga_style.addEventListener("change", (event) => {
 		style_value = event.target.value
 	})
+
 	machi_search_btn.addEventListener("click", (event) => {
 		const checked_values = []
 		search_form.machi.forEach(element =>{
@@ -68,16 +69,16 @@ window.addEventListener("DOMContentLoaded", function() {
 	})
 
 	machi_count_select_btn.addEventListener("click", (event) => {
-		display_pattern_by_machi_count(Number(machi_count_select_form.machi_count.value))
+		display_pattern_by_machi_count(Number(machi_count_select_form.machi_count.value));
 	})
 
 	function paiga_style_index() {
 		if (style_value === 'pin') {
-			return 10;
+			return 10
 		} else if (style_value === 'sou') {
-			return 20;
+			return 20
 		}
-		return 0;
+		return 0
 	}
 
 	function display_pattern_by_machi_count(machi_count){
@@ -85,18 +86,16 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		remove_all_child_nodes(display_dom)
 
-		const target_data = []
 		const fragment = new DocumentFragment()
 		tenpai_all.forEach(data =>{
 			if(data.machi.length === machi_count){
 				count += 1
-				target_data.push(data)
 				fragment.append(create_paiga_dom(data))
 			}
 		})
-		display_dom.append(fragment);
+		display_dom.append(fragment)
 
-		let search_result = document.getElementById("search_result");
+		let search_result = document.getElementById("search_result")
 		if (count !== 0) {
 			search_result.textContent = `${count}件ヒットしました`;
 		} else {
@@ -109,18 +108,16 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		remove_all_child_nodes(display_dom)
 
-		const target_data = []
 		const fragment = new DocumentFragment()
 		tenpai_all.forEach(data =>{
 			if(JSON.stringify(data.machi) == JSON.stringify(machi)){
         count += 1
-				target_data.push(data)
 				fragment.append(create_paiga_dom(data))
 			}
 		})
 		display_dom.append(fragment);
 
-		let search_result = document.getElementById("search_result");
+		let search_result = document.getElementById("search_result")
 		if (count !== 0) {
 			search_result.textContent = `${count}件ヒットしました`;
 		} else {
