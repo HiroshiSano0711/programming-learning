@@ -21,7 +21,16 @@
 			<section>
 
 			<h1>チンイツ検索</h1>
-				<h2>待ちの数で検索</h2>
+				<h3>表示する牌の種類（先に選んでください）</h3>
+				<form name="paiga_style_select_form">
+					<select name="paiga_style">
+						<option value="man" selected="selected">マンズで表示</option>
+						<option value="pin">ピンズで表示</option>
+						<option value="sou">ソウズで表示</option>
+					</select>
+				</form>
+
+				<h3>待ちの数で検索</h3>
 				<form name="machi_count_select_form">
 					<select name="machi_count">
 						<option value="1">1門待ち</option>
@@ -36,7 +45,8 @@
 					</select>
 					<button type="button" id="machi_count_select_btn">検索</button>
 				</form>
-				<h2>待ちで検索(147待ちを検索したい場合は147にチェック)</h2>
+
+				<h3>待ちの種類で検索(147待ちを検索したい場合は147にチェック)</h3>
 				<form name="search_form">
 					<label><input type="checkbox" name="machi" value="1">1</label>
 					<label><input type="checkbox" name="machi" value="2">2</label>
