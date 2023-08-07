@@ -85,12 +85,17 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		remove_all_child_nodes(display_dom)
 
-		tenpai_all.forEach(element =>{
-			if(element.machi.length === machi_count){
+		const target_data = []
+		const fragment = new DocumentFragment()
+		tenpai_all.forEach(data =>{
+			if(data.machi.length === machi_count){
 				count += 1
-				display_paiga(display_dom, element)
+				target_data.push(data)
+				fragment.append(create_paiga_dom(data))
 			}
 		})
+		display_dom.append(fragment);
+
 		let search_result = document.getElementById("search_result");
 		if (count !== 0) {
 			search_result.textContent = `${count}件ヒットしました`;
@@ -104,12 +109,17 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		remove_all_child_nodes(display_dom)
 
-		tenpai_all.forEach(element =>{
-			if(JSON.stringify(element.machi) == JSON.stringify(machi)){
+		const target_data = []
+		const fragment = new DocumentFragment()
+		tenpai_all.forEach(data =>{
+			if(JSON.stringify(data.machi) == JSON.stringify(machi)){
         count += 1
-				display_paiga(display_dom, element)
+				target_data.push(data)
+				fragment.append(create_paiga_dom(data))
 			}
 		})
+		display_dom.append(fragment);
+
 		let search_result = document.getElementById("search_result");
 		if (count !== 0) {
 			search_result.textContent = `${count}件ヒットしました`;
@@ -118,29 +128,29 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 
-	function display_paiga(target_dom, element){
-		let haishi_layout = document.createElement("div")
-		let paiga_layout = document.createElement("div")
-		let machi_layout = document.createElement("div")
-		haishi_layout.classList.add("content-flex", "border-btm")
-		paiga_layout.className = "content-item"
-		machi_layout.className = "content-item"
+	function create_paiga_dom(element){
+		let parent = document.createElement("div")
+		let child_paiga = document.createElement("div")
+		let child_machi = document.createElement("div")
+		parent.classList.add("content-flex", "border-btm")
+		child_paiga.className = "content-item"
+		child_machi.className = "content-item"
 
 		for (let index = 0; index < 13; index++) {
 			let paiga = document.createElement("span")
 			paiga.classList.add(pai_type[Number(element.haishi[index]) + paiga_style_index()].cssSprite , "paiga", "pai-size")
-			paiga_layout.appendChild(paiga)
+			child_paiga.appendChild(paiga)
 		}
 
 		for (let index = 0; index < element.machi.length; index++) {
 			let machi = document.createElement("span")
 			machi.classList.add(pai_type[Number(element.machi[index]) + paiga_style_index()].cssSprite , "paiga", "pai-size")
-			machi_layout.appendChild(machi)
+			child_machi.appendChild(machi)
 		}
 
-		haishi_layout.appendChild(paiga_layout);
-		haishi_layout.appendChild(machi_layout);
-		target_dom.appendChild(haishi_layout);
+		parent.appendChild(child_paiga);
+		parent.appendChild(child_machi);
+		return parent;
 	}
 
 	function remove_all_child_nodes(parent) {
