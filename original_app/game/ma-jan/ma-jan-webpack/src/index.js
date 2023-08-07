@@ -128,13 +128,13 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		for (let index = 0; index < 13; index++) {
 			let paiga = document.createElement("span")
-			paiga = add_paiga_class_attr(paiga, Number(element.haishi[index]))
+			paiga.classList.add(pai_type[Number(element.haishi[index]) + paiga_style_index()].cssSprite , "paiga", "pai-size")
 			paiga_layout.appendChild(paiga)
 		}
 
 		for (let index = 0; index < element.machi.length; index++) {
 			let machi = document.createElement("span")
-			machi = add_paiga_class_attr(machi, Number(element.machi[index]))
+			machi.classList.add(pai_type[Number(element.machi[index]) + paiga_style_index()].cssSprite , "paiga", "pai-size")
 			machi_layout.appendChild(machi)
 		}
 
@@ -147,23 +147,5 @@ window.addEventListener("DOMContentLoaded", function() {
     while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
     }
-	}
-
-	function is_smartphone() {
-		// レイアウトが正常に表示されるのが800px程度なので800pxを基準にCSSスプライト画像の表示を分ける
-		if (window.matchMedia && window.matchMedia('(max-device-width: 800px)').matches) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	function add_paiga_class_attr(element, paiga_index) {
-		if(is_smartphone()){
-			element.classList.add(pai_type[paiga_index + paiga_style_index()].cssSprite + "-mini", "paiga-mini", "pai-size-mini")
-		} else {
-			element.classList.add(pai_type[paiga_index + paiga_style_index()].cssSprite , "paiga", "pai-size")
-		}
-		return element;
 	}
 });

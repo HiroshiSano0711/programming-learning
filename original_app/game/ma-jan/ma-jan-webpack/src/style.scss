@@ -1,5 +1,19 @@
 @charset "utf-8";
 
+$pai-size: 50px;
+
+@mixin pc {
+  @media (min-width: 801px) {
+   @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width: 800px) {
+   @content;
+  }
+}
+
 :root {
   font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 
@@ -28,27 +42,23 @@ body {
   border-top: 1px solid #e5e7eb;
 }
 
-@media (max-width: 800px) {
-  .container {
-    max-width: var(--size-content-small);
-    margin: 16px auto;
+.container {
+  max-width: var(--size-content-small);
+  @include pc {
+    margin: 60px auto;
   }
-
-  .container-large {
-    max-width: var(--size-content-large);
+  @include sp {
     margin: 16px;
   }
 }
 
-@media (min-width: 801px) {
-  .container {
-    max-width: var(--size-content-small);
+.container-large {
+  max-width: var(--size-content-large);
+  @include pc {
     margin: 60px auto;
   }
-  
-  .container-large {
-    max-width: var(--size-content-large);
-    margin: 60px;
+  @include sp {
+    margin: 16px;
   }
 }
 
@@ -63,7 +73,12 @@ body {
 
 .paiga {
   @include paiga-basic;
-  background-size: 1200px 800px;
+  @include pc {
+    background-size: 1200px 800px;
+  }
+  @include sp {
+    background-size: 600px 400px;
+  }
 
   &-mini {
     @include paiga-basic; 
@@ -71,7 +86,20 @@ body {
   }
 }
 
-$pai-size: 50px;
+.pai-size {
+  width: $pai-size;
+  height: 64px;
+  @include sp {
+    width: 26px;
+    height: 32px;
+  }
+}
+
+.pai-size-mini {
+  width: 26px;
+  height: 32px;
+  vertical-align: bottom;
+}
 
 .content-flex {
   display: flex;
@@ -85,26 +113,28 @@ $pai-size: 50px;
   margin-bottom: 8px;
 }
 
-.pai-size {
-  width: $pai-size;
-  height: 64px;
-}
-
-.pai-size-mini {
-  width: 26px;
-  height: 32px;
-  vertical-align: bottom;
-}
-
 @for $i from 0 through 8 {
-  .man-#{$i + 1} {
-    background-position: (-10px + $i * -60px) -143px;
+  @include sp {
+    .man-#{$i + 1} { 
+      background-position: (-4px + $i * -30px)  -72px;
+    }
+    .pin-#{$i + 1} {
+      background-position: (-4px + $i * -30px) -4px;
+    }
+    .sou-#{$i + 1} {
+      background-position: (-4px + $i * -30px) -38px;
+    }
   }
-  .pin-#{$i + 1} {
-    background-position: (-10px + $i * -60px) -8px;
-  }
-  .sou-#{$i + 1} {
-    background-position: (-10px + $i * -60px) -76px;
+  @include pc {
+    .man-#{$i + 1} {
+      background-position: (-10px + $i * -60px) -143px;
+    }
+    .pin-#{$i + 1} {
+      background-position: (-10px + $i * -60px) -8px;
+    }
+    .sou-#{$i + 1} {
+      background-position: (-10px + $i * -60px) -76px;
+    }
   }
 }
 
@@ -127,5 +157,10 @@ $pai-size: 50px;
 }
 
 .ml {
-  margin-left: $pai-size;
+  @include pc {
+    margin-left: $pai-size;
+  }
+  @include sp {
+    margin-left: calc($pai-size / 2);
+  }
 }
