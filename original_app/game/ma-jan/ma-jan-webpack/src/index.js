@@ -1,5 +1,3 @@
-import 'normalize.css';
-import "./style.scss";
 
 const paiYama = [
 	{"No":0,"paiName":"一万","paiCode":"1m","paiNo":1},

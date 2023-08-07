@@ -1,0 +1,344 @@
+@charset "UTF-8";
+:root {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "游ゴシック", "Yu Gothic", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  --size-content-small: 768px;
+  --size-content-large: 1200px;
+  line-height: 2.25rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  position: relative;
+  height: 25vh;
+  background: url(./header.jpg) center/cover;
+}
+
+footer {
+  text-align: center;
+  color: #999;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.container {
+  flex: 1;
+  max-width: var(--size-content-small);
+  margin: 60px auto;
+}
+
+.container-large {
+  flex: 1;
+  max-width: var(--size-content-large);
+  margin: 60px;
+}
+
+.paiga {
+  display: inline-block;
+  background-image: url(./paiga.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-attachment: scroll;
+  background-size: 1200px 800px;
+  color: white;
+}
+
+.paiga-mini {
+  display: inline-block;
+  background-image: url(./paiga.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-attachment: scroll;
+  background-size: 600px 400px;
+  color: white;
+}
+
+.machi {
+  margin-left: 50px;
+}
+
+.tehai {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.tehai > .ml {
+  margin-left: 50px;
+}
+
+.pai-size {
+  width: 50px;
+  height: 64px;
+}
+
+.pai-size-mini {
+  width: 26px;
+  height: 38px;
+  vertical-align: bottom;
+}
+
+.man-1 {
+  background-position: -10px -143;
+}
+
+.pin-1 {
+  background-position: -10px -8px;
+}
+
+.sou-1 {
+  background-position: -10px -76px;
+}
+
+.man-2 {
+  background-position: -70px -143;
+}
+
+.pin-2 {
+  background-position: -70px -8px;
+}
+
+.sou-2 {
+  background-position: -70px -76px;
+}
+
+.man-3 {
+  background-position: -130px -143;
+}
+
+.pin-3 {
+  background-position: -130px -8px;
+}
+
+.sou-3 {
+  background-position: -130px -76px;
+}
+
+.man-4 {
+  background-position: -190px -143;
+}
+
+.pin-4 {
+  background-position: -190px -8px;
+}
+
+.sou-4 {
+  background-position: -190px -76px;
+}
+
+.man-5 {
+  background-position: -250px -143;
+}
+
+.pin-5 {
+  background-position: -250px -8px;
+}
+
+.sou-5 {
+  background-position: -250px -76px;
+}
+
+.man-6 {
+  background-position: -310px -143;
+}
+
+.pin-6 {
+  background-position: -310px -8px;
+}
+
+.sou-6 {
+  background-position: -310px -76px;
+}
+
+.man-7 {
+  background-position: -370px -143;
+}
+
+.pin-7 {
+  background-position: -370px -8px;
+}
+
+.sou-7 {
+  background-position: -370px -76px;
+}
+
+.man-8 {
+  background-position: -430px -143;
+}
+
+.pin-8 {
+  background-position: -430px -8px;
+}
+
+.sou-8 {
+  background-position: -430px -76px;
+}
+
+.man-9 {
+  background-position: -490px -143;
+}
+
+.pin-9 {
+  background-position: -490px -8px;
+}
+
+.sou-9 {
+  background-position: -490px -76px;
+}
+
+.man-1-mini {
+  background-position: -32px 0;
+}
+
+.pin-1-mini {
+  background-position: -4px 0;
+}
+
+.sou-1-mini {
+  background-position: -70px -188px;
+}
+
+.man-2-mini {
+  background-position: -31px 0;
+}
+
+.pin-2-mini {
+  background-position: -34px 0;
+}
+
+.sou-2-mini {
+  background-position: -69px -188px;
+}
+
+.man-3-mini {
+  background-position: -30px 0;
+}
+
+.pin-3-mini {
+  background-position: -64px 0;
+}
+
+.sou-3-mini {
+  background-position: -68px -188px;
+}
+
+.man-4-mini {
+  background-position: -29px 0;
+}
+
+.pin-4-mini {
+  background-position: -94px 0;
+}
+
+.sou-4-mini {
+  background-position: -67px -188px;
+}
+
+.man-5-mini {
+  background-position: -28px 0;
+}
+
+.pin-5-mini {
+  background-position: -124px 0;
+}
+
+.sou-5-mini {
+  background-position: -66px -188px;
+}
+
+.man-6-mini {
+  background-position: -27px 0;
+}
+
+.pin-6-mini {
+  background-position: -154px 0;
+}
+
+.sou-6-mini {
+  background-position: -65px -188px;
+}
+
+.man-7-mini {
+  background-position: -26px 0;
+}
+
+.pin-7-mini {
+  background-position: -184px 0;
+}
+
+.sou-7-mini {
+  background-position: -64px -188px;
+}
+
+.man-8-mini {
+  background-position: -25px 0;
+}
+
+.pin-8-mini {
+  background-position: -214px 0;
+}
+
+.sou-8-mini {
+  background-position: -63px -188px;
+}
+
+.man-9-mini {
+  background-position: -24px 0;
+}
+
+.pin-9-mini {
+  background-position: -244px 0;
+}
+
+.sou-9-mini {
+  background-position: -62px -188px;
+}
+
+.man-0 {
+  background-position: -489px -282px;
+}
+
+.pin-0 {
+  background-position: -559px -282px;
+}
+
+.sou-0 {
+  background-position: -629px -281px;
+}
+
+.ji1 {
+  background-position: 0 -282px;
+}
+
+.ji2 {
+  background-position: -70px -282px;
+}
+
+.ji3 {
+  background-position: -140px -282px;
+}
+
+.ji4 {
+  background-position: -210px -282px;
+}
+
+.ji5 {
+  background-position: -349px -282px;
+}
+
+.ji6 {
+  background-position: -279px -282px;
+}
+
+.ji7 {
+  background-position: -419px -282px;
+}
+
+.img-full {
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */
