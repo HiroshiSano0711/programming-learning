@@ -6,7 +6,8 @@
   "exports": "./index.js",
   "type": "module",
   "scripts": {
-    "output_all_data": "node --mode development src/script/output-by-shanten.js && node src/script/output-tenpai-kanko-data.js && node src/script/output-shanten-1-kanko-data.js && node src/script/output-shanten-2-kanko-data.js && node src/script/output-tenpai-by-machi-count-data.js"
+    "output_all_data": "node --mode development src/script/output-by-shanten.js && node src/script/output-tenpai-kanko-data.js && node src/script/output-shanten-1-kanko-data.js && node src/script/output-shanten-2-kanko-data.js && node src/script/output-tenpai-by-machi-count-data.js",
+    "output_css": "sass src/style.scss dist/style.css"
   },
   "keywords": [],
   "author": "",

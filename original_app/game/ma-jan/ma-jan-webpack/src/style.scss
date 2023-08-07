@@ -11,54 +11,57 @@ $pai-size: 50px;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr auto;
   min-height: 100vh;
 }
 
-header {
-	position: relative;
+.header {
 	height: 25vh;
-  background: url(./header.jpg) center / cover;
 }
 
-footer {
+.footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
   text-align: center;
   color: #999;
   background: #fff;
   border-top: 1px solid #e5e7eb;
 }
 
+.img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .container {
-  flex: 1;
   max-width: var(--size-content-small);
   margin: 60px auto;
 }
 
 .container-large {
-  flex: 1;
   max-width: var(--size-content-large);
   margin: 60px;
 }
 
-.paiga {
+@mixin paiga-basic {
   display: inline-block;
   background-image: url(./paiga.png);
   background-repeat: no-repeat;
   background-color: transparent;
   background-attachment: scroll;
-  background-size: 1200px 800px;
   color: white;
 }
 
-.paiga-mini {
-  display: inline-block;
-  background-image: url(./paiga.png);
-  background-repeat: no-repeat;
-  background-color: transparent;
-  background-attachment: scroll;
-  background-size: 600px 400px;
-  color: white;
+.paiga {
+  @include paiga-basic;
+  background-size: 1200px 800px;
+
+  &-mini {
+    @include paiga-basic; 
+    background-size: 600px 400px;
+  }
 }
 
 .machi {
@@ -68,10 +71,6 @@ footer {
 .tehai {
   display: flex;
   margin-bottom: 8px;
-}
-
-.tehai > .ml {
-  margin-left: $pai-size;
 }
 
 .pai-size {
@@ -90,25 +89,25 @@ $sprite-base-position-y: -8px;
 
 @for $i from 0 through 8 {
   .man-#{$i + 1} {
-    background-position: -10px + $i * -60px -143;
+    background-position: (-10px + $i * -60px) -143px;
   }
   .pin-#{$i + 1} {
-    background-position: -10px + $i * -60px -8px;
+    background-position: (-10px + $i * -60px) -8px;
   }
   .sou-#{$i + 1} {
-    background-position: -10px + $i * -60px -76px;
+    background-position: (-10px + $i * -60px) -76px;
   }
 }
 
 @for $i from 0 through 8 {
   .man-#{$i + 1}-mini {
-    background-position: -32px + $i 0;
+    background-position: (-32px + $i) 0;
   }
   .pin-#{$i + 1}-mini {
-    background-position: -4px + $i * -30px 0;
+    background-position: (-4px + $i * -30px) 0;
   }
   .sou-#{$i + 1}-mini {
-    background-position: -70px + $i -188px;
+    background-position: (-70px + $i) -188px;
   }
 }
 // 赤5
@@ -144,6 +143,6 @@ $sprite-base-position-y: -8px;
   background-position: -419px -282px;
 }
 
-.img-full {
-  width: 100%;
+.ml {
+  margin-left: $pai-size;
 }

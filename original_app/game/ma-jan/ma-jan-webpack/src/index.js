@@ -188,39 +188,88 @@ let pai_type = [
 import tenpai_all from "./data/tenpai/all.json" assert { type: "json" };
 
 window.addEventListener("DOMContentLoaded", function() {
-	const start_btn = document.getElementById("start_btn")
+	const display_dom = document.getElementById("chinitsu_pattern")
+	const machi_search_btn = document.getElementById("machi_search_btn")
+	const machi_count_select_btn = document.getElementById("machi_count_select_btn")
+	const search_form = document.search_form
+	const machi_count_select_form = document.machi_count_select_form
 
-	start_btn.addEventListener("click", (event) => {
-		OutputTehai()
-	})
-
-	function OutputTehai(){
-    const count = []
-		const display_dom = document.getElementById("chinitsu_pattern")
-		tenpai_all.forEach(element =>{
-			if(JSON.stringify(element.machi) == JSON.stringify(["1", "2", "3", "4", "5", "6", "7", "8", "9"])){
-				console.log(element.haishi)
-        count.push(element.haishi)
-				for (let index = 0; index < 13; index++) {
-					let paiga = document.createElement("span")
-					paiga.className = pai_type[Number(element.haishi[index])].cssSprite
-          paiga.classList.add("paiga", "pai-size")
-					display_dom.appendChild(paiga)
-				}
-				let span = document.createElement("span")
-				span.className = 'machi'
-				display_dom.appendChild(span)
-
-				for (let index = 0; index < element.machi.length; index++) {
-					let machi = document.createElement("span")
-					machi.className = pai_type[Number(element.machi[index])].cssSprite
-          machi.classList.add("paiga", "pai-size")
-					display_dom.appendChild(machi)
-				}
-				let br = document.createElement("br");
-				display_dom.appendChild(br);
+	machi_search_btn.addEventListener("click", (event) => {
+		const checked_values = []
+		search_form.machi.forEach(element =>{
+			if(element.checked){
+				checked_values.push(element.value)
 			}
 		})
-    console.log(count.length)
+		display_pattern_by_machi(checked_values)
+	})
+
+	machi_count_select_btn.addEventListener("click", (event) => {
+		display_pattern_by_machi_count(Number(machi_count_select_form.machi_count.value))
+	})
+
+	function display_pattern_by_machi_count(machi_count){
+		let count = 0
+
+		remove_all_child_nodes(display_dom)
+
+		tenpai_all.forEach(element =>{
+			if(element.machi.length === machi_count){
+				count += 1
+				display_paiga(display_dom, element)
+			}
+		})
+		let search_result = document.getElementById("search_result");
+		if (count !== 0) {
+			search_result.textContent = `${count}件ヒットしました`;
+		} else {
+			search_result.textContent = "検索結果はありません。違う待ちをお試しください。";
+		}
+	}
+
+	function display_pattern_by_machi(machi){
+    let count = 0
+
+		remove_all_child_nodes(display_dom)
+
+		tenpai_all.forEach(element =>{
+			if(JSON.stringify(element.machi) == JSON.stringify(machi)){
+        count += 1
+				display_paiga(display_dom, element)
+			}
+		})
+		let search_result = document.getElementById("search_result");
+		if (count !== 0) {
+			search_result.textContent = `${count}件ヒットしました`;
+		} else {
+			search_result.textContent = "検索結果はありません。違う待ちをお試しください。";
+		}
+	}
+
+	function display_paiga(target_dom, element){
+		for (let index = 0; index < 13; index++) {
+			let paiga = document.createElement("span")
+			paiga.className = pai_type[Number(element.haishi[index])].cssSprite
+			paiga.classList.add("paiga", "pai-size")
+			target_dom.appendChild(paiga)
+		}
+		let span = document.createElement("span")
+		span.className = 'machi'
+		target_dom.appendChild(span)
+
+		for (let index = 0; index < element.machi.length; index++) {
+			let machi = document.createElement("span")
+			machi.className = pai_type[Number(element.machi[index])].cssSprite
+			machi.classList.add("paiga", "pai-size")
+			target_dom.appendChild(machi)
+		}
+		let br = document.createElement("br");
+		target_dom.appendChild(br);
+	}
+
+	function remove_all_child_nodes(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
 	}
 });
