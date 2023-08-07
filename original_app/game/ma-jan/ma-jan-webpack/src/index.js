@@ -159,7 +159,6 @@ window.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function add_paiga_class_attr(element, paiga_index) {
-		console.log(paiga_index)
 		if(is_smartphone()){
 			element.classList.add(pai_type[paiga_index + paiga_style_index()].cssSprite + "-mini", "paiga-mini", "pai-size-mini")
 		} else {

@@ -92,7 +92,7 @@ $pai-size: 50px;
 
 .pai-size-mini {
   width: 26px;
-  height: 38px;
+  height: 32px;
   vertical-align: bottom;
 }
 
@@ -109,14 +109,14 @@ $pai-size: 50px;
 }
 
 @for $i from 0 through 8 {
-  .man-#{$i + 1}-mini {
-    background-position: (-32px + $i)  -143px;
+  .man-#{$i + 1}-mini { 
+    background-position: (-4px + $i * -30px)  -72px;
   }
   .pin-#{$i + 1}-mini {
-    background-position: (-4px + $i * -30px) 0;
+    background-position: (-4px + $i * -30px) -4px;
   }
   .sou-#{$i + 1}-mini {
-    background-position: (-70px + $i) -76px;
+    background-position: (-4px + $i * -30px) -38px;
   }
 }
 
