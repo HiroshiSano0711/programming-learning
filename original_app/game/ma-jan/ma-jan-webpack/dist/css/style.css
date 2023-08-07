@@ -26,22 +26,26 @@ body {
   border-top: 1px solid #e5e7eb;
 }
 
-.img-full {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+@media (max-width: 800px) {
+  .container {
+    max-width: var(--size-content-small);
+    margin: 16px auto;
+  }
+  .container-large {
+    max-width: var(--size-content-large);
+    margin: 16px;
+  }
 }
-
-.container {
-  max-width: var(--size-content-small);
-  margin: 60px auto;
+@media (min-width: 801px) {
+  .container {
+    max-width: var(--size-content-small);
+    margin: 60px auto;
+  }
+  .container-large {
+    max-width: var(--size-content-large);
+    margin: 60px;
+  }
 }
-
-.container-large {
-  max-width: var(--size-content-large);
-  margin: 60px;
-}
-
 .paiga {
   display: inline-block;
   background-image: url(../img/paiga.png);
@@ -193,7 +197,7 @@ body {
 }
 
 .man-1-mini {
-  background-position: -32px 0;
+  background-position: -32px -143px;
 }
 
 .pin-1-mini {
@@ -201,11 +205,11 @@ body {
 }
 
 .sou-1-mini {
-  background-position: -70px -188px;
+  background-position: -70px -76px;
 }
 
 .man-2-mini {
-  background-position: -31px 0;
+  background-position: -31px -143px;
 }
 
 .pin-2-mini {
@@ -213,11 +217,11 @@ body {
 }
 
 .sou-2-mini {
-  background-position: -69px -188px;
+  background-position: -69px -76px;
 }
 
 .man-3-mini {
-  background-position: -30px 0;
+  background-position: -30px -143px;
 }
 
 .pin-3-mini {
@@ -225,11 +229,11 @@ body {
 }
 
 .sou-3-mini {
-  background-position: -68px -188px;
+  background-position: -68px -76px;
 }
 
 .man-4-mini {
-  background-position: -29px 0;
+  background-position: -29px -143px;
 }
 
 .pin-4-mini {
@@ -237,11 +241,11 @@ body {
 }
 
 .sou-4-mini {
-  background-position: -67px -188px;
+  background-position: -67px -76px;
 }
 
 .man-5-mini {
-  background-position: -28px 0;
+  background-position: -28px -143px;
 }
 
 .pin-5-mini {
@@ -249,11 +253,11 @@ body {
 }
 
 .sou-5-mini {
-  background-position: -66px -188px;
+  background-position: -66px -76px;
 }
 
 .man-6-mini {
-  background-position: -27px 0;
+  background-position: -27px -143px;
 }
 
 .pin-6-mini {
@@ -261,11 +265,11 @@ body {
 }
 
 .sou-6-mini {
-  background-position: -65px -188px;
+  background-position: -65px -76px;
 }
 
 .man-7-mini {
-  background-position: -26px 0;
+  background-position: -26px -143px;
 }
 
 .pin-7-mini {
@@ -273,11 +277,11 @@ body {
 }
 
 .sou-7-mini {
-  background-position: -64px -188px;
+  background-position: -64px -76px;
 }
 
 .man-8-mini {
-  background-position: -25px 0;
+  background-position: -25px -143px;
 }
 
 .pin-8-mini {
@@ -285,11 +289,11 @@ body {
 }
 
 .sou-8-mini {
-  background-position: -63px -188px;
+  background-position: -63px -76px;
 }
 
 .man-9-mini {
-  background-position: -24px 0;
+  background-position: -24px -143px;
 }
 
 .pin-9-mini {
@@ -297,47 +301,13 @@ body {
 }
 
 .sou-9-mini {
-  background-position: -62px -188px;
+  background-position: -62px -76px;
 }
 
-.man-0 {
-  background-position: -489px -282px;
-}
-
-.pin-0 {
-  background-position: -559px -282px;
-}
-
-.sou-0 {
-  background-position: -629px -281px;
-}
-
-.ji1 {
-  background-position: 0 -282px;
-}
-
-.ji2 {
-  background-position: -70px -282px;
-}
-
-.ji3 {
-  background-position: -140px -282px;
-}
-
-.ji4 {
-  background-position: -210px -282px;
-}
-
-.ji5 {
-  background-position: -349px -282px;
-}
-
-.ji6 {
-  background-position: -279px -282px;
-}
-
-.ji7 {
-  background-position: -419px -282px;
+.img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .ml {

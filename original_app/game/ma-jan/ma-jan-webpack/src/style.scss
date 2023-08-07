@@ -1,7 +1,5 @@
 @charset "utf-8";
 
-$pai-size: 50px;
-
 :root {
   font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo', '游ゴシック', 'Yu Gothic', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 
@@ -30,20 +28,28 @@ body {
   border-top: 1px solid #e5e7eb;
 }
 
-.img-full {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+@media (max-width: 800px) {
+  .container {
+    max-width: var(--size-content-small);
+    margin: 16px auto;
+  }
+
+  .container-large {
+    max-width: var(--size-content-large);
+    margin: 16px;
+  }
 }
 
-.container {
-  max-width: var(--size-content-small);
-  margin: 60px auto;
-}
-
-.container-large {
-  max-width: var(--size-content-large);
-  margin: 60px;
+@media (min-width: 801px) {
+  .container {
+    max-width: var(--size-content-small);
+    margin: 60px auto;
+  }
+  
+  .container-large {
+    max-width: var(--size-content-large);
+    margin: 60px;
+  }
 }
 
 @mixin paiga-basic {
@@ -64,6 +70,8 @@ body {
     background-size: 600px 400px;
   }
 }
+
+$pai-size: 50px;
 
 .content-flex {
   display: flex;
@@ -88,9 +96,6 @@ body {
   vertical-align: bottom;
 }
 
-$sprite-base-position-x: -10px;
-$sprite-base-position-y: -8px;
-
 @for $i from 0 through 8 {
   .man-#{$i + 1} {
     background-position: (-10px + $i * -60px) -143px;
@@ -105,46 +110,20 @@ $sprite-base-position-y: -8px;
 
 @for $i from 0 through 8 {
   .man-#{$i + 1}-mini {
-    background-position: (-32px + $i) 0;
+    background-position: (-32px + $i)  -143px;
   }
   .pin-#{$i + 1}-mini {
     background-position: (-4px + $i * -30px) 0;
   }
   .sou-#{$i + 1}-mini {
-    background-position: (-70px + $i) -188px;
+    background-position: (-70px + $i) -76px;
   }
 }
-// 赤5
-.man-0{
-  background-position: -489px -282px;
-}
-.pin-0{
-  background-position: -559px -282px;
-}
-.sou-0{
-  background-position: -629px -281px;
-}
 
-.ji1{
-  background-position: 0 -282px;
-}
-.ji2{
-  background-position: -70px -282px;
-}
-.ji3{
-  background-position: -140px -282px;
-}
-.ji4{
-  background-position: -210px -282px;
-}
-.ji5{
-  background-position: -349px -282px;
-}
-.ji6{
-  background-position: -279px -282px;
-}
-.ji7{
-  background-position: -419px -282px;
+.img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .ml {
