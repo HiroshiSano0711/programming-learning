@@ -119,22 +119,28 @@ window.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function display_paiga(target_dom, element){
+		let haishi_layout = document.createElement("div")
+		let paiga_layout = document.createElement("div")
+		let machi_layout = document.createElement("div")
+		haishi_layout.className = "content-flex"
+		paiga_layout.className = "content-item"
+		machi_layout.className = "content-item"
+
 		for (let index = 0; index < 13; index++) {
 			let paiga = document.createElement("span")
 			paiga.classList.add(pai_type[Number(element.haishi[index]) + paiga_style_index()].cssSprite, "paiga", "pai-size")
-			target_dom.appendChild(paiga)
+			paiga_layout.appendChild(paiga)
 		}
-		let span = document.createElement("span")
-		span.className = 'machi'
-		target_dom.appendChild(span)
 
 		for (let index = 0; index < element.machi.length; index++) {
 			let machi = document.createElement("span")
 			machi.classList.add(pai_type[Number(element.machi[index]) + paiga_style_index()].cssSprite, "paiga", "pai-size")
-			target_dom.appendChild(machi)
+			machi_layout.appendChild(machi)
 		}
-		let br = document.createElement("br");
-		target_dom.appendChild(br);
+
+		haishi_layout.appendChild(paiga_layout);
+		haishi_layout.appendChild(machi_layout);
+		target_dom.appendChild(haishi_layout);
 	}
 
 	function remove_all_child_nodes(parent) {

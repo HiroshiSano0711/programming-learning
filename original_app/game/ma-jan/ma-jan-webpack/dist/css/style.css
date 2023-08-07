@@ -2,6 +2,7 @@
 :root {
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "游ゴシック", "Yu Gothic", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   --size-content-small: 768px;
+  --size-content-small: 768px;
   --size-content-large: 1200px;
   line-height: 2.25rem;
 }
@@ -60,8 +61,11 @@ body {
   background-size: 600px 400px;
 }
 
-.machi {
-  margin-left: 50px;
+.content-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 50px;
+  margin-bottom: 24px;
 }
 
 .tehai {
