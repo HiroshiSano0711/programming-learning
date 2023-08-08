@@ -20,7 +20,16 @@ export class ChinitsuDataFilter {
 	}
 
 	filterByMachiCount(count) {
-		this._filteredData = this._tenpaiAllData.filter((data) => data.machi.length === count)
+		this._filteredData = this._shanten1AllData.filter((data) => data.machi.length === count)
+		return this._filteredData
+	}
+
+	filterByShantenCount(value) {
+		if(value == 1) {
+			this._filteredData = this._shanten1AllData
+		} else if(value == 2) {
+			this._filteredData = this._shanten2AllData
+		}
 		return this._filteredData
 	}
 

@@ -18,27 +18,29 @@
 		<main class="container-large">
 			<section>
 				<a href="8men_machi_logic.html">8門待ち、9門待ちに関する理論</a>
-			<section>
+			</section>
 
 			<section>
 				<h1>清一色/チンイツ検索</h1>
-				<p>いまのところテンパイ形40196通りのみ対応です。ノーテン形も含めて全パターン93600通り検索できるようにする予定です。</p>
-				<h3>表示する牌の種類（先に選んでください）</h3>
-				<form name="paiga_style_select_form">
-					<select name="paiga_style">
-						<option value="man" selected="selected">マンズで表示</option>
-						<option value="pin">ピンズで表示</option>
-						<option value="sou">ソウズで表示</option>
-					</select>
-				</form>
+
 				<div class="content-flex">
 					<div class="content-item">
+						<h3>表示する牌の種類（先に選んでください）</h3>
+						<form name="paiga_style_select_form">
+							<select name="paiga_style">
+								<option value="man" selected="selected">マンズで表示</option>
+								<option value="pin">ピンズで表示</option>
+								<option value="sou">ソウズで表示</option>
+							</select>
+						</form>
 						<h3>牌姿の一部で検索(半角数字1~13文字。例:1112)</h3>
 						<form name="tehai_search_input_form">
 							<input type="text" name="tehai" id="tehai_search_input">
 							<button type="button" id="tehai_search_btn">検索</button>
 						</form>
+					</div>
 
+					<div class="content-item">
 						<h3>待ちの数で検索</h3>
 						<form name="machi_count_select_form">
 							<select name="machi_count">
@@ -54,9 +56,7 @@
 							</select>
 							<button type="button" id="machi_count_select_btn">検索</button>
 						</form>
-					</div>
 
-					<div class="content-item">
 						<h3>待ちの種類で検索(例:147待ちを検索したい場合は147にチェック)</h3>
 						<form name="machi_pattern_search_form">
 							<label><input type="checkbox" name="machi" value="1">1</label>
@@ -71,16 +71,26 @@
 							<button type="button" id="machi_pattern_search_btn">検索</button>
 						</form>
 					</div>
-					<div>
-						<h3>検索結果（牌姿|待ち）</h3>
-						<p class="annotation" id="search_result"></p>
-						<div>
-							<button id="js-button-prev">前へ</button>
-							<button id="js-button-next">次へ</button>
-						</div>
-						<p class="annotation" id="pagination_range"></p>
-						<div id="chinitsu_pattern"></div>
+					<div class="content-item">
+						<h3>ノーテン形を表示</h3>
+						<form name="shanten_count_select_form">
+							<select name="shanten_count">
+								<option value="1">イーシャンテン</option>
+								<option value="2">リャンシャンテン</option>
+							</select>
+							<button type="button" id="shanten_count_select_btn">表示</button>
+						</form>
 					</div>
+				</div>
+				<div>
+					<h3>検索結果（牌姿|待ち）</h3>
+					<p class="annotation" id="search_result"></p>
+					<div>
+						<button id="js-button-prev">前へ</button>
+						<button id="js-button-next">次へ</button>
+					</div>
+					<p class="annotation" id="pagination_range"></p>
+					<div id="chinitsu_pattern"></div>
 				</div>
 			</section>
 		</main>
