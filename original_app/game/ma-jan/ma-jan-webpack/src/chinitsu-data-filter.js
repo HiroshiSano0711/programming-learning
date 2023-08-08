@@ -1,17 +1,31 @@
-import shanten_1_all_data from "./data/shanten_1/all.json" assert { type: "json" };
-import shanten_2_all_data from "./data/shanten_2/all.json" assert { type: "json" };
-import tenpai_all_data from "./data/tenpai/all.json" assert { type: "json" };
+import shanten1AllData from "./data/shanten_1/all.json" assert { type: "json" };
+import shanten2AllData from "./data/shanten_2/all.json" assert { type: "json" };
+import tenpaiAllData from "./data/tenpai/all.json" assert { type: "json" };
 
 export class ChinitsuDataFilter {
+	constructor(){
+		this._tenpaiAllData = tenpaiAllData;
+		this._shanten1AllData = shanten1AllData;
+		this._shanten2AllData = shanten2AllData;
+		this._filteredData = null;
+	}
+
+	get filteredData() {
+    return this._filteredData
+  }
+
 	filterByHaishi(regex) {
-		return tenpai_all_data.filter((data) => data.haishi.match(regex))
+		this._filteredData = this._tenpaiAllData.filter((data) => data.haishi.match(regex))
+		return this._filteredData
 	}
 
 	filterByMachiCount(count) {
-		return tenpai_all_data.filter((data) => data.machi.length === count)
+		this._filteredData = this._tenpaiAllData.filter((data) => data.machi.length === count)
+		return this._filteredData
 	}
 
 	filterByMachiPattern(pattern) {
-		return tenpai_all_data.filter((data) => JSON.stringify(data.machi) == JSON.stringify(pattern))
+		this._filteredData = this._tenpaiAllData.filter((data) => JSON.stringify(data.machi) == JSON.stringify(pattern))
+		return this._filteredData
 	}
 }

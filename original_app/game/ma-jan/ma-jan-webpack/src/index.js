@@ -1,14 +1,18 @@
 import { ChinitsuDataFilter } from "./chinitsu-data-filter.js";
+import { Pagination } from "./pagination.js";
 import { paigaStyleList } from "./paiga-style-list.js";
 
 window.addEventListener("DOMContentLoaded", function() {
 	const chinitsuDataFilter = new ChinitsuDataFilter
+	const pagination = new Pagination
 
 	const displayDom = document.getElementById("chinitsu_pattern")
 	const searchResult = document.getElementById("search_result")
 	const machiPatternSearchBtn = document.getElementById("machi_pattern_search_btn")
 	const machiCountSelectBtn = document.getElementById("machi_count_select_btn")
 	const tehaiSearchBtn = document.getElementById("tehai_search_btn")
+	const prevBtn = document.getElementById("js-button-prev")
+	const nextBtn = document.getElementById("js-button-next")
 
 	const machiPatternSearchForm = document.machi_pattern_search_form
 	const tehaiSearchInputForm = document.tehai_search_input_form
@@ -21,7 +25,9 @@ window.addEventListener("DOMContentLoaded", function() {
 		styleValue = event.target.value
 	})
 
-	machiPatternSearchBtn.addEventListener("click", (event) => {
+	// 検索ボタン
+	machiPatternSearchBtn.addEventListener("click", () => {
+		pagination.initCurrentPage()
 		removeAllChildNodes(displayDom)
 
 		const checkedElements = Array.prototype.filter.call(machiPatternSearchForm.machi, (element) => element.checked)
@@ -31,7 +37,8 @@ window.addEventListener("DOMContentLoaded", function() {
 		displaySearchResultText(data.length)
 	})
 
-	machiCountSelectBtn.addEventListener("click", (event) => {
+	machiCountSelectBtn.addEventListener("click", () => {
+		pagination.initCurrentPage()
 		removeAllChildNodes(displayDom)
 		const count = Number(machiCountSelectForm.machi_count.value)
 		const data = chinitsuDataFilter.filterByMachiCount(count)
@@ -39,7 +46,8 @@ window.addEventListener("DOMContentLoaded", function() {
 		displaySearchResultText(data.length)
 	})
 
-	tehaiSearchBtn.addEventListener("click", (event) => {
+	tehaiSearchBtn.addEventListener("click", () => {
+		pagination.initCurrentPage()
 		removeAllChildNodes(displayDom)
 		const pattern = tehaiSearchInputForm.tehai_search_input.value
 
@@ -48,6 +56,21 @@ window.addEventListener("DOMContentLoaded", function() {
 			displayPaiga(data);
 			displaySearchResultText(data.length)
 		}
+	})
+
+	// ページネーション
+	prevBtn.addEventListener("click", () => {
+		if(pagination.currentPage === 0) return
+		pagination.minusCurrentPage()
+		removeAllChildNodes(displayDom)
+		displayPaiga(chinitsuDataFilter.filteredData)
+	})
+
+	nextBtn.addEventListener("click", () => {
+		if(pagination.endIndex() >= chinitsuDataFilter.filteredData.length) return
+		pagination.plusCurrentPage()
+		removeAllChildNodes(displayDom)
+		displayPaiga(chinitsuDataFilter.filteredData)
 	})
 
 	function paigaStyleIndex() {
@@ -63,9 +86,24 @@ window.addEventListener("DOMContentLoaded", function() {
 		return new RegExp(string,"g")
 	}
 
+	function pageTextStartNumber() {
+		return currentPage * perPage + 1
+	}
+
+	function pageTextEndNumber() {
+		if(pagination.endIndex() <= chinitsuDataFilter.filteredData.length) {
+			return pagination.endIndex()
+		} else {
+			return chinitsuDataFilter.filteredData.length
+		}
+	}
+
 	function displayPaiga(data){
 		const fragment = new DocumentFragment()
-		data.forEach((d) => fragment.append(createPaigaNodes(d)))
+
+		data.slice(pagination.startIndex(), pagination.endIndex()).forEach((d) => fragment.append(createPaigaNodes(d)))
+		const pagination_range = document.getElementById("pagination_range")
+		pagination_range.textContent = `${pagination.startIndex()+ 1}~${pageTextEndNumber()}件目を表示中`;
 
 		displayDom.append(fragment)
 	}

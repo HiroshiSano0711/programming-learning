@@ -31,48 +31,56 @@
 						<option value="sou">ソウズで表示</option>
 					</select>
 				</form>
+				<div class="content-flex">
+					<div class="content-item">
+						<h3>牌姿の一部で検索(半角数字1~13文字。例:1112)</h3>
+						<form name="tehai_search_input_form">
+							<input type="text" name="tehai" id="tehai_search_input">
+							<button type="button" id="tehai_search_btn">検索</button>
+						</form>
 
-				<h3>牌姿の一部で検索(半角数字1~13文字。例:1112)</h3>
-				<form name="tehai_search_input_form">
-					<input type="text" name="tehai" id="tehai_search_input">
-					<button type="button" id="tehai_search_btn">検索</button>
-				</form>
+						<h3>待ちの数で検索</h3>
+						<form name="machi_count_select_form">
+							<select name="machi_count">
+								<option value="1">1門待ち</option>
+								<option value="2">2門待ち</option>
+								<option value="3">3門待ち</option>
+								<option value="4">4門待ち</option>
+								<option value="5">5門待ち</option>
+								<option value="6">6門待ち</option>
+								<option value="7">7門待ち</option>
+								<option value="8">8門待ち</option>
+								<option value="9">9門待ち</option>
+							</select>
+							<button type="button" id="machi_count_select_btn">検索</button>
+						</form>
+					</div>
 
-				<h3>待ちの数で検索</h3>
-				<form name="machi_count_select_form">
-					<select name="machi_count">
-						<option value="1">1門待ち</option>
-						<option value="2">2門待ち</option>
-						<option value="3">3門待ち</option>
-						<option value="4">4門待ち</option>
-						<option value="5">5門待ち</option>
-						<option value="6">6門待ち</option>
-						<option value="7">7門待ち</option>
-						<option value="8">8門待ち</option>
-						<option value="9">9門待ち</option>
-					</select>
-					<button type="button" id="machi_count_select_btn">検索</button>
-				</form>
-
-				<h3>待ちの種類で検索(例:147待ちを検索したい場合は147にチェック)</h3>
-				<form name="machi_pattern_search_form">
-					<label><input type="checkbox" name="machi" value="1">1</label>
-					<label><input type="checkbox" name="machi" value="2">2</label>
-					<label><input type="checkbox" name="machi" value="3">3</label>
-					<label><input type="checkbox" name="machi" value="4">4</label>
-					<label><input type="checkbox" name="machi" value="5">5</label>
-					<label><input type="checkbox" name="machi" value="6">6</label>
-					<label><input type="checkbox" name="machi" value="7">7</label>
-					<label><input type="checkbox" name="machi" value="8">8</label>
-					<label><input type="checkbox" name="machi" value="9">9</label>
-					<button type="button" id="machi_pattern_search_btn">検索</button>
-				</form>
-
-				<div>
-					<h3>検索結果（牌姿|待ち）</h3>
-					<p>※検索結果が多い場合、表示まで少し時間がかかります。</p>
-					<div class="annotation" id="search_result"></div>
-					<div id="chinitsu_pattern"></div>
+					<div class="content-item">
+						<h3>待ちの種類で検索(例:147待ちを検索したい場合は147にチェック)</h3>
+						<form name="machi_pattern_search_form">
+							<label><input type="checkbox" name="machi" value="1">1</label>
+							<label><input type="checkbox" name="machi" value="2">2</label>
+							<label><input type="checkbox" name="machi" value="3">3</label>
+							<label><input type="checkbox" name="machi" value="4">4</label>
+							<label><input type="checkbox" name="machi" value="5">5</label>
+							<label><input type="checkbox" name="machi" value="6">6</label>
+							<label><input type="checkbox" name="machi" value="7">7</label>
+							<label><input type="checkbox" name="machi" value="8">8</label>
+							<label><input type="checkbox" name="machi" value="9">9</label>
+							<button type="button" id="machi_pattern_search_btn">検索</button>
+						</form>
+					</div>
+					<div>
+						<h3>検索結果（牌姿|待ち）</h3>
+						<p class="annotation" id="search_result"></p>
+						<div>
+							<button id="js-button-prev">前へ</button>
+							<button id="js-button-next">次へ</button>
+						</div>
+						<p class="annotation" id="pagination_range"></p>
+						<div id="chinitsu_pattern"></div>
+					</div>
 				</div>
 			</section>
 		</main>
