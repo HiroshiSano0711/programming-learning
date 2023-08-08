@@ -14,8 +14,17 @@ export class ChinitsuDataFilter {
     return this._filteredData
   }
 
-	filterByHaishi(regex) {
-		this._filteredData = this._tenpaiAllData.filter((data) => data.haishi.match(regex))
+	filterByHaishi(regex, shanten) {
+		let targetData = this._tenpaiAllData
+		if (shanten === 0) {
+			targetData = this._tenpaiAllData
+		} else if (shanten === 1) {
+			targetData = this._shanten1AllData
+		} else if (shanten === 2) {
+			targetData = this._shanten2AllData
+		}
+
+		this._filteredData = targetData.filter((data) => data.haishi.match(regex))
 		return this._filteredData
 	}
 

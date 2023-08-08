@@ -34,7 +34,14 @@
 							</select>
 						</form>
 						<h3>牌姿の一部で検索(半角数字1~13文字。例:1112)</h3>
-						<form name="tehai_search_input_form">
+						<form name="search_text_form">
+							<div class="content-flex">
+								<div class="content-item">
+									<label><input type="radio" name="tehai_search_radio" value="0" checked="true">テンパイ形から</label>
+									<label><input type="radio" name="tehai_search_radio" value="1">イーシャンテン形から</label>
+									<label><input type="radio" name="tehai_search_radio" value="2">リャンシャンテン形から</label>
+								</div>
+							</div>
 							<input type="text" name="tehai" id="tehai_search_input">
 							<button type="button" id="tehai_search_btn">検索</button>
 						</form>

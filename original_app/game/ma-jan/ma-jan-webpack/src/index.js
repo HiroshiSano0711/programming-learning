@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", function() {
 	const nextBtn = document.getElementById("js-button-next")
 
 	const machiPatternSearchForm = document.machi_pattern_search_form
-	const tehaiSearchInputForm = document.tehai_search_input_form
+	const searchTextForm = document.search_text_form
 	const machiCountSelectForm = document.machi_count_select_form
 	const shantenCountSelectForm = document.shanten_count_select_form
 	const paigaStyleSelectForm = document.paiga_style_select_form
@@ -63,9 +63,12 @@ window.addEventListener("DOMContentLoaded", function() {
 		pagination.initCurrentPage()
 		removeAllChildNodes(displayDom)
 
-		const pattern = tehaiSearchInputForm.tehai_search_input.value
+		const checkedElements = Array.prototype.filter.call(searchTextForm.tehai_search_radio, (element) => element.checked)
+		const checkedValue = checkedElements[0].value
+
+		const pattern = searchTextForm.tehai_search_input.value
 		if(pattern && pattern.match(/[1-9]{1,13}/)) {
-			const data = chinitsuDataFilter.filterByHaishi(stringToRegexp(pattern))
+			const data = chinitsuDataFilter.filterByHaishi(stringToRegexp(pattern), Number(checkedValue))
 			displayPaiga(data);
 			displaySearchResultText(data.length)
 		}
