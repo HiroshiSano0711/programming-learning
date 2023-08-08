@@ -1,191 +1,109 @@
-const pai_type = [
-	{"No":0,"paiName":"赤五万","cssSprite":"man-0"},
-	{"No":1,"paiName":"一万","cssSprite":"man-1"},
-	{"No":2,"paiName":"二万","cssSprite":"man-2"},
-	{"No":3,"paiName":"三万","cssSprite":"man-3"},
-	{"No":4,"paiName":"四万","cssSprite":"man-4"},
-	{"No":5,"paiName":"五万","cssSprite":"man-5"},
-	{"No":6,"paiName":"六万","cssSprite":"man-6"},
-	{"No":7,"paiName":"七万","cssSprite":"man-7"},
-	{"No":8,"paiName":"八万","cssSprite":"man-8"},
-	{"No":9,"paiName":"九万","cssSprite":"man-9"},
-
-	{"No":10,"paiName":"赤五筒","cssSprite":"pin-0"},
-	{"No":11,"paiName":"一筒","cssSprite":"pin-1"},
-	{"No":12,"paiName":"二筒","cssSprite":"pin-2"},
-	{"No":13,"paiName":"三筒","cssSprite":"pin-3"},
-	{"No":14,"paiName":"四筒","cssSprite":"pin-4"},
-	{"No":15,"paiName":"五筒","cssSprite":"pin-5"},
-	{"No":16,"paiName":"六筒","cssSprite":"pin-6"},
-	{"No":17,"paiName":"七筒","cssSprite":"pin-7"},
-	{"No":18,"paiName":"八筒","cssSprite":"pin-8"},
-	{"No":19,"paiName":"九筒","cssSprite":"pin-9"},
-
-	{"No":20,"paiName":"赤五索","cssSprite":"sou-0"},
-	{"No":21,"paiName":"一索","cssSprite":"sou-1"},
-	{"No":22,"paiName":"二索","cssSprite":"sou-2"},
-	{"No":23,"paiName":"三索","cssSprite":"sou-3"},
-	{"No":24,"paiName":"四索","cssSprite":"sou-4"},
-	{"No":25,"paiName":"五索","cssSprite":"sou-5"},
-	{"No":26,"paiName":"六索","cssSprite":"sou-6"},
-	{"No":27,"paiName":"七索","cssSprite":"sou-7"},
-	{"No":28,"paiName":"八索","cssSprite":"sou-8"},
-	{"No":29,"paiName":"九索","cssSprite":"sou-9"},
-
-	{"No":30,"paiName":"裏","cssSprite":"ji-0"},
-	{"No":31,"paiName":"東","cssSprite":"ji-1"},
-	{"No":32,"paiName":"南","cssSprite":"ji-2"},
-	{"No":33,"paiName":"西","cssSprite":"ji-3"},
-	{"No":34,"paiName":"北","cssSprite":"ji-4"},
-	{"No":35,"paiName":"白","cssSprite":"ji-5"},
-	{"No":36,"paiName":"發","cssSprite":"ji-6"},
-	{"No":37,"paiName":"中","cssSprite":"ji-7"}
-];
-
-import tenpai_all from "./data/tenpai/all.json" assert { type: "json" };
+import { ChinitsuDataFilter } from "./chinitsu-data-filter.js";
+import { paigaStyleList } from "./paiga-style-list.js";
 
 window.addEventListener("DOMContentLoaded", function() {
-	const display_dom = document.getElementById("chinitsu_pattern")
+	const chinitsuDataFilter = new ChinitsuDataFilter
 
-	const machi_search_btn = document.getElementById("machi_search_btn")
-	const machi_count_select_btn = document.getElementById("machi_count_select_btn")
-	const tehai_search_btn = document.getElementById("tehai_search_btn")
+	const displayDom = document.getElementById("chinitsu_pattern")
+	const searchResult = document.getElementById("search_result")
+	const machiPatternSearchBtn = document.getElementById("machi_pattern_search_btn")
+	const machiCountSelectBtn = document.getElementById("machi_count_select_btn")
+	const tehaiSearchBtn = document.getElementById("tehai_search_btn")
 
-	const search_form = document.search_form
-	const tehai_search_input_form = document.tehai_search_input_form
-	const machi_count_select_form = document.machi_count_select_form
-	const paiga_style_select_form = document.paiga_style_select_form
-	const paiga_style = paiga_style_select_form.paiga_style
-	let style_value = paiga_style.value
+	const machiPatternSearchForm = document.machi_pattern_search_form
+	const tehaiSearchInputForm = document.tehai_search_input_form
+	const machiCountSelectForm = document.machi_count_select_form
+	const paigaStyleSelectForm = document.paiga_style_select_form
+	const paigaStyle = paigaStyleSelectForm.paiga_style
+	let styleValue = paigaStyle.value
 
-	paiga_style.addEventListener("change", (event) => {
-		style_value = event.target.value
+	paigaStyle.addEventListener("change", (event) => {
+		styleValue = event.target.value
 	})
 
-	machi_search_btn.addEventListener("click", (event) => {
-		const checked_values = []
-		search_form.machi.forEach(element =>{
-			if(element.checked){
-				checked_values.push(element.value)
-			}
-		})
-		display_pattern_by_machi(checked_values)
+	machiPatternSearchBtn.addEventListener("click", (event) => {
+		removeAllChildNodes(displayDom)
+
+		const checkedElements = Array.prototype.filter.call(machiPatternSearchForm.machi, (element) => element.checked)
+		const checkedValues = checkedElements.map((element) => element.value)
+		const data = chinitsuDataFilter.filterByMachiPattern(checkedValues)
+		displayPaiga(data)
+		displaySearchResultText(data.length)
 	})
 
-	machi_count_select_btn.addEventListener("click", (event) => {
-		display_pattern_by_machi_count(Number(machi_count_select_form.machi_count.value));
+	machiCountSelectBtn.addEventListener("click", (event) => {
+		removeAllChildNodes(displayDom)
+		const count = Number(machiCountSelectForm.machi_count.value)
+		const data = chinitsuDataFilter.filterByMachiCount(count)
+		displayPaiga(data)
+		displaySearchResultText(data.length)
 	})
 
-	tehai_search_btn.addEventListener("click", (event) => {
-		const pattern = tehai_search_input_form.tehai_search_input.value
+	tehaiSearchBtn.addEventListener("click", (event) => {
+		removeAllChildNodes(displayDom)
+		const pattern = tehaiSearchInputForm.tehai_search_input.value
 
 		if(pattern && pattern.match(/[1-9]{1,13}/)) {
-			display_pattern_by_tehai(pattern);
+			const data = chinitsuDataFilter.filterByHaishi(stringToRegexp(pattern))
+			displayPaiga(data);
+			displaySearchResultText(data.length)
 		}
 	})
 
-	function paiga_style_index() {
-		if (style_value === 'pin') {
+	function paigaStyleIndex() {
+		if (styleValue === 'pin') {
 			return 10
-		} else if (style_value === 'sou') {
+		} else if (styleValue === 'sou') {
 			return 20
 		}
 		return 0
 	}
 
-	function display_pattern_by_tehai(pattern){
-		let count = 0
-		const regex = new RegExp(pattern,"g")
+	function stringToRegexp(string) {
+		return new RegExp(string,"g")
+	}
 
-		remove_all_child_nodes(display_dom)
-
+	function displayPaiga(data){
 		const fragment = new DocumentFragment()
-		tenpai_all.forEach(data =>{
-			if(data.haishi.match(new RegExp(pattern,"g"))){
-				count += 1
-				fragment.append(create_paiga_dom(data))
-			}
-		})
-		display_dom.append(fragment)
+		data.forEach((d) => fragment.append(createPaigaNodes(d)))
 
-		let search_result = document.getElementById("search_result")
+		displayDom.append(fragment)
+	}
+
+	function displaySearchResultText(count) {
 		if (count !== 0) {
-			search_result.textContent = `${count}件ヒットしました`;
+			searchResult.textContent = `${count}件ヒットしました`;
 		} else {
-			search_result.textContent = "検索結果はありません。違う待ちをお試しください。";
+			searchResult.textContent = "検索結果はありません。違う待ちをお試しください。";
 		}
 	}
 
-	function display_pattern_by_machi_count(machi_count){
-		let count = 0
+	function createPaigaElements(pai_string_arr) {
+		let childPaiga = document.createElement("div")
+		childPaiga.className = "content-item"
 
-		remove_all_child_nodes(display_dom)
-
-		const fragment = new DocumentFragment()
-		tenpai_all.forEach(data =>{
-			if(data.machi.length === machi_count){
-				count += 1
-				fragment.append(create_paiga_dom(data))
-			}
-		})
-		display_dom.append(fragment)
-
-		let search_result = document.getElementById("search_result")
-		if (count !== 0) {
-			search_result.textContent = `${count}件ヒットしました`;
-		} else {
-			search_result.textContent = "検索結果はありません。違う待ちをお試しください。";
-		}
-	}
-
-	function display_pattern_by_machi(machi){
-    let count = 0
-
-		remove_all_child_nodes(display_dom)
-
-		const fragment = new DocumentFragment()
-		tenpai_all.forEach(data =>{
-			if(JSON.stringify(data.machi) == JSON.stringify(machi)){
-        count += 1
-				fragment.append(create_paiga_dom(data))
-			}
-		})
-		display_dom.append(fragment);
-
-		let search_result = document.getElementById("search_result")
-		if (count !== 0) {
-			search_result.textContent = `${count}件ヒットしました`;
-		} else {
-			search_result.textContent = "検索結果はありません。違う待ちをお試しください。";
-		}
-	}
-
-	function create_paiga_dom(element){
-		let parent = document.createElement("div")
-		let child_paiga = document.createElement("div")
-		let child_machi = document.createElement("div")
-		parent.classList.add("content-flex", "border-btm")
-		child_paiga.className = "content-item"
-		child_machi.className = "content-item"
-
-		for (let index = 0; index < 13; index++) {
+		for (const pai_string of pai_string_arr) {
 			let paiga = document.createElement("span")
-			paiga.classList.add(pai_type[Number(element.haishi[index]) + paiga_style_index()].cssSprite , "paiga", "pai-size")
-			child_paiga.appendChild(paiga)
+			paiga.classList.add(paigaStyleList[Number(pai_string) + paigaStyleIndex()].cssSprite , "paiga", "pai-size")
+			childPaiga.appendChild(paiga)
 		}
+		return childPaiga
+	}
 
-		for (let index = 0; index < element.machi.length; index++) {
-			let machi = document.createElement("span")
-			machi.classList.add(pai_type[Number(element.machi[index]) + paiga_style_index()].cssSprite , "paiga", "pai-size")
-			child_machi.appendChild(machi)
-		}
+	function createPaigaNodes(element){
+		const parent = document.createElement("div")
+		parent.classList.add("content-flex", "border-btm")
 
-		parent.appendChild(child_paiga);
-		parent.appendChild(child_machi);
+		const childHaishi = createPaigaElements(element.haishi.split("",13))
+		const childMachi = createPaigaElements(element.machi)
+
+		parent.appendChild(childHaishi);
+		parent.appendChild(childMachi);
+
 		return parent;
 	}
 
-	function remove_all_child_nodes(parent) {
+	function removeAllChildNodes(parent) {
     while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
     }
