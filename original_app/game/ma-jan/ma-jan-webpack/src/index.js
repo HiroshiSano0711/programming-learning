@@ -8,36 +8,22 @@ window.addEventListener("DOMContentLoaded", function() {
 
 	const displayDom = document.getElementById("chinitsu_pattern")
 	const searchResult = document.getElementById("search_result")
-	const machiPatternSearchBtn = document.getElementById("machi_pattern_search_btn")
-	const machiCountSelectBtn = document.getElementById("machi_count_select_btn")
-	const shantenCountSelectBtn = document.getElementById("shanten_count_select_btn")
-	const tehaiSearchBtn = document.getElementById("tehai_search_btn")
-	const prevBtn = document.getElementById("js-button-prev")
-	const nextBtn = document.getElementById("js-button-next")
 
-	const machiPatternSearchForm = document.machi_pattern_search_form
-	const searchTextForm = document.search_text_form
-	const machiCountSelectForm = document.machi_count_select_form
-	const shantenCountSelectForm = document.shanten_count_select_form
-	const paigaStyleSelectForm = document.paiga_style_select_form
-	const paigaStyle = paigaStyleSelectForm.paiga_style
-	let styleValue = paigaStyle.value
+	// 一覧表示
+	const shantenListSelectForm = document.shanten_list_select_form
 
-	paigaStyle.addEventListener("change", (event) => {
-		styleValue = event.target.value
-	})
-
-	// 検索ボタン
-	machiPatternSearchBtn.addEventListener("click", () => {
+	shantenListSelectForm.addEventListener("click", () => {
 		pagination.initCurrentPage()
 		removeAllChildNodes(displayDom)
 
-		const checkedElements = Array.prototype.filter.call(machiPatternSearchForm.machi, (element) => element.checked)
-		const checkedValues = checkedElements.map((element) => element.value)
-		const data = chinitsuDataFilter.filterByMachiPattern(checkedValues)
+		const count = Number(shantenListSelectForm.shanten_count.value)
+		const data = chinitsuDataFilter.filterByShantenCount(count)
 		displayPaiga(data)
 		displaySearchResultText(data.length)
 	})
+
+	const machiCountSelectForm = document.machi_count_select_form
+	const machiCountSelectBtn = document.getElementById("machi_count_select_btn")
 
 	machiCountSelectBtn.addEventListener("click", () => {
 		pagination.initCurrentPage()
@@ -49,32 +35,39 @@ window.addEventListener("DOMContentLoaded", function() {
 		displaySearchResultText(data.length)
 	})
 
-	shantenCountSelectBtn.addEventListener("click", () => {
-		pagination.initCurrentPage()
-		removeAllChildNodes(displayDom)
+	// 検索処理。AND検索
+	const searchBtn = document.getElementById("search_btn")
+	const machiPatternSearchForm = document.machi_pattern_search_form
+	const searchTextForm = document.search_text_form
+	const shantenSelectForm = document.shanten_search_form
 
-		const count = Number(shantenCountSelectForm.shanten_count.value)
-		const data = chinitsuDataFilter.filterByShantenCount(count)
-		displayPaiga(data)
+	searchBtn.addEventListener("click", () => {
+		removeAllChildNodes(displayDom)
+		pagination.initCurrentPage()
+		chinitsuDataFilter.initFilterData()
+
+		const checkedElements = Array.prototype.filter.call(shantenSelectForm.shanten_search_radio, (element) => element.checked)
+		const shantenValue = Number(checkedElements[0].value)
+		const checkedMachi = Array.prototype.filter.call(machiPatternSearchForm.machi, (element) => element.checked)
+		const checkedMachiValues = checkedMachi.map((element) => element.value)
+
+		const searchParams = {
+			shantenCount: shantenValue,
+			machiPattern: checkedMachiValues
+		}
+		const pattern = searchTextForm.tehai_search_input.value
+		if(pattern && pattern.match(/[1-9]{1,13}/)) {
+			searchParams.haishiPattern = pattern
+		}
+		const data = chinitsuDataFilter.filterBySearchParams(searchParams)
+		displayPaiga(data);
 		displaySearchResultText(data.length)
 	})
 
-	tehaiSearchBtn.addEventListener("click", () => {
-		pagination.initCurrentPage()
-		removeAllChildNodes(displayDom)
-
-		const checkedElements = Array.prototype.filter.call(searchTextForm.tehai_search_radio, (element) => element.checked)
-		const checkedValue = Number(checkedElements[0].value)
-
-		const pattern = searchTextForm.tehai_search_input.value
-		if(pattern && pattern.match(/[1-9]{1,13}/)) {
-			const data = chinitsuDataFilter.filterByHaishi(pattern, checkedValue)
-			displayPaiga(data);
-			displaySearchResultText(data.length)
-		}
-	})
-
 	// ページネーション
+	const prevBtn = document.getElementById("js-button-prev")
+	const nextBtn = document.getElementById("js-button-next")
+
 	prevBtn.addEventListener("click", () => {
 		if(pagination.currentPage === 0) return
 		pagination.minusCurrentPage()
@@ -89,6 +82,23 @@ window.addEventListener("DOMContentLoaded", function() {
 		displayPaiga(chinitsuDataFilter.filteredData)
 	})
 
+	function pageTextEndNumber() {
+		if(pagination.endIndex() <= chinitsuDataFilter.filteredData.length) {
+			return pagination.endIndex()
+		} else {
+			return chinitsuDataFilter.filteredData.length
+		}
+	}
+
+	// 表示する牌画
+	const paigaStyleSelectForm = document.paiga_style_select_form
+	const paigaStyle = paigaStyleSelectForm.paiga_style
+	let styleValue = paigaStyle.value
+
+	paigaStyle.addEventListener("change", (event) => {
+		styleValue = event.target.value
+	})
+
 	function paigaStyleIndex() {
 		if (styleValue === 'pin') {
 			return 10
@@ -96,22 +106,6 @@ window.addEventListener("DOMContentLoaded", function() {
 			return 20
 		}
 		return 0
-	}
-
-	function stringToRegexp(string) {
-		return new RegExp(string,"g")
-	}
-
-	function pageTextStartNumber() {
-		return currentPage * perPage + 1
-	}
-
-	function pageTextEndNumber() {
-		if(pagination.endIndex() <= chinitsuDataFilter.filteredData.length) {
-			return pagination.endIndex()
-		} else {
-			return chinitsuDataFilter.filteredData.length
-		}
 	}
 
 	function displayPaiga(data){

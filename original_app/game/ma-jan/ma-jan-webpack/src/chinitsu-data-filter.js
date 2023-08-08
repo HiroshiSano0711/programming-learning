@@ -14,28 +14,11 @@ export class ChinitsuDataFilter {
     return this._filteredData
   }
 
-	filterByHaishi(pattern, shanten) {
-		let targetData = this._tenpaiAllData
-		if (shanten === 0) {
-			targetData = this._tenpaiAllData
-		} else if (shanten === 1) {
-			targetData = this._shanten1AllData
-		} else if (shanten === 2) {
-			targetData = this._shanten2AllData
-		}
-
-		const multiRegex = this.multiRegexCondition(pattern)
-		this._filteredData = targetData.filter((data) => {
-			for (let regex of multiRegex) {
-				if (!(data.haishi.match(regex))) {
-					return false;
-				}
-			}
-			return true;
-		})
-		return this._filteredData
+	initFilterData() {
+		this._filteredData = null;
 	}
 
+	// 一覧表示用
 	filterByMachiCount(count) {
 		this._filteredData = this._tenpaiAllData.filter((data) => data.machi.length === count)
 		return this._filteredData
@@ -52,9 +35,36 @@ export class ChinitsuDataFilter {
 		return this._filteredData
 	}
 
-	filterByMachiPattern(pattern) {
-		this._filteredData = this._tenpaiAllData.filter((data) => JSON.stringify(data.machi) == JSON.stringify(pattern))
+	// AND検索用
+	filterBySearchParams(params) {
+		if (params.shantenCount) {
+			this.filterByShantenCount(params.shantenCount)
+		} else {
+			this._filteredData = this._tenpaiAllData
+		}
+		this.filterByHaishi(params.haishiPattern)
+		this.filterByMachiPattern(params.machiPattern)
 		return this._filteredData
+	}
+
+	filterByHaishi(pattern) {
+		if(!pattern) return;
+
+		const multiRegex = this.multiRegexCondition(pattern)
+		this._filteredData = this._filteredData.filter((data) => {
+			for (let regex of multiRegex) {
+				if (!(data.haishi.match(regex))) {
+					return false;
+				}
+			}
+			return true;
+		})
+	}
+
+	filterByMachiPattern(pattern) {
+		if(pattern.length === 0) return;
+
+		this._filteredData = this._filteredData.filter((data) => JSON.stringify(data.machi) == JSON.stringify(pattern))
 	}
 
 	multiRegexCondition(pattern) {

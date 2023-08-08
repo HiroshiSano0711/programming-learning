@@ -21,11 +21,11 @@
 			</section>
 
 			<section>
-				<h1>清一色/チンイツ検索</h1>
-				<p>※いまのところAND検索は未実装なのでできません。</p>
-				<div class="content-flex">
+				<h1>清一色（チンイツ）データベース</h1>
+
+				<search class="content-flex">
 					<div class="content-item">
-						<h3>表示する牌の種類（先に選んでください）</h3>
+						<h3>牌の種類（先に選んでください）</h3>
 						<form name="paiga_style_select_form">
 							<select name="paiga_style">
 								<option value="man" selected="selected">マンズで表示</option>
@@ -33,23 +33,20 @@
 								<option value="sou">ソウズで表示</option>
 							</select>
 						</form>
-						<h3>手牌に含まれる形で検索</h3>
-						<p>(半角数字1~13文字。例:123456789 → 1112333456789などがヒット)</p>
-						<form name="search_text_form"> 
-							<div class="content-flex">
-								<div class="content-item">
-									<label><input type="radio" name="tehai_search_radio" value="0" checked="true">テンパイ形から</label>
-									<label><input type="radio" name="tehai_search_radio" value="1">イーシャンテン形から</label>
-									<label><input type="radio" name="tehai_search_radio" value="2">リャンシャンテン形から</label>
-								</div>
-							</div>
-							<input type="text" name="tehai" id="tehai_search_input">
-							<button type="button" id="tehai_search_btn">検索</button>
+					</div>
+					<div class="content-item">
+						<h3>一覧表示</h3>
+						<form name="shanten_list_select_form">
+							<select name="shanten_count">
+								<option value="0">テンパイ形</option>
+								<option value="1">イーシャンテン形</option>
+								<option value="2">リャンシャンテン形</option>
+							</select>
+							<button type="button" id="shanten_list_select_btn">表示</button>
 						</form>
 					</div>
-
 					<div class="content-item">
-						<h3>待ちの数で検索</h3>
+						<h3>待ちの数で表示</h3>
 						<form name="machi_count_select_form">
 							<select name="machi_count">
 								<option value="1">1門待ち</option>
@@ -62,10 +59,29 @@
 								<option value="8">8門待ち</option>
 								<option value="9">9門待ち</option>
 							</select>
-							<button type="button" id="machi_count_select_btn">検索</button>
+							<button type="button" id="machi_count_select_btn">表示</button>
 						</form>
-
-						<h3>待ちの種類で検索(例:147待ちを検索したい場合は147にチェック)</h3>
+					</div>
+				</search>
+				<search>
+					<h2>検索</h2>
+					<div class="content-item">
+						<h3>シャンテン数</h3>
+						<form name="shanten_search_form">
+							<label><input type="radio" name="shanten_search_radio" value="0" checked="true">テンパイ</label>
+							<label><input type="radio" name="shanten_search_radio" value="1">イーシャンテン</label>
+							<label><input type="radio" name="shanten_search_radio" value="2">リャンシャンテン</label>
+						</form>
+					</div>
+					<div class="content-item">
+						<h3>手牌に含まれる形<small>(半角数字1~13文字)</small></h3>
+						<p>例:445566を指定したら、456部分が445566を含む形、4445566や445556666などもヒットします。</p>
+						<form name="search_text_form">
+							<input type="text" name="tehai" id="tehai_search_input">
+						</form>
+					</div>
+					<div class="content-item">
+						<h3>待ちの種類(例:147待ちを検索したい場合は147にチェック)</h3>
 						<form name="machi_pattern_search_form">
 							<label><input type="checkbox" name="machi" value="1">1</label>
 							<label><input type="checkbox" name="machi" value="2">2</label>
@@ -76,21 +92,10 @@
 							<label><input type="checkbox" name="machi" value="7">7</label>
 							<label><input type="checkbox" name="machi" value="8">8</label>
 							<label><input type="checkbox" name="machi" value="9">9</label>
-							<button type="button" id="machi_pattern_search_btn">検索</button>
 						</form>
+						<button type="button" id="search_btn">検索</button>
 					</div>
-					<div class="content-item">
-						<h3>一覧で表示</h3>
-						<form name="shanten_count_select_form">
-							<select name="shanten_count">
-								<option value="0">テンパイ形</option>
-								<option value="1">イーシャンテン形</option>
-								<option value="2">リャンシャンテン形</option>
-							</select>
-							<button type="button" id="shanten_count_select_btn">表示</button>
-						</form>
-					</div>
-				</div>
+				</search>
 				<div>
 					<h3>検索結果（牌姿|待ち）</h3>
 					<p class="annotation" id="search_result"></p>
