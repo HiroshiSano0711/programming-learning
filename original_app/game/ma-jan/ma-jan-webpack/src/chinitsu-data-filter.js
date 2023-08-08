@@ -37,7 +37,7 @@ export class ChinitsuDataFilter {
 	}
 
 	filterByMachiCount(count) {
-		this._filteredData = this._shanten1AllData.filter((data) => data.machi.length === count)
+		this._filteredData = this._tenpaiAllData.filter((data) => data.machi.length === count)
 		return this._filteredData
 	}
 
