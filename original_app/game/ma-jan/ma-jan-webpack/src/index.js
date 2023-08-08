@@ -64,11 +64,11 @@ window.addEventListener("DOMContentLoaded", function() {
 		removeAllChildNodes(displayDom)
 
 		const checkedElements = Array.prototype.filter.call(searchTextForm.tehai_search_radio, (element) => element.checked)
-		const checkedValue = checkedElements[0].value
+		const checkedValue = Number(checkedElements[0].value)
 
 		const pattern = searchTextForm.tehai_search_input.value
 		if(pattern && pattern.match(/[1-9]{1,13}/)) {
-			const data = chinitsuDataFilter.filterByHaishi(stringToRegexp(pattern), Number(checkedValue))
+			const data = chinitsuDataFilter.filterByHaishi(pattern, checkedValue)
 			displayPaiga(data);
 			displaySearchResultText(data.length)
 		}

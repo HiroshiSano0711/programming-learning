@@ -14,7 +14,7 @@ export class ChinitsuDataFilter {
     return this._filteredData
   }
 
-	filterByHaishi(regex, shanten) {
+	filterByHaishi(pattern, shanten) {
 		let targetData = this._tenpaiAllData
 		if (shanten === 0) {
 			targetData = this._tenpaiAllData
@@ -24,7 +24,15 @@ export class ChinitsuDataFilter {
 			targetData = this._shanten2AllData
 		}
 
-		this._filteredData = targetData.filter((data) => data.haishi.match(regex))
+		const multiRegex = this.multiRegexCondition(pattern)
+		this._filteredData = targetData.filter((data) => {
+			for (let regex of multiRegex) {
+				if (!(data.haishi.match(regex))) {
+					return false;
+				}
+			}
+			return true;
+		})
 		return this._filteredData
 	}
 
@@ -45,5 +53,21 @@ export class ChinitsuDataFilter {
 	filterByMachiPattern(pattern) {
 		this._filteredData = this._tenpaiAllData.filter((data) => JSON.stringify(data.machi) == JSON.stringify(pattern))
 		return this._filteredData
+	}
+
+	multiRegexCondition(pattern) {
+		const patterns = []
+		for (let index = 1; index <= 9; index++) {
+			patterns.push({
+				index: index,
+				count: (pattern.match(new RegExp(String(index), "g")) || []).length
+			})
+		}
+
+		const patternCounts = patterns.filter((pattern) => pattern.count !== 0)
+		const multiRegexCondition = patternCounts.map((patternCount) => {
+			return new RegExp(String(patternCount.index).repeat(patternCount.count), "g")
+		})
+		return multiRegexCondition
 	}
 }
