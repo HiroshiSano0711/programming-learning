@@ -46,6 +46,8 @@ export class ChinitsuDataFilter {
 			this._filteredData = this._shanten1AllData
 		} else if(value == 2) {
 			this._filteredData = this._shanten2AllData
+		} else {
+			this._filteredData = this._tenpaiAllData
 		}
 		return this._filteredData
 	}
