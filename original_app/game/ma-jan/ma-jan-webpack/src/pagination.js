@@ -16,11 +16,11 @@ export class Pagination {
 		this._currentPage = 0
 	}
 
-	plusCurrentPage() {
+	incrementCurrentPage() {
 		this._currentPage += 1
 	}
 
-	minusCurrentPage() {
+	decrementCurrentPage() {
 		this._currentPage -= 1
 	}
 

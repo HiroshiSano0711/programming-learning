@@ -41,3 +41,12 @@ export const paigaStyleList = [
 	{"No": 36 , "paiName":"發", "cssSprite": "ji-6"},
 	{"No": 37 , "paiName":"中", "cssSprite": "ji-7"}
 ];
+
+export function paigaStyleIndex(value) {
+	if (value === 'pin') {
+		return 10
+	} else if (value === 'sou') {
+		return 20
+	}
+	return 0
+}
