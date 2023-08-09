@@ -613,7 +613,7 @@ body {
   transform: rotate(45deg);
   width: 5px;
   height: 10px;
-  border: solid #2589d0;
+  border: solid #74b9ff;
   border-width: 0 3px 3px 0;
   content: "";
 }
