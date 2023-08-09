@@ -546,7 +546,7 @@ sortable.sort((a, b) => {
 try {
   fs.writeFileSync('./src/data/tenpai/machi/pattern.json', JSON.stringify(sortable, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 const statsTotal = [];
@@ -557,5 +557,5 @@ sortable.forEach((element) => {
 try {
   fs.writeFileSync('./src/data/stats/total_by_machi_pattern.json', JSON.stringify(statsTotal, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }

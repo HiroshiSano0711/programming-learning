@@ -30,17 +30,17 @@ allData.forEach((element) => {
 try {
   fs.writeFileSync('./src/data/tenpai/all.json', JSON.stringify(tenpai, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/shanten1/all.json', JSON.stringify(shanten1, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/shanten2/all.json', JSON.stringify(shanten2, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }

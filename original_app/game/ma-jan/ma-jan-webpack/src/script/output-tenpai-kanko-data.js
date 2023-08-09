@@ -31,23 +31,23 @@ tenpaiAllData.forEach((element) => {
 try {
   fs.writeFileSync('./src/data/tenpai/kanko-0.json', JSON.stringify(tenpaiKanko0, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/kanko-1.json', JSON.stringify(tenpaiKanko1, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/kanko-2.json', JSON.stringify(tenpaiKanko2, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/kanko-3.json', JSON.stringify(tenpaiKanko3, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }

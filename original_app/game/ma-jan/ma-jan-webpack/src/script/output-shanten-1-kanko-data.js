@@ -7,7 +7,7 @@ import fs from 'fs';
 
 const shantenAllData = JSON.parse(
   fs.readFileSync(
-    new URL('../data/shanten_1/all.json', import.meta.url),
+    new URL('../data/shanten1/all.json', import.meta.url),
   ),
 );
 
@@ -29,25 +29,25 @@ shantenAllData.forEach((element) => {
 });
 
 try {
-  fs.writeFileSync('./src/data/shanten_1/kanko-0.json', JSON.stringify(kanko0, null, '  '));
+  fs.writeFileSync('./src/data/shanten1/kanko-0.json', JSON.stringify(kanko0, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
-  fs.writeFileSync('./src/data/shanten_1/kanko-1.json', JSON.stringify(kanko1, null, '  '));
+  fs.writeFileSync('./src/data/shanten1/kanko-1.json', JSON.stringify(kanko1, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
-  fs.writeFileSync('./src/data/shanten_1/kanko-2.json', JSON.stringify(kanko2, null, '  '));
+  fs.writeFileSync('./src/data/shanten1/kanko-2.json', JSON.stringify(kanko2, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
-  fs.writeFileSync('./src/data/shanten_1/kanko-3.json', JSON.stringify(kanko3, null, '  '));
+  fs.writeFileSync('./src/data/shanten1/kanko-3.json', JSON.stringify(kanko3, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }

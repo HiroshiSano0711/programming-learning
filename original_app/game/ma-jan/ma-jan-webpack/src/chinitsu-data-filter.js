@@ -1,5 +1,5 @@
-import shanten1AllData from "./data/shanten_1/all.json" assert { type: "json" };
-import shanten2AllData from "./data/shanten_2/all.json" assert { type: "json" };
+import shanten1AllData from "./data/shanten1/all.json" assert { type: "json" };
+import shanten2AllData from "./data/shanten2/all.json" assert { type: "json" };
 import tenpaiAllData from "./data/tenpai/all.json" assert { type: "json" };
 
 export class ChinitsuDataFilter {
@@ -64,7 +64,7 @@ export class ChinitsuDataFilter {
 	filterByMachiPattern(pattern) {
 		if(pattern.length === 0) return;
 
-		this._filteredData = this._filteredData.filter((data) => JSON.stringify(data.machi) == JSON.stringify(pattern))
+		this._filteredData = this._filteredData.filter((data) => data.shanten === 0 && JSON.stringify(data.machi) == JSON.stringify(pattern))
 	}
 
 	multiRegexCondition(pattern) {

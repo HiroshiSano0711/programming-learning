@@ -41,53 +41,53 @@ tenpaiAllData.forEach((element) => {
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-1.json', JSON.stringify(machi1, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-2.json', JSON.stringify(machi2, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-3.json', JSON.stringify(machi3, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-4.json', JSON.stringify(machi4, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-5.json', JSON.stringify(machi5, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-6.json', JSON.stringify(machi6, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-7.json', JSON.stringify(machi7, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-8.json', JSON.stringify(machi8, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
 
 try {
   fs.writeFileSync('./src/data/tenpai/machi/count-9.json', JSON.stringify(machi9, null, '  '));
 } catch (e) {
-  alert(e.message);
+  console.log(e.message);
 }
