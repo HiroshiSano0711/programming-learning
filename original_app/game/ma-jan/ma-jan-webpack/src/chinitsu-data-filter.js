@@ -71,14 +71,14 @@ export class ChinitsuDataFilter {
 		const patterns = []
 		for (let index = 1; index <= 9; index++) {
 			patterns.push({
-				index: index,
+				number: index,
 				count: (pattern.match(new RegExp(String(index), "g")) || []).length
 			})
 		}
 
 		const patternCounts = patterns.filter((pattern) => pattern.count !== 0)
 		const multiRegexCondition = patternCounts.map((patternCount) => {
-			return new RegExp(String(patternCount.index).repeat(patternCount.count), "g")
+			return new RegExp(String(patternCount.number).repeat(patternCount.count), "g")
 		})
 		return multiRegexCondition
 	}
