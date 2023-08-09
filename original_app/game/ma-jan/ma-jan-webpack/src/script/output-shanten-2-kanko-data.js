@@ -5,53 +5,49 @@
 
 import fs from 'fs';
 
-const all_data = JSON.parse(
+const shantenAllData = JSON.parse(
   fs.readFileSync(
-    new URL('../data/shanten_2/all.json', import.meta.url)
-    )
+    new URL('../data/shanten_2/all.json', import.meta.url),
+  ),
 );
 
-let shanten_2_kanko_0 = []
-let shanten_2_kanko_1 = []
-let shanten_2_kanko_2 = []
-let shanten_2_kanko_3 = []
+const kanko0 = [];
+const kanko1 = [];
+const kanko2 = [];
+const kanko3 = [];
 
-all_data.forEach(element => {
-  if(element.kanko_count == 0){
-    shanten_2_kanko_0.push(element)
-  } else if(element.kanko_count == 1){
-    shanten_2_kanko_1.push(element)
-  } else if(element.kanko_count == 2){
-    shanten_2_kanko_2.push(element)
-  } else if(element.kanko_count == 3){
-    shanten_2_kanko_3.push(element)
+shantenAllData.forEach((element) => {
+  if (element.kanko_count === 0) {
+    kanko0.push(element);
+  } else if (element.kanko_count === 1) {
+    kanko1.push(element);
+  } else if (element.kanko_count === 2) {
+    kanko2.push(element);
+  } else if (element.kanko_count === 3) {
+    kanko3.push(element);
   }
-})
+});
 
 try {
-  fs.writeFileSync("./src/data/shanten_2/kanko-0.json", JSON.stringify(shanten_2_kanko_0, null, "  "));
-  console.log('出力成功');
-}catch(e){
-  console.log(e);
+  fs.writeFileSync('./src/data/shanten_2/kanko-0.json', JSON.stringify(kanko0, null, '  '));
+} catch (e) {
+  alert(e.message);
 }
 
 try {
-  fs.writeFileSync("./src/data/shanten_2/kanko-1.json", JSON.stringify(shanten_2_kanko_1, null, "  "));
-  console.log('出力成功');
-}catch(e){
-  console.log(e);
+  fs.writeFileSync('./src/data/shanten_2/kanko-1.json', JSON.stringify(kanko1, null, '  '));
+} catch (e) {
+  alert(e.message);
 }
 
 try {
-  fs.writeFileSync("./src/data/shanten_2/kanko-2.json", JSON.stringify(shanten_2_kanko_2, null, "  "));
-  console.log('出力成功');
-}catch(e){
-  console.log(e);
+  fs.writeFileSync('./src/data/shanten_2/kanko-2.json', JSON.stringify(kanko2, null, '  '));
+} catch (e) {
+  alert(e.message);
 }
 
 try {
-  fs.writeFileSync("./src/data/shanten_2/kanko-3.json", JSON.stringify(shanten_2_kanko_3, null, "  "));
-  console.log('出力成功');
-}catch(e){
-  console.log(e);
+  fs.writeFileSync('./src/data/shanten_2/kanko-3.json', JSON.stringify(kanko3, null, '  '));
+} catch (e) {
+  alert(e.message);
 }

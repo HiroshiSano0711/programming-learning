@@ -7,43 +7,40 @@
 
 import fs from 'fs';
 
-const all_data = JSON.parse(
+const allData = JSON.parse(
   fs.readFileSync(
-    new URL('../data/all.json', import.meta.url)
-    )
+    new URL('../data/all.json', import.meta.url),
+  ),
 );
 
-let tenpai = []
-let shanten_1 = []
-let shanten_2 = []
+const tenpai = [];
+const shanten1 = [];
+const shanten2 = [];
 
-all_data.forEach(element => {
-  if(element.shanten == 0){
-    tenpai.push(element)
-  } else if(element.shanten == 1){
-    shanten_1.push(element)
-  } else if(element.shanten == 2){
-    shanten_2.push(element)
+allData.forEach((element) => {
+  if (element.shanten === 0) {
+    tenpai.push(element);
+  } else if (element.shanten === 1) {
+    shanten1.push(element);
+  } else if (element.shanten === 2) {
+    shanten2.push(element);
   }
-})
+});
 
 try {
-  fs.writeFileSync("./src/data/tenpai/all.json", JSON.stringify(tenpai, null, "  "));
-  console.log('出力成功');
-}catch(e){
-  console.log(e);
+  fs.writeFileSync('./src/data/tenpai/all.json', JSON.stringify(tenpai, null, '  '));
+} catch (e) {
+  alert(e.message);
 }
 
 try {
-  fs.writeFileSync("./src/data/shanten_1/all.json", JSON.stringify(shanten_1, null, "  "));
-  console.log('出力成功');
-}catch(e){
-  console.log(e);
+  fs.writeFileSync('./src/data/shanten1/all.json', JSON.stringify(shanten1, null, '  '));
+} catch (e) {
+  alert(e.message);
 }
 
 try {
-  fs.writeFileSync("./src/data/shanten_2/all.json", JSON.stringify(shanten_2, null, "  "));
-  console.log('出力成功');
-}catch(e){
-  console.log(e);
+  fs.writeFileSync('./src/data/shanten2/all.json', JSON.stringify(shanten2, null, '  '));
+} catch (e) {
+  alert(e.message);
 }
