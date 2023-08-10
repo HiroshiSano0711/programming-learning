@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     for (const paiString of paiStringArr) {
       const paiga = document.createElement('span');
-      paiga.classList.add(paigaStyleList[Number(paiString) + paigaStyleIndex(styleValue)].cssSprite, 'paiga', 'pai-size');
+      paiga.classList.add(paigaStyleList[Number(paiString) + paigaStyleIndex(styleValue)].cssSprite, 'p-paiga', 'p-pai-size');
       childPaiga.appendChild(paiga);
     }
     return childPaiga;

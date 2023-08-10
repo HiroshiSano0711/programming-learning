@@ -1,0 +1,37 @@
+.c-heading-1 {
+  margin: 32px 0;
+  padding: .5rem .7rem;
+  border-left: 5px solid #74b9ff;
+}
+
+.c-heading-2 {
+  margin: 24px 0;
+  position: relative;
+  padding: .5rem 0 .4rem;
+  border-bottom: 3px solid #74b9ff;
+  color: #333333;
+}
+
+.c-heading-2::before,
+.c-heading-2::after {
+  position: absolute;
+  left: 30px;
+  bottom: -15px;
+  width: 30px;
+  height: 15px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  content: '';
+}
+
+.c-heading-2::before {
+  background-color: #74b9ff;
+}
+
+.c-heading-2::after {
+  bottom: -11px;
+  background-color: #fff;
+}
+
+.c-heading-3 {
+  margin: 8px 0;
+}

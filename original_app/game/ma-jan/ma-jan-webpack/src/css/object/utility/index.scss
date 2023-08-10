@@ -2,12 +2,17 @@
 
 $pai-size: 50px;
 
+// TODO:あとでユーティリティとして命名を修正する
 .container-section {
   margin-bottom: 32px;
 }
 
 .form-group {
   margin-bottom: 32px;
+}
+
+.annotation {
+  margin: 0;
 }
 
 .l-tehai {

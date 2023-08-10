@@ -11,7 +11,7 @@
 <body>
 	<div class="l-grid-root">
 		<header class="l-grid-root__header">
-			<img class="img-full" src="./img/header.jpg" alt="ヘッダー">
+			<img class="p-img-full" src="./img/header.jpg" alt="ヘッダー">
 		</header>
 		<main class="l-grid-root__main l-container--large">
 			<section class="container-section">
@@ -19,11 +19,11 @@
 			</section>
 
 			<section class="container-section">
-				<h1 class="heading-001">清一色データベース</h1>
+				<h1 class="c-heading-1">清一色データベース</h1>
 				<div>
-					<h3 class="heading-003">表示牌の種類</h3>
+					<h3 class="c-heading-3">表示牌の種類</h3>
 					<form name="paiga_style_select_form">
-						<label class="selectbox-001">
+						<label class="c-selectbox">
 							<select name="paiga_style">
 								<option value="man" selected="selected">マンズ</option>
 								<option value="pin">ピンズ</option>
@@ -34,28 +34,28 @@
 				</div>
 			</section>
 			<section class="container-section">
-				<h2 class="heading-021">一覧で表示</h2>
+				<h2 class="c-heading-2">一覧で表示</h2>
 				<search class="l-flex l-flex--wrap l-flex--gap">
 					<div>
-						<h3 class="heading-003">シャンテン数</h3>
+						<h3 class="c-heading-3">シャンテン数</h3>
 						<form name="shanten_list_select_form">
 							<div class="l-flex l-flex--wrap l-flex--gap-s">
-								<label class="selectbox-001">
+								<label class="c-selectbox">
 									<select name="shanten_count">
 										<option value="0">テンパイ形</option>
 										<option value="1">イーシャンテン形</option>
 										<option value="2">リャンシャンテン形</option>
 									</select>
 								</label>
-								<button class="button-002" type="button" id="shanten_list_select_btn">表示</button>
+								<button class="c-btn" type="button" id="shanten_list_select_btn">表示</button>
 							</div>
 						</form>
 					</div>
 					<div>
-						<h3 class="heading-003">待ちの数で表示</h3>
+						<h3 class="c-heading-3">待ちの数で表示</h3>
 						<form name="machi_count_select_form">
 							<div class="l-flex l-flex--wrap l-flex--gap-s">
-								<label class="selectbox-001">
+								<label class="c-selectbox">
 									<select name="machi_count">
 										<option value="1">1門待ち</option>
 										<option value="2">2門待ち</option>
@@ -68,7 +68,7 @@
 										<option value="9">9門待ち</option>
 									</select>
 								</label>
-								<button class="button-002" type="button" id="js-machi-count-select-btn">表示</button>
+								<button class="c-btn" type="button" id="js-machi-count-select-btn">表示</button>
 							</div>
 						</form>
 					</div>
@@ -76,29 +76,29 @@
 			</section>
 			<section class="container-section">
 				<search>
-					<h2 class="heading-021">検索</h2>
+					<h2 class="c-heading-2">検索</h2>
 					<div class="form-group">
-						<h3 class="heading-003">シャンテン数</h3>
+						<h3 class="c-heading-3">シャンテン数</h3>
 						<form name="shanten_search_form">
-							<input id="radio-item-1" class="radio-inline__input" type="radio" name="shanten_search_radio" value="0" checked="true">
-							<label class="radio-inline__label" for="radio-item-1">テンパイ</label>
-							<input id="radio-item-2" class="radio-inline__input" type="radio" name="shanten_search_radio" value="1">
-							<label class="radio-inline__label" for="radio-item-2">イーシャンテン</label>
-							<input id="radio-item-3" class="radio-inline__input" type="radio" name="shanten_search_radio" value="2">
-							<label class="radio-inline__label" for="radio-item-3">リャンシャンテン</label>
+							<input id="radio-item-1" class="c-radio-inline__input" type="radio" name="shanten_search_radio" value="0" checked="true">
+							<label class="c-radio-inline__label" for="radio-item-1">テンパイ</label>
+							<input id="radio-item-2" class="c-radio-inline__input" type="radio" name="shanten_search_radio" value="1">
+							<label class="c-radio-inline__label" for="radio-item-2">イーシャンテン</label>
+							<input id="radio-item-3" class="c-radio-inline__input" type="radio" name="shanten_search_radio" value="2">
+							<label class="c-radio-inline__label" for="radio-item-3">リャンシャンテン</label>
 						</form>
 					</div>
 					<div class="form-group">
-						<h3 class="heading-003">手牌に含まれる形</h3>
+						<h3 class="c-heading-3">手牌に含まれる形</h3>
 						<form name="search_text_form">
-							<input class="nice-textbox" type="text" name="tehai" id="js-tehai-search-input" placeholder="半角数字1~13文字">
+							<input class="c-textbox" type="text" name="tehai" id="js-tehai-search-input" placeholder="半角数字1~13文字">
 						</form>
 						<p class="annotation">例:445566を指定したら、456部分が445566を含む形、4445566や445556666などもヒットします。</p>
 					</div>
 					<div class="form-group">
-						<h3 class="heading-003">待ちの種類(例:147待ちを検索したい場合は147にチェック)</h3>
+						<h3 class="c-heading-3">待ちの種類(例:147待ちを検索したい場合は147にチェック)</h3>
 						<form name="machi_pattern_search_form">
-							<fieldset class="checkbox-002">
+							<fieldset class="c-checkbox">
 								<label><input type="checkbox" name="machi" value="1">1</label>
 								<label><input type="checkbox" name="machi" value="2">2</label>
 								<label><input type="checkbox" name="machi" value="3">3</label>
@@ -111,14 +111,14 @@
 							</fieldset>
 						</form>
 					</div>
-					<button class="button-002" type="button" id="js-search-btn">検索</button>
+					<button class="c-btn" type="button" id="js-search-btn">検索</button>
 				</search>
 				<div>
-					<h2 class="heading-021">検索結果（牌姿|待ち）</h3>
+					<h2 class="c-heading-2">検索結果（牌姿|待ち）</h3>
 					<p class="annotation" id="js-search-result"></p>
 					<div>
-						<button class="button-002" id="js-pagination-btn-prev">前へ</button>
-						<button class="button-002" id="js-pagination-btn-next">次へ</button>
+						<button class="c-btn" id="js-pagination-btn-prev">前へ</button>
+						<button class="c-btn" id="js-pagination-btn-next">次へ</button>
 					</div>
 					<p class="annotation" id="js-pagination-range"></p>
 					<div id="js-chinitsu-list"></div>

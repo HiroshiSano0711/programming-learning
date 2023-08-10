@@ -1,0 +1,23 @@
+.c-radio-inline__input {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+
+.c-radio-inline__label {
+  display: inline-block;
+  padding: .4rem 2rem;
+  margin-right: 8px;
+  transition: all .2s;
+}
+
+.c-radio-inline__input:checked + .c-radio-inline__label {
+  background: #74b9ff;
+  color: #fff;
+}
+
+.c-radio-inline__input:focus + .c-radio-inline__label {
+  outline-color: #4D90FE;
+  outline-offset: -2px;
+  outline-style: auto;
+  outline-width: 5px;
+}

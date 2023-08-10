@@ -1,0 +1,38 @@
+.c-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em 1.5em;
+  border: none;
+}
+
+.c-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0 .5em;
+  position: relative;
+  cursor: pointer;
+}
+
+.c-checkbox label::before {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 2px solid #d6dde3;
+  content: '';
+}
+
+.c-checkbox label:has(:checked)::after {
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  transform: rotate(45deg);
+  width: 5px;
+  height: 10px;
+  border: solid #74b9ff;
+  border-width: 0 3px 3px 0;
+  content: '';
+}
+
+.c-checkbox input {
+  display: none;
+}

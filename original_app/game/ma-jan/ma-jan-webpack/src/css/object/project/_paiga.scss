@@ -11,7 +11,7 @@ $pai-size: 50px;
   color: white;
 }
 
-.paiga {
+.p-paiga {
   @include paiga-basic;
   @include media_query.pc {
     background-size: 1200px 800px;
@@ -20,25 +20,25 @@ $pai-size: 50px;
     background-size: 600px 400px;
   }
 
-  &-mini {
+  &--mini {
     @include paiga-basic; 
     background-size: 600px 400px;
   }
 }
 
-.pai-size {
+.p-pai-size {
   width: $pai-size;
   height: 64px;
   @include media_query.sp {
     width: 26px;
     height: 32px;
   }
-}
 
-.pai-size-mini {
-  width: 26px;
-  height: 32px;
-  vertical-align: bottom;
+  &--mini {
+    width: 26px;
+    height: 32px;
+    vertical-align: bottom;
+  }
 }
 
 @for $i from 0 through 8 {

@@ -1,0 +1,43 @@
+.c-selectbox {
+  position: relative;
+}
+
+.c-selectbox::before,
+.c-selectbox::after {
+  position: absolute;
+  content: '';
+  pointer-events: none;
+}
+
+.c-selectbox::before {
+  display: inline-block;
+  right: 0;
+  width: 2.8em;
+  height: 2.8em;
+  border-radius: 0 3px 3px 0;
+  background-color: #74b9ff;
+}
+
+.c-selectbox::after {
+  position: absolute;
+  top: 50%;
+  right: 1.4em;
+  transform: translate(50%, -50%) rotate(45deg);
+  width: 6px;
+  height: 6px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+
+.c-selectbox select {
+  appearance: none;
+  min-width: 230px;
+  height: 2.8em;
+  padding: .4em 3.6em .4em .8em;
+  border: 1px solid #999;
+  cursor: pointer;
+}
+
+.c-selectbox select:focus {
+  outline: 2px solid #2589d0;
+}
