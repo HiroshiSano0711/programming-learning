@@ -1,0 +1,79 @@
+@use "../../global/media_query";
+
+$pai-size: 50px;
+
+@mixin paiga-basic {
+  display: inline-block;
+  background-image: url(../img/paiga.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-attachment: scroll;
+  color: white;
+}
+
+.paiga {
+  @include paiga-basic;
+  @include media_query.pc {
+    background-size: 1200px 800px;
+  }
+  @include media_query.sp {
+    background-size: 600px 400px;
+  }
+
+  &-mini {
+    @include paiga-basic; 
+    background-size: 600px 400px;
+  }
+}
+
+.pai-size {
+  width: $pai-size;
+  height: 64px;
+  @include media_query.sp {
+    width: 26px;
+    height: 32px;
+  }
+}
+
+.pai-size-mini {
+  width: 26px;
+  height: 32px;
+  vertical-align: bottom;
+}
+
+@for $i from 0 through 8 {
+  @include media_query.sp {
+    .man-#{$i + 1} { 
+      background-position: (-4px + $i * -30px)  -72px;
+    }
+    .pin-#{$i + 1} {
+      background-position: (-4px + $i * -30px) -4px;
+    }
+    .sou-#{$i + 1} {
+      background-position: (-4px + $i * -30px) -38px;
+    }
+  }
+  @include media_query.pc {
+    .man-#{$i + 1} {
+      background-position: (-10px + $i * -60px) -143px;
+    }
+    .pin-#{$i + 1} {
+      background-position: (-10px + $i * -60px) -8px;
+    }
+    .sou-#{$i + 1} {
+      background-position: (-10px + $i * -60px) -76px;
+    }
+  }
+}
+
+@for $i from 0 through 8 {
+  .man-#{$i + 1}-mini { 
+    background-position: (-4px + $i * -30px)  -72px;
+  }
+  .pin-#{$i + 1}-mini {
+    background-position: (-4px + $i * -30px) -4px;
+  }
+  .sou-#{$i + 1}-mini {
+    background-position: (-4px + $i * -30px) -38px;
+  }
+}

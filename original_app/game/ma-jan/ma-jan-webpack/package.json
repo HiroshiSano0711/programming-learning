@@ -7,16 +7,12 @@
   "type": "module",
   "scripts": {
     "output_all_data": "node src/script/output-by-shanten.js && node src/script/output-tenpai-kanko-data.js && node src/script/output-shanten-1-kanko-data.js && node src/script/output-shanten-2-kanko-data.js && node src/script/output-tenpai-by-machi-count-data.js",
-    "output_css": "sass src/style.scss dist/css/style.css"
+    "output_css": "sass src/css/style.scss dist/css/style.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "css-loader": "^6.8.1",
-    "sass": "^1.64.2",
-    "sass-loader": "^13.3.2",
-    "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },

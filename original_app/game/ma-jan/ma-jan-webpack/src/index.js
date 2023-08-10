@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function createPaigaElements(paiStringArr) {
     const childPaiga = document.createElement('div');
-    childPaiga.className = 'content-item';
+    childPaiga.className = 'l-flex__item';
 
     for (const paiString of paiStringArr) {
       const paiga = document.createElement('span');
@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function createPaigaNodes(element) {
     const parent = document.createElement('div');
-    parent.classList.add('content-flex', 'border-btm');
+    parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'border-btm');
 
     const childHaishi = createPaigaElements(element.haishi.split('', 13));
     parent.appendChild(childHaishi);

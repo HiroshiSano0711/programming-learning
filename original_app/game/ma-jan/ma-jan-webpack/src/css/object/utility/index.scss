@@ -1,0 +1,29 @@
+@use "../../global/media_query";
+
+$pai-size: 50px;
+
+.container-section {
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 32px;
+}
+
+.l-tehai {
+  margin-bottom: 8px;
+}
+
+.border-btm {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ml {
+  @include media_query.pc {
+    margin-left: $pai-size;
+  }
+
+  @include media_query.sp {
+    margin-left: calc($pai-size / 2);
+  }
+}

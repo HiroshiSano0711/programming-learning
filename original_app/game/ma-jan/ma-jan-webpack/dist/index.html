@@ -4,18 +4,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
-  	<title>麻雀</title>
-	<link rel="stylesheet" href="./css/normalize.css">
+	<title>清一色データベース</title>
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-	<div class="content">
-		<header class="header">
+	<div class="l-grid-root">
+		<header class="l-grid-root__header">
 			<img class="img-full" src="./img/header.jpg" alt="ヘッダー">
 		</header>
-
-		<main class="container-large">
+		<main class="l-grid-root__main l-container--large">
 			<section class="container-section">
 				<a href="8_9men_machi.html">8門待ち、9門待ちの考察</a>
 			</section>
@@ -37,11 +35,11 @@
 			</section>
 			<section class="container-section">
 				<h2 class="heading-021">一覧で表示</h2>
-				<search class="content-flex">
+				<search class="l-flex l-flex--wrap l-flex">
 					<div>
 						<h3 class="heading-003">シャンテン数</h3>
 						<form name="shanten_list_select_form">
-							<div class="content-flex-gap-s">
+							<div class="l-flex l-flex--wrap l-flex--gap-s">
 								<label class="selectbox-001">
 									<select name="shanten_count">
 										<option value="0">テンパイ形</option>
@@ -56,7 +54,7 @@
 					<div>
 						<h3 class="heading-003">待ちの数で表示</h3>
 						<form name="machi_count_select_form">
-							<div class="content-flex-gap-s">
+							<div class="l-flex l-flex--wrap l-flex--gap-s">
 								<label class="selectbox-001">
 									<select name="machi_count">
 										<option value="1">1門待ち</option>
@@ -127,10 +125,10 @@
 				</div>
 			</section>
 		</main>
+		<footer class="l-grid-root__footer footer">
+			<p class="copyright">© 2023 Hiroshi Sano All Rights Reserved. 監修: Masaru Shiobara</p>
+		</footer>
 	</div>
-	<footer class="footer">
-		<p class="copyright">© 2023 Hiroshi Sano All Rights Reserved. 監修: Masaru Shiobara</p>
-	</footer>
 	<script type="text/javascript" src="./main.js" defer></script>
 </body>
 </html>

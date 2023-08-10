@@ -1,0 +1,23 @@
+@use "../global/media_query";
+
+$pai-size: 50px;
+
+.l-flex {
+  display: flex;
+}
+
+.l-flex--wrap {
+  flex-wrap: wrap;
+}
+
+.l-flex--gap {
+  gap: 0 $pai-size;
+}
+
+.l-flex--gap-s {
+  gap: 0 16px;
+}
+
+.l-flex-content {
+  margin-bottom: 32px;
+}

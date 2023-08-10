@@ -1,0 +1,21 @@
+@use "../global/media_query";
+
+.l-container {
+  max-width: var(--size-content-small);
+  @include media_query.pc {
+    margin: 60px auto;
+  }
+  @include media_query.sp {
+    margin: 16px;
+  }
+
+  &--large {
+    max-width: var(--size-content-large);
+    @include media_query.pc {
+      margin: 60px auto;
+    }
+    @include media_query.sp {
+      margin: 16px;
+    }
+  }
+}

@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
-  	<title>麻雀</title>
-	<link rel="stylesheet" href="./css/normalize.css">
+	<title>清一色データベース</title>
 	<link rel="stylesheet" href="./css/style.css">
+
+	<style>
+		/* なぜか牌画のspan間に余白ができるためこのページだけ個別で設定している。 */
+		.l-flex__item > span {
+			margin: 0 -3px;
+		}
+	</style>
 </head>
+
 <body>
-	<div class="content">
-		<header class="header">
+	<div class="l-grid-root">
+		<header class="l-grid-root__header">
 			<img class="img-full" src="./img/header.jpg" alt="ヘッダー">
 		</header>
-
-		<main class="container">
+		<main class="l-grid-root__main l-container">
 			<a href="index.html">トップページ</a>
 
 			<section>
@@ -22,188 +29,217 @@
 					<h1 class="heading-001">8門待ち、9門待ちの考察</h1>
 					<h2 class="heading-021">8門待ちの基本形</h2>
 					<p>8門待ちの基本形は以下の10枚形です。</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<p>なお、以下の形は7門待ちですが、実質同じ形の8門待ちの構造として解釈できます。行き止まりで待ちが消える特殊な場合です。0や10を考慮すれば、同じ形の8門待ちと言えます。麻雀は1から9までですが、なぜ0や10を考慮しているのかは<a href="#abc">純正九蓮宝燈との関連</a>の節で述べています。</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
+					<p>
+						なお、以下の形は7門待ちですが、実質同じ形の8門待ちの構造として解釈できます。行き止まりで待ちが消える特殊な場合です。0や10を考慮すれば、同じ形の8門待ちと言えます。麻雀は1から9までですが、なぜ0や10を考慮しているのかは<a
+							href="#abc">純正九蓮宝燈との関連</a>の節で述べています。</p>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>				
-						<span class="paiga pai-size pin-9"></span>				
-						<span class="paiga pai-size pin-9"></span>				
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
-					<p>この10枚形に、両端の刻子を跨がない順子、または持っていない数字の刻子を追加した場合、待ちに変化はありません。※持っている数字の刻子を追加すると、4枚使いになり待ちが1つ少なくなります。その場合、牌姿は7門待ちに分類されますが基本形は共通の8門待ちとして解釈しました。</p>
+					<p>この10枚形に、両端の刻子を跨がない順子、または持っていない数字の刻子を追加した場合、待ちに変化はありません。※持っている数字の刻子を追加すると、4枚使いになり待ちが1つ少なくなります。その場合、牌姿は7門待ちに分類されますが基本形は共通の8門待ちとして解釈しました。
+					</p>
 					<p>例</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
 					<p>上記はいずれも
 						<span class="paiga-mini pai-size-mini pin-1-mini"></span>
@@ -214,178 +250,206 @@
 						<span class="paiga-mini pai-size-mini pin-6-mini"></span>
 						<span class="paiga-mini pai-size-mini pin-7-mini"></span>
 						<span class="paiga-mini pai-size-mini pin-8-mini"></span>
-						の8門待ちになります。両端の刻子を跨がない順子、または持っていない数字の刻子を追加した場合は元の10枚形の待ちに変化を与えません。</p>
+						の8門待ちになります。両端の刻子を跨がない順子、または持っていない数字の刻子を追加した場合は元の10枚形の待ちに変化を与えません。
+					</p>
 					<p>一方で、両端の刻子を跨ぐ、または外側に伸びる順子を追加した場合、下記のような10枚形(6門待ち)と複合となり13枚形に変化します。</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
 					<p>例</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
 					<p>この形は</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="ml"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="ml"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
 					<p>に分解できます。以下の形も</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="ml"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="ml"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
-					
 					<p>に分解できます。2つの10枚形の待ちを複合すると
 						<span class="paiga-mini pai-size-mini pin-1-mini"></span>
 						<span class="paiga-mini pai-size-mini pin-2-mini"></span>
@@ -396,238 +460,272 @@
 						<span class="paiga-mini pai-size-mini pin-7-mini"></span>
 						<span class="paiga-mini pai-size-mini pin-8-mini"></span>
 						<span class="paiga-mini pai-size-mini pin-9-mini"></span>
-						の9門待ちです。ただし4枚使いが必ず出るため全体としては8門待ちとなります。この2つを複合した13枚形は純正九蓮宝燈からの変化形でもあります。</p>
-		
+						の9門待ちです。ただし4枚使いが必ず出るため全体としては8門待ちとなります。この2つを複合した13枚形は純正九蓮宝燈からの変化形でもあります。
+					</p>
+
 					<h2 id="abc" class="heading-021">純正九蓮宝燈との関連</h2>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
 					<p>この2つの13枚形は同じ系統の構造だと解釈できます。</p>
 					<p>なぜかというと、純正九蓮宝燈の形から</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
 					<p>9を6に</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
 					<p>ひとつ右にスライドさせます(それぞれの数字に1を足す)</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
 					<p>同じ形に辿り着きました。</p>
 					<p>もうひとつ例</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
 					<p>9を6に</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
 					<p>8を5に</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
 					<p>ひとつ右にスライドさせます（それぞれの数字に1を足す）</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
 					<p>このように純正九蓮宝燈から変化させていくことで同じ形に辿り着きます。</p>
-					<p>なぜ純正九連宝燈からの変化が成り立つのかは0と10を考えると推測できます。麻雀は1から9までしかないため012や8910といったメンツは存在しないし通常考えることもないです。</p>
+					<p>なぜ純正九連宝燈からの変化が成り立つのかは0と10を考えると推測できます。麻雀は1から9までしかないため012や8910といったメンツは存在しないし通常考えることもないです。
+					</p>
 					<p>しかし0と10を考えるなら純正九連宝燈は</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
-					<p>012345678910待ちの11連宝燈とみなせます。0と10でもあがれることが確認できます。</p>
+					<p>012345678910待ちの11連宝燈とみなせます。0と10でもあがれることが確認できます。
+					</p>
 					<p>この形から1を4に、または9を6に変えます。</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
-						<span class="paiga pai-size pin-9"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+							<span class="paiga pai-size pin-9"></span>
+						</div>
 					</div>
-					<div class="tehai">
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-1"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-1"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					<p>これらはそれぞれ1から10待ちの10門待ち、0から9待ちの10門待ちとみなすことができます。</p>
-					<p>そこからひとつスライドさせた形が8門待ちで出てきた13枚形です。もともと10門待ちなので、ひとつスライドさせても0か10がなくなるだけで9門待ちになり、カンコ使いがでるため8門待ちになっているだけです。0と10を考えると、純正九連宝燈からの変化でアガリ牌の枚数が最大の23枚待ちの形(7門待ち、8門待ちの一部)にすべて辿り着きます。(※7門待ちに例外の形があるので後述)</p>
+					<p>これらはそれぞれ1から10待ちの10門待ち、0から9待ちの10門待ちとみなすことができます。
+					</p>
+					<p>そこからひとつスライドさせた形が8門待ちで出てきた13枚形です。もともと10門待ちなので、ひとつスライドさせても0か10がなくなるだけで9門待ちになり、カンコ使いがでるため8門待ちになっているだけです。0と10を考えると、純正九連宝燈からの変化でアガリ牌の枚数が最大の23枚待ちの形(7門待ち、8門待ちの一部)にすべて辿り着きます。(※7門待ちに例外の形があるので後述)
+					</p>
 
 					<img class="img-full" src="./img/9men_henka.jpg" alt="純正九蓮宝燈からの変化">
 
-					<p>また、8門待ちの基本形であげた10枚形も、純正九蓮宝燈から変化させた形から1メンツを抜いて、待ちが1つ減った形です。</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<p>また、8門待ちの基本形であげた10枚形も、純正九蓮宝燈から変化させた形から1メンツを抜いて、待ちが1つ減った形です。
+					</p>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
 					<p>から
 						<span class="paiga-mini pai-size-mini pin-6-mini"></span>
@@ -635,17 +733,19 @@
 						<span class="paiga-mini pai-size-mini pin-8-mini"></span>
 						を抜く。
 					</p>
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+						</div>
 					</div>
 					<p>よって8門待ち、9門待ち(純正九蓮宝燈)は形として同系統とみなすことができると考えられます。</p>
 					<p>※
@@ -670,36 +770,43 @@
 						<span class="paiga-mini pai-size-mini pin-9-mini"></span>
 						<span class="paiga-mini pai-size-mini pin-9-mini"></span>
 						<span class="paiga-mini pai-size-mini pin-9-mini"></span>
-						は、待ちが1つ少ないですが0や10を考えたら同じ8門待ちだと解釈できます。横にスライドさせただけの形には違いないため、これらは同じ待ちの形として扱います。形に対してより抽象的に認識し覚えやすくするため、0と10を考慮しています。</p>
+						は、待ちが1つ少ないですが0や10を考えたら同じ8門待ちだと解釈できます。横にスライドさせただけの形には違いないため、これらは同じ待ちの形として扱います。形に対してより抽象的に認識し覚えやすくするため、0と10を考慮しています。
+					</p>
 					<p>なお、似たような形で
-					<div class="tehai">
-						<span class="paiga pai-size pin-2"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-3"></span>
-						<span class="paiga pai-size pin-4"></span>
-						<span class="paiga pai-size pin-5"></span>
-						<span class="paiga pai-size pin-6"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-7"></span>
-						<span class="paiga pai-size pin-8"></span>
+					<div class="l-flex l-flex--wrap l-flex--gap l-tehai">
+						<div class="l-flex__item">
+							<span class="paiga pai-size pin-2"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-3"></span>
+							<span class="paiga pai-size pin-4"></span>
+							<span class="paiga pai-size pin-5"></span>
+							<span class="paiga pai-size pin-6"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-7"></span>
+							<span class="paiga pai-size pin-8"></span>
+						</div>
 					</div>
-					があります。
-					<span class="paiga-mini pai-size-mini pin-1-mini"></span>
-					<span class="paiga-mini pai-size-mini pin-2-mini"></span>
-					<span class="paiga-mini pai-size-mini pin-4-mini"></span>
-					<span class="paiga-mini pai-size-mini pin-5-mini"></span>
-					<span class="paiga-mini pai-size-mini pin-6-mini"></span>
-					<span class="paiga-mini pai-size-mini pin-8-mini"></span>
-					<span class="paiga-mini pai-size-mini pin-9-mini"></span>
-					の7門待ちの形で、純正九蓮宝燈の9門待ちと同じく、待ちの枚数が最も多い23枚という優秀な形です。しかしこの形は純正九連宝燈からの変化では辿り着けず、また37をカンコ使いしているが37は待ちになっていない特殊な13枚形です。9門待ちだけど37をそれぞれ4枚使っているから7門待ちということではありません。</p>
+					<p>があります。</p>
+					<p>
+						<span class="paiga-mini pai-size-mini pin-1-mini"></span>
+						<span class="paiga-mini pai-size-mini pin-2-mini"></span>
+						<span class="paiga-mini pai-size-mini pin-4-mini"></span>
+						<span class="paiga-mini pai-size-mini pin-5-mini"></span>
+						<span class="paiga-mini pai-size-mini pin-6-mini"></span>
+						<span class="paiga-mini pai-size-mini pin-8-mini"></span>
+						<span class="paiga-mini pai-size-mini pin-9-mini"></span>
+						の7門待ちの形で、純正九蓮宝燈の9門待ちと同じく、待ちの枚数が最も多い23枚という優秀な形です。しかしこの形は純正九連宝燈からの変化では辿り着けず、また37をカンコ使いしているが37は待ちになっていない特殊な13枚形です。9門待ちだけど37をそれぞれ4枚使っているから7門待ちということではありません。
+					</p>
+			</section>
 		</main>
+		<footer class="l-grid-root__footer footer">
+			<p class="copyright">© 2023 Hiroshi Sano All Rights Reserved. 監修: Masaru Shiobara</p>
+		</footer>
 	</div>
-	<footer class="footer">
-		<p class="copyright">© 2023 Hiroshi Sano All Rights Reserved. 監修: Masaru Shiobara</p>
-	</footer>
 </body>
+
 </html>
