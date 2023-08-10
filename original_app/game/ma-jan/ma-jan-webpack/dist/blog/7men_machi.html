@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>清一色データベース</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+	<style>
+		/* なぜか牌画のspan間に余白ができるためこのページだけ個別で設定している。 */
+		.l-flex__item > span {
+			margin: 0 -3px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="l-grid-root">
+		<header class="l-grid-root__header">
+			<img class="p-img-full" src="../img/header.jpg" alt="ヘッダー">
+		</header>
+		<main class="l-grid-root__main l-container">
+			<a href="../index.html">トップページ</a>
+			<a href="8_9men_machi.html">8門待ち、9門待ちの考察</a>
+
+			<section>
+				<h1 class="c-heading-1">7門待ちの考察(1/4)</h1>
+				<p>7門待ち全79通りを、ここでは以下の9つに分類してみました。</p>
+				<ul>
+					<li>三連刻+4連形</li>
+					<li>小サンドイッチ+2順子</li>
+					<li>高め四暗刻単騎(三連刻+小サンドイッチ)</li>
+					<li>6門待ち+刻子</li>
+					<li>高め二盃口(5連対子+刻子)</li>
+					<li>一盃口+ノベタン3門待ち</li>
+					<li>一盃口+カンコ使い4門待ち</li>
+					<li>一盃口+5門待ち</li>
+					<li>特殊形(13枚形)</li>
+				</ul>
+				<p>例を上げながら1つずつ解説していきます。</p>
+
+				<h2 class="c-heading-2">三連刻+4連形</h2>
+				<p>三連刻というのはローカル役として知られている役ですが、以下のような同色で3つ連続した刻子を指します。</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-1"></span>
+						<span class="p-paiga p-pai-size pin-1"></span>
+						<span class="p-paiga p-pai-size pin-1"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+					</div>
+				</div>
+				<p>また、4連形は
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+					や
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-6-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+					といった4つの連続した数字で構成されている形(順子+1の形)を指します。受け入れが広く好形も作りやすいので実戦で大事にされる形です。この2つの形が複合すると7門待ちを形成します。
+				</p>
+
+				<p>例</p>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						待ち
+					</p>
+				</div>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-6-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-9-mini"></span>
+						待ち
+					</p>
+				</div>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-6-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						待ち
+					</p>
+				</div>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-9"></span>
+							<span class="p-paiga p-pai-size pin-9"></span>
+							<span class="p-paiga p-pai-size pin-9"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-6-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-9-mini"></span>
+						待ち
+					</p>
+				</div>
+
+				<h2 class="c-heading-2">形の構造</h2>
+				<p>まず、刻子に4連形がつながることで5門待ちの形ができます。</p>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+						</div>
+					</div>
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						待ち
+					</p>
+				</div>
+
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+					</div>
+				</div>
+				<p class="annotation">
+					<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+					待ち
+				</p>
+
+				<p>一方で、4連形の方から向かって順子を2つ抜くと連続した4門待ちがでてきます。</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-1"></span>
+						<span class="p-paiga p-pai-size pin-1"></span>
+						<span class="p-paiga p-pai-size pin-1"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<p class="annotation">を抜く</p>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+						待ち
+					</p>
+				</div>
+
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<p class="annotation">を抜く</p>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-6-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						待ち
+					</p>
+				</div>
+				<p>この2つを複合すると待ちが9個、2つかぶっている待ちを除いて7門待ちになります。</p>
+				<p>待ちの覚え方には
+					<ul>
+						<li>三連刻の始まりから、4連形の次の数字まで、後ろから2番目以外</li>
+					</ul>
+					が1つとして挙げられます。
+				</p>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-1"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+						から
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						の
+						<span class="p-paiga--mini p-pai-size--mini pin-6-mini"></span>
+						以外が待ち
+					</p>
+				</div>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						から
+						<span class="p-paiga--mini p-pai-size--mini pin-9-mini"></span>
+						の
+						<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+						以外が待ち
+					</p>
+				</div>
+
+				<p>対称形は逆向きになり</p>
+				<ul>
+					<li>三連刻の終わりから、4連形の下の数字まで、前から2番目以外</li>
+				</ul>
+				<p>になります。</p>
+
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-2"></span>
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+						から
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						の
+						<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+						以外が待ち
+					</p>
+				</div>
+				<div class="u-mb--l">
+					<div class="l-flex l-flex--wrap l-flex--gap">
+						<div class="l-flex__item">
+							<span class="p-paiga p-pai-size pin-3"></span>
+							<span class="p-paiga p-pai-size pin-4"></span>
+							<span class="p-paiga p-pai-size pin-5"></span>
+							<span class="p-paiga p-pai-size pin-6"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-7"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-8"></span>
+							<span class="p-paiga p-pai-size pin-9"></span>
+							<span class="p-paiga p-pai-size pin-9"></span>
+							<span class="p-paiga p-pai-size pin-9"></span>
+						</div>
+					</div>
+					<p class="annotation">
+						<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+						から
+						<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+						の
+						<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+						以外が待ち
+					</p>
+				</div>
+				<p>なお、
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-6-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+					を右にひとつスライドさせた
+				</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+						<span class="p-paiga p-pai-size pin-9"></span>
+					</div>
+				</div>
+				<p>に関しては6門待ちとなりますが、構造としては実質7門待ちと同じものとして解釈できます。</p>
+				<p>似た形も調べたいので、試しに三連刻につながる形ではなく、三連刻の刻子に1枚かぶる4連形を複合させてみます。</p>
+				<p>例</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+					</div>
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+					</div>
+				</div>
+				<p class="annotation">ではなく</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+					</div>
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<p>としてみます。</p>
+				<p>2つを比較すると5門待ちの形が1つずれるという違いがみえます。</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+					</div>
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+					</div>
+				</div>
+				<p>また、順子を2つ抜いて残った形にも少し違いがみえます。</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+						<span class="p-paiga p-pai-size pin-8"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+					</div>
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+					</div>
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<p>
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+					待ちから
+					<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					待ちに変化しました。
+				</p>
+				<p>同じ4門待ち+5門待ち形なので、この2つは同系統と解釈できそうですが、後者は4枚使いが発生するため待ちが1つ減り6門待ちになります。</p>
+				<div class="l-flex l-flex--wrap l-flex--gap">
+					<div class="l-flex__item">
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-2"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-3"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-4"></span>
+						<span class="p-paiga p-pai-size pin-5"></span>
+						<span class="p-paiga p-pai-size pin-6"></span>
+						<span class="p-paiga p-pai-size pin-7"></span>
+					</div>
+				</div>
+				<p>
+					<span class="p-paiga--mini p-pai-size--mini pin-1-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-2-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-3-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-5-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-7-mini"></span>
+					<span class="p-paiga--mini p-pai-size--mini pin-8-mini"></span>
+					待ち(
+					<span class="p-paiga--mini p-pai-size--mini pin-4-mini"></span>
+					は待てるけど4枚使い)
+				</p>
+
+				<h2 class="c-heading-2">まとめ</h2>
+				<p>三連刻+4連形をみてきましたが
+					<ul>
+						<li>連続した4門待ち+5門待ちの複合</li>
+						<li>待ちが2つかぶるので7門待ち</li>
+					</ul>
+					になることがわかりました。次回は、小サンドイッチ+2順子についてみていきます。
+				</p>
+			</section>
+		</main>
+		<footer class="l-grid-root__footer footer">
+			<p class="copyright">© 2023 Hiroshi Sano All Rights Reserved. 監修: Masaru Shiobara</p>
+		</footer>
+	</div>
+</body>
+
+</html>
