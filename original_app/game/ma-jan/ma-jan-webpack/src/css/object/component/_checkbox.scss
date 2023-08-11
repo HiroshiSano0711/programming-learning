@@ -42,6 +42,7 @@
 .c-checkbox--paiga {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: .5em 1em;
   border: none;
 
@@ -59,7 +60,7 @@
     cursor: pointer;
 
     @include media_query.sp {
-      width: 23%;
+      width: 22%;
       height: 90px;
     }
   }

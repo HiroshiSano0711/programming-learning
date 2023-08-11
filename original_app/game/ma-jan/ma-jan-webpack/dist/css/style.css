@@ -471,6 +471,7 @@ template {
 .c-checkbox--paiga {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.5em 1em;
   border: none;
 }
@@ -488,7 +489,7 @@ template {
 }
 @media (max-width: 800px) {
   .c-checkbox--paiga label {
-    width: 23%;
+    width: 22%;
     height: 90px;
   }
 }
