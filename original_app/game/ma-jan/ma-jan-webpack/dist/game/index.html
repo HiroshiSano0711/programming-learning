@@ -5,25 +5,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<title>清一色データベース</title>
-	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 	<div class="l-grid-root">
 		<header class="l-grid-root__header">
-			<img class="p-img-full" src="./img/header.jpg" alt="ヘッダー">
+			<img class="p-img-full" src="../img/header.jpg" alt="ヘッダー">
 		</header>
 		<main class="l-grid-root__main l-container--large">
 			<nav class="l-grid-root__nav">
 				<ul class="l-flex c-nav">
-					<li class="c-nav__li"><a href="index.html" class="c-link c-nav__li__a">トップページ</a></li>
-					<li class="c-nav__li"><a href="./blog/index.html" class="c-link c-nav__current__a">ブログ</a></li>
+					<li class="c-nav__li"><a href="../index.html" class="c-link c-nav__li__a">トップページ</a></li>
+					<li class="c-nav__li"><a href="../blog/index.html" class="c-link c-nav__li__a">ブログ</a></li>
 					<li class="c-nav__li c-nav__current"><a href="./game/index.html" class="c-link c-nav__current__a">待ち当てクイズ</a></li>
 				</ul>
 			</nav>
 
 			<section class="container-section">
-				<h1 class="c-heading-1">清一色データベース</h1>
+				<p>仮実装。アルファ版。テンパイ形のみ対応</p>
+				<h1 class="c-heading-1">出題設定</h1>
+				<p>追加予定の機能：待ちの数やノーテン形を含むかどうかを設定できるようにする</p>
 				<div>
 					<h3 class="c-heading-3">表示牌の種類</h3>
 					<form name="paiga_style_select_form">
@@ -38,101 +40,29 @@
 				</div>
 			</section>
 			<section class="container-section">
-				<h2 class="c-heading-2">一覧で表示</h2>
-				<search class="l-flex l-flex--wrap l-flex--gap">
-					<div>
-						<h3 class="c-heading-3">シャンテン数</h3>
-						<form name="shanten_list_select_form">
-							<div class="l-flex l-flex--wrap l-flex--gap-s">
-								<label class="c-selectbox">
-									<select name="shanten_count">
-										<option value="0">テンパイ形</option>
-										<option value="1">イーシャンテン形</option>
-										<option value="2">リャンシャンテン形</option>
-									</select>
-								</label>
-								<button class="c-btn" type="button" id="shanten_list_select_btn">表示</button>
-							</div>
-						</form>
-					</div>
-					<div>
-						<h3 class="c-heading-3">待ちの数で表示</h3>
-						<form name="machi_count_select_form">
-							<div class="l-flex l-flex--wrap l-flex--gap-s">
-								<label class="c-selectbox">
-									<select name="machi_count">
-										<option value="1">1門待ち</option>
-										<option value="2">2門待ち</option>
-										<option value="3">3門待ち</option>
-										<option value="4">4門待ち</option>
-										<option value="5">5門待ち</option>
-										<option value="6">6門待ち</option>
-										<option value="7">7門待ち</option>
-										<option value="8">8門待ち</option>
-										<option value="9">9門待ち</option>
-									</select>
-								</label>
-								<button class="c-btn" type="button" id="js-machi-count-select-btn">表示</button>
-							</div>
-						</form>
-					</div>
-				</search>
+				<h2 class="c-heading-2">クイズ</h2>
+				<button class="c-btn" type="button" id="js-start-btn">出題</button>
 			</section>
 			<section class="container-section">
-				<search>
-					<h2 class="c-heading-2">検索</h2>
-					<div class="form-group">
-						<h3 class="c-heading-3">シャンテン数</h3>
-						<form name="shanten_search_form">
-							<input id="radio-item-1" class="c-radio-inline__input" type="radio" name="shanten_search_radio" value="0" checked="true">
-							<label class="c-radio-inline__label" for="radio-item-1">テンパイ</label>
-							<input id="radio-item-2" class="c-radio-inline__input" type="radio" name="shanten_search_radio" value="1">
-							<label class="c-radio-inline__label" for="radio-item-2">イーシャンテン</label>
-							<input id="radio-item-3" class="c-radio-inline__input" type="radio" name="shanten_search_radio" value="2">
-							<label class="c-radio-inline__label" for="radio-item-3">リャンシャンテン</label>
-						</form>
-					</div>
-					<div class="form-group">
-						<h3 class="c-heading-3">手牌に含まれる形</h3>
-						<form name="search_text_form">
-							<input class="c-textbox" type="text" name="tehai" id="js-tehai-search-input" placeholder="半角数字1~13文字">
-						</form>
-						<p class="annotation">例:445566を指定したら、456部分が445566を含む形、4445566や445556666などもヒットします。</p>
-					</div>
-					<div class="form-group">
-						<h3 class="c-heading-3">待ちの種類(例:147待ちを検索したい場合は147にチェック)</h3>
-						<form name="machi_pattern_search_form">
-							<fieldset class="c-checkbox">
-								<label><input type="checkbox" name="machi" value="1">1</label>
-								<label><input type="checkbox" name="machi" value="2">2</label>
-								<label><input type="checkbox" name="machi" value="3">3</label>
-								<label><input type="checkbox" name="machi" value="4">4</label>
-								<label><input type="checkbox" name="machi" value="5">5</label>
-								<label><input type="checkbox" name="machi" value="6">6</label>
-								<label><input type="checkbox" name="machi" value="7">7</label>
-								<label><input type="checkbox" name="machi" value="8">8</label>
-								<label><input type="checkbox" name="machi" value="9">9</label>
-							</fieldset>
-						</form>
-					</div>
-					<button class="c-btn" type="button" id="js-search-btn">検索</button>
-				</search>
-				<div>
-					<h2 class="c-heading-2">検索結果（牌姿|待ち）</h3>
-					<p class="annotation" id="js-search-result"></p>
-					<div>
-						<button class="c-btn" id="js-pagination-btn-prev">前へ</button>
-						<button class="c-btn" id="js-pagination-btn-next">次へ</button>
-					</div>
-					<p class="annotation" id="js-pagination-range"></p>
-					<div id="js-chinitsu-list"></div>
-				</div>
+				<div id="js-chinitsu-quiz"></div>
+				<p>下記から待ちになっている牌を全てクリックしてください。ノーテンの場合は何もクリックせず回答をおしてください。</p>
+			</section>
+
+			<section class="container-section">
+				<form name="answer_checkbox_form">
+					<fieldset id="js-quiz-answer" class="c-checkbox--paiga"></fieldset>
+				</form>
+				<button class="c-btn" type="button" id="js-answer-btn">回答</button>
+			</section>
+
+			<section class="container-section">
+				<div id="js-quiz-result"></div>
 			</section>
 		</main>
 		<footer class="l-grid-root__footer footer">
 			<p class="copyright">© 2023 Hiroshi Sano All Rights Reserved. 監修: Masaru Shiobara</p>
 		</footer>
 	</div>
-	<script type="text/javascript" src="./main.js" defer></script>
+	<script type="text/javascript" src="../game.bundle.js" defer></script>
 </body>
 </html>

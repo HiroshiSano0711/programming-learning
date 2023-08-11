@@ -461,6 +461,28 @@ template {
   display: none;
 }
 
+.c-checkbox--paiga {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+  border: none;
+}
+.c-checkbox--paiga input {
+  display: none;
+}
+.c-checkbox--paiga label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 8px;
+  cursor: pointer;
+}
+.c-checkbox--paiga label:has(:checked) {
+  border: 2px solid #74b9ff;
+}
+
 .c-heading-1 {
   margin: 32px 0;
   padding: 0.5rem 0.7rem;

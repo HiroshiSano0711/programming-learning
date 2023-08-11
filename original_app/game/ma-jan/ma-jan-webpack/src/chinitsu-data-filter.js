@@ -1,13 +1,17 @@
 import allData from "./data/all.json" assert { type: "json" };
 
 export class ChinitsuDataFilter {
+	#allData = allData;
 	constructor(){
-		this._allData = allData;
 		this._filteredData = null;
 	}
 
 	get filteredData() {
-    return this._filteredData
+    return this._filteredData;
+  }
+
+	get allData() {
+    return this.#allData;
   }
 
 	initFilterData() {
@@ -16,12 +20,12 @@ export class ChinitsuDataFilter {
 
 	// 一覧表示用
 	filterByMachiCount(count) {
-		this._filteredData = this._allData.filter((data) => data.machi.length === count)
+		this._filteredData = this.#allData.filter((data) => data.machi.length === count)
 		return this._filteredData
 	}
 
 	filterByShantenCount(value) {
-		this._filteredData = this._allData.filter((data) => data.shanten === value)
+		this._filteredData = this.#allData.filter((data) => data.shanten === value)
 		return this._filteredData
 	}
 
@@ -30,7 +34,7 @@ export class ChinitsuDataFilter {
 		if (params.shantenCount !== undefined || params.shantenCount !== null) {
 			this.filterByShantenCount(params.shantenCount)
 		} else {
-			this._filteredData = this._allData
+			this._filteredData = this.#allData
 		}
 		this.filterByHaishi(params.haishiPattern)
 		this.filterByMachiPattern(params.machiPattern)
