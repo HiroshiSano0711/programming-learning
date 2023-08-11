@@ -42,12 +42,12 @@
 .c-checkbox--paiga {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   padding: 0;
   border: none;
 
   @include media_query.sp {
     gap: .3em 0;
+    justify-content: center;
   }
 
   @include media_query.pc {
