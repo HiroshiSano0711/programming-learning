@@ -29,10 +29,13 @@ $pai-size: 50px;
 }
  
 .c-nav__li {
-  width: 140px;
-  text-align: center;
   height: 50px;
   line-height: 50px;
+  text-align: center;
+
+  @include media_query.pc {
+    min-width: 140px;
+  }
 
   @include media_query.sp {
     width: 33%;
@@ -57,7 +60,6 @@ $pai-size: 50px;
 
 .c-link {
   display: block;
-  min-width: 140px;
   text-decoration-line: none;
 }
 

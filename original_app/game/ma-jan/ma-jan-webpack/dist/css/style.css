@@ -366,10 +366,14 @@ template {
 }
 
 .c-nav__li {
-  width: 140px;
-  text-align: center;
   height: 50px;
   line-height: 50px;
+  text-align: center;
+}
+@media (min-width: 801px) {
+  .c-nav__li {
+    min-width: 140px;
+  }
 }
 @media (max-width: 800px) {
   .c-nav__li {
@@ -394,7 +398,6 @@ template {
 
 .c-link {
   display: block;
-  min-width: 140px;
   text-decoration-line: none;
 }
 
@@ -485,7 +488,7 @@ template {
 }
 @media (max-width: 800px) {
   .c-checkbox--paiga label {
-    width: 25%;
+    width: 23%;
     height: 90px;
   }
 }
