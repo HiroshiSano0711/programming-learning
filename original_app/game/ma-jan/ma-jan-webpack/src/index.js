@@ -1,10 +1,12 @@
 import { ChinitsuDataFilter } from './chinitsu-data-filter.js';
 import { Pagination } from './pagination.js';
 import { paigaStyleList, paigaStyleIndex } from './paiga-style-list.js';
+import { removeAllChildNodes, correctCheckedElements } from './common.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   const chinitsuDataFilter = new ChinitsuDataFilter();
   const pagination = new Pagination();
+  const paginationRange = document.getElementById('js-pagination-range');
 
   const displayDom = document.getElementById('js-chinitsu-list');
   const searchResult = document.getElementById('js-search-result');
@@ -21,16 +23,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const tehaiTextForm = document.getElementById('js-tehai-search-input');
   const shantenSelectForm = document.shanten_search_form;
 	const machiPatternSearchForm = document.machi_pattern_search_form;
-
-  function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-    }
-  }
-
-  function correctCheckedElements(radioBtnOrCheckBox) {
-    return Array.prototype.filter.call(radioBtnOrCheckBox, (element) => element.checked);
-  }
 
   function pageTextEndNumber() {
     if (pagination.endIndex() <= chinitsuDataFilter.filteredData.length) {
@@ -69,10 +61,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const fragment = new DocumentFragment();
 
     data.slice(pagination.startIndex(), pagination.endIndex()).forEach((d) => fragment.append(createPaigaNodes(d)));
-    const paginationRange = document.getElementById('js-pagination-range');
-    paginationRange.textContent = `${pagination.startIndex() + 1}~${pageTextEndNumber()}件目を表示中`;
-
     displayDom.append(fragment);
+  }
+
+  function displayPaginationRangeText() {
+    paginationRange.textContent = `${pagination.startIndex() + 1}~${pageTextEndNumber()}件目を表示中`;
   }
 
   function displaySearchResultText(count) {
@@ -95,22 +88,32 @@ window.addEventListener('DOMContentLoaded', () => {
     return params;
   }
 
+  function initDisplay() {
+
+  }
+
   /** ページネーション */
   const prevBtn = document.getElementById('js-pagination-btn-prev');
   const nextBtn = document.getElementById('js-pagination-btn-next');
 
   prevBtn.addEventListener('click', () => {
     if (pagination.currentPage === 0) return;
+
     pagination.decrementCurrentPage();
     removeAllChildNodes(displayDom);
+
     displayPaiga(chinitsuDataFilter.filteredData);
+    displayPaginationRangeText();
   });
 
   nextBtn.addEventListener('click', () => {
     if (pagination.endIndex() >= chinitsuDataFilter.filteredData.length) return;
+
     pagination.incrementCurrentPage();
     removeAllChildNodes(displayDom);
+
     displayPaiga(chinitsuDataFilter.filteredData);
+    displayPaginationRangeText();
   });
 
   paigaStyle.addEventListener('change', (event) => {
@@ -119,23 +122,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	/** 一覧表示 */
 	shantenListSelectForm.addEventListener('click', () => {
-    pagination.initCurrentPage();
     removeAllChildNodes(displayDom);
+    pagination.initCurrentPage();
+    chinitsuDataFilter.initFilterData();
 
     const count = Number(shantenListSelectForm.shanten_count.value);
     const data = chinitsuDataFilter.filterByShantenCount(count);
     displayPaiga(data);
     displaySearchResultText(data.length);
+    displayPaginationRangeText();
   });
 
   machiCountSelectBtn.addEventListener('click', () => {
-    pagination.initCurrentPage();
     removeAllChildNodes(displayDom);
+    pagination.initCurrentPage();
+    chinitsuDataFilter.initFilterData();
 
     const count = Number(machiCountSelectForm.machi_count.value);
     const data = chinitsuDataFilter.filterByMachiCount(count);
     displayPaiga(data);
     displaySearchResultText(data.length);
+    displayPaginationRangeText();
   });
 
   /** 検索処理。AND検索 */
@@ -152,5 +159,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const data = chinitsuDataFilter.filterBySearchParams(searchParams);
     displayPaiga(data);
     displaySearchResultText(data.length);
+    displayPaginationRangeText();
   });
 });

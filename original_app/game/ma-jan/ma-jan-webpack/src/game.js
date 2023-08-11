@@ -1,5 +1,6 @@
 import { ChinitsuDataFilter } from './chinitsu-data-filter.js';
 import { paigaStyleList, paigaStyleIndex } from './paiga-style-list.js';
+import { removeAllChildNodes, correctCheckedElements } from './common.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   const chinitsuDataFilter = new ChinitsuDataFilter();
@@ -15,16 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
   let styleValue = paigaStyle.value;
 
   let currentQuiz = null;
-
-  function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-    }
-  }
-
-  function correctCheckedElements(radioBtnOrCheckBox) {
-    return Array.prototype.filter.call(radioBtnOrCheckBox, (element) => element.checked);
-  }
 
   function createPaigaParentNode() {
     const parent = document.createElement('div');
@@ -53,6 +44,8 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function createAnswerNodes() {
+    const fragment = new DocumentFragment();
+
     for (let index = 1; index <= 9; index++) {
       const parent = document.createElement('label');
       const input = document.createElement('input');
@@ -63,8 +56,9 @@ window.addEventListener('DOMContentLoaded', () => {
       const paiga = document.createElement('span');
       paiga.classList.add(paigaStyleList[index + paigaStyleIndex(styleValue)].cssSprite, 'p-paiga', 'p-pai-size');
       parent.append(paiga);
-      answerDom.append(parent);
+      fragment.append(parent)
     }
+    answerDom.append(fragment);
   }
 
   function displayPaiga(data) {
