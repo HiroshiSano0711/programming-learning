@@ -472,8 +472,18 @@ template {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5em 1em;
+  padding: 0;
   border: none;
+}
+@media (max-width: 800px) {
+  .c-checkbox--paiga {
+    gap: 0.3em 0;
+  }
+}
+@media (min-width: 801px) {
+  .c-checkbox--paiga {
+    gap: 0.5em 1em;
+  }
 }
 .c-checkbox--paiga input {
   display: none;
@@ -482,19 +492,23 @@ template {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  height: 90px;
   padding: 8px;
   cursor: pointer;
 }
 @media (max-width: 800px) {
   .c-checkbox--paiga label {
     width: 22%;
-    height: 90px;
+    height: 40px;
+  }
+}
+@media (min-width: 801px) {
+  .c-checkbox--paiga label {
+    width: 60px;
   }
 }
 .c-checkbox--paiga label:has(:checked) {
-  border: 2px solid #74b9ff;
+  border: 1px solid #74b9ff;
 }
 
 .c-heading-1 {
