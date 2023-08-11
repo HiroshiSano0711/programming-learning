@@ -1,12 +1,8 @@
-import shanten1AllData from "./data/shanten1/all.json" assert { type: "json" };
-import shanten2AllData from "./data/shanten2/all.json" assert { type: "json" };
-import tenpaiAllData from "./data/tenpai/all.json" assert { type: "json" };
+import allData from "./data/all.json" assert { type: "json" };
 
 export class ChinitsuDataFilter {
 	constructor(){
-		this._tenpaiAllData = tenpaiAllData;
-		this._shanten1AllData = shanten1AllData;
-		this._shanten2AllData = shanten2AllData;
+		this._allData = allData;
 		this._filteredData = null;
 	}
 
@@ -20,27 +16,21 @@ export class ChinitsuDataFilter {
 
 	// 一覧表示用
 	filterByMachiCount(count) {
-		this._filteredData = this._tenpaiAllData.filter((data) => data.machi.length === count)
+		this._filteredData = this._allData.filter((data) => data.machi.length === count)
 		return this._filteredData
 	}
 
 	filterByShantenCount(value) {
-		if(value == 1) {
-			this._filteredData = this._shanten1AllData
-		} else if(value == 2) {
-			this._filteredData = this._shanten2AllData
-		} else {
-			this._filteredData = this._tenpaiAllData
-		}
+		this._filteredData = this._allData.filter((data) => data.shanten === value)
 		return this._filteredData
 	}
 
-	// AND検索用
+	// AND検索用 まずシャンテン数でフィルターしてそこから各条件で絞っていく
 	filterBySearchParams(params) {
-		if (params.shantenCount) {
+		if (params.shantenCount !== undefined || params.shantenCount !== null) {
 			this.filterByShantenCount(params.shantenCount)
 		} else {
-			this._filteredData = this._tenpaiAllData
+			this._filteredData = this._allData
 		}
 		this.filterByHaishi(params.haishiPattern)
 		this.filterByMachiPattern(params.machiPattern)
@@ -64,7 +54,7 @@ export class ChinitsuDataFilter {
 	filterByMachiPattern(pattern) {
 		if(pattern.length === 0) return;
 
-		this._filteredData = this._filteredData.filter((data) => data.shanten === 0 && JSON.stringify(data.machi) == JSON.stringify(pattern))
+		this._filteredData = this._filteredData.filter((data) => JSON.stringify(data.machi) == JSON.stringify(pattern))
 	}
 
 	multiRegexCondition(pattern) {
