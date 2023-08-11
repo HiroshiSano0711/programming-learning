@@ -21,3 +21,35 @@ $pai-size: 50px;
 .l-flex-content {
   margin-bottom: 32px;
 }
+
+.c-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 60px 0;
+}
+ 
+.c-nav__li {
+  width: 140px;
+  text-align: center;
+  background-color: #74b9ff;
+  height: 50px;
+  margin-right: 1px;
+  line-height: 50px;
+}
+
+.c-nav__current {
+  color: #74b9ff;
+  background-color: #fff;
+
+  &__a {
+    color: #74b9ff;
+    text-decoration-line: none;
+  }
+}
+ 
+.c-nav__li__a {
+  text-decoration-line: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 20px;
+}

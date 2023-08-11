@@ -10,12 +10,7 @@
   }
 
   &--large {
-    max-width: var(--size-content-large);
-    @include media_query.pc {
-      margin: 60px auto;
-    }
-    @include media_query.sp {
-      margin: 16px;
-    }
+    width: 94%;
+    padding: 3%;
   }
 }
