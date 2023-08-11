@@ -368,26 +368,35 @@ template {
 .c-nav__li {
   width: 140px;
   text-align: center;
-  background-color: #74b9ff;
   height: 50px;
   margin-right: 1px;
   line-height: 50px;
 }
 
 .c-nav__current {
-  color: #74b9ff;
-  background-color: #fff;
+  font-weight: bold;
+  color: #fff;
+  background-color: #74b9ff;
 }
 .c-nav__current__a {
-  color: #74b9ff;
+  color: white;
   text-decoration-line: none;
 }
 
 .c-nav__li__a {
+  color: #74b9ff;
+  background-color: #fff;
+}
+
+.c-link {
+  display: block;
+  min-width: 140px;
   text-decoration-line: none;
-  color: #fff;
-  font-weight: bold;
-  padding: 20px;
+}
+
+.c-nav__li__a {
+  color: #74b9ff;
+  background-color: #fff;
 }
 
 .l-grid-root {
