@@ -76,4 +76,17 @@ export class ChinitsuDataFilter {
 		})
 		return multiRegexCondition
 	}
+
+	// クイズの設定からフィルター
+	filterByQuizSettings(params) {
+		if(params.shantenCount.length === 0) return this.#allData;
+
+		this._filteredData = this.#allData.filter((data) => {
+			if(!params.shantenCount.includes(String(data.shanten))) return false;
+			if(params.machiCount.length !== 0 && !params.machiCount.includes(String(data.machi.length))) return false;
+			if(params.kankoCount.length !== 0 && !params.kankoCount.includes(String(data.kanko_count))) return false;
+			return true;
+		})
+		return this._filteredData;
+	}
 }

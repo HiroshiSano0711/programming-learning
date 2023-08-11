@@ -25,8 +25,8 @@
 			<section class="container-section">
 				<p>仮実装。アルファ版。テンパイ形のみ対応</p>
 				<h1 class="c-heading-1">出題設定</h1>
-				<p>追加予定の機能：待ちの数やノーテン形を含むかどうかを設定できるようにする</p>
-				<div>
+				<p>出題内容にそのパターンや形を含むかどうかを設定できます。何も設定しない場合はテンパイ形からランダムで出題されます。</p>
+				<div class="form-group">
 					<h3 class="c-heading-3">表示牌の種類</h3>
 					<form name="paiga_style_select_form">
 						<label class="c-selectbox">
@@ -36,6 +36,43 @@
 								<option value="sou">ソウズ</option>
 							</select>
 						</label>
+					</form>
+				</div>
+				<div class="form-group">
+					<h3 class="c-heading-3">シャンテン数(※テンパイ形は必須)
+					</h3>
+					<form name="shanten_form">
+						<fieldset class="c-checkbox">
+							<label><input type="checkbox" name="shanten" value="0" checked="1" disabled>テンパイ</label>
+							<label><input type="checkbox" name="shanten" value="1">イーシャンテン</label>
+							<label><input type="checkbox" name="shanten" value="2">リャンシャンテン</label>
+						</fieldset>
+					</form>
+				</div>
+				<div class="form-group">
+					<h3 class="c-heading-3">待ちの数</h3>
+					<form name="machi_count_form">
+						<fieldset class="c-checkbox">
+							<label><input type="checkbox" name="machi_count" value="1">1門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="2">2門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="3">3門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="4">4門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="5">5門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="6">6門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="7">7門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="8">8門待ち</label>
+							<label><input type="checkbox" name="machi_count" value="9">9門待ち</label>
+						</fieldset>
+					</form>
+				</div>
+				<div class="form-group">
+					<h3 class="c-heading-3">カンコの数</h3>
+					<form name="kanko_count_form">
+						<fieldset class="c-checkbox">
+							<label><input type="checkbox" name="kanko_count" value="1">1つ使い</label>
+							<label><input type="checkbox" name="kanko_count" value="2">2つ使い</label>
+							<label><input type="checkbox" name="kanko_count" value="3">3つ使い</label>
+						</fieldset>
 					</form>
 				</div>
 			</section>

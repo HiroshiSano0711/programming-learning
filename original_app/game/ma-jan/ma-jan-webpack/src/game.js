@@ -80,13 +80,27 @@ window.addEventListener('DOMContentLoaded', () => {
     removeAllChildNodes(answerDom);
     removeAllChildNodes(resultDom);
 
-    // 設定のパラメーターから出題するデータをフィルターする
+    // シャンテン数
+    const checkedShantenCount = correctCheckedElements(document.shanten_form.shanten);
+    const shantenCountValues = checkedShantenCount.map((element) => element.value);
+    // 待ちの数
+    const checkedMachiCount = correctCheckedElements(document.machi_count_form.machi_count);
+    const machiCountValues = checkedMachiCount.map((element) => element.value);
+    // カンコの数
+    const checkedKankoCount = correctCheckedElements(document.kanko_count_form.kanko_count);
+    const kankoCountValues = checkedKankoCount.map((element) => element.value);
+    const params = {
+      shantenCount: shantenCountValues,
+      machiCount: machiCountValues,
+      kankoCount: kankoCountValues
+    }
+    const data = chinitsuDataFilter.filterByQuizSettings(params)
 
-    // 出題する
-    displayPaiga(chinitsuDataFilter.filterByShantenCount(0));
+    displayPaiga(data);
     createAnswerNodes();
   });
 
+  // 回答結果を表示
   answerBtn.addEventListener('click', () => {
     const checkedMachi = correctCheckedElements(answerForm.answer_checkbox);
     const checkedMachiValues = checkedMachi.map((element) => element.value);
