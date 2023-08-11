@@ -369,8 +369,12 @@ template {
   width: 140px;
   text-align: center;
   height: 50px;
-  margin-right: 1px;
   line-height: 50px;
+}
+@media (max-width: 800px) {
+  .c-nav__li {
+    width: 33%;
+  }
 }
 
 .c-nav__current {
@@ -478,6 +482,12 @@ template {
   height: 60px;
   padding: 8px;
   cursor: pointer;
+}
+@media (max-width: 800px) {
+  .c-checkbox--paiga label {
+    width: 25%;
+    height: 90px;
+  }
 }
 .c-checkbox--paiga label:has(:checked) {
   border: 2px solid #74b9ff;

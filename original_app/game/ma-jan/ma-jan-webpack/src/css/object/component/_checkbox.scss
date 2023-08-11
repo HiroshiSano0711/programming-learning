@@ -1,3 +1,5 @@
+@use "../../global/media_query";
+
 .c-checkbox {
   display: flex;
   flex-wrap: wrap;
@@ -55,6 +57,11 @@
     height: 60px;
     padding: 8px;
     cursor: pointer;
+
+    @include media_query.sp {
+      width: 25%;
+      height: 90px;
+    }
   }
 
   label:has(:checked) {

@@ -32,8 +32,11 @@ $pai-size: 50px;
   width: 140px;
   text-align: center;
   height: 50px;
-  margin-right: 1px;
   line-height: 50px;
+
+  @include media_query.sp {
+    width: 33%;
+  }
 }
 
 .c-nav__current {
