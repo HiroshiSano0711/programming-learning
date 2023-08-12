@@ -1,5 +1,4 @@
-@use "../../global/media_query";
-@use "../../global/colors";
+@use "../../global" as g;
 
 .c-nav {
   list-style: none;
@@ -12,11 +11,11 @@
   line-height: 50px;
   text-align: center;
 
-  @include media_query.pc {
+  @include g.pc {
     min-width: 140px;
   }
 
-  @include media_query.sp {
+  @include g.sp {
     width: 33%;
   }
 }
@@ -24,7 +23,7 @@
 .c-nav__current {
   font-weight: bold;
   color: #fff;
-  background-color: colors.$palette-light-blue;
+  background-color: g.$palette-light-blue;
 
   &__a {
     color: white;
@@ -32,6 +31,6 @@
 }
 
 .c-nav__li__a {
-  color: colors.$palette-light-blue;
+  color: g.$palette-light-blue;
   background-color: #fff;
 }

@@ -1,11 +1,11 @@
-@use "../global/media_query";
+@use "../global" as g;
 
 .l-container {
   max-width: var(--size-content-small);
-  @include media_query.pc {
+  @include g.pc {
     margin: 60px auto;
   }
-  @include media_query.sp {
+  @include g.sp {
     margin: 16px;
   }
 }

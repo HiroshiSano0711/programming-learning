@@ -1,4 +1,4 @@
-@use "../../global/colors";
+@use "../../global" as g;
 
 .c-radio-inline__input {
   clip: rect(1px, 1px, 1px, 1px);
@@ -13,7 +13,7 @@
 }
 
 .c-radio-inline__input:checked + .c-radio-inline__label {
-  background: colors.$palette-light-blue;
+  background: g.$palette-light-blue;
   color: #fff;
 }
 

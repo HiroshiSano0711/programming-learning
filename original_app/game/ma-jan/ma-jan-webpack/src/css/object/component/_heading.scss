@@ -1,16 +1,16 @@
-@use "../../global/colors";
+@use "../../global" as g;
 
 .c-heading-1 {
   margin: 32px 0;
   padding: .5rem .7rem;
-  border-left: 5px solid colors.$palette-light-blue;
+  border-left: 5px solid g.$palette-light-blue;
 }
 
 .c-heading-2 {
   margin: 24px 0;
   position: relative;
   padding: .5rem 0 .4rem;
-  border-bottom: 3px solid colors.$palette-light-blue;
+  border-bottom: 3px solid g.$palette-light-blue;
   color: #333333;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .c-heading-2::before {
-  background-color: colors.$palette-light-blue;
+  background-color: g.$palette-light-blue;
 }
 
 .c-heading-2::after {

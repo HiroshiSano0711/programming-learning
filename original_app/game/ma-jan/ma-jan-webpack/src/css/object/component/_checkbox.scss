@@ -1,5 +1,4 @@
-@use "../../global/media_query";
-@use "../../global/colors";
+@use "../../global" as g;
 
 .c-checkbox {
   display: flex;
@@ -31,7 +30,7 @@
   transform: rotate(45deg);
   width: 5px;
   height: 10px;
-  border: solid colors.$palette-light-blue;
+  border: solid g.$palette-light-blue;
   border-width: 0 3px 3px 0;
   content: '';
 }
@@ -46,12 +45,12 @@
   padding: 0;
   border: none;
 
-  @include media_query.sp {
+  @include g.sp {
     gap: .3em 0;
     justify-content: center;
   }
 
-  @include media_query.pc {
+  @include g.pc {
     gap: .5em 1em;
   }
 
@@ -67,16 +66,16 @@
     padding: 8px;
     cursor: pointer;
 
-    @include media_query.sp {
+    @include g.sp {
       width: 22%;
       height: 40px;
     }
-    @include media_query.pc {
+    @include g.pc {
       width: 60px;
     }
   }
 
   label:has(:checked) {
-    border: 1px solid colors.$palette-light-blue;
+    border: 1px solid g.$palette-light-blue;
   }
 }

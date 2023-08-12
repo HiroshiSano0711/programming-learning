@@ -1,4 +1,4 @@
-@use "../../global/media_query";
+@use "../../global" as g;
 
 $pai-size: 50px;
 
@@ -13,10 +13,10 @@ $pai-size: 50px;
 
 .p-paiga {
   @include paiga-basic;
-  @include media_query.pc {
+  @include g.pc {
     background-size: 1200px 800px;
   }
-  @include media_query.sp {
+  @include g.sp {
     background-size: 600px 400px;
   }
 
@@ -29,7 +29,7 @@ $pai-size: 50px;
 .p-pai-size {
   width: $pai-size;
   height: 64px;
-  @include media_query.sp {
+  @include g.sp {
     width: 26px;
     height: 32px;
   }
@@ -42,7 +42,7 @@ $pai-size: 50px;
 }
 
 @for $i from 0 through 8 {
-  @include media_query.sp {
+  @include g.sp {
     .man-#{$i + 1} { 
       background-position: (-4px + $i * -30px)  -72px;
     }
@@ -53,7 +53,7 @@ $pai-size: 50px;
       background-position: (-4px + $i * -30px) -38px;
     }
   }
-  @include media_query.pc {
+  @include g.pc {
     .man-#{$i + 1} {
       background-position: (-10px + $i * -60px) -143px;
     }
