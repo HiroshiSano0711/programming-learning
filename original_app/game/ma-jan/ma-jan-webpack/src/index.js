@@ -1,7 +1,7 @@
 import { ChinitsuDataFilter } from './chinitsu-data-filter.js';
 import { Pagination } from './pagination.js';
-import { paigaStyleList, paigaStyleIndex } from './paiga-style-list.js';
-import { removeAllChildNodes, correctCheckedElements } from './common.js';
+import { removeAllChildNodes, filterCheckedElements } from './common.js';
+import { createPaigaParentNode, createPaigaElements } from './paiga.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   const chinitsuDataFilter = new ChinitsuDataFilter();
@@ -31,36 +31,16 @@ window.addEventListener('DOMContentLoaded', () => {
     return chinitsuDataFilter.filteredData.length;
   }
 
-  function createPaigaElements(paiStringArr) {
-    const childPaiga = document.createElement('div');
-    childPaiga.className = 'l-flex__item';
-
-    for (const paiString of paiStringArr) {
-      const paiga = document.createElement('span');
-      paiga.classList.add(paigaStyleList[Number(paiString) + paigaStyleIndex(styleValue)].cssSprite, 'p-paiga', 'p-pai-size');
-      childPaiga.appendChild(paiga);
-    }
-    return childPaiga;
-  }
-
-  function createPaigaNodes(element) {
-    const parent = document.createElement('div');
-    parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'u-border-btm');
-
-    const childHaishi = createPaigaElements(element.haishi.split('', 13));
-    parent.appendChild(childHaishi);
-
-    if (element.shanten === 0) {
-      const childMachi = createPaigaElements(element.machi);
-      parent.appendChild(childMachi);
-    }
-    return parent;
-  }
-
   function displayPaiga(data) {
     const fragment = new DocumentFragment();
 
-    data.slice(pagination.startIndex(), pagination.endIndex()).forEach((d) => fragment.append(createPaigaNodes(d)));
+    data.slice(pagination.startIndex(), pagination.endIndex()).forEach((d) => {
+      const parent = createPaigaParentNode();
+      const childHaishi = createPaigaElements(d.haishi.split('', 13), styleValue);
+      parent.appendChild(childHaishi);
+      if (d.shanten === 0) parent.appendChild(createPaigaElements(d.machi, styleValue));
+      fragment.append(parent)
+    });
     displayDom.append(fragment);
   }
 
@@ -77,19 +57,15 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function searchFormValueToParams() {
-    const checkedElements = correctCheckedElements(shantenSelectForm.shanten_search_radio);
+    const checkedElements = filterCheckedElements(shantenSelectForm.shanten_search_radio);
     const shantenValue = Number(checkedElements[0].value);
-    const checkedMachi = correctCheckedElements(machiPatternSearchForm.machi);
+    const checkedMachi = filterCheckedElements(machiPatternSearchForm.machi);
     const checkedMachiValues = checkedMachi.map((element) => element.value);
     const params = {
       shantenCount: shantenValue,
       machiPattern: checkedMachiValues,
     };
     return params;
-  }
-
-  function initDisplay() {
-
   }
 
   /** ページネーション */

@@ -1,11 +1,11 @@
 import { ChinitsuDataFilter } from './chinitsu-data-filter.js';
-import { paigaStyleList, paigaStyleIndex } from './paiga-style-list.js';
-import { removeAllChildNodes, correctCheckedElements } from './common.js';
+import { removeAllChildNodes, filterCheckedElements } from './common.js';
+import { paigaStyleList, paigaStyleIndex, createPaigaParentNode, createPaigaElements } from './paiga.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   const chinitsuDataFilter = new ChinitsuDataFilter();
   const displayDom = document.getElementById('js-chinitsu-quiz');
-  const startBtn = document.getElementById('js-start-btn');
+  const startBtn = document.getElementById('js-quiz-start-btn');
   const answerDom = document.getElementById('js-quiz-answer');
   const resultDom = document.getElementById('js-quiz-result');
   const answerForm = document.answer_checkbox_form
@@ -17,30 +17,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let currentQuiz = null;
 
-  function createPaigaParentNode() {
-    const parent = document.createElement('div');
-    parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'u-border-btm');
-    return parent;
-  }
-
-  function createPaigaNodes(element) {
+  function displayPaiga() {
+    const fragment = new DocumentFragment();
     const parent = createPaigaParentNode();
-    const childHaishi = createPaigaElements(element.haishi.split('', 13));
-    parent.appendChild(childHaishi);
-
-    return parent;
-  }
-
-  function createPaigaElements(paiStringArr) {
-    const childPaiga = document.createElement('div');
-    childPaiga.className = 'l-flex__item';
-
-    for (const paiString of paiStringArr) {
-      const paiga = document.createElement('span');
-      paiga.classList.add(paigaStyleList[Number(paiString) + paigaStyleIndex(styleValue)].cssSprite, 'p-paiga', 'p-pai-size');
-      childPaiga.appendChild(paiga);
-    }
-    return childPaiga;
+    const child = createPaigaElements(currentQuiz.haishi.split('', 13), styleValue);
+    parent.appendChild(child);
+    fragment.append(parent);
+    displayDom.append(fragment);
   }
 
   function createAnswerNodes() {
@@ -53,22 +36,32 @@ window.addEventListener('DOMContentLoaded', () => {
       input.setAttribute('name', 'answer_checkbox');
       input.setAttribute('value', index);
       parent.append(input);
-      const paiga = document.createElement('span');
-      paiga.classList.add(paigaStyleList[index + paigaStyleIndex(styleValue)].cssSprite, 'p-paiga', 'p-pai-size');
-      parent.append(paiga);
+      parent.append(createPaigaElements([index]));
       fragment.append(parent)
     }
     answerDom.append(fragment);
   }
 
-  function displayPaiga(data) {
-    const fragment = new DocumentFragment();
-
-    // 同じ問題は出題したくないので、出題済みの配列は削除したい
+  function setCurrentQuiz(data) {
     const randomIndex = Math.floor(Math.random() * data.length);
     currentQuiz = data[randomIndex];
-    fragment.append(createPaigaNodes(data[randomIndex]));
-    displayDom.append(fragment);
+  }
+
+  function formValuesToParams() {
+     const checkedShantenCount = filterCheckedElements(document.shanten_form.shanten);
+     const shantenCountValues = checkedShantenCount.map((element) => element.value);
+
+     const checkedMachiCount = filterCheckedElements(document.machi_count_form.machi_count);
+     const machiCountValues = checkedMachiCount.map((element) => element.value);
+
+     const checkedKankoCount = filterCheckedElements(document.kanko_count_form.kanko_count);
+     const kankoCountValues = checkedKankoCount.map((element) => element.value);
+     const params = {
+       shantenCount: shantenCountValues,
+       machiCount: machiCountValues,
+       kankoCount: kankoCountValues
+     }
+     return params;
   }
 
   paigaStyle.addEventListener('change', (event) => {
@@ -80,35 +73,22 @@ window.addEventListener('DOMContentLoaded', () => {
     removeAllChildNodes(answerDom);
     removeAllChildNodes(resultDom);
 
-    // シャンテン数
-    const checkedShantenCount = correctCheckedElements(document.shanten_form.shanten);
-    const shantenCountValues = checkedShantenCount.map((element) => element.value);
-    // 待ちの数
-    const checkedMachiCount = correctCheckedElements(document.machi_count_form.machi_count);
-    const machiCountValues = checkedMachiCount.map((element) => element.value);
-    // カンコの数
-    const checkedKankoCount = correctCheckedElements(document.kanko_count_form.kanko_count);
-    const kankoCountValues = checkedKankoCount.map((element) => element.value);
-    const params = {
-      shantenCount: shantenCountValues,
-      machiCount: machiCountValues,
-      kankoCount: kankoCountValues
-    }
-    const data = chinitsuDataFilter.filterByQuizSettings(params)
-
-    displayPaiga(data);
+    const data = chinitsuDataFilter.filterByQuizSettings(formValuesToParams())
+    setCurrentQuiz(data)
+    displayPaiga();
     createAnswerNodes();
   });
 
   // 回答結果を表示
+  // TODO: 正解と間違いの場合の表示をもっと派手にしたい
   answerBtn.addEventListener('click', () => {
-    const checkedMachi = correctCheckedElements(answerForm.answer_checkbox);
+    const checkedMachi = filterCheckedElements(answerForm.answer_checkbox);
     const checkedMachiValues = checkedMachi.map((element) => element.value);
     if(JSON.stringify(currentQuiz.machi) === JSON.stringify(checkedMachiValues)) {
       resultDom.textContent = '正解';
     } else {
       if(currentQuiz.machi.length !== 0) {
-        const machi_kotae = createPaigaElements(currentQuiz.machi)
+        const machi_kotae = createPaigaElements(currentQuiz.machi, styleValue)
         resultDom.textContent = '間違い。正解は';
         resultDom.append(machi_kotae);
       } else {

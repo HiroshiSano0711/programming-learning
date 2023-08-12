@@ -50,3 +50,22 @@ export function paigaStyleIndex(value) {
   }
   return 0;
 }
+
+export function createPaigaParentNode() {
+  const parent = document.createElement('div');
+  parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'u-border-btm');
+  return parent;
+}
+
+// 数字文字列の配列を引数で渡す。例：['1', '2', '3']
+export function createPaigaElements(paiStringArr, styleValue) {
+  const childPaiga = document.createElement('div');
+  childPaiga.className = 'l-flex__item';
+
+  for (const paiString of paiStringArr) {
+    const paiga = document.createElement('span');
+    paiga.classList.add(paigaStyleList[Number(paiString) + paigaStyleIndex(styleValue)].cssSprite, 'p-paiga', 'p-pai-size');
+    childPaiga.appendChild(paiga);
+  }
+  return childPaiga;
+}
