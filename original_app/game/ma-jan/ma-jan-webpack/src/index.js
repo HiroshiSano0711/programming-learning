@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function createPaigaNodes(element) {
     const parent = document.createElement('div');
-    parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'border-btm');
+    parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'u-border-btm');
 
     const childHaishi = createPaigaElements(element.haishi.split('', 13));
     parent.appendChild(childHaishi);

@@ -13,7 +13,7 @@
 		<header class="l-grid-root__header">
 			<img class="p-img-full" src="./img/header.jpg" alt="ヘッダー">
 		</header>
-		<main class="l-grid-root__main l-container--large">
+		<main class="l-grid-root__main">
 			<nav class="l-grid-root__nav">
 				<ul class="l-flex c-nav">
 					<li class="c-nav__li c-nav__current"><a href="./index.html" class="c-link c-nav__current__a">トップページ</a></li>
@@ -22,7 +22,7 @@
 				</ul>
 			</nav>
 
-			<section class="container-section">
+			<section class="l-section">
 				<h1 class="c-heading-1">清一色データベース</h1>
 				<div>
 					<h3 class="c-heading-3">表示牌の種類</h3>
@@ -37,7 +37,7 @@
 					</form>
 				</div>
 			</section>
-			<section class="container-section">
+			<section class="l-section">
 				<h2 class="c-heading-2">一覧で表示</h2>
 				<search class="l-flex l-flex--wrap l-flex--gap">
 					<div>
@@ -78,10 +78,10 @@
 					</div>
 				</search>
 			</section>
-			<section class="container-section">
+			<section class="l-section">
 				<search>
 					<h2 class="c-heading-2">検索</h2>
-					<div class="form-group">
+					<div class="u-mb--m">
 						<h3 class="c-heading-3">シャンテン数</h3>
 						<form name="shanten_search_form">
 							<input id="radio-item-1" class="c-radio-inline__input" type="radio" name="shanten_search_radio" value="0" checked="true">
@@ -92,14 +92,14 @@
 							<label class="c-radio-inline__label" for="radio-item-3">リャンシャンテン</label>
 						</form>
 					</div>
-					<div class="form-group">
+					<div class="u-mb--m">
 						<h3 class="c-heading-3">手牌に含まれる形</h3>
 						<form name="search_text_form">
 							<input class="c-textbox" type="text" name="tehai" id="js-tehai-search-input" placeholder="半角数字1~13文字">
 						</form>
-						<p class="annotation">例:445566を指定したら、456部分が445566を含む形、4445566や445556666などもヒットします。</p>
+						<p class="c-annotation">例:445566を指定したら、456部分が445566を含む形、4445566や445556666などもヒットします。</p>
 					</div>
-					<div class="form-group">
+					<div class="u-mb--m">
 						<h3 class="c-heading-3">待ちの種類(例:147待ちを検索したい場合は147にチェック)</h3>
 						<form name="machi_pattern_search_form">
 							<fieldset class="c-checkbox">
@@ -119,12 +119,12 @@
 				</search>
 				<div>
 					<h2 class="c-heading-2">検索結果（牌姿|待ち）</h3>
-					<p class="annotation" id="js-search-result"></p>
+					<p class="c-annotation" id="js-search-result"></p>
 					<div>
 						<button class="c-btn" id="js-pagination-btn-prev">前へ</button>
 						<button class="c-btn" id="js-pagination-btn-next">次へ</button>
 					</div>
-					<p class="annotation" id="js-pagination-range"></p>
+					<p class="c-annotation" id="js-pagination-range"></p>
 					<div id="js-chinitsu-list"></div>
 				</div>
 			</section>

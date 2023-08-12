@@ -1,0 +1,37 @@
+@use "../../global/media_query";
+@use "../../global/colors";
+
+.c-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 60px 0;
+}
+ 
+.c-nav__li {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+
+  @include media_query.pc {
+    min-width: 140px;
+  }
+
+  @include media_query.sp {
+    width: 33%;
+  }
+}
+
+.c-nav__current {
+  font-weight: bold;
+  color: #fff;
+  background-color: colors.$palette-light-blue;
+
+  &__a {
+    color: white;
+  }
+}
+
+.c-nav__li__a {
+  color: colors.$palette-light-blue;
+  background-color: #fff;
+}

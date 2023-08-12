@@ -13,7 +13,7 @@
 		<header class="l-grid-root__header">
 			<img class="p-img-full" src="../img/header.jpg" alt="ヘッダー">
 		</header>
-		<main class="l-grid-root__main l-container--large">
+		<main class="l-grid-root__main">
 			<nav class="l-grid-root__nav">
 				<ul class="l-flex c-nav">
 					<li class="c-nav__li"><a href="../index.html" class="c-link c-nav__li__a">トップページ</a></li>
@@ -22,12 +22,12 @@
 				</ul>
 			</nav>
 
-			<section class="container-section">
+			<section class="l-section">
 				<p>仮実装。ベータ版。</p>
 				<h1 class="c-heading-1">待ちあてクイズ</h1>
 				<h2 class="c-heading-2">出題設定</h2>
 				<p>出題内容にそのパターンや形を含むかどうかを設定できます。何も設定しない場合はテンパイ形からランダムで出題されます。</p>
-				<div class="form-group">
+				<div class="u-mb--m">
 					<h3 class="c-heading-3">表示牌の種類</h3>
 					<form name="paiga_style_select_form">
 						<label class="c-selectbox">
@@ -39,7 +39,7 @@
 						</label>
 					</form>
 				</div>
-				<div class="form-group">
+				<div class="u-mb--m">
 					<h3 class="c-heading-3">シャンテン数(※テンパイ形は必須)
 					</h3>
 					<form name="shanten_form">
@@ -50,7 +50,7 @@
 						</fieldset>
 					</form>
 				</div>
-				<div class="form-group">
+				<div class="u-mb--m">
 					<h3 class="c-heading-3">待ちの数</h3>
 					<form name="machi_count_form">
 						<fieldset class="c-checkbox">
@@ -66,7 +66,7 @@
 						</fieldset>
 					</form>
 				</div>
-				<div class="form-group">
+				<div class="u-mb--m">
 					<h3 class="c-heading-3">カンコの数</h3>
 					<form name="kanko_count_form">
 						<fieldset class="c-checkbox">
@@ -78,23 +78,23 @@
 					</form>
 				</div>
 			</section>
-			<section class="container-section">
+			<section class="l-section">
 				<h2 class="c-heading-2">クイズ</h2>
 				<p>待ちの牌を全てクリック。ノーテンの場合は何もせず回答をおしてください。</p>
 				<button class="c-btn" type="button" id="js-start-btn">出題</button>
 			</section>
-			<section class="container-section">
+			<section class="l-section">
 				<div id="js-chinitsu-quiz"></div>
 			</section>
 
-			<section class="container-section">
+			<section class="l-section">
 				<form name="answer_checkbox_form">
 					<fieldset id="js-quiz-answer" class="c-checkbox--paiga"></fieldset>
 				</form>
 				<button class="c-btn" type="button" id="js-answer-btn">回答</button>
 			</section>
 
-			<section class="container-section">
+			<section class="l-section">
 				<div id="js-quiz-result"></div>
 			</section>
 		</main>

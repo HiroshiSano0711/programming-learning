@@ -1,13 +1,15 @@
+@use "../../global/colors";
+
 .c-btn {
   max-width: 250px;
   margin:0 auto;
   padding: .85em 2em;
   border: none;
-  background-color: #74b9ff;
+  background-color: colors.$palette-light-blue;
   color: #fff;
   cursor: pointer;
 }
 
 .c-btn:hover {
-  background-color: #74b9ff;
+  background-color: colors.$palette-light-blue;
 }

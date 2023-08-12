@@ -1,3 +1,5 @@
+@use "../../global/colors";
+
 .c-radio-inline__input {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
@@ -11,7 +13,7 @@
 }
 
 .c-radio-inline__input:checked + .c-radio-inline__label {
-  background: #74b9ff;
+  background: colors.$palette-light-blue;
   color: #fff;
 }
 

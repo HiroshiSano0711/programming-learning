@@ -8,9 +8,8 @@
   @include media_query.sp {
     margin: 16px;
   }
+}
 
-  &--large {
-    width: 94%;
-    padding: 3%;
-  }
+.l-section {
+  margin-bottom: 32px;
 }

@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function createPaigaParentNode() {
     const parent = document.createElement('div');
-    parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'border-btm');
+    parent.classList.add('l-flex', 'l-flex--wrap', 'l-flex--gap', 'l-flex-content', 'u-border-btm');
     return parent;
   }
 

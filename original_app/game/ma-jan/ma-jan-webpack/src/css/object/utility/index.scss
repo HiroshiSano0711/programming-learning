@@ -1,26 +1,15 @@
 @use "../../global/media_query";
 
-$pai-size: 50px;
-
-// TODO:あとでユーティリティとして命名を修正する
-.container-section {
-  margin-bottom: 32px;
+.u-border-btm {
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.form-group {
-  margin-bottom: 32px;
-}
-
-.annotation {
-  margin: 0 0 12px 0;
-}
-
-.l-tehai {
+.u-mb--xs {
   margin-bottom: 8px;
 }
 
-.border-btm {
-  border-bottom: 1px solid #e5e7eb;
+.u-mb--m {
+  margin-bottom: 32px;
 }
 
 .u-mb--l {

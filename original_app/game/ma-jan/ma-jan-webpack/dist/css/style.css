@@ -334,9 +334,9 @@ template {
     margin: 16px;
   }
 }
-.l-container--large {
-  width: 94%;
-  padding: 3%;
+
+.l-section {
+  margin-bottom: 32px;
 }
 
 .l-flex {
@@ -359,53 +359,6 @@ template {
   margin-bottom: 32px;
 }
 
-.c-nav {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 60px 0;
-}
-
-.c-nav__li {
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-}
-@media (min-width: 801px) {
-  .c-nav__li {
-    min-width: 140px;
-  }
-}
-@media (max-width: 800px) {
-  .c-nav__li {
-    width: 33%;
-  }
-}
-
-.c-nav__current {
-  font-weight: bold;
-  color: #fff;
-  background-color: #74b9ff;
-}
-.c-nav__current__a {
-  color: white;
-  text-decoration-line: none;
-}
-
-.c-nav__li__a {
-  color: #74b9ff;
-  background-color: #fff;
-}
-
-.c-link {
-  display: block;
-  text-decoration-line: none;
-}
-
-.c-nav__li__a {
-  color: #74b9ff;
-  background-color: #fff;
-}
-
 .l-grid-root {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -413,6 +366,10 @@ template {
 }
 .l-grid-root__header {
   height: 25vh;
+}
+.l-grid-root__main {
+  width: 94%;
+  padding: 3%;
 }
 
 .c-btn {
@@ -549,6 +506,47 @@ template {
   margin: 8px 0;
 }
 
+.c-link {
+  display: block;
+  text-decoration-line: none;
+}
+
+.c-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 60px 0;
+}
+
+.c-nav__li {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+@media (min-width: 801px) {
+  .c-nav__li {
+    min-width: 140px;
+  }
+}
+@media (max-width: 800px) {
+  .c-nav__li {
+    width: 33%;
+  }
+}
+
+.c-nav__current {
+  font-weight: bold;
+  color: #fff;
+  background-color: #74b9ff;
+}
+.c-nav__current__a {
+  color: white;
+}
+
+.c-nav__li__a {
+  color: #74b9ff;
+  background-color: #fff;
+}
+
 .c-radio-inline__input {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
@@ -571,6 +569,10 @@ template {
   outline-offset: -2px;
   outline-style: auto;
   outline-width: 5px;
+}
+
+.c-annotation {
+  margin: 0 0 12px 0;
 }
 
 .c-selectbox {
@@ -980,24 +982,16 @@ template {
   background-position: -244px -38px;
 }
 
-.container-section {
-  margin-bottom: 32px;
+.u-border-btm {
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.form-group {
-  margin-bottom: 32px;
-}
-
-.annotation {
-  margin: 0 0 12px 0;
-}
-
-.l-tehai {
+.u-mb--xs {
   margin-bottom: 8px;
 }
 
-.border-btm {
-  border-bottom: 1px solid #e5e7eb;
+.u-mb--m {
+  margin-bottom: 32px;
 }
 
 .u-mb--l {
