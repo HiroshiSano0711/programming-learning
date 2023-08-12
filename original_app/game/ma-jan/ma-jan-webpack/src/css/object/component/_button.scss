@@ -5,11 +5,23 @@
   margin:0 auto;
   padding: .85em 2em;
   border: none;
-  background-color: g.$palette-light-blue;
-  color: #fff;
   cursor: pointer;
-}
 
-.c-btn:hover {
-  background-color: g.$palette-light-blue;
+  &--basic {
+    background-color: g.$palette-light-blue;
+    color: #fff;
+
+    &:hover {
+      background-color: g.$palette-light-blue;
+    }
+  }
+
+  &--action {
+    background-color: g.$palette-light-orange;
+    color: #fff;
+
+    &:hover {
+      background-color: g.$palette-light-orange;
+    }
+  }
 }

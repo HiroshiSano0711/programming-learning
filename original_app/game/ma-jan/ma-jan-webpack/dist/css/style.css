@@ -377,13 +377,21 @@ template {
   margin: 0 auto;
   padding: 0.85em 2em;
   border: none;
-  background-color: #74b9ff;
-  color: #fff;
   cursor: pointer;
 }
-
-.c-btn:hover {
+.c-btn--basic {
   background-color: #74b9ff;
+  color: #fff;
+}
+.c-btn--basic:hover {
+  background-color: #74b9ff;
+}
+.c-btn--action {
+  background-color: #ffba74;
+  color: #fff;
+}
+.c-btn--action:hover {
+  background-color: #ffba74;
 }
 
 .c-checkbox {
