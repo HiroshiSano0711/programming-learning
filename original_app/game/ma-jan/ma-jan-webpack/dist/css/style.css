@@ -352,6 +352,7 @@ template {
 }
 
 .l-flex--center {
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -379,7 +380,6 @@ template {
 
 .c-btn {
   max-width: 250px;
-  margin: 0 auto;
   padding: 0.85em 2em;
   border: none;
   cursor: pointer;
@@ -1048,6 +1048,10 @@ template {
 
 .u-border-btm {
   border-bottom: 1px solid #e5e7eb;
+}
+
+.u-ml--m {
+  margin-left: 32px;
 }
 
 .u-mb--xs {
