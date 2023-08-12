@@ -84,7 +84,7 @@ export class ChinitsuDataFilter {
 		this._filteredData = this.#allData.filter((data) => {
 			if(!params.shantenCount.includes(String(data.shanten))) return false;
 			if(data.shanten === 0 && params.machiCount.length !== 0 && !params.machiCount.includes(String(data.machi.length))) return false;
-			if(data.shanten === 0 && params.kankoCount.length !== 0 && !params.kankoCount.includes(String(data.kanko_count))) return false;
+			if(params.kankoCount.length !== 0 && !params.kankoCount.includes(String(data.kanko_count))) return false;
 			return true;
 		})
 		return this._filteredData;
