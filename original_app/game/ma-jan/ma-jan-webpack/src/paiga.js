@@ -60,7 +60,7 @@ export function createPaigaParentNode() {
 // 数字文字列の配列を引数で渡す。例：['1', '2', '3']
 export function createPaigaElements(paiStringArr, styleValue) {
   const childPaiga = document.createElement('div');
-  childPaiga.className = 'l-flex__item';
+  childPaiga.classList.add('l-flex', 'l-flex--center');
 
   for (const paiString of paiStringArr) {
     const paiga = document.createElement('span');

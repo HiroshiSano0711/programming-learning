@@ -27,10 +27,16 @@ $pai-size: 50px;
 }
 
 .p-pai-size {
-  width: $pai-size;
-  height: 64px;
+  @include g.pc {
+    width: $pai-size;
+    height: 64px;
+  }
   @include g.sp {
     width: 26px;
+    height: 32px;
+  }
+  @include g.sp-s {
+    width: 23px;
     height: 32px;
   }
 
@@ -38,6 +44,11 @@ $pai-size: 50px;
     width: 26px;
     height: 32px;
     vertical-align: bottom;
+
+    @include g.sp-s {
+      width: 23px;
+      height: 32px;
+    }
   }
 }
 

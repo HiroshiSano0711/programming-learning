@@ -351,6 +351,11 @@ template {
   gap: 0 50px;
 }
 
+.l-flex--center {
+  justify-content: center;
+  align-items: center;
+}
+
 .l-flex--gap-s {
   gap: 0 16px;
 }
@@ -369,7 +374,7 @@ template {
 }
 .l-grid-root__main {
   width: 94%;
-  padding: 3%;
+  padding: 0 3% 20%;
 }
 
 .c-btn {
@@ -668,9 +673,11 @@ template {
   background-size: 600px 400px;
 }
 
-.p-pai-size {
-  width: 50px;
-  height: 64px;
+@media (min-width: 801px) {
+  .p-pai-size {
+    width: 50px;
+    height: 64px;
+  }
 }
 @media (max-width: 800px) {
   .p-pai-size {
@@ -678,10 +685,22 @@ template {
     height: 32px;
   }
 }
+@media (max-width: 350px) {
+  .p-pai-size {
+    width: 23px;
+    height: 32px;
+  }
+}
 .p-pai-size--mini {
   width: 26px;
   height: 32px;
   vertical-align: bottom;
+}
+@media (max-width: 350px) {
+  .p-pai-size--mini {
+    width: 23px;
+    height: 32px;
+  }
 }
 
 @media (max-width: 800px) {
