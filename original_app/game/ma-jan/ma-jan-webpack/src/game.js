@@ -72,6 +72,8 @@ window.addEventListener('DOMContentLoaded', () => {
     removeAllChildNodes(displayDom);
     removeAllChildNodes(answerDom);
     removeAllChildNodes(resultDom);
+    resultDom.classList.remove('p-result-mistake');
+    resultDom.classList.remove('p-result-correct');
 
     const data = chinitsuDataFilter.filterByQuizSettings(formValuesToParams())
     setCurrentQuiz(data)
@@ -79,21 +81,40 @@ window.addEventListener('DOMContentLoaded', () => {
     createAnswerNodes();
   });
 
+  function displayQuizResult(answerValues) {
+    if(JSON.stringify(currentQuiz.machi) === JSON.stringify(answerValues)) {
+      resultDom.classList.add('p-result-correct');
+      const text = document.createElement('span');
+      text.classList.add('p-result__correct-text');
+      text.textContent = '正解';
+      const circle = document.createElement('span');
+      circle.classList.add('p-result__circle');
+      resultDom.append(text);
+      resultDom.append(circle);
+    } else {
+      resultDom.classList.add('p-result-mistake');
+      const text = document.createElement('div');
+      text.classList.add('p-result__batsu');
+      text.textContent = 'x';
+      resultDom.append(text);
+      if(currentQuiz.machi.length !== 0) {
+        const machi_kotae = createPaigaElements(currentQuiz.machi, styleValue)
+        resultDom.append(machi_kotae);
+      } else {
+        const text = document.createElement('span');
+        text.classList.add('p-result__correct-text');
+        text.textContent = 'ノーテン';
+        resultDom.append(text);
+      }
+    }
+  }
+
   // 回答結果を表示
-  // TODO: 正解と間違いの場合の表示をもっと派手にしたい
   answerBtn.addEventListener('click', () => {
     const checkedMachi = filterCheckedElements(answerForm.answer_checkbox);
     const checkedMachiValues = checkedMachi.map((element) => element.value);
-    if(JSON.stringify(currentQuiz.machi) === JSON.stringify(checkedMachiValues)) {
-      resultDom.textContent = '正解';
-    } else {
-      if(currentQuiz.machi.length !== 0) {
-        const machi_kotae = createPaigaElements(currentQuiz.machi, styleValue)
-        resultDom.textContent = '間違い。正解は';
-        resultDom.append(machi_kotae);
-      } else {
-        resultDom.textContent = '間違い。待ちはありません。（ノーテン形）';
-      }
-    };
+    resultDom.classList.remove('p-result-mistake');
+    resultDom.classList.remove('p-result-correct');
+    displayQuizResult(checkedMachiValues);
   });
 });

@@ -1009,6 +1009,43 @@ template {
   background-position: -244px -38px;
 }
 
+.p-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-result-correct {
+  padding: 16px 0;
+  border: 3px solid #74FF9E;
+}
+
+.p-result-mistake {
+  padding: 16px 0;
+  border: 3px solid #FF7481;
+}
+
+.p-result__batsu {
+  font-size: 300%;
+  color: #FF7481;
+  margin-right: 16px;
+}
+
+.p-result__circle {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  border-radius: 50%;
+  border: solid 3px #74FF9E;
+}
+
+.p-result__correct-text {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: large;
+}
+
 .u-border-btm {
   border-bottom: 1px solid #e5e7eb;
 }
