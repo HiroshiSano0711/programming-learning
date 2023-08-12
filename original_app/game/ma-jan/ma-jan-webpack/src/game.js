@@ -111,10 +111,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // 回答結果を表示
   answerBtn.addEventListener('click', () => {
-    const checkedMachi = filterCheckedElements(answerForm.answer_checkbox);
-    const checkedMachiValues = checkedMachi.map((element) => element.value);
+    if(!currentQuiz) return;
+
+    removeAllChildNodes(resultDom);
     resultDom.classList.remove('p-result-mistake');
     resultDom.classList.remove('p-result-correct');
+
+    const checkedMachi = filterCheckedElements(answerForm.answer_checkbox);
+    const checkedMachiValues = checkedMachi.map((element) => element.value);
     displayQuizResult(checkedMachiValues);
   });
 });
