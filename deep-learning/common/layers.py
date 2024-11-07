@@ -17,7 +17,6 @@ class Relu:
     def backward(self, dout):
         dout[self.mask] = 0
         dx = dout
-
         return dx
 
 class Sigmoid:
@@ -40,7 +39,7 @@ class Affine:
         self.W = W
         self.b = b
         self.x = None
-        self.dW = None
+        self.dw = None
         self.db = None
 
     def forward(self, x):
@@ -53,7 +52,6 @@ class Affine:
         dx = np.dot(dout, self.W.T)
         self.dw = np.dot(self.x.T, dout)
         self.db = np.sum(dout, axis=0)
-
         return dx
 
 class SoftmaxWithLoss:
@@ -71,6 +69,11 @@ class SoftmaxWithLoss:
 
     def backward(self, dout=1):
         batch_size = self.t.shape[0]
-        dx = (self.y - self.t) / batch_size
+        if self.t.size == self.y.size:
+            dx = (self.y - self.t) / batch_size
+        else:
+            dx = self.y.copy()
+            dx[np.arange(batch_size), self.t] -= 1
+            dx = dx / batch_size
 
         return dx

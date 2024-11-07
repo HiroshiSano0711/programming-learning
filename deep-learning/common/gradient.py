@@ -6,7 +6,6 @@ import numpy as np
 #     grad = np.zeros_like(x)
 
 #     for idx in range(x.size):
-#         pdb.set_trace()
 #         tmp_val = x[idx]
 #         x[idx] = tmp_val + h
 #         fxh1 = f(x)

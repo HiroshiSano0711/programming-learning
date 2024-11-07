@@ -39,17 +39,6 @@ class TwoLayerNet:
         accuracy = np.sum(y == t) / float(x.shape[0])
         return accuracy
 
-    def numerical_gradient(self, x, t):
-        loss_W = lambda W: self.loss(x, t)
-
-        grads = {}
-        grads['W1'] = numerical_gradient(loss_W, self.params['W1'])
-        grads['b1'] = numerical_gradient(loss_W, self.params['b1'])
-        grads['W2'] = numerical_gradient(loss_W, self.params['W2'])
-        grads['b2'] = numerical_gradient(loss_W, self.params['b2'])
-
-        return grads
-
     # 誤差逆伝播法
     def gradient(self, x, t):
         # forward
@@ -72,13 +61,10 @@ class TwoLayerNet:
 
         return grads
 
-    # 比較用
+    # 数値微分。勾配確認用
     def numerical_gradient(self, x, t):
         loss_W = lambda W: self.loss(x, t)
 
-        # 勾配を保持する辞書型変数
-        # grads['W1']は1層目の重みの勾配、grads['b1']は1層目のバイアスの勾配
-        # grads['W2']は2層目の重みの勾配、grads['b2']は2層目のバイアスの勾配
         grads = {}
         grads['W1'] = numerical_gradient(loss_W, self.params['W1'])
         grads['b1'] = numerical_gradient(loss_W, self.params['b1'])
