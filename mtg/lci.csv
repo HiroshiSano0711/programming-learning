@@ -1,0 +1,992 @@
+画像,カード名,カードタイプ,マナコスト,カードテキスト,パワー,タフネス,レアリティ
+Abuelo's Awakening,Sorcery,{X}{3}{W},Return target artifact or non-Aura enchantment card from your graveyard to the battlefield with X additional +1/+1 counters on it. It’s a 1/1 Spirit creature with flying in addition to its other types.,,,Rare,https://cards.scryfall.io/large/front/f/9/f93b725e-2b9c-4830-ac54-b2562afe09bb.jpg?1699043056
+Acrobatic Leap,Instant,{W},Target creature gets +1/+3 and gains flying until end of turn. Untap it.,,,Common,https://cards.scryfall.io/large/front/4/7/47f82d84-03ad-42dd-80ce-f0ac5e353e46.jpg?1699043064
+Adaptive Gemguard,Artifact Creature — Gnome,{3}{W},Tap two untapped artifacts and/or creatures you control: Put a +1/+1 counter on Adaptive Gemguard. Activate only as a sorcery.,3,3,Common,https://cards.scryfall.io/large/front/8/3/83c91e24-b7e8-4040-80cb-d1b375002c10.jpg?1699043073
+Attentive Sunscribe,Artifact Creature — Gnome,{1}{W},"Whenever Attentive Sunscribe becomes tapped, scry 1. (Look at the top card of your library. You may put that card on the bottom.)",2,2,Common,https://cards.scryfall.io/large/front/a/d/ad1a0159-7f00-429c-9318-b028b1e03ba8.jpg?1699043082
+Bat Colony,Enchantment,{2}{W},"When Bat Colony enters the battlefield, create a 1/1 black Bat creature token with flying for each mana from a Cave spent to cast it.
+
+Whenever a Cave enters the battlefield under your control, put a +1/+1 counter on target creature you control.",,,Uncommon,https://cards.scryfall.io/large/front/1/c/1c02134c-ec9f-4090-820e-8ba7ae4a8c2b.jpg?1699043091
+Clay-Fired Bricks,Artifact,{1}{W},"When Clay-Fired Bricks enters the battlefield, search your library for a basic Plains card, reveal it, put it into your hand, then shuffle. You gain 2 life.
+
+Craft with artifact {5}{W}{W} ({5}{W}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",,,Uncommon,https://cards.scryfall.io/large/front/8/a/8aece300-656b-4e0d-a45f-aa7feaff0a4e.jpg?1699125724
+Cosmium Kiln,"Color Indicator: White
+          Artifact",,"When Cosmium Kiln enters the battlefield, create two 1/1 colorless Gnome artifact creature tokens.
+
+Creatures you control get +1/+1.",,,Uncommon,https://cards.scryfall.io/large/back/8/a/8aece300-656b-4e0d-a45f-aa7feaff0a4e.jpg?1699125724
+Cosmium Blast,Instant,{1}{W},Cosmium Blast deals 4 damage to target attacking or blocking creature.,,,Common,https://cards.scryfall.io/large/front/1/9/193d1eac-ede7-4f75-9c74-05133b215f93.jpg?1699043121
+Dauntless Dismantler,Creature — Human Artificer,{1}{W},"Artifacts your opponents control enter the battlefield tapped.
+
+{X}{X}{W}, Sacrifice Dauntless Dismantler: Destroy each artifact with mana value X.",1,4,Uncommon,https://cards.scryfall.io/large/front/3/d/3d771631-0aab-4f09-b9a6-49b6b2d8d2aa.jpg?1699043129
+Deconstruction Hammer,Artifact — Equipment,{W},"Equipped creature gets +1/+1 and has “{3}, {T}, Sacrifice Deconstruction Hammer: Destroy target artifact or enchantment.”
+
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",,,Common,https://cards.scryfall.io/large/front/0/c/0c7ba382-18c4-4833-b3d2-bd469ae2ad77.jpg?1699043140
+Dusk Rose Reliquary,Artifact,{W},"As an additional cost to cast this spell, sacrifice an artifact or creature.
+
+Ward {2}
+
+When Dusk Rose Reliquary enters the battlefield, exile target artifact or creature an opponent controls until Dusk Rose Reliquary leaves the battlefield.",,,Uncommon,https://cards.scryfall.io/large/front/a/5/a5f231ef-4167-4b0a-b54c-a098b2eb2f6f.jpg?1699043151
+Envoy of Okinec Ahau,Creature — Cat Advisor,{2}{W},{4}{W}: Create a 1/1 colorless Gnome artifact creature token.,3,3,Common,https://cards.scryfall.io/large/front/9/6/96de0741-9270-4118-bb8e-f3480c75a582.jpg?1699043160
+Fabrication Foundry,Artifact,{1}{W},"{T}: Add {W}. Spend this mana only to cast an artifact spell or activate an ability of an artifact source.
+
+{2}{W}, {T}, Exile one or more other artifacts you control with total mana value X: Return target artifact card with mana value X or less from your graveyard to the battlefield. Activate only as a sorcery.",,,Rare,https://cards.scryfall.io/large/front/3/2/323a05ee-8296-41c0-94ab-00913d9d84f1.jpg?1699043169
+Family Reunion,Instant,{1}{W},"Choose one —
+
+• Creatures you control get +1/+1 until end of turn.
+
+• Creatures you control gain hexproof until end of turn. (They can’t be the targets of spells or abilities your opponents control.)",,,Common,https://cards.scryfall.io/large/front/5/c/5c2cfbdc-8d40-4abb-afca-6c6d8e36185b.jpg?1699043178
+Get Lost,Instant,{1}{W},"Destroy target creature, enchantment, or planeswalker. Its controller creates two Map tokens. (They’re artifacts with “{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.”)",,,Rare,https://cards.scryfall.io/large/front/5/2/522aa72b-2b8c-484c-872b-f082101cee35.jpg?1699043186
+Glorifier of Suffering,Creature — Vampire Soldier,{2}{W},"When Glorifier of Suffering enters the battlefield, you may sacrifice another creature or artifact. When you do, put a +1/+1 counter on each of up to two target creatures.",3,2,Common,https://cards.scryfall.io/large/front/7/5/7580ad36-7362-4dee-9511-d119173b70e8.jpg?1699043195
+Guardian of the Great Door,Creature — Angel,{W}{W},"As an additional cost to cast this spell, tap four untapped artifacts, creatures, and/or lands you control.
+
+Flying",4,4,Uncommon,https://cards.scryfall.io/large/front/a/8/a86f3cb2-7822-4c19-bd84-cea177e5b6e9.jpg?1699043203
+Helping Hand,Sorcery,{W},Return target creature card with mana value 3 or less from your graveyard to the battlefield tapped.,,,Uncommon,https://cards.scryfall.io/large/front/b/8/b8aa7126-5df3-42dd-b4a3-0d0ea59eeebd.jpg?1699043212
+Ironpaw Aspirant,Creature — Cat Warrior,{1}{W},"When Ironpaw Aspirant enters the battlefield, put a +1/+1 counter on target creature.",1,2,Common,https://cards.scryfall.io/large/front/f/7/f70689a0-ac69-4052-84fc-9055e9e1c54b.jpg?1699043222
+Kinjalli's Dawnrunner,Creature — Human Scout,{2}{W},"Double strike
+
+When Kinjalli’s Dawnrunner enters the battlefield, it explores. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",1,1,Uncommon,https://cards.scryfall.io/large/front/f/c/fc4c527c-6963-47f4-bcad-841d06bb2211.jpg?1699043231
+Kutzil's Flanker,Creature — Cat Warrior,{2}{W},"Flash
+
+When Kutzil’s Flanker enters the battlefield, choose one —
+
+• Put a +1/+1 counter on Kutzil’s Flanker for each creature that left the battlefield under your control this turn.
+
+• You gain 2 life and scry 2.
+
+• Exile target player’s graveyard.",3,1,Rare,https://cards.scryfall.io/large/front/d/1/d1201811-54ab-4c4e-b6e1-19b0d07e5ede.jpg?1699043239
+Malamet War Scribe,Creature — Cat Warrior,{3}{W}{W},"When Malamet War Scribe enters the battlefield, creatures you control get +2/+1 until end of turn.",4,3,Uncommon,https://cards.scryfall.io/large/front/b/9/b92a6ba0-cea0-4084-92f1-2bd60ea25fb0.jpg?1699043248
+Market Gnome,Artifact Creature — Gnome,{W},"When Market Gnome dies, you gain 1 life and draw a card.
+
+When Market Gnome is exiled from the battlefield while you’re activating a craft ability, you gain 1 life and draw a card.",0,3,Uncommon,https://cards.scryfall.io/large/front/3/6/36dafcd6-ce4e-4a27-bd8c-fa1a3bffc99e.jpg?1699043256
+Might of the Ancestors,Enchantment,{2}{W},"At the beginning of combat on your turn, target creature you control gets +2/+0 and gains vigilance until end of turn.",,,Uncommon,https://cards.scryfall.io/large/front/5/4/54f82c95-8bc1-4df9-9120-86ffc059c7dd.jpg?1699043265
+Miner's Guidewing,Creature — Bird,{W},"Flying, vigilance
+
+When Miner’s Guidewing dies, target creature you control explores. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)",1,1,Common,https://cards.scryfall.io/large/front/9/0/9048cd9d-df3f-4705-a5f4-e5b09760c631.jpg?1699043273
+Mischievous Pup,Creature — Dog,{2}{W},"Flash
+
+When Mischievous Pup enters the battlefield, return up to one other target permanent you control to its owner’s hand.",3,1,Uncommon,https://cards.scryfall.io/large/front/7/c/7c219861-f808-456f-b551-37512764062d.jpg?1699043282
+"Ojer Taq, Deepest Foundation",Legendary Creature — God,{4}{W}{W},"Vigilance
+
+If one or more creature tokens would be created under your control, three times that many of those tokens are created instead.
+
+When Ojer Taq dies, return it to the battlefield tapped and transformed under its owner’s control.",6,6,Mythic Rare,https://cards.scryfall.io/large/front/1/c/1ca79dd4-67fc-496c-96fc-489b039c4932.jpg?1699043299
+Temple of Civilization,Land,,"(Transforms from Ojer Taq, Deepest Foundation.)
+
+{T}: Add {W}.
+
+{2}{W}, {T}: Transform Temple of Civilization. Activate only if you attacked with three or more creatures this turn and only as a sorcery.",6,6,Mythic Rare,https://cards.scryfall.io/large/back/1/c/1ca79dd4-67fc-496c-96fc-489b039c4932.jpg?1699043299
+Oltec Archaeologists,Creature — Human Artificer Scout,{4}{W},"When Oltec Archaeologists enters the battlefield, choose one —
+
+• Return target artifact card from your graveyard to your hand.
+
+• Scry 3. (Look at the top three cards of your library, then put any number of them on the bottom and the rest on top in any order.)",4,4,Common,https://cards.scryfall.io/large/front/5/7/57c21561-2213-4524-89a6-30a305843e5a.jpg?1699043308
+Oltec Cloud Guard,Creature — Human Soldier,{3}{W},"Flying
+
+When Oltec Cloud Guard enters the battlefield, create a 1/1 colorless Gnome artifact creature token.",3,2,Common,https://cards.scryfall.io/large/front/0/2/02d68a38-2e0b-401b-b67d-a55e2af5b18d.jpg?1699043317
+Oteclan Landmark,Artifact,{W},"When Oteclan Landmark enters the battlefield, scry 2.
+
+Craft with artifact {2}{W} ({2}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",1,4,Common,https://cards.scryfall.io/large/front/0/9/099a1d1c-72ba-468e-9385-8f93e1fce001.jpg?1699049968
+Oteclan Levitator,"Color Indicator: White
+          Artifact Creature — Golem",,"Flying
+
+Whenever Oteclan Levitator attacks, target attacking creature without flying gains flying until end of turn.",1,4,Common,https://cards.scryfall.io/large/back/0/9/099a1d1c-72ba-468e-9385-8f93e1fce001.jpg?1699049968
+Petrify,Enchantment — Aura,{1}{W},"Enchant artifact or creature
+
+Enchanted permanent can’t attack or block, and its activated abilities can’t be activated.",,,Common,https://cards.scryfall.io/large/front/b/b/bbc5f28f-6361-455f-ac82-260a70e59316.jpg?1699043345
+Quicksand Whirlpool,Instant,{5}{W},"This spell costs {3} less to cast if it targets a tapped creature.
+
+Exile target creature.",,,Common,https://cards.scryfall.io/large/front/a/7/a74ddccb-ebbd-4fad-a9b6-6b9e9bafae31.jpg?1699043354
+Resplendent Angel,Creature — Angel,{1}{W}{W},"Flying
+
+At the beginning of each end step, if you gained 5 or more life this turn, create a 4/4 white Angel creature token with flying and vigilance.
+
+{3}{W}{W}{W}: Until end of turn, Resplendent Angel gets +2/+2 and gains lifelink.",3,3,Mythic Rare,https://cards.scryfall.io/large/front/5/9/59adbd35-9959-4a0f-babf-46ea3c15f018.jpg?1699043363
+Ruin-Lurker Bat,Creature — Bat,{W},"Flying, lifelink
+
+At the beginning of your end step, if you descended this turn, scry 1. (You descended if a permanent card was put into your graveyard from anywhere.)",1,1,Uncommon,https://cards.scryfall.io/large/front/d/6/d6bedf13-c2bc-4e5d-aba3-3c0d5495a9bb.jpg?1699043372
+Sanguine Evangelist,Creature — Vampire Cleric,{2}{W},"Battle cry (Whenever this creature attacks, each other attacking creature gets +1/+0 until end of turn.)
+
+When Sanguine Evangelist enters the battlefield or dies, create a 1/1 black Bat creature token with flying.",2,1,Rare,https://cards.scryfall.io/large/front/2/6/269ddd84-fdc4-4c94-b183-32ecec56967c.jpg?1699043382
+Soaring Sandwing,Creature — Dinosaur,{4}{W}{W},"Flying
+
+When Soaring Sandwing enters the battlefield, you gain 3 life.
+
+Plainscycling {2} ({2}, Discard this card: Search your library for a Plains card, reveal it, put it into your hand, then shuffle.)",3,5,Common,https://cards.scryfall.io/large/front/e/7/e7833724-aec6-41a4-a7ea-2aa722467732.jpg?1699043391
+Spring-Loaded Sawblades,Artifact,{1}{W},"Flash
+
+When Spring-Loaded Sawblades enters the battlefield, it deals 5 damage to target tapped creature an opponent controls.
+
+Craft with artifact {3}{W} ({3}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",5,5,Uncommon,https://cards.scryfall.io/large/front/2/4/24417388-f2bb-4783-bdce-264774531838.jpg?1699043409
+Bladewheel Chariot,"Color Indicator: White
+          Artifact — Vehicle",,"Tap two other untapped artifacts you control: Bladewheel Chariot becomes an artifact creature until end of turn.
+
+Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",5,5,Uncommon,https://cards.scryfall.io/large/back/2/4/24417388-f2bb-4783-bdce-264774531838.jpg?1699043409
+Thousand Moons Crackshot,Creature — Human Soldier,{1}{W},"Whenever Thousand Moons Crackshot attacks, you may pay {2}{W}. When you do, tap target creature.",2,2,Common,https://cards.scryfall.io/large/front/7/4/741a7439-965d-49f2-b43e-053f29196e6b.jpg?1699043418
+Thousand Moons Infantry,Creature — Human Soldier,{2}{W},Untap Thousand Moons Infantry during each other player’s untap step.,2,4,Common,https://cards.scryfall.io/large/front/c/1/c1974a8c-3328-4ff5-9a00-cb79ebb8ccf6.jpg?1699043427
+Thousand Moons Smithy,Legendary Artifact,{2}{W}{W},"When Thousand Moons Smithy enters the battlefield, create a white Gnome Soldier artifact creature token with “This creature’s power and toughness are each equal to the number of artifacts and/or creatures you control.”
+
+At the beginning of your precombat main phase, you may tap five untapped artifacts and/or creatures you control. If you do, transform Thousand Moons Smithy.",,,Rare,https://cards.scryfall.io/large/front/4/a/4a6bec46-1acd-4726-b8d9-3045ac6a2ea2.jpg?1699043447
+Barracks of the Thousand,Legendary Artifact Land,,"(Transforms from Thousand Moons Smithy.)
+
+{T}: Add {W}.
+
+Whenever you cast an artifact or creature spell using mana produced by Barracks of the Thousand, create a white Gnome Soldier artifact creature token with “This creature’s power and toughness are each equal to the number of artifacts and/or creatures you control.”",,,Rare,https://cards.scryfall.io/large/back/4/a/4a6bec46-1acd-4726-b8d9-3045ac6a2ea2.jpg?1699043447
+Tinker's Tote,Artifact,{2}{W},"When Tinker’s Tote enters the battlefield, create two 1/1 colorless Gnome artifact creature tokens.
+
+{W}, Sacrifice Tinker’s Tote: You gain 3 life.",,,Common,https://cards.scryfall.io/large/front/8/3/8321857e-7977-46dd-8357-d732312e5261.jpg?1699043462
+Unstable Glyphbridge,Artifact,{3}{W}{W},"When Unstable Glyphbridge enters the battlefield, if you cast it, for each player, choose a creature with power 2 or less that player controls. Then destroy all creatures except creatures chosen this way.
+
+Craft with artifact {3}{W}{W} ({3}{W}{W}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",5,3,Rare,https://cards.scryfall.io/large/front/d/7/d70f48e7-582c-4dd2-a64e-6fd03fa6b77e.jpg?1699043483
+Sandswirl Wanderglyph,"Color Indicator: White
+          Artifact Creature — Golem",,"Flying
+
+Whenever an opponent casts a spell during their turn, they can’t attack you or planeswalkers you control this turn.
+
+Each opponent who attacked you or a planeswalker you control this turn can’t cast spells.",5,3,Rare,https://cards.scryfall.io/large/back/d/7/d70f48e7-582c-4dd2-a64e-6fd03fa6b77e.jpg?1699043483
+Vanguard of the Rose,Creature — Vampire Knight,{1}{W},"{1}, Sacrifice another creature or artifact: Vanguard of the Rose gains indestructible until end of turn. Tap it.",3,1,Uncommon,https://cards.scryfall.io/large/front/0/2/0200c504-9137-4bc2-9cd4-eaf0643a2855.jpg?1699043492
+Warden of the Inner Sky,Creature — Human Soldier,{W},"As long as Warden of the Inner Sky has three or more counters on it, it has flying and vigilance.
+
+Tap three untapped artifacts and/or creatures you control: Put a +1/+1 counter on Warden of the Inner Sky. Scry 1. Activate only as a sorcery.",1,2,Rare,https://cards.scryfall.io/large/front/5/4/549fd992-ed37-431d-97cb-9ca017db1d47.jpg?1699043501
+"Akal Pakal, First Among Equals",Legendary Creature — Human Advisor,{2}{U},"At the beginning of each player’s end step, if an artifact entered the battlefield under your control this turn, look at the top two cards of your library. Put one of them into your hand and the other into your graveyard.",1,5,Rare,https://cards.scryfall.io/large/front/a/b/ab9f6a1b-8467-4584-affd-8c71d3e34d2f.jpg?1699043517
+Ancestral Reminiscence,Sorcery,{3}{U},"Draw three cards, then discard a card.",,,Common,https://cards.scryfall.io/large/front/6/2/625690d3-7131-45de-adea-9c927241e661.jpg?1699043525
+Brackish Blunder,Instant,{1}{U},"Return target creature to its owner’s hand. If it was tapped, create a Map token. (It’s an artifact with “{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.”)",,,Common,https://cards.scryfall.io/large/front/d/e/dea3d0f4-76f5-416f-93ba-8b003b967816.jpg?1699043535
+Braided Net,Artifact,{2}{U},"Braided Net enters the battlefield with three net counters on it.
+
+{T}, Remove a net counter from Braided Net: Tap another target nonland permanent. Its activated abilities can’t be activated for as long as it remains tapped.
+
+Craft with artifact {1}{U}",,,Rare,https://cards.scryfall.io/large/front/6/8/68a6ede0-6d57-4e29-9e3b-3569ab7f0bcd.jpg?1699120209
+Braided Quipu,"Color Indicator: Blue
+          Artifact",,"{3}{U}, {T}: Draw a card for each artifact you control, then put Braided Quipu into its owner’s library third from the top.",,,Rare,https://cards.scryfall.io/large/back/6/8/68a6ede0-6d57-4e29-9e3b-3569ab7f0bcd.jpg?1699120209
+Chart a Course,Sorcery,{1}{U},Draw two cards. Then discard a card unless you attacked this turn.,,,Uncommon,https://cards.scryfall.io/large/front/2/3/233beaac-37a4-4824-8f31-438b6bfe794b.jpg?1699043562
+Cogwork Wrestler,Artifact Creature — Gnome,{U},"Flash
+
+When Cogwork Wrestler enters the battlefield, target creature an opponent controls gets -2/-0 until end of turn.",1,2,Common,https://cards.scryfall.io/large/front/a/9/a9d329ad-6b19-4aa7-a53f-38c7b76c4c96.jpg?1699043571
+Confounding Riddle,Instant,{2}{U},"Choose one —
+
+• Look at the top four cards of your library. Put one of them into your hand and the rest into your graveyard.
+
+• Counter target spell unless its controller pays {4}.",,,Uncommon,https://cards.scryfall.io/large/front/f/2/f2ae23db-c391-402c-9568-65447cada66e.jpg?1699043580
+Council of Echoes,Creature — Spirit Advisor,{4}{U}{U},"Flying
+
+Descend 4 — When Council of Echoes enters the battlefield, if there are four or more permanent cards in your graveyard, return up to one target nonland permanent other than Council of Echoes to its owner’s hand.",4,4,Uncommon,https://cards.scryfall.io/large/front/8/5/85ad358d-a520-4d57-82b0-d2297da1fbde.jpg?1699043588
+Deeproot Pilgrimage,Enchantment,{1}{U},"Whenever one or more nontoken Merfolk you control become tapped, create a 1/1 blue Merfolk creature token with hexproof.",,,Rare,https://cards.scryfall.io/large/front/e/2/e2449311-a705-4a31-a345-a36d436ae561.jpg?1699043597
+Didact Echo,Creature — Spirit Cleric,{4}{U},"When Didact Echo enters the battlefield, draw a card.
+
+Descend 4 — Didact Echo has flying as long as there are four or more permanent cards in your graveyard.",3,2,Common,https://cards.scryfall.io/large/front/3/c/3c068b2e-17cc-4fb8-bd79-b775a4713d74.jpg?1699043607
+Eaten by Piranhas,Enchantment — Aura,{1}{U},"Flash
+
+Enchant creature
+
+Enchanted creature loses all abilities and is a black Skeleton creature with base power and toughness 1/1. (It loses all other card types and creature types.)",,,Uncommon,https://cards.scryfall.io/large/front/b/0/b0c504ef-2382-4174-9b1d-5f38e12a28fc.jpg?1699043614
+The Enigma Jewel,Legendary Artifact,{U},"The Enigma Jewel enters the battlefield tapped.
+
+{T}: Add {C}{C}. Spend this mana only to activate abilities.
+
+Craft with four or more nonlands with activated abilities {8}{U} ({8}{U}, Exile this artifact, Exile the four or more from among other permanents you control and/or cards in your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",,,Mythic Rare,https://cards.scryfall.io/large/front/2/e/2e98970d-06a8-4c91-ba47-4a02c5b949f2.jpg?1699043631
+Locus of Enlightenment,"Color Indicator: Blue
+          Legendary Artifact",,"Locus of Enlightenment has each activated ability of the exiled cards used to craft it. You may activate each of those abilities only once each turn.
+
+Whenever you activate an ability that isn’t a mana ability, copy it. You may choose new targets for the copy.",,,Mythic Rare,https://cards.scryfall.io/large/back/2/e/2e98970d-06a8-4c91-ba47-4a02c5b949f2.jpg?1699043631
+The Everflowing Well,Legendary Artifact,{2}{U},"When The Everflowing Well enters the battlefield, mill two cards, then draw two cards.
+
+Descend 8 — At the beginning of your upkeep, if there are eight or more permanent cards in your graveyard, transform The Everflowing Well.",,,Rare,https://cards.scryfall.io/large/front/b/f/bf573fb7-fa6c-4df7-8e5e-1e071585361e.jpg?1699043648
+The Myriad Pools,Legendary Artifact Land,,"(Transforms from The Everflowing Well.)
+
+{T}: Add {U}.
+
+Whenever you cast a permanent spell using mana produced by The Myriad Pools, up to one other target permanent you control becomes a copy of that spell until end of turn.",,,Rare,https://cards.scryfall.io/large/back/b/f/bf573fb7-fa6c-4df7-8e5e-1e071585361e.jpg?1699043648
+Frilled Cave-Wurm,Creature — Salamander Wurm,{3}{U},Descend 4 — Frilled Cave-Wurm gets +2/+0 as long as there are four or more permanent cards in your graveyard.,2,5,Common,https://cards.scryfall.io/large/front/6/f/6f65e1bc-fade-4fdf-a1fd-de068bff9e4c.jpg?1699043658
+Hermitic Nautilus,Artifact Creature — Nautilus,{1}{U},"Vigilance
+
+{1}{U}: Hermitic Nautilus gets +3/-3 until end of turn.",1,4,Uncommon,https://cards.scryfall.io/large/front/5/4/545503f8-a8c6-4518-9ad6-76e4996397fc.jpg?1699043666
+Hurl into History,Instant,{3}{U}{U},"Counter target artifact or creature spell. Discover X, where X is that spell’s mana value. (Exile cards from the top of your library until you exile a nonland card with that mana value or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Uncommon,https://cards.scryfall.io/large/front/5/9/5946463a-2240-4376-b6f5-fd6e3a9cc51c.jpg?1699576505
+Inverted Iceberg,Artifact,{1}{U},"When Inverted Iceberg enters the battlefield, mill a card, then draw a card. (To mill a card, put the top card of your library into your graveyard.)
+
+Craft with artifact {4}{U}{U} ({4}{U}{U}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",6,6,Common,https://cards.scryfall.io/large/front/a/c/ac5e9a53-cc4f-4ced-8088-5a73d619eae3.jpg?1699045157
+Iceberg Titan,"Color Indicator: Blue
+          Artifact Creature — Golem",,"Whenever Iceberg Titan attacks, you may tap or untap target artifact or creature.",6,6,Common,https://cards.scryfall.io/large/back/a/c/ac5e9a53-cc4f-4ced-8088-5a73d619eae3.jpg?1699045157
+Kitesail Larcenist,Creature — Human Pirate,{2}{U},"Flying, ward {1}
+
+When Kitesail Larcenist enters the battlefield, for each player, choose up to one other target artifact or creature that player controls. For as long as Kitesail Larcenist remains on the battlefield, the chosen permanents become Treasure artifacts with “{T}, Sacrifice this artifact: Add one mana of any color” and lose all other abilities.",2,3,Rare,https://cards.scryfall.io/large/front/0/3/03207457-70d8-4462-8c8b-ed39791d56a1.jpg?1699043787
+Lodestone Needle,Artifact,{1}{U},"Flash
+
+When Lodestone Needle enters the battlefield, tap up to one target artifact or creature and put two stun counters on it.
+
+Craft with artifact {2}{U} ({2}{U}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",,,Uncommon,https://cards.scryfall.io/large/front/d/e/dedd7a22-92e2-41fd-aa80-944c69653a5e.jpg?1699043804
+Guidestone Compass,"Color Indicator: Blue
+          Artifact",,"{1}, {T}: Target creature you control explores. Activate only as a sorcery. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)",,,Uncommon,https://cards.scryfall.io/large/back/d/e/dedd7a22-92e2-41fd-aa80-944c69653a5e.jpg?1699043804
+"Malcolm, Alluring Scoundrel",Legendary Creature — Siren Pirate,{1}{U},"Flash
+
+Flying
+
+Whenever Malcolm, Alluring Scoundrel deals combat damage to a player, put a chorus counter on it. Draw a card, then discard a card. If there are four or more chorus counters on Malcolm, you may cast the discarded card without paying its mana cost.",2,1,Rare,https://cards.scryfall.io/large/front/1/9/19d6834d-afa3-4747-a62d-0654f4d9729f.jpg?1699043813
+Marauding Brinefang,Creature — Dinosaur,{5}{U}{U},"Ward {3} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {3}.)
+
+Islandcycling {2} ({2}, Discard this card: Search your library for an Island card, reveal it, put it into your hand, then shuffle.)",6,7,Common,https://cards.scryfall.io/large/front/7/8/78328899-7996-4cfd-bf00-d2a0d0ff3ef8.jpg?1699049880
+Merfolk Cave-Diver,Creature — Merfolk Scout,{2}{U},"Whenever a creature you control explores, Merfolk Cave-Diver gets +1/+0 until end of turn and can’t be blocked this turn.",2,4,Uncommon,https://cards.scryfall.io/large/front/6/e/6e0fe81c-b8ef-49ff-8743-f03d0220cb9e.jpg?1699043829
+Oaken Siren,Artifact Creature — Siren Pirate,{1}{U},"Flying, vigilance
+
+{T}: Add {U}. Spend this mana only to cast an artifact spell or activate an ability of an artifact source.",1,2,Common,https://cards.scryfall.io/large/front/d/7/d7731ef5-da74-4436-8ee7-01c065cbefae.jpg?1699043837
+"Ojer Pakpatiq, Deepest Epoch",Legendary Creature — God,{2}{U}{U},"Flying
+
+Whenever you cast an instant spell from your hand, it gains rebound. (Exile it as it resolves. At the beginning of your next upkeep, you may cast it from exile without paying its mana cost.)
+
+When Ojer Pakpatiq dies, return it to the battlefield tapped and transformed under its owner’s control with three time counters on it.",4,3,Mythic Rare,https://cards.scryfall.io/large/front/a/9/a9d71007-bc04-4dff-ad3f-e2c0b5b4400e.jpg?1699043854
+Temple of Cyclical Time,Land,,"(Transforms from Ojer Pakpatiq, Deepest Epoch.)
+
+{T}: Add {U}. Remove a time counter from Temple of Cyclical Time.
+
+{2}{U}, {T}: Transform Temple of Cyclical Time. Activate only if it has no time counters on it and only as a sorcery.",4,3,Mythic Rare,https://cards.scryfall.io/large/back/a/9/a9d71007-bc04-4dff-ad3f-e2c0b5b4400e.jpg?1699043854
+Orazca Puzzle-Door,Artifact,{U},"{1}, {T}, Sacrifice Orazca Puzzle-Door: Look at the top two cards of your library. Put one of those cards into your hand and the other into your graveyard.",,,Common,https://cards.scryfall.io/large/front/2/7/27acf726-52f5-493d-8678-c12485f67747.jpg?1699043863
+Out of Air,Instant,{2}{U}{U},"This spell costs {2} less to cast if it targets a creature spell.
+
+Counter target spell.",,,Common,https://cards.scryfall.io/large/front/c/2/c263db55-fcac-4b49-b626-7c8092accfcd.jpg?1699043872
+Pirate Hat,Artifact — Equipment,{1}{U},"Equipped creature gets +1/+1 and has “Whenever this creature attacks, draw a card, then discard a card.”
+
+Equip Pirate {1}
+
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",,,Common,https://cards.scryfall.io/large/front/9/d/9d11e3d4-769d-47aa-8d3a-ce1ac60b68b8.jpg?1699043880
+Relic's Roar,Instant,{U},"Until end of turn, target artifact or creature becomes a Dinosaur artifact creature with base power and toughness 4/3 in addition to its other types.",,,Common,https://cards.scryfall.io/large/front/3/5/35096eb3-ad7b-4b6e-b799-cb4cc447883e.jpg?1699043888
+River Herald Scout,Creature — Merfolk Scout,{1}{U},"When River Herald Scout enters the battlefield, it explores. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",1,2,Common,https://cards.scryfall.io/large/front/8/a/8ae8ab66-5840-4b2e-bd4e-94ead0c79b61.jpg?1699043896
+Sage of Days,Creature — Human Wizard,{2}{U},"When Sage of Days enters the battlefield, look at the top three cards of your library. You may put one of those cards back on top of your library. Put the rest into your graveyard.",3,2,Common,https://cards.scryfall.io/large/front/a/6/a6e53495-c76c-4cd4-b93e-b2c491d2c13a.jpg?1699043905
+Self-Reflection,Sorcery,{4}{U}{U},"Create a token that’s a copy of target creature you control.
+
+Flashback {3}{U} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",,,Uncommon,https://cards.scryfall.io/large/front/1/2/1242203d-c9b5-4ab6-802e-e222f92291e9.jpg?1699043913
+Shipwreck Sentry,Creature — Human Pirate,{1}{U},"Defender
+
+As long as an artifact entered the battlefield under your control this turn, Shipwreck Sentry can attack as though it didn’t have defender.",3,3,Common,https://cards.scryfall.io/large/front/8/1/814803bc-72cd-46db-b957-4322f2a7b28a.jpg?1699043922
+Sinuous Benthisaur,Creature — Dinosaur,{5}{U},"When Sinuous Benthisaur enters the battlefield, look at the top X cards of your library, where X is the number of Caves you control plus the number of Cave cards in your graveyard. Put two of those cards into your hand and the rest on the bottom of your library in a random order.",4,4,Uncommon,https://cards.scryfall.io/large/front/7/a/7a58639c-001f-4cb1-89fd-0a0967b86977.jpg?1699043930
+Song of Stupefaction,Enchantment — Aura,{1}{U},"Enchant creature or Vehicle
+
+When Song of Stupefaction enters the battlefield, you may mill two cards. (You may put the top two cards of your library into your graveyard.)
+
+Fathomless descent — Enchanted permanent gets -X/-0, where X is the number of permanent cards in your graveyard.",,,Common,https://cards.scryfall.io/large/front/a/b/ab8f7a75-df5e-43b3-8c33-328ad0dc3c40.jpg?1699043938
+Spyglass Siren,Creature — Siren Pirate,{U},"Flying
+
+When Spyglass Siren enters the battlefield, create a Map token. (It’s an artifact with “{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.”)",1,1,Uncommon,https://cards.scryfall.io/large/front/4/1/41e54343-95e5-4dc4-9f18-e4a415fe5e0a.jpg?1699043946
+Staunch Crewmate,Creature — Human Pirate,{1}{U},"When Staunch Crewmate enters the battlefield, look at the top four cards of your library. You may reveal an artifact or Pirate card from among them and put it into your hand. Put the rest on the bottom of your library in a random order.",2,1,Uncommon,https://cards.scryfall.io/large/front/1/4/143e9845-8a11-4fc4-b116-29a929985146.jpg?1699043955
+Subterranean Schooner,Artifact — Vehicle,{1}{U},"Whenever Subterranean Schooner attacks, target creature that crewed it this turn explores. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)
+
+Crew 1",3,4,Rare,https://cards.scryfall.io/large/front/9/4/94b6881a-b00e-4e90-92e6-602ed8e0e090.jpg?1699043964
+Tishana's Tidebinder,Creature — Merfolk Wizard,{2}{U},"Flash
+
+When Tishana’s Tidebinder enters the battlefield, counter up to one target activated or triggered ability. If an ability of an artifact, creature, or planeswalker is countered this way, that permanent loses all abilities for as long as Tishana’s Tidebinder remains on the battlefield. (Mana abilities can’t be targeted.)",3,2,Rare,https://cards.scryfall.io/large/front/9/0/907b3d1d-8c85-4707-80b5-c4d832df9846.jpg?1699043973
+Unlucky Drop,Instant,{3}{U},Target artifact or creature’s owner puts it on the top or bottom of their library.,,,Common,https://cards.scryfall.io/large/front/7/6/76ebb2df-8891-434e-9cd0-f25b848cb754.jpg?1699043981
+Waterlogged Hulk,Artifact,{U},"{T}: Mill a card. (Put the top card of your library into your graveyard.)
+
+Craft with Island {3}{U} ({3}{U}, Exile this artifact, Exile an Island you control or an Island card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",4,4,Uncommon,https://cards.scryfall.io/large/front/7/e/7ea89d3c-8d47-4bbb-9271-8cdfd9296e2f.jpg?1699043999
+Watertight Gondola,"Color Indicator: Blue
+          Artifact — Vehicle",,"Vigilance
+
+Descend 8 — Watertight Gondola can’t be blocked as long as there are eight or more permanent cards in your graveyard.
+
+Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",4,4,Uncommon,https://cards.scryfall.io/large/back/7/e/7ea89d3c-8d47-4bbb-9271-8cdfd9296e2f.jpg?1699043999
+Waterwind Scout,Creature — Merfolk Scout,{2}{U},"Flying
+
+When Waterwind Scout enters the battlefield, create a Map token. (It’s an artifact with “{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.”)",2,2,Common,https://cards.scryfall.io/large/front/8/a/8a7738fb-0a1b-4010-b8c0-e1129739c765.jpg?1699044008
+Waylaying Pirates,Creature — Human Pirate,{3}{U},"When Waylaying Pirates enters the battlefield, if you control an artifact, tap target artifact or creature an opponent controls and put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",3,3,Common,https://cards.scryfall.io/large/front/d/e/ded2bb06-7163-47fe-bede-9c192c9b8952.jpg?1699044017
+Zoetic Glyph,Enchantment — Aura,{2}{U},"Enchant artifact
+
+Enchanted artifact is a Golem creature with base power and toughness 5/4 in addition to its other types.
+
+When Zoetic Glyph is put into a graveyard from the battlefield, discover 3.",,,Uncommon,https://cards.scryfall.io/large/front/a/2/a2f498ac-179e-4055-9b83-97bcc5ab1bb9.jpg?1699044026
+Abyssal Gorestalker,Creature — Horror,{4}{B}{B},"When Abyssal Gorestalker enters the battlefield, each player sacrifices two creatures.",6,6,Uncommon,https://cards.scryfall.io/large/front/a/5/a559f77f-1f10-475b-9361-7f297d50f254.jpg?1699044037
+"Aclazotz, Deepest Betrayal",Legendary Creature — Bat God,{3}{B}{B},"Flying, lifelink
+
+Whenever Aclazotz attacks, each opponent discards a card. For each opponent who can’t, you draw a card.
+
+Whenever an opponent discards a land card, create a 1/1 black Bat creature token with flying.
+
+When Aclazotz dies, return it to the battlefield tapped and transformed under its owner’s control.",4,4,Mythic Rare,https://cards.scryfall.io/large/front/6/2/627c392c-4d18-4eb2-a4e8-c668f61f5487.jpg?1699044055
+Temple of the Dead,Land,,"(Transforms from Aclazotz, Deepest Betrayal.)
+
+{T}: Add {B}.
+
+{2}{B}, {T}: Transform Temple of the Dead. Activate only if a player has one or fewer cards in hand and only as a sorcery.",4,4,Mythic Rare,https://cards.scryfall.io/large/back/6/2/627c392c-4d18-4eb2-a4e8-c668f61f5487.jpg?1699044055
+Acolyte of Aclazotz,Creature — Vampire Cleric,{2}{B},"{T}, Sacrifice another creature or artifact: Each opponent loses 1 life and you gain 1 life.",1,4,Common,https://cards.scryfall.io/large/front/9/9/99009400-ffa4-40af-8305-78295ae605ac.jpg?1699044065
+Another Chance,Instant,{2}{B},"You may mill two cards. Then return up to two creature cards from your graveyard to your hand. (To mill two cards, put the top two cards of your library into your graveyard.)",,,Common,https://cards.scryfall.io/large/front/2/0/20d9eb9f-2fcc-49f0-99c1-bad748239466.jpg?1699044076
+Bitter Triumph,Instant,{1}{B},"As an additional cost to cast this spell, discard a card or pay 3 life.
+
+Destroy target creature or planeswalker.",,,Uncommon,https://cards.scryfall.io/large/front/0/5/05bdd22c-3e11-4c29-bdfa-d3dfc0e90a9f.jpg?1699044085
+Bloodletter of Aclazotz,Creature — Vampire Demon,{1}{B}{B}{B},"Flying
+
+If an opponent would lose life during your turn, they lose twice that much life instead. (Damage causes loss of life.)",2,4,Mythic Rare,https://cards.scryfall.io/large/front/d/4/d4f6027a-003a-4f9d-929a-0b6da1fa42c9.jpg?1699044094
+Bloodthorn Flail,Artifact — Equipment,{B},"Equipped creature gets +2/+1.
+
+Equip—Pay {3} or discard a card.",,,Uncommon,https://cards.scryfall.io/large/front/d/b/db38babd-57e8-4e59-9701-11a0682baa77.jpg?1699044095
+Bringer of the Last Gift,Creature — Vampire Demon,{6}{B}{B},"Flying
+
+When Bringer of the Last Gift enters the battlefield, if you cast it, each player sacrifices all other creatures they control. Then each player returns all creature cards from their graveyard that weren’t put there this way to the battlefield.",6,6,Rare,https://cards.scryfall.io/large/front/1/9/19775c18-4cc0-49d3-86e4-0841768cbf4d.jpg?1699044096
+Broodrage Mycoid,Creature — Fungus,{3}{B},"At the beginning of your end step, if you descended this turn, create a 1/1 black Fungus creature token with “This creature can’t block.” (You descended if a permanent card was put into your graveyard from anywhere.)",4,3,Common,https://cards.scryfall.io/large/front/0/8/08318a16-a9ed-42c8-9433-876b7a72e368.jpg?1699044103
+Canonized in Blood,Enchantment,{1}{B},"At the beginning of your end step, if you descended this turn, put a +1/+1 counter on target creature you control. (You descended if a permanent card was put into your graveyard from anywhere.)
+
+{5}{B}{B}, Sacrifice Canonized in Blood: Create a 4/3 white and black Vampire Demon creature token with flying.",,,Uncommon,https://cards.scryfall.io/large/front/3/8/384b6892-5dfc-4607-b511-cf83544a9357.jpg?1699044103
+Chupacabra Echo,Creature — Beast Horror Spirit,{2}{B}{B},"Fathomless descent — When Chupacabra Echo enters the battlefield, target creature an opponent controls gets -X/-X until end of turn, where X is the number of permanent cards in your graveyard.",3,2,Uncommon,https://cards.scryfall.io/large/front/b/d/bdd8eed6-91da-4454-a5e3-7bbfac614f47.jpg?1699044104
+Corpses of the Lost,Enchantment,{2}{B},"Skeletons you control get +1/+0 and have haste.
+
+When Corpses of the Lost enters the battlefield, create a 2/2 black Skeleton Pirate creature token.
+
+At the beginning of your end step, if you descended this turn, you may pay 1 life. If you do, return Corpses of the Lost to its owner’s hand. (You descended if a permanent card was put into your graveyard from anywhere.)",,,Rare,https://cards.scryfall.io/large/front/5/f/5f661095-3645-4e44-ac39-752e417c2174.jpg?1699044112
+Dead Weight,Enchantment — Aura,{B},"Enchant creature
+
+Enchanted creature gets -2/-2.",,,Common,https://cards.scryfall.io/large/front/8/2/82e6b971-3f5b-47e7-8209-98d72ee781fc.jpg?1699044112
+Deathcap Marionette,Creature — Fungus,{1}{B},"Deathtouch
+
+When Deathcap Marionette enters the battlefield, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",1,1,Common,https://cards.scryfall.io/large/front/c/c/ccc9d22c-dfce-4136-aed8-a5fe9bb852f2.jpg?1699044113
+Deep Goblin Skulltaker,Creature — Goblin Warrior,{2}{B},"Menace
+
+At the beginning of your end step, if you descended this turn, put a +1/+1 counter on Deep Goblin Skulltaker. (You descended if a permanent card was put into your graveyard from anywhere.)",2,2,Common,https://cards.scryfall.io/large/front/0/b/0b24bb7c-6b34-48b6-af94-f312ebdbb759.jpg?1699044120
+Deep-Cavern Bat,Creature — Bat,{1}{B},"Flying, lifelink
+
+When Deep-Cavern Bat enters the battlefield, look at target opponent’s hand. You may exile a nonland card from it until Deep-Cavern Bat leaves the battlefield.",1,1,Uncommon,https://cards.scryfall.io/large/front/6/9/69c68c95-b788-43b1-9f22-1b22c5a00b25.jpg?1699044121
+Defossilize,Sorcery,{4}{B},"Return target creature card from your graveyard to the battlefield. That creature explores, then it explores again. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard. Then repeat this process.)",,,Uncommon,https://cards.scryfall.io/large/front/3/d/3d9abaec-af72-4399-b162-5e62e7487242.jpg?1699044122
+Echo of Dusk,Creature — Vampire Spirit,{1}{B},"Descend 4 — As long as there are four or more permanent cards in your graveyard, Echo of Dusk gets +1/+1 and has lifelink.",2,2,Common,https://cards.scryfall.io/large/front/3/1/319a457c-89b7-47f6-a13c-20bb50d41138.jpg?1699044129
+Fanatical Offering,Instant,{1}{B},"As an additional cost to cast this spell, sacrifice an artifact or creature.
+
+Draw two cards and create a Map token. (It’s an artifact with “{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.”)",,,Common,https://cards.scryfall.io/large/front/d/8/d896dd52-b134-4b55-ab91-ccb05ecc50f4.jpg?1699044130
+Fungal Fortitude,Enchantment — Aura,{1}{B},"Flash
+
+Enchant creature
+
+Enchanted creature gets +2/+0.
+
+When enchanted creature dies, return it to the battlefield tapped under its owner’s control.",,,Common,https://cards.scryfall.io/large/front/9/d/9d2bd0ca-521c-45d9-85ed-2f36f583408e.jpg?1699044131
+Gargantuan Leech,Creature — Leech,{7}{B},"This spell costs {1} less to cast for each Cave you control and each Cave card in your graveyard.
+
+Lifelink",5,5,Uncommon,https://cards.scryfall.io/large/front/9/4/94724efb-4785-4751-9fe1-07f243dd6008.jpg?1699044138
+Grasping Shadows,Enchantment,{3}{B},"Whenever a creature you control attacks alone, it gains deathtouch and lifelink until end of turn. Put a dread counter on Grasping Shadows. Then if there are three or more dread counters on it, transform it.",,,Uncommon,https://cards.scryfall.io/large/front/8/1/81b8b9c9-725d-476d-a3cf-55e3dc3e433d.jpg?1699049867
+Shadows' Lair,Land — Cave,,"(Transforms from Grasping Shadows.)
+
+{T}: Add {B}.
+
+{B}, {T}, Remove a dread counter from Shadows’ Lair: You draw a card and you lose 1 life.",,,Uncommon,https://cards.scryfall.io/large/back/8/1/81b8b9c9-725d-476d-a3cf-55e3dc3e433d.jpg?1699049867
+Greedy Freebooter,Creature — Human Pirate,{B},"When Greedy Freebooter dies, scry 1 and create a Treasure token. (To scry 1, look at the top card of your library. You may put that card on the bottom. A Treasure token is an artifact with “{T}, Sacrifice this artifact: Add one mana of any color.”)",1,1,Common,https://cards.scryfall.io/large/front/6/9/692fe4e8-13b4-4bec-938e-a8073a7fbd71.jpg?1699044146
+Join the Dead,Instant,{1}{B}{B},"Target creature gets -5/-5 until end of turn.
+
+Descend 4 — That creature gets -10/-10 until end of turn instead if there are four or more permanent cards in your graveyard.",,,Common,https://cards.scryfall.io/large/front/b/5/b5bf6c25-a7d7-40b6-aa19-f852d348967f.jpg?1699044147
+Malicious Eclipse,Sorcery,{1}{B}{B},"All creatures get -2/-2 until end of turn. If a creature an opponent controls would die this turn, exile it instead.",,,Uncommon,https://cards.scryfall.io/large/front/2/7/2796fffa-8cbf-4ec9-91a8-7b6f39fd50ec.jpg?1699044152
+Mephitic Draught,Artifact,{1}{B},"When Mephitic Draught enters the battlefield or is put into a graveyard from the battlefield, you draw a card and you lose 1 life.",,,Common,https://cards.scryfall.io/large/front/a/d/adcae196-dbcc-44d5-b700-c57b0b646483.jpg?1699044154
+Preacher of the Schism,Creature — Vampire Cleric,{2}{B},"Deathtouch
+
+Whenever Preacher of the Schism attacks the player with the most life or tied for most life, create a 1/1 white Vampire creature token with lifelink.
+
+Whenever Preacher of the Schism attacks while you have the most life or are tied for most life, you draw a card and you lose 1 life.",2,4,Rare,https://cards.scryfall.io/large/front/8/9/89345f55-2b32-4356-945a-d56dded39909.jpg?1699044158
+Primordial Gnawer,Creature — Insect Horror,{4}{B},"When Primordial Gnawer dies, discover 3. (Exile cards from the top of your library until you exile a nonland card with mana value 3 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",5,2,Common,https://cards.scryfall.io/large/front/a/1/a18f5ad0-e9c1-4e45-b245-2946e29baecb.jpg?1699044162
+Queen's Bay Paladin,Creature — Vampire Knight,{3}{B}{B},"Whenever Queen’s Bay Paladin enters the battlefield or attacks, return up to one target Vampire card from your graveyard to the battlefield with a finality counter on it. You lose life equal to its mana value. (If a creature with a finality counter on it would die, exile it instead.)",5,4,Rare,https://cards.scryfall.io/large/front/d/0/d0a3339d-6067-4af5-9536-7e2d5ddd8918.jpg?1699044164
+Rampaging Spiketail,Creature — Dinosaur,{4}{B}{B},"When Rampaging Spiketail enters the battlefield, target creature you control gets +2/+0 and gains indestructible until end of turn.
+
+Swampcycling {2} ({2}, Discard this card: Search your library for a Swamp card, reveal it, put it into your hand, then shuffle.)",5,6,Common,https://cards.scryfall.io/large/front/a/a/aad0adcb-80e5-4c6d-bcdd-9e5d18c017b3.jpg?1699044168
+Ray of Ruin,Sorcery,{4}{B},"Exile target creature, Vehicle, or nonbasic land. Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",,,Common,https://cards.scryfall.io/large/front/d/4/d440d90e-ac7e-4715-971a-700c977c7fde.jpg?1699044171
+Screaming Phantom,Creature — Spirit,{2}{B},"Flying
+
+Whenever Screaming Phantom attacks, mill a card. (Put the top card of your library into your graveyard.)",2,2,Common,https://cards.scryfall.io/large/front/b/c/bc2f3efb-1526-48c0-842a-374af63ea467.jpg?1699044172
+Skullcap Snail,Creature — Fungus Snail,{1}{B},"When Skullcap Snail enters the battlefield, target opponent exiles a card from their hand.",1,1,Common,https://cards.scryfall.io/large/front/0/d/0d96d019-5d80-468a-b891-e3e99346372a.jpg?1699044176
+Soulcoil Viper,Creature — Snake,{2}{B},"{B}, {T}, Sacrifice Soulcoil Viper: Return target creature card from your graveyard to the battlefield with a finality counter on it. Activate only as a sorcery. (If a creature with a finality counter on it would die, exile it instead.)",2,3,Uncommon,https://cards.scryfall.io/large/front/1/1/1125fdf2-2dbb-49a6-b76f-8cd6c3d6fab4.jpg?1699044179
+Souls of the Lost,Creature — Spirit,{1}{B},"As an additional cost to cast this spell, discard a card or sacrifice a permanent.
+
+Fathomless descent — Souls of the Lost’s power is equal to the number of permanent cards in your graveyard and its toughness is equal to that number plus 1.",*,*+1,Rare,https://cards.scryfall.io/large/front/b/5/b5c6f502-f11f-4e41-beb8-0843432fa431.jpg?1699044180
+Stalactite Stalker,Creature — Goblin Rogue,{B},"Menace
+
+At the beginning of your end step, if you descended this turn, put a +1/+1 counter on Stalactite Stalker.
+
+{2}{B}, Sacrifice Stalactite Stalker: Target creature gets -X/-X until end of turn, where X is Stalactite Stalker’s power.",1,1,Rare,https://cards.scryfall.io/large/front/5/3/5319c0b1-de54-492a-bdea-85a5a75d693e.jpg?1699044184
+Starving Revenant,Creature — Spirit Horror,{2}{B}{B},"When Starving Revenant enters the battlefield, surveil 2. Then for each card you put on top of your library, you draw a card and you lose 3 life.
+
+Descend 8 — Whenever you draw a card, if there are eight or more permanent cards in your graveyard, target opponent loses 1 life and you gain 1 life.",4,4,Rare,https://cards.scryfall.io/large/front/f/2/f25ea466-eb48-4c4c-b5d4-35f58e46ebe1.jpg?1699044188
+Stinging Cave Crawler,Creature — Insect Horror,{2}{B},"Deathtouch
+
+Descend 4 — Whenever Stinging Cave Crawler attacks, if there are four or more permanent cards in your graveyard, you draw a card and you lose 1 life.",1,3,Uncommon,https://cards.scryfall.io/large/front/6/a/6a230208-84ae-4f48-afbd-a0d50596ad27.jpg?1699044189
+Synapse Necromage,Creature — Fungus Wizard,{2}{B},"When Synapse Necromage dies, create two 1/1 black Fungus creature tokens with “This creature can’t block.”",3,1,Uncommon,https://cards.scryfall.io/large/front/e/f/efeb22a4-37bf-487a-9cf4-74de4cbbc0a3.jpg?1699044194
+Tarrian's Journal,Legendary Artifact,{1}{B},"{T}, Sacrifice another artifact or creature: Draw a card. Activate only as a sorcery.
+
+{2}, {T}, Discard your hand: Transform Tarrian’s Journal.",,,Rare,https://cards.scryfall.io/large/front/9/9/99255a66-b868-45fc-a2a9-0c89bd851b69.jpg?1699044198
+The Tomb of Aclazotz,Legendary Land — Cave,,"(Transforms from Tarrian’s Journal.)
+
+{T}: Add {B}.
+
+{T}: You may cast a creature spell from your graveyard this turn. If you do, it enters the battlefield with a finality counter on it and is a Vampire in addition to its other types. (If a creature with a finality counter on it would die, exile it instead.)",,,Rare,https://cards.scryfall.io/large/back/9/9/99255a66-b868-45fc-a2a9-0c89bd851b69.jpg?1699044198
+Terror Tide,Sorcery,{2}{B}{B},"Fathomless descent — All creatures get -X/-X until end of turn, where X is the number of permanent cards in your graveyard.",,,Rare,https://cards.scryfall.io/large/front/0/a/0a281d2c-20b9-4887-a924-9be6c07b7629.jpg?1699044203
+Tithing Blade,Artifact,{1}{B},"When Tithing Blade enters the battlefield, each opponent sacrifices a creature.
+
+Craft with creature {4}{B} ({4}{B}, Exile this artifact, Exile a creature you control or a creature card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",,,Common,https://cards.scryfall.io/large/front/d/b/dbaa9a2d-e9fd-4746-a26c-f99ae731f024.jpg?1699049915
+Consuming Sepulcher,"Color Indicator: Black
+          Artifact",,"At the beginning of your upkeep, each opponent loses 1 life and you gain 1 life.",,,Common,https://cards.scryfall.io/large/back/d/b/dbaa9a2d-e9fd-4746-a26c-f99ae731f024.jpg?1699049915
+Visage of Dread,Artifact,{1}{B},"When Visage of Dread enters the battlefield, target opponent reveals their hand. You choose an artifact or creature card from it. That player discards that card.
+
+Craft with two creatures {5}{B} ({5}{B}, Exile this artifact, Exile the two from among creatures you control and/or creature cards in your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",5,4,Uncommon,https://cards.scryfall.io/large/front/3/d/3d4b61c6-3e88-49f5-9e16-aa8a59653327.jpg?1699044214
+Dread Osseosaur,"Color Indicator: Black
+          Creature — Dinosaur Skeleton Horror",,"Menace
+
+Whenever Dread Osseosaur enters the battlefield or attacks, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",5,4,Uncommon,https://cards.scryfall.io/large/back/3/d/3d4b61c6-3e88-49f5-9e16-aa8a59653327.jpg?1699044214
+Vito's Inquisitor,Creature — Vampire Knight,{3}{B},"{B}, Sacrifice another creature or artifact: Put a +1/+1 counter on Vito’s Inquisitor. It gains menace until end of turn.",3,3,Common,https://cards.scryfall.io/large/front/9/0/9030048a-b866-4a89-8d4a-aa55411463e4.jpg?1699044215
+Abrade,Instant,{1}{R},"Choose one —
+
+• Abrade deals 3 damage to target creature.
+
+• Destroy target artifact.",,,Common,https://cards.scryfall.io/large/front/4/7/47f39b5e-2e85-4f31-bbab-0b0bf58f701d.jpg?1699044218
+Ancestors' Aid,Instant,{1}{R},"Target creature gets +2/+0 and gains first strike until end of turn.
+
+Create a Treasure token. (It’s an artifact with “{T}, Sacrifice this artifact: Add one mana of any color.”)",,,Common,https://cards.scryfall.io/large/front/e/9/e90d5b7d-e27d-42d6-ba7a-d4a6b0dd8549.jpg?1699044222
+Belligerent Yearling,Creature — Dinosaur,{1}{R},"Trample
+
+Whenever another Dinosaur enters the battlefield under your control, you may have Belligerent Yearling’s base power become equal to that creature’s power until end of turn.",3,2,Uncommon,https://cards.scryfall.io/large/front/0/b/0b2debca-8535-4cf6-a461-c268faaacaae.jpg?1699044224
+Bonehoard Dracosaur,Creature — Dinosaur Dragon,{3}{R}{R},"Flying, first strike
+
+At the beginning of your upkeep, exile the top two cards of your library. You may play them this turn. If you exiled a land card this way, create a 3/1 red Dinosaur creature token. If you exiled a nonland card this way, create a Treasure token.",5,5,Mythic Rare,https://cards.scryfall.io/large/front/2/2/2220ed60-3f8f-4dd2-8319-6a06896a5350.jpg?1699044226
+Brass's Tunnel-Grinder,Legendary Artifact,{2}{R},"When Brass’s Tunnel-Grinder enters the battlefield, discard any number of cards, then draw that many cards plus one.
+
+At the beginning of your end step, if you descended this turn, put a bore counter on Brass’s Tunnel-Grinder. Then if there are three or more bore counters on it, remove those counters and transform it. (You descended if a permanent card was put into your graveyard from anywhere.)",,,Rare,https://cards.scryfall.io/large/front/d/6/d61d8895-7f2e-4c77-951f-4f1a49e96f57.jpg?1699044234
+"Tecutlan, the Searing Rift",Legendary Land — Cave,,"(Transforms from Brass’s Tunnel-Grinder.)
+
+{T}: Add {R}.
+
+Whenever you cast a permanent spell using mana produced by Tecutlan, the Searing Rift, discover X, where X is that spell’s mana value.",,,Rare,https://cards.scryfall.io/large/back/d/6/d61d8895-7f2e-4c77-951f-4f1a49e96f57.jpg?1699044234
+Brazen Blademaster,Creature — Orc Pirate,{2}{R},"Whenever Brazen Blademaster attacks while you control two or more artifacts, it gets +2/+1 until end of turn.",2,3,Common,https://cards.scryfall.io/large/front/8/e/8e9e0c66-f64a-428c-be13-a52691833df1.jpg?1699044235
+"Breeches, Eager Pillager",Legendary Creature — Goblin Pirate,{2}{R},"First strike
+
+Whenever a Pirate you control attacks, choose one that hasn’t been chosen this turn —
+
+• Create a Treasure token.
+
+• Target creature can’t block this turn.
+
+• Exile the top card of your library. You may play it this turn.",3,3,Rare,https://cards.scryfall.io/large/front/a/a/aadf5028-8dfe-40d3-89b4-22bd7ed0aae6.jpg?1699044239
+Burning Sun Cavalry,Creature — Human Knight,{1}{R},"Whenever Burning Sun Cavalry attacks or blocks while you control a Dinosaur, Burning Sun Cavalry gets +1/+1 until end of turn.",2,2,Common,https://cards.scryfall.io/large/front/0/c/0c491ac0-4752-47a7-967e-456b6e4245de.jpg?1699044244
+Calamitous Cave-In,Sorcery,{3}{R},"Calamitous Cave-In deals X damage to each creature and each planeswalker, where X is the number of Caves you control plus the number of Cave cards in your graveyard.",,,Uncommon,https://cards.scryfall.io/large/front/8/3/8341ddd9-aac1-4773-b8ce-51e35f696263.jpg?1699044244
+Child of the Volcano,Creature — Elemental,{3}{R},"Trample
+
+At the beginning of your end step, if you descended this turn, put a +1/+1 counter on Child of the Volcano. (You descended if a permanent card was put into your graveyard from anywhere.)",3,3,Common,https://cards.scryfall.io/large/front/e/9/e964f026-9cbf-4fa2-acdc-60d19b88f183.jpg?1699044247
+Curator of Sun's Creation,Creature — Human Artificer,{3}{R},"Whenever you discover, discover again for the same value. This ability triggers only once each turn.",3,3,Uncommon,https://cards.scryfall.io/large/front/a/1/a144d0b3-678d-4f4c-a9b0-22af19f5cf9f.jpg?1699044253
+Daring Discovery,Sorcery,{4}{R},"Up to three target creatures can’t block this turn.
+
+Discover 4. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Common,https://cards.scryfall.io/large/front/d/9/d95018a4-be10-4c46-b14d-4b1eba838bc0.jpg?1699044254
+Diamond Pick-Axe,Artifact — Equipment,{R},"Indestructible (Effects that say “destroy” don’t destroy this artifact.)
+
+Equipped creature gets +1/+1 and has “Whenever this creature attacks, create a Treasure token.” (It’s an artifact with “{T}, Sacrifice this artifact: Add one mana of any color.”)
+
+Equip {2}",,,Uncommon,https://cards.scryfall.io/large/front/4/a/4ae30fa7-3d1d-417f-80d7-a668236cb2c1.jpg?1699044256
+Dinotomaton,Artifact Creature — Dinosaur Gnome,{3}{R},"Menace (This creature can’t be blocked except by two or more creatures.)
+
+When Dinotomaton enters the battlefield, target creature you control gains menace until end of turn.",4,3,Common,https://cards.scryfall.io/large/front/9/d/9de1a93e-ec71-45fa-b0b8-2c21123e390c.jpg?1699044263
+Dire Flail,Artifact — Equipment,{R},"Equipped creature gets +2/+0.
+
+Equip {1}
+
+Craft with artifact {3}{R}{R} ({3}{R}{R}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",,,Rare,https://cards.scryfall.io/large/front/0/d/0d2d98ae-fe02-4a86-9e80-7b95e08de21c.jpg?1699044265
+Dire Blunderbuss,"Color Indicator: Red
+          Artifact — Equipment",,"Equipped creature gets +3/+0 and has “Whenever this creature attacks, you may sacrifice an artifact other than Dire Blunderbuss. When you do, this creature deals damage equal to its power to target creature.”
+
+Equip {1}",,,Rare,https://cards.scryfall.io/large/back/0/d/0d2d98ae-fe02-4a86-9e80-7b95e08de21c.jpg?1699044265
+Dowsing Device,Artifact,{1}{R},"Whenever Dowsing Device or another artifact enters the battlefield under your control, up to one target creature you control gets +1/+0 and gains haste until end of turn. Then transform Dowsing Device if you control four or more artifacts.",,,Uncommon,https://cards.scryfall.io/large/front/3/d/3d715e9f-223d-462e-8ce3-eebbaf1cd021.jpg?1699044274
+Geode Grotto,Land — Cave,,"(Transforms from Dowsing Device.)
+
+{T}: Add {R}.
+
+{2}{R}, {T}: Until end of turn, target creature gains haste and gets +X/+0, where X is the number of artifacts you control. Activate only as a sorcery.",,,Uncommon,https://cards.scryfall.io/large/back/3/d/3d715e9f-223d-462e-8ce3-eebbaf1cd021.jpg?1699044274
+Dreadmaw's Ire,Instant,{R},"Until end of turn, target attacking creature gets +2/+2 and gains trample and “Whenever this creature deals combat damage to a player, destroy target artifact that player controls.”",,,Uncommon,https://cards.scryfall.io/large/front/0/6/062e00a1-f1dc-4089-b640-800ab781c590.jpg?1699044274
+Enterprising Scallywag,Creature — Goblin Pirate,{1}{R},"At the beginning of your end step, if you descended this turn, create a Treasure token. (You descended if a permanent card was put into your graveyard from anywhere.)",2,2,Uncommon,https://cards.scryfall.io/large/front/4/4/44420f52-2ed8-4f81-93e4-5decc77bed01.jpg?1699044280
+Etali's Favor,Enchantment — Aura,{2}{R},"Enchant creature you control
+
+When Etali’s Favor enters the battlefield, discover 3. (Exile cards from the top of your library until you exile a nonland card with mana value 3 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)
+
+Enchanted creature gets +1/+1 and has trample.",,,Common,https://cards.scryfall.io/large/front/6/d/6d4075a8-c15d-4078-bf4b-0f85c03fecec.jpg?1699044282
+Geological Appraiser,Creature — Human Artificer,{2}{R}{R},"When Geological Appraiser enters the battlefield, if you cast it, discover 3. (Exile cards from the top of your library until you exile a nonland card with mana value 3 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",3,2,Uncommon,https://cards.scryfall.io/large/front/7/f/7f9c1a82-695b-4df2-8e51-2d71a62e7baf.jpg?1699044284
+Goblin Tomb Raider,Creature — Goblin Pirate,{R},"As long as you control an artifact, Goblin Tomb Raider gets +1/+0 and has haste.",1,2,Common,https://cards.scryfall.io/large/front/0/1/018160fe-f602-43f5-8495-241a08eaa69c.jpg?1699044289
+Goldfury Strider,Artifact Creature — Golem,{4}{R},"Trample
+
+Tap two untapped artifacts and/or creatures you control: Target creature gets +2/+0 until end of turn. Activate only as a sorcery.",3,5,Uncommon,https://cards.scryfall.io/large/front/4/1/415904fe-b77f-4c1a-850f-688484d629e6.jpg?1699044290
+Hit the Mother Lode,Sorcery,{4}{R}{R}{R},"Discover 10. If the discovered card’s mana value is less than 10, create a number of tapped Treasure tokens equal to the difference. (To discover 10, exile cards from the top of your library until you exile a nonland card with mana value 10 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Rare,https://cards.scryfall.io/large/front/e/7/e75f460c-43e2-4353-8b73-71ff8651a79d.jpg?1699044293
+Hotfoot Gnome,Artifact Creature — Gnome,{2}{R},"Haste
+
+{T}: Another target creature gains haste until end of turn.",3,1,Common,https://cards.scryfall.io/large/front/8/7/87468b6b-6f78-42e4-ab0d-6730aeecdc3f.jpg?1699044297
+Idol of the Deep King,Artifact,{2}{R},"Flash
+
+When Idol of the Deep King enters the battlefield, it deals 2 damage to any target.
+
+Craft with artifact {2}{R} ({2}{R}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",,,Common,https://cards.scryfall.io/large/front/d/1/d1d8d8ef-c8b2-4e7c-89e4-b381dff20584.jpg?1699044303
+Sovereign's Macuahuitl,"Color Indicator: Red
+          Artifact — Equipment",,"When Sovereign’s Macuahuitl enters the battlefield, attach it to target creature you control.
+
+Equipped creature gets +2/+0.
+
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",,,Common,https://cards.scryfall.io/large/back/d/1/d1d8d8ef-c8b2-4e7c-89e4-b381dff20584.jpg?1699044303
+"Inti, Seneschal of the Sun",Legendary Creature — Human Knight,{1}{R},"Whenever you attack, you may discard a card. When you do, put a +1/+1 counter on target attacking creature. It gains trample until end of turn.
+
+Whenever you discard one or more cards, exile the top card of your library. You may play that card until your next end step.",2,2,Rare,https://cards.scryfall.io/large/front/f/a/fa7a55aa-ae61-4933-b7a4-dcc55dac6fcd.jpg?1699044306
+Magmatic Galleon,Artifact — Vehicle,{3}{R}{R},"When Magmatic Galleon enters the battlefield, it deals 5 damage to target creature an opponent controls.
+
+Whenever one or more creatures your opponents control are dealt excess noncombat damage, create a Treasure token.
+
+Crew 2",5,5,Rare,https://cards.scryfall.io/large/front/4/4/4471a833-11b9-4146-a9c0-84a6896c94d8.jpg?1699044307
+"Ojer Axonil, Deepest Might",Legendary Creature — God,{2}{R}{R},"Trample
+
+If a red source you control would deal an amount of noncombat damage less than Ojer Axonil’s power to an opponent, that source deals damage equal to Ojer Axonil’s power instead.
+
+When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner’s control.",4,4,Mythic Rare,https://cards.scryfall.io/large/front/5/0/50f8e2b6-98c7-4f28-bb39-e1fbe841f1ee.jpg?1699044315
+Temple of Power,Land,,"(Transforms from Ojer Axonil, Deepest Might.)
+
+{T}: Add {R}.
+
+{2}{R}, {T}: Transform Temple of Power. Activate only if red sources you controlled dealt 4 or more noncombat damage this turn and only as a sorcery.",4,4,Mythic Rare,https://cards.scryfall.io/large/back/5/0/50f8e2b6-98c7-4f28-bb39-e1fbe841f1ee.jpg?1699044315
+Panicked Altisaur,Creature — Dinosaur,{4}{R},"Reach
+
+{T}: Panicked Altisaur deals 2 damage to each opponent.",4,5,Common,https://cards.scryfall.io/large/front/a/d/ad371c97-a266-4a88-9d28-2e889a37ba00.jpg?1699044315
+Plundering Pirate,Creature — Orc Pirate,{2}{R},"When Plundering Pirate enters the battlefield, create a Treasure token. (It’s an artifact with “{T}, Sacrifice this artifact: Add one mana of any color.”)",3,2,Common,https://cards.scryfall.io/large/front/5/b/5bb2552f-8370-4931-83e1-93706d51413a.jpg?1699044322
+Poetic Ingenuity,Enchantment,{2}{R},"Whenever one or more Dinosaurs you control attack, create that many Treasure tokens.
+
+Whenever you cast an artifact spell, create a 3/1 red Dinosaur creature token. This ability triggers only once each turn.",,,Rare,https://cards.scryfall.io/large/front/c/0/c035250e-6f6e-4d0f-b4fd-2a53d6069aa7.jpg?1699044323
+Rampaging Ceratops,Creature — Dinosaur,{4}{R},Rampaging Ceratops can’t be blocked except by three or more creatures.,5,4,Uncommon,https://cards.scryfall.io/large/front/8/b/8bab3f8f-cb06-466d-a35d-0b5e1a2b524c.jpg?1699044324
+Rumbling Rockslide,Sorcery,{3}{R},Rumbling Rockslide deals damage to target creature equal to the number of lands you control.,,,Common,https://cards.scryfall.io/large/front/4/f/4f06b53f-ec82-4d7f-bee3-6ca04583f023.jpg?1699044331
+Saheeli's Lattice,Artifact,{1}{R},"When Saheeli’s Lattice enters the battlefield, you may discard a card. If you do, draw two cards.
+
+Craft with one or more Dinosaurs {4}{R} ({4}{R}, Exile this artifact, Exile one or more Dinosaurs you control and/or Dinosaur cards from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",*,4,Uncommon,https://cards.scryfall.io/large/front/0/b/0bdc79c6-1193-46bd-931d-2c2a0381e420.jpg?1699044333
+Mastercraft Raptor,"Color Indicator: Red
+          Artifact Creature — Dinosaur",,Mastercraft Raptor’s power is equal to the total power of the exiled cards used to craft it.,*,4,Uncommon,https://cards.scryfall.io/large/back/0/b/0bdc79c6-1193-46bd-931d-2c2a0381e420.jpg?1699044333
+Scytheclaw Raptor,Creature — Dinosaur,{2}{R},"Whenever a player casts a spell, if it’s not their turn, Scytheclaw Raptor deals 4 damage to them.",4,3,Uncommon,https://cards.scryfall.io/large/front/9/4/9436cf62-56d6-4662-9982-72e9be80d25c.jpg?1699044339
+Seismic Monstrosaur,Creature — Dinosaur,{4}{R}{R},"Trample
+
+{2}{R}, Sacrifice a land: Draw a card.
+
+Mountaincycling {2} ({2}, Discard this card: Search your library for a Mountain card, reveal it, put it into your hand, then shuffle.)",6,5,Common,https://cards.scryfall.io/large/front/9/8/98aeb9dc-18f9-4120-ac3d-226c62a1dc1d.jpg?1699044339
+Sunfire Torch,Artifact — Equipment,{R},"Equipped creature gets +1/+0 and has “Whenever this creature attacks, you may sacrifice Sunfire Torch. When you do, this creature deals 2 damage to any target.”
+
+Equip {1} ({1}: Attach to target creature you control. Equip only as a sorcery.)",,,Common,https://cards.scryfall.io/large/front/b/b/bb040fc7-f728-4482-92af-9a320c03bb54.jpg?1699044342
+Sunshot Militia,Creature — Human Soldier,{1}{R},Tap two untapped artifacts and/or creatures you control: Sunshot Militia deals 1 damage to each opponent. Activate only as a sorcery.,1,3,Common,https://cards.scryfall.io/large/front/d/3/d3114f5c-21e9-43c3-abe3-3cf1da20916f.jpg?1699044348
+Tectonic Hazard,Sorcery,{R},Tectonic Hazard deals 1 damage to each opponent and each creature they control.,,,Common,https://cards.scryfall.io/large/front/5/2/5204c781-f568-4c7f-b3f7-ce4dd678689b.jpg?1699044348
+Triumphant Chomp,Sorcery,{R},"Triumphant Chomp deals damage to target creature equal to 2 or the greatest power among Dinosaurs you control, whichever is greater.",,,Uncommon,https://cards.scryfall.io/large/front/0/6/06b28139-efa7-4818-a012-cf8150692b43.jpg?1699044351
+Trumpeting Carnosaur,Creature — Dinosaur,{4}{R}{R},"Trample
+
+When Trumpeting Carnosaur enters the battlefield, discover 5.
+
+{2}{R}, Discard Trumpeting Carnosaur: It deals 3 damage to target creature or planeswalker.",7,6,Rare,https://cards.scryfall.io/large/front/e/d/edc035ca-f0a3-4814-9405-d6dc6f048315.jpg?1699044357
+Volatile Wanderglyph,Artifact Creature — Golem,{1}{R},"Whenever Volatile Wanderglyph becomes tapped, you may discard a card. If you do, draw a card.",2,2,Common,https://cards.scryfall.io/large/front/2/1/2101921a-d26f-4a00-a0db-1b418f2e6b01.jpg?1699044357
+Zoyowa's Justice,Instant,{1}{R},"The owner of target artifact or creature with mana value 1 or greater shuffles it into their library. Then that player discovers X, where X is its mana value. (They exile cards from the top of their library until they exile a nonland card with that mana value or less. They cast it without paying its mana cost or put it into their hand. They put the rest on the bottom in a random order.)",,,Uncommon,https://cards.scryfall.io/large/front/0/4/04839717-d2f9-481d-9d13-e4038dbcbb0e.jpg?1699044361
+Armored Kincaller,Creature — Dinosaur,{2}{G},"When Armored Kincaller enters the battlefield, you may reveal a Dinosaur card from your hand. If you do or if you control another Dinosaur, you gain 3 life.",3,3,Common,https://cards.scryfall.io/large/front/b/7/b76a46a1-a63e-460a-98c5-699dd1c827aa.jpg?1699044365
+Basking Capybara,Creature — Capybara,{1}{G},Descend 4 — Basking Capybara gets +3/+0 as long as there are four or more permanent cards in your graveyard.,1,3,Common,https://cards.scryfall.io/large/front/f/f/ff0a2ba4-dfa8-49d6-95e9-04b7a14d0c6c.jpg?1699044367
+Bedrock Tortoise,Creature — Turtle,{3}{G},"As long as it’s your turn, creatures you control have hexproof.
+
+Each creature you control with toughness greater than its power assigns combat damage equal to its toughness rather than its power.",0,6,Rare,https://cards.scryfall.io/large/front/7/0/701bd623-3100-44dc-adec-53fa3a95ab19.jpg?1699044371
+Cavern Stomper,Creature — Dinosaur,{4}{G}{G},"When Cavern Stomper enters the battlefield, scry 2. (Look at the top two cards of your library, then put any number of them on the bottom and the rest on top in any order.)
+
+{3}{G}: Cavern Stomper can’t be blocked by creatures with power 2 or less this turn.",7,7,Common,https://cards.scryfall.io/large/front/d/e/decdfd6b-55ab-47fd-9f98-1845261f1caf.jpg?1699044374
+Cenote Scout,Creature — Merfolk Scout,{G},"When Cenote Scout enters the battlefield, it explores. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",1,1,Uncommon,https://cards.scryfall.io/large/front/4/c/4ce4b7bc-636b-4723-a7c1-2c859f333492.jpg?1699044377
+Coati Scavenger,Creature — Raccoon,{2}{G},"Descend 4 — When Coati Scavenger enters the battlefield, if there are four or more permanent cards in your graveyard, return target permanent card from your graveyard to your hand.",3,2,Uncommon,https://cards.scryfall.io/large/front/d/2/d2c70d86-1764-487d-a415-15ae79ba570c.jpg?1699044379
+Colossadactyl,Creature — Dinosaur,{2}{G}{G},"Reach, trample",4,5,Uncommon,https://cards.scryfall.io/large/front/8/7/8702e776-be2c-48a9-9bc5-bb8ea514333b.jpg?1699044383
+Cosmium Confluence,Sorcery,{4}{G},"Choose three. You may choose the same mode more than once.
+
+• Search your library for a Cave card, put it onto the battlefield tapped, then shuffle.
+
+• Put three +1/+1 counters on a Cave you control. It becomes a 0/0 Elemental creature with haste. It’s still a land.
+
+• Destroy target enchantment.",,,Rare,https://cards.scryfall.io/large/front/4/9/490a5054-0607-4e4a-a0a9-0e9eea7adb00.jpg?1699044386
+Disturbed Slumber,Instant,{1}{G},"Until end of turn, target land you control becomes a 4/4 Dinosaur creature with reach and haste. It’s still a land. It must be blocked this turn if able.",,,Common,https://cards.scryfall.io/large/front/4/4/4404b8d6-3673-4d82-b9ed-d28e9b54e1f6.jpg?1699044387
+Earthshaker Dreadmaw,Creature — Dinosaur,{4}{G}{G},"Trample
+
+When Earthshaker Dreadmaw enters the battlefield, draw a card for each other Dinosaur you control.",6,6,Uncommon,https://cards.scryfall.io/large/front/c/d/cdcbba6f-aa54-44be-a3b0-f712fa8bd5ad.jpg?1699044391
+Explorer's Cache,Artifact,{1}{G},"Explorer’s Cache enters the battlefield with two +1/+1 counters on it.
+
+Whenever a creature you control with a +1/+1 counter on it dies, put a +1/+1 counter on Explorer’s Cache.
+
+{T}: Move a +1/+1 counter from Explorer’s Cache onto target creature. Activate only as a sorcery.",,,Uncommon,https://cards.scryfall.io/large/front/8/6/86b36214-9c7e-4a24-93d4-17b2d00cbc51.jpg?1699044394
+"Ghalta, Stampede Tyrant",Legendary Creature — Elder Dinosaur,{5}{G}{G}{G},"Trample
+
+When Ghalta, Stampede Tyrant enters the battlefield, put any number of creature cards from your hand onto the battlefield.",12,12,Mythic Rare,https://cards.scryfall.io/large/front/7/2/72e805e9-69be-45c1-aa04-f460641a0c1e.jpg?1699044395
+Glimpse the Core,Sorcery,{1}{G},"Choose one —
+
+• Search your library for a basic Forest card, put that card onto the battlefield tapped, then shuffle.
+
+• Return target Cave card from your graveyard to the battlefield tapped.",,,Uncommon,https://cards.scryfall.io/large/front/d/e/de7d6aed-3dc8-417d-a190-1660cfc8ee4a.jpg?1699044400
+Glowcap Lantern,Artifact — Equipment,{G},"Equipped creature has “You may look at the top card of your library any time” and “Whenever this creature attacks, it explores.” (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)
+
+Equip {2}",,,Uncommon,https://cards.scryfall.io/large/front/b/a/bafde87c-743d-4307-93e0-fbd30f5d92f6.jpg?1699044403
+Growing Rites of Itlimoc,Legendary Enchantment,{2}{G},"When Growing Rites of Itlimoc enters the battlefield, look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.
+
+At the beginning of your end step, if you control four or more creatures, transform Growing Rites of Itlimoc.",,,Rare,https://cards.scryfall.io/large/front/0/0/004524bf-b249-4dac-9c10-44d57143feb9.jpg?1699044409
+"Itlimoc, Cradle of the Sun",Legendary Land,,"(Transforms from Growing Rites of Itlimoc.)
+
+{T}: Add {G}.
+
+{T}: Add {G} for each creature you control.",,,Rare,https://cards.scryfall.io/large/back/0/0/004524bf-b249-4dac-9c10-44d57143feb9.jpg?1699044409
+"Huatli, Poet of Unity",Legendary Creature — Human Warrior Bard,{2}{G},"When Huatli, Poet of Unity enters the battlefield, search your library for a basic land card, reveal it, put it into your hand, then shuffle.
+
+{3}{R/W}{R/W}: Exile Huatli, then return her to the battlefield transformed under her owner’s control. Activate only as a sorcery.",2,3,Mythic Rare,https://cards.scryfall.io/large/front/5/7/57df2563-18d4-4526-a8bc-0c114e6fd4d9.jpg?1699044416
+Roar of the Fifth People,"Color Indicator: White, Red, and Green
+          Enchantment — Saga",,"(As this Saga enters and after your draw step, add a lore counter. Sacrifice after IV.)
+
+I — Create two 3/3 green Dinosaur creature tokens.
+
+II — Roar of the Fifth People gains “Creatures you control have ‘{T}: Add {R}, {G}, or {W}.’”
+
+III — Search your library for a Dinosaur card, reveal it, put it into your hand, then shuffle.
+
+IV — Dinosaurs you control gain double strike and trample until end of turn.",2,3,Mythic Rare,https://cards.scryfall.io/large/back/5/7/57df2563-18d4-4526-a8bc-0c114e6fd4d9.jpg?1699044416
+Huatli's Final Strike,Instant,{2}{G},Target creature you control gets +1/+0 until end of turn. It deals damage equal to its power to target creature an opponent controls.,,,Common,https://cards.scryfall.io/large/front/1/2/1247a5fa-b50a-4ab1-96ca-dbeb45bd0b56.jpg?1699044417
+Hulking Raptor,Creature — Dinosaur,{2}{G}{G},"Ward {2}
+
+At the beginning of your precombat main phase, add {G}{G}.",5,3,Rare,https://cards.scryfall.io/large/front/4/5/45f763af-5a6a-404c-8e8c-4dbed71277bc.jpg?1699044419
+In the Presence of Ages,Instant,{2}{G},Reveal the top four cards of your library. You may put a creature card and/or a land card from among them into your hand. Put the rest into your graveyard.,,,Common,https://cards.scryfall.io/large/front/9/7/97b1be22-3177-49af-bb06-42497d717c21.jpg?1699044424
+Intrepid Paleontologist,Creature — Human Druid,{1}{G},"{T}: Add one mana of any color.
+
+{2}: Exile target card from a graveyard.
+
+You may cast Dinosaur creature spells from among cards you own exiled with Intrepid Paleontologist. If you cast a spell this way, that creature enters the battlefield with a finality counter on it. (If a creature with a finality counter on it would die, exile it instead.)",2,2,Rare,https://cards.scryfall.io/large/front/8/7/871a164a-0fe6-480e-a1be-cbffce884bd3.jpg?1699044425
+Ixalli's Lorekeeper,Creature — Human Druid,{G},{T}: Add one mana of any color. Spend this mana only to cast a Dinosaur spell or activate an ability of a Dinosaur source.,1,1,Uncommon,https://cards.scryfall.io/large/front/4/b/4bc94ded-458d-4458-9c0b-136d825b885d.jpg?1699044427
+Jade Seedstones,Artifact,{3}{G},"When Jade Seedstones enters the battlefield, distribute three +1/+1 counters among one, two, or three target creatures you control.
+
+Craft with creature {5}{G}{G} ({5}{G}{G}, Exile this artifact, Exile a creature you control or a creature card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",7,7,Uncommon,https://cards.scryfall.io/large/front/b/b/bb95ffc2-ef35-49bf-8211-c5354d176051.jpg?1699122172
+Jadeheart Attendant,"Color Indicator: Green
+          Artifact Creature — Golem",,"When Jadeheart Attendant enters the battlefield, you gain life equal to the mana value of the exiled card used to craft it.",7,7,Uncommon,https://cards.scryfall.io/large/back/b/b/bb95ffc2-ef35-49bf-8211-c5354d176051.jpg?1699122172
+Jadelight Spelunker,Creature — Merfolk Scout,{X}{G},"When Jadelight Spelunker enters the battlefield, it explores X times. (To have it explore, reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard.)",1,1,Rare,https://cards.scryfall.io/large/front/6/8/68e633d3-47e2-48c5-9be3-574ce5023bf7.jpg?1699044435
+Kaslem's Stonetree,Artifact,{2}{G},"When Kaslem’s Stonetree enters the battlefield, look at the top six cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom in a random order.
+
+Craft with Cave {5}{G} ({5}{G}, Exile this artifact, Exile a Cave you control or a Cave card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",5,5,Common,https://cards.scryfall.io/large/front/7/8/78b1b412-228a-4e05-a4b3-8159ebf54dc6.jpg?1699044443
+Kaslem's Strider,"Color Indicator: Green
+          Artifact Creature — Golem",,"When Kaslem’s Stonetree enters the battlefield, look at the top six cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest on the bottom in a random order.
+
+Craft with Cave {5}{G} ({5}{G}, Exile this artifact, Exile a Cave you control or a Cave card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",5,5,Common,https://cards.scryfall.io/large/back/7/8/78b1b412-228a-4e05-a4b3-8159ebf54dc6.jpg?1699044443
+Malamet Battle Glyph,Sorcery,{G},"Choose target creature you control and target creature you don’t control. If the creature you control entered the battlefield this turn, put a +1/+1 counter on it. Then those creatures fight each other.",,,Uncommon,https://cards.scryfall.io/large/front/2/2/2259f959-ca97-4df9-8d50-0532090fb967.jpg?1699044443
+Malamet Brawler,Creature — Cat Warrior,{1}{G},"Whenever Malamet Brawler attacks, target attacking creature gains trample until end of turn.",2,2,Common,https://cards.scryfall.io/large/front/4/7/47d2fb65-cc3d-4664-bee0-8cf1cba5d8fa.jpg?1699044450
+Malamet Scythe,Artifact — Equipment,{2}{G},"Flash
+
+When Malamet Scythe enters the battlefield, attach it to target creature you control.
+
+Equipped creature gets +2/+2.
+
+Equip {4} ({4}: Attach to target creature you control. Equip only as a sorcery.)",,,Common,https://cards.scryfall.io/large/front/d/f/df6776a4-cc01-46a3-90df-04e1e3ba513c.jpg?1699044451
+Malamet Veteran,Creature — Cat Warrior,{4}{G},"Trample
+
+Descend 4 — Whenever Malamet Veteran attacks, if there are four or more permanent cards in your graveyard, put a +1/+1 counter on target creature.",5,4,Common,https://cards.scryfall.io/large/front/4/b/4b9b16b3-1cbd-4b63-85b2-e4053dfc1e93.jpg?1699044452
+Mineshaft Spider,Creature — Spider,{3}{G},"Reach
+
+When Mineshaft Spider enters the battlefield, you may mill two cards. (You may put the top two cards of your library into your graveyard.)",3,4,Common,https://cards.scryfall.io/large/front/b/7/b75a3639-a917-4700-a093-14a4cda78d9f.jpg?1699044458
+Nurturing Bristleback,Creature — Dinosaur,{5}{G}{G},"When Nurturing Bristleback enters the battlefield, create a 3/3 green Dinosaur creature token.
+
+Forestcycling {2} ({2}, Discard this card: Search your library for a Forest card, reveal it, put it into your hand, then shuffle.)",5,5,Common,https://cards.scryfall.io/large/front/0/8/081d5c9e-71da-4454-ae4e-c76cb7790d20.jpg?1699044460
+"Ojer Kaslem, Deepest Growth",Legendary Creature — God,{3}{G}{G},"Trample
+
+Whenever Ojer Kaslem deals combat damage to a player, reveal that many cards from the top of your library. You may put a creature card and/or a land card from among them onto the battlefield. Put the rest on the bottom in a random order.
+
+When Ojer Kaslem dies, return it to the battlefield tapped and transformed under its owner’s control.",6,5,Mythic Rare,https://cards.scryfall.io/large/front/0/c/0cbc43a3-8cba-4988-9de1-c89aedd79ada.jpg?1699044466
+Temple of Cultivation,Land,,"(Transforms from Ojer Kaslem, Deepest Growth.)
+
+{T}: Add {G}.
+
+{2}{G}, {T}: Transform Temple of Cultivation. Activate only if you control ten or more permanents and only as a sorcery.",6,5,Mythic Rare,https://cards.scryfall.io/large/back/0/c/0cbc43a3-8cba-4988-9de1-c89aedd79ada.jpg?1699044466
+Over the Edge,Sorcery,{1}{G},"Choose one —
+
+• Destroy target artifact or enchantment.
+
+• Target creature you control explores, then it explores again. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on that creature, then put the card back or put it into your graveyard. Then repeat this process.)",,,Common,https://cards.scryfall.io/large/front/2/3/23dddddb-5409-4c28-bf32-e6473f2cc620.jpg?1699044468
+Pathfinding Axejaw,Creature — Dinosaur,{3}{G},"When Pathfinding Axejaw enters the battlefield, it explores. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",4,3,Common,https://cards.scryfall.io/large/front/9/f/9f619075-ca5d-4e09-bd84-31e6b61eaa7e.jpg?1699044470
+Poison Dart Frog,Creature — Frog,{1}{G},"Reach
+
+{T}: Add one mana of any color.
+
+{2}: Poison Dart Frog gains deathtouch until end of turn.",1,1,Common,https://cards.scryfall.io/large/front/6/2/62c1f09a-9d17-415c-8afa-cd0b62abe48d.jpg?1699044475
+Pugnacious Hammerskull,Creature — Dinosaur,{2}{G},"Whenever Pugnacious Hammerskull attacks while you don’t control another Dinosaur, put a stun counter on it. (If a permanent with a stun counter would become untapped, remove one from it instead.)",6,6,Rare,https://cards.scryfall.io/large/front/6/3/632e5635-a9bc-473a-a885-02e1fd258f7b.jpg?1699044476
+River Herald Guide,Creature — Merfolk Scout,{2}{G},"Vigilance
+
+When River Herald Guide enters the battlefield, it explores. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",3,1,Common,https://cards.scryfall.io/large/front/9/e/9ea7e323-f329-4928-b25a-c0b44c5ac058.jpg?1699044480
+Seeker of Sunlight,Creature — Merfolk Scout,{G},"{2}{G}: Seeker of Sunlight explores. Activate only as a sorcery. (Reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",1,1,Common,https://cards.scryfall.io/large/front/f/f/ffcdb10f-4bad-4f89-8e7c-daa5c0c69230.jpg?1699044483
+Sentinel of the Nameless City,Creature — Merfolk Warrior Scout,{2}{G},"Vigilance
+
+Whenever Sentinel of the Nameless City enters the battlefield or attacks, create a Map token. (It’s an artifact with “{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.”)",3,4,Rare,https://cards.scryfall.io/large/front/e/e/eeeffc0b-dc92-458e-ad58-86ff6077a508.jpg?1699044484
+The Skullspore Nexus,Legendary Artifact,{6}{G}{G},"This spell costs {X} less to cast, where X is the greatest power among creatures you control.
+
+Whenever one or more nontoken creatures you control die, create a green Fungus Dinosaur creature token with base power and toughness each equal to the total power of those creatures.
+
+{2}, {T}: Double target creature’s power until end of turn.",,,Mythic Rare,https://cards.scryfall.io/large/front/b/5/b56a7631-5f94-468d-aab7-7e9e129c5f49.jpg?1699044489
+Spelunking,Enchantment,{2}{G},"When Spelunking enters the battlefield, draw a card, then you may put a land card from your hand onto the battlefield. If you put a Cave onto the battlefield this way, you gain 4 life.
+
+Lands you control enter the battlefield untapped.",,,Uncommon,https://cards.scryfall.io/large/front/d/3/d3be4257-2316-4a2e-b347-f71c0368a947.jpg?1699044491
+Staggering Size,Instant,{1}{G},Target creature gets +3/+3 and gains trample until end of turn.,,,Common,https://cards.scryfall.io/large/front/e/3/e34c4946-6c21-4ae1-9595-35933d38da52.jpg?1699044491
+Tendril of the Mycotyrant,Creature — Fungus Wizard,{1}{G},{5}{G}{G}: Put seven +1/+1 counters on target noncreature land you control. It becomes a 0/0 Fungus creature with haste. It’s still a land.,2,2,Uncommon,https://cards.scryfall.io/large/front/a/f/afa464fe-978f-43de-ac35-79be4b12f0d9.jpg?1699044498
+Thrashing Brontodon,Creature — Dinosaur,{1}{G}{G},"{1}, Sacrifice Thrashing Brontodon: Destroy target artifact or enchantment.",3,4,Uncommon,https://cards.scryfall.io/large/front/d/5/d52ef7c1-dacb-4204-b64e-5fa3ae3b1ace.jpg?1699044499
+Twists and Turns,Enchantment,{G},"If a creature you control would explore, instead you scry 1, then that creature explores.
+
+When Twists and Turns enters the battlefield, target creature you control explores.
+
+When a land enters the battlefield under your control, if you control seven or more lands, transform Twists and Turns.",,,Uncommon,https://cards.scryfall.io/large/front/3/c/3cdf691e-96a5-45c7-9b94-6f04af81c8e4.jpg?1699044507
+Mycoid Maze,Land — Cave,,"(Transforms from Twists and Turns.)
+
+{T}: Add {G}.
+
+{3}{G}, {T}: Look at the top four cards of your library. You may reveal a creature card from among them and put that card into your hand. Put the rest on the bottom of your library in a random order.",,,Uncommon,https://cards.scryfall.io/large/back/3/c/3cdf691e-96a5-45c7-9b94-6f04af81c8e4.jpg?1699044507
+Walk with the Ancestors,Sorcery,{4}{G},Return up to one target permanent card from your graveyard to your hand. Discover 4. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.),,,Common,https://cards.scryfall.io/large/front/7/1/71a6f85b-5ef8-4526-9c86-7cb71508b4c0.jpg?1699044508
+"Abuelo, Ancestral Echo",Legendary Creature — Spirit,{1}{W}{U},"Flying, ward {2}
+
+{1}{W}{U}: Exile another target creature or artifact you control. Return it to the battlefield under its owner’s control at the beginning of the next end step.",2,2,Rare,https://cards.scryfall.io/large/front/4/0/40eee689-2514-421a-8056-eb7668be66ff.jpg?1699044511
+"Akawalli, the Seething Tower",Legendary Creature — Fungus,{1}{B}{G},"Descend 4 — As long as there are four or more permanent cards in your graveyard, Akawalli, the Seething Tower gets +2/+2 and has trample.
+
+Descend 8 — As long as there are eight or more permanent cards in your graveyard, Akawalli gets an additional +2/+2 and can’t be blocked by more than one creature.",3,3,Uncommon,https://cards.scryfall.io/large/front/3/e/3ee62dd1-97d0-4e5d-8937-26c9e51e9414.jpg?1699044515
+Amalia Benavides Aguirre,Legendary Creature — Vampire Scout,{W}{B},"Ward—Pay 3 life.
+
+Whenever you gain life, Amalia Benavides Aguirre explores. Then, destroy all other creatures if its power is exactly 20. (To have this creature explore, reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",2,2,Rare,https://cards.scryfall.io/large/front/9/a/9acf80a5-f2ca-45b4-aca8-fbc690e35401.jpg?1699044516
+The Ancient One,Legendary Creature — Spirit God,{U}{B},"Descend 8 — The Ancient One can’t attack or block unless there are eight or more permanent cards in your graveyard.
+
+{2}{U}{B}: Draw a card, then discard a card. When you discard a card this way, target player mills cards equal to its mana value.",8,8,Mythic Rare,https://cards.scryfall.io/large/front/6/6/66dd43d7-76a7-46ea-b431-097fcea417af.jpg?1699044521
+"Anim Pakal, Thousandth Moon",Legendary Creature — Human Soldier,{1}{R}{W},"Whenever you attack with one or more non-Gnome creatures, put a +1/+1 counter on Anim Pakal, then create X 1/1 colorless Gnome artifact creature tokens that are tapped and attacking, where X is the number of +1/+1 counters on Anim Pakal.",1,2,Rare,https://cards.scryfall.io/large/front/8/6/868856b7-8875-43c1-8249-0f8fb2c8319b.jpg?1699044523
+Bartolomé del Presidio,Legendary Creature — Vampire Knight,{W}{B},Sacrifice another creature or artifact: Put a +1/+1 counter on Bartolomé del Presidio.,2,1,Uncommon,https://cards.scryfall.io/large/front/6/9/690ccdc7-6c43-4902-9d11-2f07b7a36b11.jpg?1699044523
+The Belligerent,Legendary Artifact — Vehicle,{2}{U}{R},"Whenever The Belligerent attacks, create a Treasure token. Until end of turn, you may look at the top card of your library any time, and you may play lands and cast spells from the top of your library.
+
+Crew 3",5,5,Rare,https://cards.scryfall.io/large/front/1/4/1454af8c-bce9-47d3-890f-283e2fea2cf2.jpg?1699044529
+Caparocti Sunborn,Legendary Creature — Human Soldier,{2}{R}{W},"Whenever Caparocti Sunborn attacks, you may tap two untapped artifacts and/or creatures you control. If you do, discover 3. (Exile cards from the top of your library until you exile a nonland card with mana value 3 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",4,4,Uncommon,https://cards.scryfall.io/large/front/8/e/8ea82964-fd9c-48e3-962f-94954476b31f.jpg?1699044531
+"Captain Storm, Cosmium Raider",Legendary Creature — Human Pirate,{U}{R},"Whenever an artifact enters the battlefield under your control, put a +1/+1 counter on target Pirate you control.",2,2,Uncommon,https://cards.scryfall.io/large/front/1/4/14c65f5a-10bd-4f9b-b816-46c2240b11ff.jpg?1699044532
+Deepfathom Echo,Creature — Merfolk Spirit,{2}{G}{U},"At the beginning of combat on your turn, Deepfathom Echo explores. Then you may have it become a copy of another creature you control until end of turn. (To have this creature explore, reveal the top card of your library. Put that card into your hand if it’s a land. Otherwise, put a +1/+1 counter on this creature, then put the card back or put it into your graveyard.)",4,4,Rare,https://cards.scryfall.io/large/front/c/7/c7c7fb87-8448-49f4-a9ed-db97f6a41d98.jpg?1699044538
+"Gishath, Sun's Avatar",Legendary Creature — Dinosaur Avatar,{5}{R}{G}{W},"Vigilance, trample, haste
+
+Whenever Gishath, Sun’s Avatar deals combat damage to a player, reveal that many cards from the top of your library. Put any number of Dinosaur creature cards from among them onto the battlefield and the rest on the bottom of your library in a random order.",7,6,Mythic Rare,https://cards.scryfall.io/large/front/b/c/bc4a65de-23b5-48f0-b8b7-94608eaced3e.jpg?1699044539
+"Itzquinth, Firstborn of Gishath",Legendary Creature — Dinosaur,{R}{G},"Haste
+
+When Itzquinth, Firstborn of Gishath enters the battlefield, you may pay {2}. When you do, target Dinosaur you control deals damage equal to its power to another target creature.",2,3,Uncommon,https://cards.scryfall.io/large/front/7/1/7112c366-b36a-4bc8-aa64-6bad16bebc39.jpg?1699044540
+"Kellan, Daring Traveler
+          
+              Journey On","Legendary Creature — Human Faerie Scout
+
+          Sorcery — Adventure",{1}{W}{G},"Whenever Kellan, Daring Traveler attacks, reveal the top card of your library. If it’s a creature card with mana value 3 or less, put it into your hand. Otherwise, you may put it into your graveyard.
+              
+                Create X Map tokens, where X is one plus the number of opponents who control an artifact. (Then exile this card. You may cast the creature later from exile.)",2,3,Rare,https://cards.scryfall.io/large/front/0/1/01739030-c280-492b-a5c9-b3e9f6debc6d.jpg?1699044547
+"Kutzil, Malamet Exemplar",Legendary Creature — Cat Warrior,{1}{G}{W},"Your opponents can’t cast spells during your turn.
+
+Whenever one or more creatures you control each with power greater than its base power deals combat damage to a player, draw a card.",3,3,Uncommon,https://cards.scryfall.io/large/front/c/9/c9f88a40-a6ed-4c1f-a309-011aca1acddd.jpg?1699044549
+Master's Guide-Mural,Artifact,{3}{W}{U},"When Master’s Guide-Mural enters the battlefield, create a 4/4 white and blue Golem artifact creature token.
+
+Craft with artifact {4}{W}{W}{U} ({4}{W}{W}{U}, Exile this artifact, Exile another artifact you control or an artifact card from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",,,Uncommon,https://cards.scryfall.io/large/front/f/7/f7a41343-7cdb-49aa-a9d1-7460195355d8.jpg?1699561966
+Master's Manufactory,"Color Indicator: White and Blue
+          Artifact",,{T}: Create a 4/4 white and blue Golem artifact creature token. Activate only if Master’s Manufactory or another artifact entered the battlefield under your control this turn.,,,Uncommon,https://cards.scryfall.io/large/back/f/7/f7a41343-7cdb-49aa-a9d1-7460195355d8.jpg?1699561966
+Molten Collapse,Sorcery,{B}{R},"Choose one. If you descended this turn, you may choose both instead. (You descended if a permanent card was put into your graveyard from anywhere.)
+
+• Destroy target creature or planeswalker.
+
+• Destroy target noncreature, nonland permanent with mana value 1 or less.",,,Rare,https://cards.scryfall.io/large/front/2/4/2487d124-210b-4808-888c-cd0a78aebd90.jpg?1699044556
+The Mycotyrant,Legendary Creature — Elder Fungus,{1}{B}{G},"Trample
+
+The Mycotyrant’s power and toughness are each equal to the number of creatures you control that are Fungi and/or Saprolings.
+
+At the beginning of your end step, create X 1/1 black Fungus creature tokens with “This creature can’t block,” where X is the number of times you descended this turn. (You descend each time a permanent card is put into your graveyard from anywhere.)",*,*,Mythic Rare,https://cards.scryfall.io/large/front/c/a/caef93cc-70d0-4cce-9aaa-13c0931b2ef7.jpg?1699044561
+"Nicanzil, Current Conductor",Legendary Creature — Merfolk Scout,{G}{U},"Whenever a creature you control explores a land card, you may put a land card from your hand onto the battlefield tapped.
+
+Whenever a creature you control explores a nonland card, put a +1/+1 counter on Nicanzil, Current Conductor.",2,3,Uncommon,https://cards.scryfall.io/large/front/5/e/5e6f4aba-3500-4fb7-ab78-02f63c03778a.jpg?1699044562
+Palani's Hatcher,Creature — Dinosaur,{3}{R}{G},"Other Dinosaurs you control have haste.
+
+When Palani’s Hatcher enters the battlefield, create two 0/1 green Dinosaur Egg creature tokens.
+
+At the beginning of combat on your turn, if you control one or more Eggs, sacrifice an Egg, then create a 3/3 green Dinosaur creature token.",5,3,Rare,https://cards.scryfall.io/large/front/8/6/86ff73c7-428c-469c-b564-6aa9f4eeca14.jpg?1699044564
+Quintorius Kand,Legendary Planeswalker — Quintorius,{3}{R}{W},"Whenever you cast a spell from exile, Quintorius Kand deals 2 damage to each opponent and you gain 2 life.
+
++1: Create a 3/2 red and white Spirit creature token.
+
+−3: Discover 4.
+
+−6: Exile any number of target cards from your graveyard. Add {R} for each card exiled this way. You may play those cards this turn.",Loyalty: 4,,Mythic Rare,https://cards.scryfall.io/large/front/4/3/4382fa49-9e34-45b3-8495-4916dcd995ec.jpg?1699044570
+"Saheeli, the Sun's Brilliance",Legendary Creature — Human Artificer,{U}{R},"{U}{R}, {T}: Create a token that’s a copy of another target creature or artifact you control, except it’s an artifact in addition to its other types. It gains haste. Sacrifice it at the beginning of the next end step.",2,2,Mythic Rare,https://cards.scryfall.io/large/front/0/b/0ba99b60-c7d0-4041-a065-f2c510745223.jpg?1699044570
+Sovereign Okinec Ahau,Legendary Creature — Cat Noble,{2}{G}{W},"Ward {2}
+
+Whenever Sovereign Okinec Ahau attacks, for each creature you control with power greater than that creature’s base power, put a number of +1/+1 counters on that creature equal to the difference.",3,4,Mythic Rare,https://cards.scryfall.io/large/front/7/0/70c75aa7-e2f9-4a69-8086-c982019ca714.jpg?1699044573
+Squirming Emergence,Sorcery,{1}{B}{G},Fathomless descent — Return to the battlefield target nonland permanent card in your graveyard with mana value less than or equal to the number of permanent cards in your graveyard.,,,Rare,https://cards.scryfall.io/large/front/8/e/8ee16629-f9be-4cdb-bf52-1d640781ee00.jpg?1699044577
+"Uchbenbak, the Great Mistake",Legendary Creature — Skeleton Horror,{3}{U}{B},"Vigilance, menace
+
+Descend 8 — {4}{U}{B}: Return Uchbenbak, the Great Mistake from your graveyard to the battlefield with a finality counter on it. Activate only if there are eight or more permanent cards in your graveyard and only as a sorcery. (If a creature with a finality counter on it would die, exile it instead.)",6,4,Uncommon,https://cards.scryfall.io/large/front/a/0/a062202c-f9fb-4dd6-989a-c3083644f1c0.jpg?1699044578
+"Vito, Fanatic of Aclazotz",Legendary Creature — Vampire Demon,{2}{W}{B},"Flying
+
+Whenever you sacrifice another permanent, you gain 2 life if this is the first time this ability has resolved this turn. If it’s the second time, each opponent loses 2 life. If it’s the third time, create a 4/3 white and black Vampire Demon creature token with flying.",4,4,Mythic Rare,https://cards.scryfall.io/large/front/c/4/c4fd9047-df91-4d82-be00-c623acae0f01.jpg?1699044580
+Wail of the Forgotten,Sorcery,{U}{B},"Descend 8 — Choose one. If there are eight or more permanent cards in your graveyard as you cast this spell, choose one or more instead.
+
+• Return target nonland permanent to its owner’s hand.
+
+• Target opponent discards a card.
+
+• Look at the top three cards of your library. Put one of them into your hand and the rest into your graveyard.",,,Rare,https://cards.scryfall.io/large/front/6/7/67108256-b7da-44bd-9639-4264931d348f.jpg?1699044584
+Zoyowa Lava-Tongue,Legendary Creature — Goblin Warlock,{B}{R},"Deathtouch
+
+At the beginning of your end step, if you descended this turn, each opponent may discard a card or sacrifice a permanent. Zoyowa Lava-Tongue deals 3 damage to each opponent who didn’t. (You descended if a permanent card was put into your graveyard from anywhere.)",2,2,Uncommon,https://cards.scryfall.io/large/front/c/0/c06f0ff2-d42f-4854-bbe5-4b022fb26d7d.jpg?1699044586
+Buried Treasure,Artifact — Treasure,{2},"{T}, Sacrifice Buried Treasure: Add one mana of any color.
+
+{5}, Exile Buried Treasure from your graveyard: Discover 5. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 5 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Common,https://cards.scryfall.io/large/front/4/c/4c9c45b6-dedd-4481-a06a-c83ace2f18fa.jpg?1699049852
+Careening Mine Cart,Artifact — Vehicle,{3},"Whenever Careening Mine Cart attacks, create a Treasure token. (It’s an artifact with “{T}, Sacrifice this artifact: Add one mana of any color.”)
+
+Crew 1 (Tap any number of creatures you control with total power 1 or more: This Vehicle becomes an artifact creature until end of turn.)",3,3,Uncommon,https://cards.scryfall.io/large/front/5/a/5a96d8ae-200a-40be-95a8-72b53638a090.jpg?1699044592
+Cartographer's Companion,Artifact Creature — Gnome,{3},"When Cartographer’s Companion enters the battlefield, create a Map token. (It’s an artifact with “{1}, {T}, Sacrifice this artifact: Target creature you control explores. Activate only as a sorcery.”)",2,1,Common,https://cards.scryfall.io/large/front/d/b/dbd8115e-4cb3-49b6-b74f-8fcfa28c6404.jpg?1699044595
+"Chimil, the Inner Sun",Legendary Artifact,{6},"Spells you control can’t be countered.
+
+At the beginning of your end step, discover 5. (Exile cards from the top of your library until you exile a nonland card with mana value 5 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Mythic Rare,https://cards.scryfall.io/large/front/2/7/27a1bfb5-ddfc-49cf-baa3-5d1958d2067a.jpg?1699044596
+Compass Gnome,Artifact Creature — Gnome,{2},"When Compass Gnome enters the battlefield, you may search your library for a basic land card or Cave card, reveal it, then shuffle and put that card on top.",2,1,Common,https://cards.scryfall.io/large/front/1/0/10e1030e-2b95-4807-9111-e495a2fc8813.jpg?1699387300
+Contested Game Ball,Artifact,{2},"Whenever you’re dealt combat damage, the attacking player gains control of Contested Game Ball and untaps it.
+
+{2}, {T}: Draw a card and put a point counter on Contested Game Ball. Then if it has five or more point counters on it, sacrifice it and create a Treasure token.",,,Uncommon,https://cards.scryfall.io/large/front/7/1/71cb7776-a6af-4efb-b536-6b9b4f3d3874.jpg?1699044604
+Digsite Conservator,Artifact Creature — Gnome,{2},"Sacrifice Digsite Conservator: Exile up to four target cards from a single graveyard. Activate only as a sorcery.
+
+When Digsite Conservator dies, you may pay {4}. If you do, discover 4. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",2,1,Uncommon,https://cards.scryfall.io/large/front/d/f/dfa3cd5e-b727-479d-9a77-9f320b92f3f2.jpg?1699044605
+Disruptor Wanderglyph,Artifact Creature — Golem,{4},"Whenever Disruptor Wanderglyph attacks, exile target card from an opponent’s graveyard.",3,4,Common,https://cards.scryfall.io/large/front/7/8/7802ca61-6fcc-4965-9f8f-dd58fe82c6bf.jpg?1699044608
+Hoverstone Pilgrim,Artifact Creature — Golem,{5},"Flying
+
+Ward {2} (Whenever this creature becomes the target of a spell or ability an opponent controls, counter it unless that player pays {2}.)
+
+{2}: Put target card from a graveyard on the bottom of its owner’s library.",2,5,Uncommon,https://cards.scryfall.io/large/front/a/f/af7e12ee-3db6-4df7-9859-7a8dee9171c7.jpg?1699044613
+Hunter's Blowgun,Artifact — Equipment,{1},"Equipped creature gets +1/+1.
+
+Equipped creature has deathtouch as long as it’s your turn. Otherwise, it has reach.
+
+Equip {2} ({2}: Attach to target creature you control. Equip only as a sorcery.)",,,Common,https://cards.scryfall.io/large/front/3/3/3348abe7-6aa3-47f7-8203-a15f75007e33.jpg?1699044614
+"Matzalantli, the Great Door",Legendary Artifact,{3},"{T}: Draw a card, then discard a card.
+
+{4}, {T}: Transform Matzalantli, the Great Door. Activate only if there are four or more permanent types among cards in your graveyard. (Artifact, battle, creature, enchantment, land, and planeswalker are permanent types.)",,,Rare,https://cards.scryfall.io/large/front/b/4/b4c31b29-06ba-436d-a3d9-18f4796c39be.jpg?1699044622
+The Core,Legendary Land,,"(Transforms from Matzalantli.)
+
+Fathomless descent — {T}: Add X mana of any one color, where X is the number of permanent cards in your graveyard.",,,Rare,https://cards.scryfall.io/large/back/b/4/b4c31b29-06ba-436d-a3d9-18f4796c39be.jpg?1699044622
+The Millennium Calendar,Legendary Artifact,{1},"Whenever you untap one or more permanents during your untap step, put that many time counters on The Millennium Calendar.
+
+{2}, {T}: Double the number of time counters on The Millennium Calendar.
+
+When there are 1,000 or more time counters on The Millennium Calendar, sacrifice it and each opponent loses 1,000 life.",,,Mythic Rare,https://cards.scryfall.io/large/front/d/e/deabba7f-05ef-41cf-ae3a-d950d051cf1e.jpg?1699044622
+Roaming Throne,Artifact Creature — Golem,{4},"Ward {2}
+
+As Roaming Throne enters the battlefield, choose a creature type.
+
+Roaming Throne is the chosen type in addition to its other types.
+
+If a triggered ability of another creature you control of the chosen type triggers, it triggers an additional time.",4,4,Rare,https://cards.scryfall.io/large/front/3/2/32fd8b7c-baf3-4d3d-be6f-044a917b11a0.jpg?1699044623
+Runaway Boulder,Artifact,{6},"Flash
+
+When Runaway Boulder enters the battlefield, it deals 6 damage to target creature an opponent controls.
+
+Cycling {2} ({2}, Discard this card: Draw a card.)",,,Common,https://cards.scryfall.io/large/front/0/6/06d47a3b-dc66-48d8-981b-dde0ccc34ad5.jpg?1699044629
+Scampering Surveyor,Artifact Creature — Gnome,{4},"When Scampering Surveyor enters the battlefield, search your library for a basic land card or Cave card, put it onto the battlefield tapped, then shuffle.",3,2,Uncommon,https://cards.scryfall.io/large/front/a/f/afcb2a90-d4c0-4c83-8ee7-2ac3a23b4402.jpg?1699392494
+Sorcerous Spyglass,Artifact,{2},"As Sorcerous Spyglass enters the battlefield, look at an opponent’s hand, then choose any card name.
+
+Activated abilities of sources with the chosen name can’t be activated unless they’re mana abilities.",,,Uncommon,https://cards.scryfall.io/large/front/1/9/194b7899-6b44-4ecc-8ddc-ec24304eb14c.jpg?1699044632
+Sunbird Standard,Artifact,{3},"{T}: Add one mana of any color.
+
+Craft with one or more {5} ({5}, Exile this artifact, Exile one or more other permanents you control and/or cards from your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",*,*,Uncommon,https://cards.scryfall.io/large/front/e/0/e0b6d40a-fded-4625-b03c-765c88d75766.jpg?1699044640
+Sunbird Effigy,Artifact Creature — Bird Construct,,"Flying, vigilance, haste
+
+Sunbird Effigy’s power and toughness are each equal to the number of colors among the exiled cards used to craft it.
+
+{T}: For each color among the exiled cards used to craft Sunbird Effigy, add one mana of that color.",*,*,Uncommon,https://cards.scryfall.io/large/back/e/0/e0b6d40a-fded-4625-b03c-765c88d75766.jpg?1699044640
+Swashbuckler's Whip,Artifact — Equipment,{1},"Equipped creature has reach, “{2}, {T}: Tap target artifact or creature,” and “{8}, {T}: Discover 10.” (Exile cards from the top of your library until you exile a nonland card with mana value 10 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)
+
+Equip {1}",,,Uncommon,https://cards.scryfall.io/large/front/2/4/24a85c52-e5b5-4d65-931c-eacc0cf0fb31.jpg?1699044641
+Tarrian's Soulcleaver,Legendary Artifact — Equipment,{1},"Equipped creature has vigilance.
+
+Whenever another artifact or creature is put into a graveyard from the battlefield, put a +1/+1 counter on equipped creature.
+
+Equip {2}",,,Rare,https://cards.scryfall.io/large/front/9/9/99413817-1218-4947-b12f-9a952b095a89.jpg?1699044647
+Threefold Thunderhulk,Artifact Creature — Gnome,{7},"Threefold Thunderhulk enters the battlefield with three +1/+1 counters on it.
+
+Whenever Threefold Thunderhulk enters the battlefield or attacks, create a number of 1/1 colorless Gnome artifact creature tokens equal to its power.
+
+{2}, Sacrifice another artifact: Put a +1/+1 counter on Threefold Thunderhulk.",0,0,Rare,https://cards.scryfall.io/large/front/1/9/1917c62f-d463-43eb-87ad-89ffbc88b6fe.jpg?1699044648
+Throne of the Grim Captain,Legendary Artifact,{2},"{T}: Mill two cards.
+
+Craft with a Dinosaur, a Merfolk, a Pirate, and a Vampire {4} ({4}, Exile this artifact, Exile the four from among permanents you control and/or cards in your graveyard: Return this card transformed under its owner’s control. Craft only as a sorcery.)",7,7,Rare,https://cards.scryfall.io/large/front/c/1/c13e8e3d-2a6b-4782-a3c9-71af7336a881.jpg?1699044655
+The Grim Captain,"Color Indicator: Black
+          Legendary Creature — Skeleton Spirit Pirate",,"Menace, trample, lifelink, hexproof
+
+Whenever The Grim Captain attacks, each opponent sacrifices a nonland permanent. Then you may put an exiled creature card used to craft The Grim Captain onto the battlefield under your control tapped and attacking.",7,7,Rare,https://cards.scryfall.io/large/back/c/1/c13e8e3d-2a6b-4782-a3c9-71af7336a881.jpg?1699044655
+Treasure Map,Artifact,{2},"{1}, {T}: Scry 1. Put a landmark counter on Treasure Map. Then if there are three or more landmark counters on it, remove those counters, transform Treasure Map, and create three Treasure tokens. (They’re artifacts with “{T}, Sacrifice this artifact: Add one mana of any color.”)",,,Rare,https://cards.scryfall.io/large/front/a/9/a924fe1e-a85e-4e14-88d2-ac55130638ab.jpg?1699044658
+Treasure Cove,Land,,"(Transforms from Treasure Map.)
+
+{T}: Add {C}.
+
+{T}, Sacrifice a Treasure: Draw a card.",,,Rare,https://cards.scryfall.io/large/back/a/9/a924fe1e-a85e-4e14-88d2-ac55130638ab.jpg?1699044658
+Captivating Cave,Land — Cave,"","{T}: Add {C}.
+
+{1}, {T}: Add one mana of any color.
+
+{4}, {T}, Sacrifice Captivating Cave: Put two +1/+1 counters on target creature. Activate only as a sorcery.",,,Common,https://cards.scryfall.io/large/front/1/d/1d1a645e-85c7-4044-b817-6e24744d245e.jpg?1699044664
+Cavern of Souls,Land,"","As Cavern of Souls enters the battlefield, choose a creature type.
+
+{T}: Add {C}.
+
+{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type, and that spell can’t be countered.",,,Mythic Rare,https://cards.scryfall.io/large/front/3/a/3aad15a2-8a1b-4460-9b06-e85863081878.jpg?1699044666
+Cavernous Maw,Land — Cave,"","{T}: Add {C}.
+
+{2}: Cavernous Maw becomes a 3/3 Elemental creature until end of turn. It’s still a Cave land. Activate only if the number of other Caves you control plus the number of Cave cards in your graveyard is three or greater.",,,Uncommon,https://cards.scryfall.io/large/front/2/a/2a51ebf6-a465-42e2-82b7-d2cb928ca632.jpg?1699044667
+Echoing Deeps,Land — Cave,"","You may have Echoing Deeps enter the battlefield tapped as a copy of any land card in a graveyard, except it’s a Cave in addition to its other types.
+
+{T}: Add {C}.",,,Rare,https://cards.scryfall.io/large/front/2/4/244c06b3-532d-426e-8bee-ee9461d092a6.jpg?1699044671
+Forgotten Monument,Land — Cave,"","{T}: Add {C}.
+
+Other Caves you control have “{T}, Pay 1 life: Add one mana of any color.”",,,Uncommon,https://cards.scryfall.io/large/front/d/e/de8c1c02-e533-46b2-a3eb-91dff561854b.jpg?1699044675
+Hidden Cataract,Land — Cave,"","Hidden Cataract enters the battlefield tapped.
+
+{T}: Add {U}.
+
+{4}{U}, {T}, Sacrifice Hidden Cataract: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Common,https://cards.scryfall.io/large/front/6/9/69f317fc-f603-45b5-9208-545be4dcbf36.jpg?1699044678
+Hidden Courtyard,Land — Cave,"","Hidden Courtyard enters the battlefield tapped.
+
+{T}: Add {W}.
+
+{4}{W}, {T}, Sacrifice Hidden Courtyard: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Common,https://cards.scryfall.io/large/front/b/8/b8685d46-99fc-44b3-be95-707a4b7b8327.jpg?1699044679
+Hidden Necropolis,Land — Cave,"","Hidden Necropolis enters the battlefield tapped.
+
+{T}: Add {B}.
+
+{4}{B}, {T}, Sacrifice Hidden Necropolis: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Common,https://cards.scryfall.io/large/front/f/6/f67fd04f-05da-4418-97de-abeb7346cc69.jpg?1699044683
+Hidden Nursery,Land — Cave,"","Hidden Nursery enters the battlefield tapped.
+
+{T}: Add {G}.
+
+{4}{G}, {T}, Sacrifice Hidden Nursery: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Common,https://cards.scryfall.io/large/front/a/9/a942939a-c06e-4b90-a404-ae5acfffcff9.jpg?1699044686
+Hidden Volcano,Land — Cave,"","Hidden Volcano enters the battlefield tapped.
+
+{T}: Add {R}.
+
+{4}{R}, {T}, Sacrifice Hidden Volcano: Discover 4. Activate only as a sorcery. (Exile cards from the top of your library until you exile a nonland card with mana value 4 or less. Cast it without paying its mana cost or put it into your hand. Put the rest on the bottom in a random order.)",,,Common,https://cards.scryfall.io/large/front/9/f/9fa06aed-52c1-48f1-9906-362db12a3cf7.jpg?1699044687
+Pit of Offerings,Land — Cave,"","Pit of Offerings enters the battlefield tapped.
+
+When Pit of Offerings enters the battlefield, exile up to three target cards from graveyards.
+
+{T}: Add {C}.
+
+{T}: Add one mana of any of the exiled cards’ colors.",,,Uncommon,https://cards.scryfall.io/large/front/b/c/bc7d3957-b483-4a1f-a244-293c90032f5e.jpg?1699044691
+Promising Vein,Land — Cave,"","{T}: Add {C}.
+
+{1}, {T}, Sacrifice Promising Vein: Search your library for a basic land card, put it onto the battlefield tapped, then shuffle.",,,Common,https://cards.scryfall.io/large/front/e/9/e9681a54-6413-4ff4-b6b1-ee4decb25bfa.jpg?1699044695
+Restless Anchorage,Land,"","Restless Anchorage enters the battlefield tapped.
+
+{T}: Add {W} or {U}.
+
+{1}{W}{U}: Until end of turn, Restless Anchorage becomes a 2/3 white and blue Bird creature with flying. It’s still a land.
+
+Whenever Restless Anchorage attacks, create a Map token.",,,Rare,https://cards.scryfall.io/large/front/e/3/e3cab352-734e-454b-8b58-733165f4b3b3.jpg?1699044695
+Restless Prairie,Land,"","Restless Prairie enters the battlefield tapped.
+
+{T}: Add {G} or {W}.
+
+{2}{G}{W}: Restless Prairie becomes a 3/3 green and white Llama creature until end of turn. It’s still a land.
+
+Whenever Restless Prairie attacks, other creatures you control get +1/+1 until end of turn.",,,Rare,https://cards.scryfall.io/large/front/f/9/f94ef116-6aff-4f53-a7f9-be5e21c7afa4.jpg?1699044700
+Restless Reef,Land,"","Restless Reef enters the battlefield tapped.
+
+{T}: Add {U} or {B}.
+
+{2}{U}{B}: Until end of turn, Restless Reef becomes a 4/4 blue and black Shark creature with deathtouch. It’s still a land.
+
+Whenever Restless Reef attacks, target player mills four cards.",,,Rare,https://cards.scryfall.io/large/front/8/a/8a8121c9-2480-419c-aa9c-5b8b55f65014.jpg?1699044703
+Restless Ridgeline,Land,"","Restless Ridgeline enters the battlefield tapped.
+
+{T}: Add {R} or {G}.
+
+{2}{R}{G}: Restless Ridgeline becomes a 3/4 red and green Dinosaur creature until end of turn. It’s still a land.
+
+Whenever Restless Ridgeline attacks, another target attacking creature gets +2/+0 until end of turn. Untap that creature.",,,Rare,https://cards.scryfall.io/large/front/a/b/abde5bed-dc4e-4b2b-820c-18d4d0cf8042.jpg?1699044703
+Restless Vents,Land,"","Restless Vents enters the battlefield tapped.
+
+{T}: Add {B} or {R}.
+
+{1}{B}{R}: Until end of turn, Restless Vents becomes a 2/3 black and red Insect creature with menace. It’s still a land.
+
+Whenever Restless Vents attacks, you may discard a card. If you do, draw a card.",,,Rare,https://cards.scryfall.io/large/front/e/6/e628e89b-bee9-408d-bb05-1784fda6b8a1.jpg?1699044708
+Sunken Citadel,Land — Cave,"","Sunken Citadel enters the battlefield tapped. As it enters, choose a color.
+
+{T}: Add one mana of the chosen color.
+
+{T}: Add two mana of the chosen color. Spend this mana only to activate abilities of land sources.",,,Rare,https://cards.scryfall.io/large/front/3/e/3e1c9b1a-e306-47bb-9f68-2083660319c0.jpg?1699044711
+Volatile Fault,Land — Cave,"","{T}: Add {C}.
+
+{1}, {T}, Sacrifice Volatile Fault: Destroy target nonbasic land an opponent controls. That player may search their library for a basic land card, put it onto the battlefield, then shuffle. You create a Treasure token.",,,Uncommon,https://cards.scryfall.io/large/front/9/3/9385abf3-b067-4586-bf3d-175526cf8f0a.jpg?1699044713
+Plains,Basic Land — Plains,"",({T}: Add {W}.),,,Common,https://cards.scryfall.io/large/front/4/7/4716a32c-91a6-470a-a686-d5eb3d27f46e.jpg?1699045084
+Island,Basic Land — Island,"",({T}: Add {U}.),,,Common,https://cards.scryfall.io/large/front/2/3/23e3ed2c-342b-44aa-8e3e-0c53602397c3.jpg?1699045089
+Swamp,Basic Land — Swamp,"",({T}: Add {B}.),,,Common,https://cards.scryfall.io/large/front/4/f/4f893107-84b0-4e3f-b1f5-b04632f192c5.jpg?1699045094
+Mountain,Basic Land — Mountain,"",({T}: Add {R}.),,,Common,https://cards.scryfall.io/large/front/e/8/e82fc4bc-ac81-4ad6-8b33-781d047f60d5.jpg?1699045101
+Forest,Basic Land — Forest,"",({T}: Add {G}.),,,Common,https://cards.scryfall.io/large/front/f/9/f954219a-fd4b-4fb1-945f-7950efc1d975.jpg?1699045105
