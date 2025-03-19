@@ -704,3 +704,106 @@ padding: top right bottom left
 } */
 
 p {padding: 10%; background-color: silver;}
+
+/* Border
+doubleについては、作成される2本の線の幅と、それらの間のスペースの幅がborder-widthの値(次のセクションで説明)と等しくなるように定義されている。
+ただし、CSS仕様では、一方の線をもう一方の線よりも太くするか、常に同じ幅にするか、スペースを線よりも太くするか細くするかについては規定されていない。
+これらのオプションはすべてUAに決定を委ねられており、作成者が最終結果に影響を与える確実な方法はない。
+*/
+
+p.new1 {border-style: solid none dashed;}
+p.new2 {border-style: solid none dashed none;}
+
+h1 {border-style: solid solid solid none;}
+/* 以下と同じ */
+h1 {border-style: solid; border-left-style: none;}
+
+/* border-styleとborder-left-styleの宣言の順序を入れ替えると上書きされることに注意 */
+/* h1 {border-left-style: none; border-style: solid;} */
+
+p {
+   border-block-style: solid double;
+   border-inline-style: dashed dotted;
+}
+p {
+   border-block-start-style: solid;
+   border-block-end-style: double;
+   border-inline-start-style: dashed;
+   border-inline-end-style: dotted;
+}
+/*
+border-width の値はボックス モデルに関与し、要素のサイズに影響を与えることを覚えておくことが重要
+defaultはmedium
+*/
+
+h1 {border-style: dotted; border-width: thin 0px;}
+p {border-style: solid; border-width: 15px 2px 8px 5px;}
+
+p {
+   border-block-width: thick thin;
+   border-inline-width: 1em 5px;
+}
+p {
+   border-inline-start-width: 1em;
+   border-inline-end-width: 5px;
+   border-block-start-width: thick;
+   border-block-end-width: thin;
+}
+
+/*
+境界線が存在しないため、幅を持つことはできない。
+したがって、何を定義しようとしても、幅は自動的に 0 (ゼロ) に設定される。
+境界線の幅について議論することは、境界線が存在するコンテキストでのみ意味をなす。
+これは覚えておくことが重要。なぜなら、境界線のスタイルを宣言し忘れることはよくある間違いだから。
+*/
+p {border-style: none; border-width: 20px;}
+
+p {
+   border-block-color: black green;
+   border-inline-color: orange blue;
+}
+p {
+   border-inline-start-width: orange;
+   border-inline-end-width: blue;
+   border-block-start-width: black;
+   border-block-end-width: green;
+}
+
+/* Transparent borders */
+a:link, a:visited {
+   border-style: inset;
+   border-width: 5px;
+   border-color: transparent;
+}
+a:hover {border-color: gray;}
+
+#example {border-radius: 2em;}
+#example {border-radius: 33%;}
+#example {border-radius:
+   1em  /* Top Left */
+   2em  /* Top Right */
+   3em  /* Bottom Right */
+   4em; /* Bottom Left */
+}
+
+/*
+border-image-source プロパティは、ブラウザに境界線を検索する場所を指示する方法
+border-imageはややこしいので別途調べる
+*/
+
+
+/*
+CSSは、アウトラインと呼ばれる特別な種類の要素装飾を定義する。
+実際には、アウトラインは境界のすぐ外側に描画されることが多いですが、すべてではない。
+仕様書に記されているように、アウトラインは境界と3つの基本的な点で異なります:
+
+1. アウトラインは表示されますが、レイアウト スペースを占有しない。
+2. UAは、レイアウト スペースを占有せず、レイアウトを変更しないため、:focus 状態の要素にアウトラインをレンダリングすることがよくある。
+3. アウトラインは長方形でない場合がある
+
+アウトラインは、すべてかゼロかの命題。つまり、境界線の片側を他の側から独立してスタイル設定することはできない。
+
+borderとの大きな違いは、アウトラインには境界線のように
+   hidden スタイルを設定できないことと、
+   アウトラインに auto スタイルを設定できること
+*/
