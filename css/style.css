@@ -1,0 +1,643 @@
+/* selector */
+/* h1 {color: maroon;}
+body {background: yellow;} */
+
+/*
+ベンダープレフィックス
+
+-epub-
+International Digital Publishing Forum ePub format
+
+-moz-
+Gecko-based browsers (e.g., Mozilla Firefox)
+
+-ms-
+Microsoft Internet Explorer
+
+-o-
+Opera-based browsers
+
+-webkit-
+WebKit-based browsers (e.g., Apple Safari and Google Chrome)
+
+ベンダー プレフィックスは、ベンダーが新機能をテストするための方法として始まり、他のブラウザーと互換性のない従来の動作に縛られることを心配することなく、相互運用性を高速化するのに役立った
+これにより、初期段階でCSSをほぼ窒息させた一連の問題が回避されたが、新しい種類の問題を引き起こすことになった。
+
+2023年初頭の時点で、ベンダー プレフィックス付きCSS機能はほとんど存在せず、古いプレフィックス付きプロパティと値はブラウザー実装からゆっくりと着実に削除されている。
+プレフィックス付き CSS を記述することはほとんどないでしょうが、実際に遭遇したり、レガシー コードベースで継承したりすることはある。
+
+-webkit-transform-origin: 0 0;
+-moz-transform-origin: 0 0;
+-o-transform-origin: 0 0;
+transform-origin: 0 0;
+
+これは同じことを 4 回繰り返している
+WebKit、Gecko (Firefox)、Opera ブラウザー ラインごとに 1 回ずつ、そして最後にCSS標準の方法
+これはもう必要ない。
+ */
+
+ /* 
+ CSSにおけるスペースの扱い
+
+ CSS は基本的にルール間の空白には無関係であり、ルール内の空白にもほとんど無関係ですが、いくつかの例外がある。
+ 一般的に、CSS は HTML と同じように空白を扱い、空白文字のシーケンスはすべて1つのスペースにまとめられる。
+ したがって、次のようにフォーマット可能ではあるが、一番読みやすいフォーマットを使えば良い。
+ */
+
+ /* 空白なし。minifyとかで使用される */
+ /* html{color:black;}  
+ body {background: white;}
+ p {
+   color: gray;}
+ h2 {
+      color : silver ;
+    }
+ ol
+    {
+       color
+          :
+       silver
+          ;
+ }
+  */
+/* CSS Comments */
+/* This is a CSS comment */
+
+/* 複数行も可能 */
+/* This is a CSS comment, and it
+can be several lines long without
+any problem whatsoever. */
+
+/*
+CSSのコメントはネストできない
+// とかその行だけのコメントもない
+*/
+
+
+
+/* Attribute Selector
+
+Type
+Description
+
+[foo~="bar"]
+スペースで区切られた単語リストに単語'bar'が含まれる属性fooを持つ要素
+
+[foo*="bar"]
+foo属性のvalueがbarという文字列を含む全ての要素
+Selects any element with an attribute foo whose value contains the substring bar
+
+[foo^="bar"]
+foo属性のvalueがbarで始まる全ての要素
+
+[foo$="bar"]
+foo属性のvalueがbarで終わる全ての要素
+
+[foo|="bar"]
+値がbarで始まり、その後にハイフン（U+002D）が続く、または値がbarと正確に等しい属性fooを持つ要素
+*/
+
+/* h1でclass属をもつ要素 */
+/* h1[class] {color: silver;} */
+
+/* title属性をもつ要素すべて */
+/* *[title] {font-weight: bold;} */
+
+/* aタグでhrefとtitle属性の両方がついている要素 */
+/* a[href][title] {font-weight: bold;} */
+
+/* hrefのvalueがhttp://www.css-discuss.org/about.htmlであるa要素 */
+/* a[href="http://www.css-discuss.org/about.html"] {font-weight: bold;} */
+
+/* hrefのvalueがhttps://www.w3.org/で、titleのvalueがW3C Homeである要素 */
+/* a[href="https://www.w3.org/"][title="W3C Home"] {font-size: 200%;} */
+
+/* urgent warningというクラスが宣言されているp要素 */
+/* p[class="urgent warning"] {font-weight: bold;} */
+
+/* lang='en' lang='en-us' lang='en-au' などにマッチ */
+/* *[lang|="en"] {color: white;} */
+
+/* figure-1.gif や figure-3.jpg. などにマッチ */
+/* img[src|="figure"] {border: 1px solid gray;} */
+
+/* class='btn' class='btn-small' class='btn-small-arrow-active' などにマッチ */
+/* *[class|="btn"] { border-radius: 5px;} */
+
+
+/* The Case-Insensitivity Identifier
+.pdf .PDF .PDf などにマッチ
+*/
+/* a[href$='.pdf' i] {
+   font-weight: bold;
+} */
+
+
+/* Defining Descendant Selectors */
+/* h1 em {color: gray;}
+ul ol ul em {color: gray;}
+blockquote b, p b {color: gray;} */
+
+/* selcting child */
+/* h1 > strong {color: red;} */
+
+/* 擬似要素Selector */
+/* 中身が空である要素を指定 */
+/* *:empty {display: none;} */
+
+/* その要素が唯一の子要素になっている場合に選択 */
+/* img:only-child {border: 1px solid black;} */
+
+/* href属性をもつa要素の子孫要素になっていて、兄弟要素を持たない要素を選択 */
+/* a[href] img:only-child {border: 2px solid black;} */
+
+/*
+:only-child については2つの点を覚えておく。
+1つ目は、前に説明したように、親要素ではなく、唯一の子にしたい要素に常に適用すること。
+2つは、子孫セレクターで :only-child を使用する場合、リストされている要素を親子関係に制限するわけではないこと。
+*/
+
+
+/* :only-of-type
+兄弟要素の中で同じ要素がない要素を選択
+*/
+/* p > img:only-of-type {float: right; margin: 20px;} */
+
+
+/* 最初の要素、最後の要素を選択する */
+/* p:first-child {font-weight: bold;} */
+/* li:first-child {text-transform: uppercase;} */
+
+/* p:last-child {font-weight: bold;}
+li:last-child {text-transform: uppercase;} */
+
+/*
+同じ意味
+
+p:only-child {color: red;}
+p:first-child:last-child {background-color: red;}
+*/
+
+/* tableとかで使えそう */
+/* td:first-of-type {border-left: 1px solid red;}
+td:last-of-type {border-left: 1px solid red;}
+
+tr:nth-child(odd) {background: silver;}
+tr:nth-child(4n - 2) {background: silver;} */
+
+/* tr:nth-child(3n + −2) {background: red;} INVALID */
+/* li:nth-child(-n + 5) {font-weight: bold;} backward */
+
+/* tr:nth-last-child(odd) {background: silver;} */
+/* tr:nth-last-child(2n+1) {background: silver;} equivalent */
+
+/* 
+近い将来サポートされる
+:nth-child(2n + 1 of p.callout)
+*/
+
+/*
+:visited, :linkについて
+10 年以上もの間、訪問済みリンクは、未訪問リンクと同様に、利用可能な任意の CSS プロパティを使用してスタイル設定できた。
+しかし、2000年代半ばに、視覚的なスタイル設定と単純なDOMスクリプトを使用して、ユーザーが特定のページを訪問したかどうかを判断できることが何人かによって実証された。
+たとえば、
+:visited {font-weight: bold;}
+というルールを指定すると、スクリプトは太字のリンクをすべて見つけて、ユーザーが訪問したサイトをユーザーに伝えることができます。
+さらに悪いことに、それらのサイトをサーバーに報告することもできる。
+同様のスクリプトを使用しない戦術では、背景画像を使用して同じ結果を実現する。
+これはそれほど深刻ではないように思えるかもしれませんが、非認可の宗教団体、「不道徳」または「腐敗」サイトなど、特定のサイトを訪問した人を投獄する国のWebユーザーにとっては非常に壊滅的。
+これらの手法は、フィッシング サイトでも、ユーザーが訪問したオンライン バンクを判断するために使用できます。そのため、2つの手順が取られた。
+最初のステップは、訪問したリンクには色関連のプロパティのみを適用できることです。色、背景色、列ルール色、アウトライン色、境界色、および個々のサイドの境界色のプロパティ (例: 境界上部の色) です。
+訪問したリンクに他のプロパティを適用しようとすると無視されます。さらに、:link に定義されたスタイルは訪問したリンクと未訪問のリンクの両方に適用されるため、:link は実質的に「未訪問のハイパーリンクのスタイル」ではなく「ハイパーリンクのスタイル」になる。
+2 番目のステップは、訪問したリンクのスタイルが DOM 経由でクエリされた場合、結果の値はリンクが訪問されていないときと同じになることです。したがって、訪問したリンクを未訪問のリンクの青ではなく紫に定義した場合、リンクは画面上で紫色に表示されても、その色の DOM クエリは紫色ではなく青の値を返す。
+この動作は、「プライベート ブラウジング」モードだけでなく、すべてのブラウジング モードで発生します。 CSS を使用して訪問済みリンクと未訪問リンクを区別する方法には制限がありますが、ユーザビリティとアクセシビリティのためには、訪問済みリンクでサポートされている限定的なスタイルを使用して未訪問リンクと区別することが重要。
+*/
+
+/* input[type="email"]:focus {
+   background-position: 100% 50%;
+   background-repeat: no-repeat;
+}
+input[type="email"]:focus:invalid {
+   background-image: url(warning.jpg);
+}
+input[type="email"]:focus:valid {
+   background-image: url(checkmark.jpg);
+}
+input[type="number"]:focus {
+   background-position: 100% 50%;
+   background-repeat: no-repeat;
+}
+input[type="number"]:focus:out-of-range {
+   background-image: url(warning.jpg);
+}
+input[type="number"]:focus:in-range {
+   background-image: url(checkmark.jpg);
+}
+input[type="number"]:invalid {color: red;}
+input[type="number"]:in-range {font-weight: bold;}
+
+textarea:read-only {opacity: 0.75;}
+pre:read-write:hover {border: 1px dashed green;}
+
+*:lang(fr) {font-style: italic;}
+*[lang|="fr"] {font-style: italic;} */
+
+/* rtl(right to left) or ltr(left to right) */
+/* *:dir(rtl) {border-right: 2px solid;} */
+
+/* negation pseudo-class */
+/* li:not(.moreinfo) {font-style: italic;}
+
+*.link:not(li):not(p) {font-style: italic;}
+*.link:not(li, p) {font-style: italic;} */
+/* form *:not(p + *) */
+/* form *:not(p + *, li, thead > tr > th) */
+
+/* :is() and :where() pseudo-classes */
+
+
+/* ol li, ul li {font-style: italic;} */
+/* rewrite */
+/* :is(ol, ul) li {font-style: italic;}
+
+div:has(img) {
+	border: 3px double gray;
+} */
+
+/* Shadow Pseudo-Classes */
+/* :host {border: 2px solid red;}
+
+:host(.countries) {border: 2px solid red;}
+:host(.regions) {border: 1px solid silver;}
+:host(.cities) {border: none; background: gray;}
+
+@layer site, page;
+@layer site {
+   h1 {color: red;}
+}
+@layer page {
+   h1 {color: blue;}
+} */
+
+/*
+ピクセルは画面上の小さなボックスだが、CSSではピクセルをより抽象的に定義している。
+CSS用語では、ピクセルは1インチあたり96ピクセルを生成するために必要なサイズとして定義されている。
+多くのUAはこの定義を無視し、画面上のピクセルを単純に処理する。
+ページのズームや印刷では、100ピクセル幅の要素が100デバイスドット幅を超えてレンダリングされる可能性があるため、スケーリング係数が作用する。
+*/
+
+/* Basic Visual Formatting */
+
+/* Basic Boxes
+
+content
+padding
+border
+margin
+
+padding,border,margin, are option because can set value with 0
+
+レイアウトを組む上で覚えておくべき用語
+
+Block flow direction
+block axis
+多くの言語では上から下
+CJKでは書式モードで変化する。右から左から上から下
+
+
+Inline base direction
+inline axis
+
+Normal flow
+親の書き込みモードに基づいて、要素がブラウザのビューポート内に配置されるデフォルトのシステム。
+ほとんどの要素は通常のフロー
+要素が通常フローから外れるのは
+   フロート (使われない)
+   table
+   position
+   flex box
+   grid layout
+
+
+Block box
+段落、見出し、<div> などの要素によって生成されるボックス。
+通常フローではボックスの前後に改行を生成し、通常フローのブロック ボックスがブロックフロー軸に沿って次々に積み重なります。
+display: block を宣言することで、ほぼすべての要素でブロック ボックスを生成できる
+ブロック ボックスを生成させる方法は他にもある(たとえば、要素をフロートさせるか、フレックス アイテムにするなど)。
+
+
+Inline box
+これは、<strong> や <span> などの要素によって生成されるボックス。
+インラインベース方向に沿ってレイアウトされ、ボックスの前後に改行は生成されない。
+インラインボックスがその要素のインラインサイズよりも長い場合、(置換されていない場合はデフォルトで) 複数行に折り返される。
+display: inline を宣言することで、どの要素でもインライン ボックスを生成することができる。
+
+
+Nonreplaced element
+コンテンツがドキュメント内に含まれる要素で置換されない。
+例：<p>タグはテキストが要素自体の中にあるため非置換要素
+
+
+Replaced element
+他のもののプレースホルダーとして機能する要素です。
+img、formなど。
+imgは挿入される画像ファイルを指しているだけで、画像に置換される。
+ほとんどのform要素も置換される。
+
+
+Root element
+これはドキュメントツリーの最上位の要素です。
+HTMLドキュメントでは<html>要素です。
+XMLドキュメントでは、言語が許す限り何でもかまいません。
+たとえば、RSS ファイルのルート要素は <rss> ですが、SVGドキュメントではルート要素は<svg>です。
+
+
+The Containing Block
+包含ブロック。
+すべての要素のボックスは、その包含ブロックを基準にしてレイアウトされる。
+実際のところ、包含ブロックはボックスのレイアウトコンテキスト。
+
+一番近い祖先のblockかlist item boxを基準
+display: list-item;
+
+*/
+
+/* changing role */
+
+/* by default, inline block */
+/* nav a {display: block;}
+
+#rollcall li {display: inline; border-right: 1px solid; padding: 0 0.33em;}
+#rollcall li:first-child {border-left: 1px solid;} */
+
+
+/* box size inline size 
+非置換インライン要素やテーブル要素には使えない。他は大体使える。
+*/
+/* p {inline-size: 25ch;} */
+/* p img {block-size: 1.5em;} */
+/* #maingrid > nav {block-size: clamp(2rem, 4em, 25vh);} */
+
+/* 
+block-sizeがautoである限り、ブロック サイズは要素のコンテンツによって決定され、作成者によって決定されることはない。
+これは通常、特にテキストを含む要素の場合に望ましい
+*/
+
+/* Content-Based Sizing Values 
+ブロックとインラインのサイズを設定するために、これまで見てきた長さとパーセンテージのほかに、コンテンツベースのサイズ設定を提供するキーワードがいくつかある。
+
+max-content
+コンテンツに収まるようにできるだけ多くのスペースを取り、テキスト コンテンツの場合は行の折り返しも抑制します。
+
+min-content
+コンテンツに収まるように、できるだけ小さなスペースを占有します。
+
+fit-content
+max-content、min-content、通常のコンテンツサイズの値を計算し、min-content と通常のサイズの最大値を取り、max-contentの最小値とmin-contentと通常のサイズの大きい方の値のどちらかを取り、決定されたスペースの量を占める。
+*/
+
+/* p.max-content { */
+   /* width: min-content; */
+   /* width: max-content; */
+/* } */
+
+/* main {min-inline-size: min-content; max-inline-size: 75ch;} */
+
+/* 通常フローで埋め込まれたインライン画像をある時点まで固定のサイズにする */
+/* #cb1 img {max-block-size: 2em;} */
+/* #cb2 img {max-block-size: 1em;} */
+
+/* HeightとWidth
+heightなどの物理的な指示の代わりに、block-sizeなどのブロックおよびインラインプロパティを使用し、デザインを他の言語に翻訳されたコンテンツに適用すると、レイアウトは意図に合わせて自動的に調整されます。
+*/
+
+/* widthの代わりにinline-size, heightの代わりにbox-sizeを使っておくと書式を変更した場合に意図した通りのレイアウトになる */
+/* .box-sizing {
+   inline-size: 400px; 
+   writing-mode: horizontal-tb;
+} */
+/*
+margin-block-start または margin-block-end のいずれかが auto に設定されていても、両方が設定されていない場合、両方とも 0 と評価されます。
+*/
+
+/* div.one   {overflow-x: scroll; overflow-y: hidden;}
+div.two   {overflow-x: hidden; overflow-y: scroll;}
+div.three {overflow-x: scroll; overflow-y: scroll;} */
+
+/* p.neg {margin-block-start: -50px; margin-block-end: 0; border: 3px solid gray;} */
+/* p.neg {margin-block-end: -50px; margin-block-start: 0; border: 3px solid gray;} */
+
+/*
+ブロック軸の書式設定の重要な側面は、隣接するマージンの折りたたみ。
+ブロック方向の隣接するマージンを比較し、それらのマージンのうち最大のものだけを使用して隣接するブロック要素間の距離を設定する方法。
+折りたたみの動作はマージンにのみ適用されることに注意。パディングと境界線は折りたたまれない。
+
+インライン マージンは折りたたまれない (ブロックマージンとは異なる)
+親要素のパディング、境界線、およびマージンは、子のインライン レイアウトに影響を与える可能性がある。
+影響は間接的で、要素のマージンなどによって子要素のオフセットが誘発される可能性がある。
+
+inline-sizeもinline-marginもすべてautoにした場合はinline-sizeはautoに、inline-marginは0に設定される。
+
+
+*/
+
+/* liの隣接間のマージンは25pxになると思われるが折り畳まれるので15になる */
+/* li {margin-block-start: 10px; margin-block-end: 15px;} */
+
+/* 
+背景色を設定している場合、ブラウザーは通常、要素を最初から最後まで順にレンダリングするため、ドキュメント内で後続の通常フロー要素が先行する要素を上書きすることが予想される
+負のマージンで重なりあった場合はどの要素がどの要素の上にあるかわかりづらくなる。
+*/
+
+/* div {inline-size: 500px; border: 3px solid black;} */
+/* p.wide {margin-inline-start: 10px; margin-inline-end: -50px;inline-size: auto;} */
+
+/* 正方形を維持 */
+/* .gallery div {width: auto; aspect-ratio: 1/1;} */
+/*  2:1 ratio */
+/* .cards div {height: auto; box-sizing: border-box; aspect-ratio: 2/1;} */
+
+/*
+匿名テキスト
+インライン要素内に含まれない文字列。
+したがって、マークアップ <p> I'm <em>so</em> happy!</p> では、「 I’m 」と「 happy!」のシーケンスは匿名テキスト。
+スペースは他の文字と同様に文字であるため、スペースはテキストの一部であることに注意。
+
+
+Em ボックス
+指定されたフォント (文字ボックスとも呼ばれます) で定義される。
+実際のグリフは、em ックスよりも高くすることも低くすることもできる
+CSSでは、font-size の値によって各 em ボックスの高さが決まる。
+
+
+コンテンツ領域
+非置換要素の場合、コンテンツ領域は 2 つのうちのいずれかになる。
+CSS 仕様では、ユーザー エージェントがどちらかを選択できる。
+コンテンツ領域は、要素内のすべての文字の em ボックスを連結して記述されるボックス、または要素内の文字グリフで記述されるボックス。
+簡潔にするために em ボックスの定義を使用する。これは、ほとんどのブラウザーで使用されているものになる。
+置換要素の場合、コンテンツ領域は、要素の本来の高さに、余白、境界線、またはパディングを加えたもの。
+
+
+リーディング
+リーディング (「led-ing」と発音) は、font-size と line-height の値の差。
+この差は半分に分割され、半分はコンテンツ領域の上部に、もう半分は下部に適用される。
+コンテンツ領域へのこれらの追加は、おそらく当然のことながら、ハーフ リーディングと呼ばれる。
+行間は、置換されていない要素にのみ適用される。
+
+
+インライン ボックス
+コンテンツ領域に行間を追加することで記述されるボックス。
+置換されていない要素の場合、要素のインライン ボックスの高さは、line-height プロパティの値と正確に等しくなる。
+置換された要素の場合、行間は置換された要素には適用されないため、要素のインラインボックスの高さは、コンテンツ領域と正確に等しくなる。
+
+
+行ボックス
+これは、行にあるインライン ボックスの最高点と最低点を囲む最短のボックス。
+行ボックスの上端は最も高いインラインボックスの上部に沿って配置され、行ボックスの下部は最も低いインラインボックスの下部に沿って配置される。
+「上部」と「下部」は、ブロックフローの方向を基準に考慮されることに注意。
+*/
+
+
+/* inline format */
+
+/* Nonreplaced Element */
+/*
+手順
+
+1. 各インライン非置換要素と子孫インライン要素の一部ではないテキストのfont-sizeとline-heightの値を見つけて、それらを組み合わせる。
+line-heightからfont-sizeを減算することで行われ、ボックスの行間が算出される。
+行間は半分に分割され、各emボックスの上部と下部に適用される。
+
+2. 各置換要素のブロック開始エッジとブロック終了エッジに沿った高さの値、および余白、パディング、境界線の値を見つけて、それらを合計する。
+
+3. 各コンテンツ領域について、全体の行のベースラインより上にある部分と下にある部分の割合を計算します。
+これは簡単な作業ではない。
+各要素と匿名テキストのベースラインの位置と行自体のベースラインを把握し、それらをすべて揃える必要があるため。
+さらに、置き換えられた要素のブロック端のエッジは、全体の行のベースライン上に配置される。
+
+4. vertical-alignの値が指定された要素の垂直オフセットを決定します。
+これにより、その要素のインライン ボックスがブロック軸に沿ってどれだけ上または下に移動するかがわかり、それによって要素がベースラインより上または下にどれだけあるかが変わる。
+
+5. 1~4ですべてのインラインボックスがどこに配置されるかがわかったので、最終的な行ボックスの高さを計算する。
+これを行うには、ベースラインと最も高いインラインボックスの上部との間の距離と、ベースラインと最も低いインラインボックスの下部との間の距離を加算するだけ。
+
+*/
+
+/*
+まず、明示的に宣言されているかどうかに関係なく、すべての要素に行の高さがあることを知っておくこと。
+この値はインライン要素の表示方法に大きく影響するため、十分に注意する。
+
+行の高さ (または行ボックスの高さ) は、その構成要素とテキストなどの他のコンテンツの高さによって決まる。
+行の高さは、ブロックレベル要素ではなく、インライン要素と他のインライン コンテンツに影響することを理解することが重要 (少なくとも直接影響はない)。
+ブロックレベル要素に行の高さの値を設定できるが、その値は、そのブロックレベル要素内のインラインコンテンツに適用された場合にのみ視覚的な影響を与える。
+
+*/
+
+/* line-heightは、親要素ではなく要素自体のfont-sizeを基準に設定されることに注意 */
+/* p {line-height: 1em;} */
+/* strong {font-size: 250%; line-height: 1em;} */
+
+/* span {border: 1px dashed black;} */
+
+/* text-align: justify 
+テキストを両端揃えにしてinline-boxのエッジに揃える
+テキストが両端揃えになっている場合は、word-spacing の値を上書きできます。(letter-spacing の値は（文字間隔の値は、長さの値である場合は上書きできない）
+*/
+/* p {line-height: 1em;} */
+/* strong {font-size: 250%; line-height: 1em;} */
+
+/* p {line-height: 1.8em;} */
+/* a:link {border: 5px solid blue;} */
+
+/*
+a paragraph will be 31.5 pixels (14 × 1.5 × 1.5)
+we must make the <p> element’s line-height equal to or greater than 32px.
+*/
+/* p {font-size: 14px; line-height: 24px;}
+a:link {border: 5px solid blue;}
+strong {font-size: 150%; line-height: 1.5em;} */
+
+/*
+結局のところ、行の高さを設定する最良の方法は、生の数値を値として使用すること
+*/
+
+/* span {padding: 4px;} */
+
+/*  */
+body {line-height: 1.5;}
+p {font-size: 15px; line-height: 1.5;}
+small {font-size: 66%;}
+/* strongにline-heightを設定することで大きくなりすぎるのを防ぐ */
+strong {font-size: 200%; line-height: 1em;}
+
+/*
+インライン要素のボーダーエッジはline-heightではなくfont-sizeによってコントロールされる
+font-sizeを12pxに、line-heightを36pxにしてもline boxの高さは12px
+ボーダーはその周りに描かれる。
+paddingを使用することによってボーダーをテキストから離して描画できるが、line boxの高さ自体には影響を与えない
+
+マージンについては、実質的には、インラインの非置換要素のブロックエッジには適用されません。
+line boxの高さには影響しないからため。
+要素のインラインの端は別の話です。
+インライン要素は基本的に1行としてレイアウトされ、その後分割されるという考え方になる。
+したがって、インライン要素にマージンを適用すると、それらのマージンは要素の先頭と末尾に表示されます。
+これらはそれぞれ、インライン開始マージンとインライン終了マージンです。パディングもこれらの端に表示されます。
+したがって、パディングとマージン (および境界線) は行の高さには影響しませんが、テキストを押し出されレイアウトに影響を与える可能性がある。
+高さには影響しないけど幅には影響を与えるということを頭にいれておく。
+実際、負のインライン開始マージンとインライン終了マージンを設定すると、テキストがインライン要素に引き寄せられたり、重なりが生じたりする。
+
+*/
+
+/*
+box-decoration-break プロパティは、インライン ボックスで使用されることが最も多いですが、要素に区切りがある場合、たとえばページ区切りがページ メディア内の要素を中断する場合など、いつでも適用される。
+このような場合、各フラグメントは個別のスライスになる。
+box-decoration-break: clone を設定すると、各ボックス フラグメントは、境界線、パディング、背景などに関してコピーとして扱われる。
+同じことが複数列レイアウトにも当てはまり、要素が列区切りによって分割されている場合、box-decoration-break の値がレンダリング方法に影響する。
+*/
+
+/*
+インラインの非置換要素の背景が重ならないようにしても、使用しているフォントによっては重なり合うことがある。
+問題は、フォントの em ボックスと文字グリフの違いにある。
+結局のところ、ほとんどのフォントには、文字グリフと同じ高さの em ボックスがない。
+
+インラインの非置換要素の「描画領域」は、UAに委ねられている。
+UAが em ボックスをコンテンツ領域の高さと見なす場合、インラインの非置換要素の背景は em ボックスの高さ (font-size の値) と同じになる。
+UAがフォントの最大のアセンダーとディセンダーを使用する場合、背景は em ボックスよりも高くなるか低くなる可能性がある。
+したがって、インラインの非置換要素の行の高さを 1em に設定しても、背景が重なり合う可能性がある。
+*/
+
+
+/* Inline replaced Element */
+
+/* p {font-size: 15px; line-height: 18px;} */
+/* img {block-size: 30px; margin: 0; padding: 0; border: none;} */
+/* p {font-size: 15px; line-height: 18px;}
+img {vertical-align: 50%;} */
+
+/* img {block-size: 50px; inline-size: 50px;}
+img.one {margin: 0; padding: 0; border: 3px dotted;}
+img.two {margin: 10px; padding: 10px; border: 3px solid;}
+
+/* 上下に隙間ができる */
+/* td {font-size: 12px;} */
+
+/* Inline-Block Elements */
+/*
+インライン ブロック要素は、置換要素として行内でフォーマットされる
+インライン ブロック要素の下端 (ブロックの端) は、デフォルトでテキスト行のベースラインに配置され、それ自体で改行されない。
+
+インラインブロック要素内では、コンテンツは要素がブロック レベルであるかのようにフォーマットされます。
+プロパティ width と height は、ブロックレベルまたはインライン置換要素と同様に要素に適用される(ボックスのサイズ設定も適用される)
+これらのプロパティは、周囲のコンテンツよりも高い場合は行の高さを増やします。
+*/
+
+div {margin: 1em 0; border: 1px solid;}
+p {border: 1px dotted;}
+div#one p {display: block; inline-size: 6em; text-align: center;}
+div#two p {display: inline; inline-size: 6em; text-align: center;}
+/* div#three p {display: inline-block; inline-size: 6em; text-align: center;} */
+
+div#three p {display: inline-block; block-size: 4em;}
+
+
+/* Flow Display */
