@@ -1,4 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/Users/hiro2/programming/python/manim/media/videos/start/1080p60/partial_movie_files/SquareToCircle/3977891868_1280228252_223132457.mp4'
-file 'file:/Users/hiro2/programming/python/manim/media/videos/start/1080p60/partial_movie_files/SquareToCircle/2852726489_2221586015_3256495558.mp4'
-file 'file:/Users/hiro2/programming/python/manim/media/videos/start/1080p60/partial_movie_files/SquareToCircle/2852726489_208288666_3256495558.mp4'
