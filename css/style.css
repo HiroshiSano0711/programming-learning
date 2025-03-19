@@ -631,13 +631,76 @@ img.two {margin: 10px; padding: 10px; border: 3px solid;}
 これらのプロパティは、周囲のコンテンツよりも高い場合は行の高さを増やします。
 */
 
-div {margin: 1em 0; border: 1px solid;}
+/* div {margin: 1em 0; border: 1px solid;}
 p {border: 1px dotted;}
 div#one p {display: block; inline-size: 6em; text-align: center;}
-div#two p {display: inline; inline-size: 6em; text-align: center;}
+div#two p {display: inline; inline-size: 6em; text-align: center;} */
 /* div#three p {display: inline-block; inline-size: 6em; text-align: center;} */
 
-div#three p {display: inline-block; block-size: 4em;}
+/* div#three p {display: inline-block; block-size: 4em;} */
 
 
 /* Flow Display */
+/*
+display: flow を使用してレイアウトするように宣言することは、通常と同じようにブロックとインラインのレイアウトを使用することを意味する。
+ただし、インラインと組み合わせた場合は、インライン ボックスが生成されます。
+
+次のルールの最初の2つはブロック ボックスになり、3つ目はインライン ボックスになる。
+*/
+/* #first {display: flow;}
+#second {display: block flow;}
+#third {display: inline flow;} */
+
+/*
+Old values  New values
+
+block  block flow
+
+inline  inline flow
+
+inline-block  inline flow-root
+
+list-item  list-item block flow
+
+inline-list-item  list-item inline flow
+
+table  block table
+
+inline-table  inline table
+
+flex  block flex
+
+inline-flex  inline flex
+
+grid  block grid
+
+inline-grid  inline grid
+
+*/
+
+/* ul {border: 1px solid red;} */
+/* li {border: 1px solid silver;} */
+
+
+/* Chapter 7. Padding, Borders, Outlines, and Margins */
+/*
+上から時計回り
+padding: top right bottom left
+*/
+/* h1 {padding: 10px 20px 15px 5px;} */
+
+/* logical padding */
+/* p {
+   padding-block-start: 0.25em;
+   padding-block-end: 0.25em;
+   padding-inline-start: 1em;
+   padding-inline-end: 1em;
+} */
+
+/* short hand */
+/* p {
+   padding-block: 0.25em;
+   padding-inline: 1em;
+} */
+
+p {padding: 10%; background-color: silver;}
