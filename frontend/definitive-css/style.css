@@ -703,7 +703,7 @@ padding: top right bottom left
    padding-inline: 1em;
 } */
 
-p {padding: 10%; background-color: silver;}
+/* p {padding: 10%; background-color: silver;} */
 
 /* Border
 doubleについては、作成される2本の線の幅と、それらの間のスペースの幅がborder-widthの値(次のセクションで説明)と等しくなるように定義されている。
@@ -711,17 +711,17 @@ doubleについては、作成される2本の線の幅と、それらの間の�
 これらのオプションはすべてUAに決定を委ねられており、作成者が最終結果に影響を与える確実な方法はない。
 */
 
-p.new1 {border-style: solid none dashed;}
-p.new2 {border-style: solid none dashed none;}
+/* p.new1 {border-style: solid none dashed;} */
+/* p.new2 {border-style: solid none dashed none;} */
 
-h1 {border-style: solid solid solid none;}
+/* h1 {border-style: solid solid solid none;} */
 /* 以下と同じ */
-h1 {border-style: solid; border-left-style: none;}
+/* h1 {border-style: solid; border-left-style: none;} */
 
 /* border-styleとborder-left-styleの宣言の順序を入れ替えると上書きされることに注意 */
 /* h1 {border-left-style: none; border-style: solid;} */
 
-p {
+/* p {
    border-block-style: solid double;
    border-inline-style: dashed dotted;
 }
@@ -730,13 +730,13 @@ p {
    border-block-end-style: double;
    border-inline-start-style: dashed;
    border-inline-end-style: dotted;
-}
+} */
 /*
 border-width の値はボックス モデルに関与し、要素のサイズに影響を与えることを覚えておくことが重要
 defaultはmedium
 */
 
-h1 {border-style: dotted; border-width: thin 0px;}
+/* h1 {border-style: dotted; border-width: thin 0px;}
 p {border-style: solid; border-width: 15px 2px 8px 5px;}
 
 p {
@@ -748,7 +748,7 @@ p {
    border-inline-end-width: 5px;
    border-block-start-width: thick;
    border-block-end-width: thin;
-}
+} */
 
 /*
 境界線が存在しないため、幅を持つことはできない。
@@ -756,7 +756,7 @@ p {
 境界線の幅について議論することは、境界線が存在するコンテキストでのみ意味をなす。
 これは覚えておくことが重要。なぜなら、境界線のスタイルを宣言し忘れることはよくある間違いだから。
 */
-p {border-style: none; border-width: 20px;}
+/* p {border-style: none; border-width: 20px;}
 
 p {
    border-block-color: black green;
@@ -767,18 +767,18 @@ p {
    border-inline-end-width: blue;
    border-block-start-width: black;
    border-block-end-width: green;
-}
+} */
 
 /* Transparent borders */
-a:link, a:visited {
+/* a:link, a:visited {
    border-style: inset;
    border-width: 5px;
    border-color: transparent;
-}
-a:hover {border-color: gray;}
+} */
+/* a:hover {border-color: gray;} */
 
-#example {border-radius: 2em;}
-#example {border-radius: 33%;}
+/* #example {border-radius: 2em;} */
+/* #example {border-radius: 33%;} */
 #example {border-radius:
    1em  /* Top Left */
    2em  /* Top Right */
@@ -806,4 +806,487 @@ CSSは、アウトラインと呼ばれる特別な種類の要素装飾を定�
 borderとの大きな違いは、アウトラインには境界線のように
    hidden スタイルを設定できないことと、
    アウトラインに auto スタイルを設定できること
+*/
+
+/*
+背景は継承されない。背景は要素を通して表示される。
+これは無関係な違いのように思えるかもしれませんが、これは重要な違い。
+*/
+
+/* 背景の描画領域を制御する */
+/* div[id] {color: navy; background: silver; */
+/* padding: 1em; border: 0.5em dashed;} */
+/* #ex01 {background-clip: border-box;}  default value */
+/* #ex02 {background-clip: padding-box;} */
+/* #ex03 {background-clip: content-box;} */
+
+/*
+background-clip はルート要素には影響しません 
+(HTML では、<html> 要素、または <html> で背景スタイルを定義していない場合は <body> 要素)。
+これは、ルート要素の背景描画の処理方法に関係しています。
+*/
+
+/* 
+画像は、指定した背景色の上に重ねられる。
+画像がタイル化されていない場合や不透明でない部分がある場合は、背景が透けて見え、背景の色が半透明の画像の色と混ざる。
+画像の読み込みに失敗した場合は、画像の代わりに指定した背景色が表示される。
+このため、背景画像を使用するときは、背景色を指定することをお勧めされる。
+そうすれば、画像が表示されなくても少なくとも判読可能な結果が得られる。 */
+
+/* body {
+   background-image: url(yinyang.png);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-attachment: fixed;
+} */
+
+/* 常に覚えておく:
+カバー画像とコンテンツ画像のサイズは、常に、background-origin で定義される背景配置領域を基準とする。 */
+
+/* div {
+   border: 1px solid red;
+   background: url(yinyang-sm.png) center no-repeat green;
+} */
+/* that’s shorthand 'background', explained in the next section */
+/* .cover {background-size: cover;}
+.contain {background-size: contain;}
+.clip-content {background-clip: content-box;}
+.clip-padding {background-clip: padding-box;}
+.origin-content {background-origin: content-box;}
+.origin-padding {background-origin: padding-box;} */
+
+/*
+このセクションでは、ラスター画像 (正確には GIF) を使用しましたが、拡大すると見栄えが悪くなり、縮小するとネットワーク リソースが無駄になります
+ (拡大が頻繁に行われる場合に特に目立つようにするためです)。
+ これは、背景のラスター画像をスケーリングする際の固有のリスクです。
+ 一方、背景画像として SVG を使用するのも簡単です。SVG は拡大または縮小しても品質が損なわれることなく、帯域幅も無駄になりません。
+背景画像をスケーリングする場合、写真である必要がなければ、SVG または CSS グラデーションの使用を強く検討してください。
+*/
+
+/* body {
+   background-color: white;
+   background-image: url(yinyang.png);
+   background-position: top left;
+   background-repeat: repeat-y;
+   background-attachment: fixed;
+   background-origin: padding-box;
+   background-clip: border-box;
+   background-size: 50% 50%;
+}
+body {
+   background:white url(yinyang.png) repeat-y top left/50% 50% fixed
+  padding-box border-box;
+}
+body {
+   background: fixed url(yinyang.png) padding-box border-box white repeat-y
+  top left/50% 50%;
+}
+body {
+   background: url(yinyang.png) top left/50% 50% padding-box white repeat-y
+ fixed border-box;
+} */
+
+/* 同等 */
+/* body {
+   background: white url(yinyang.png);
+}
+body {
+   background: white url(yinyang.png) transparent 0% 0%/auto repeat
+      scroll padding-box border-box;
+} */
+
+/*
+CSSには、ボックスモデルに影響を与えずに要素の内側と外側の両方を装飾できる別のプロパティ、box-shadowがある
+*/
+
+/* .box:nth-of-type(1) {box-shadow: 1em 1em 2px rgba(0,0,0,0.5);}
+.box:nth-of-type(2) {box-shadow: 2em 0.5em 0.25em rgba(128,0,0,0.5);}
+.box:nth-of-type(3) {box-shadow: 0.5em 2ch 1vw 13px rgba(0,128,0,0.5);}
+.box:nth-of-type(4) {box-shadow: -10px 25px 5px -5px rgba(0,128,128,0.5);}
+.box:nth-of-type(5) {box-shadow: 0.67em 1.33em 0 -0.1em rgba(0,0,0,0.5);}
+.box:nth-of-type(6) {box-shadow: 0.67em 1.33em 0.2em -0.1em rgba(0,0,0,0.5);}
+.box:nth-of-type(7) {box-shadow: 0 0 2ch 2ch rgba(128,128,0,0.5);} */
+
+
+/* Gradient */
+/*
+CSSで定義される3つの画像タイプは、線形グラデーション、放射状グラデーション、円錐グラデーション。
+各タイプには、繰り返しと非繰り返しの2つのサブタイプがある。
+グラデーションは背景で最もよく使用されるが、画像が許可されているあらゆるコンテキストで使用可能 (たとえば、list-style-imageやborder-image など)。
+グラデーションとは、ある色から別の色への視覚的な遷移。
+黄色から赤へのグラデーションは黄色から始まり、黄色が薄くなってオレンジの赤みがかった色合いを経て、最終的に完全な赤になる。
+遷移がどの程度緩やかまたは急激であるかは、グラデーションの
+   スペースの量、
+   カラーストップ
+   進行色
+のヒントを定義する方法によって異なる。
+
+グラデーションを探索するプロセスを進める際は、常に次の点に留意してください。
+   グラデーションは SVG、PNG、JPEG などとまったく同じ画像であること
+   
+しかし、グラデーションはレンダリングパフォーマンスに優れ、読み込みに追加のHTTPリクエストを必要とせず、無限にスケーラブル。
+
+グラデーションの興味深い点は、固有の寸法がないこと。
+background-size プロパティの値 auto を使用すると、100% として扱われる。
+背景グラデーションのbackground-sizeを定義しない場合は、デフォルト値autoに設定され、100% 100% と宣言するのと同じ。
+したがって、デフォルトでは、背景グラデーションは背景配置領域全体を埋めます。
+グラデーションの背景位置を長さ(パーセンテージではない)の値でオフセットすると、デフォルトではタイル状になることに注意。
+*/
+
+/* div {
+   display: inline-block;
+   block-size: 100px;
+   inline-size: 100px;
+}
+#ex01 {background-image: linear-gradient(purple, gold);}
+#ex02 {background-image: linear-gradient(90deg, purple, gold);}
+#ex03 {background-image: linear-gradient(to left, purple, gold);}
+#ex04 {background-image: linear-gradient(-135deg, purple, gold, navy);}
+#ex05 {background-image: linear-gradient(to bottom left, purple, gold, navy);}
+
+#spectrum {
+   block-size: 300px;
+   inline-size: 500px;
+   background-image: linear-gradient(
+      55deg, #4097FF -25%, #FFBE00, #4097FF 125%
+  )
+} */
+
+/* div#one {display: flex;}
+div#two {display: inline-flex;}
+div {border: 1px dashed; background: silver;}
+div > * {border: 1px solid; background: #AAA;}
+div p {margin: 0;} */
+
+/* * {
+   outline: 1px #ccc solid;
+   margin: 10px;
+   padding: 10px;
+ }
+ body, nav, main, article {
+   display: flex;
+ }
+ body, article {
+   flex-direction: column;
+ } */
+ 
+
+ /* display: grid はブロックレベルのグリッドを作成しますが、仕様では「グリッド コンテナーはブロック コンテナーではない」と明示的に述べている。
+ グリッド ボックスはブロック コンテナーと同様にレイアウトに関与しますが、両者には違いがある。
+ floatはgridコンテナーに侵入しない。
+ グリッド コンテナーのマージンは、その子孫のマージンと相殺されません。
+ これも、ブロック ボックスとは異なる。
+ */
+
+#warning {
+   display: grid;
+   background: #FCC; padding: 0.5em;
+   grid-template-rows: 1fr;
+   grid-template-columns: repeat(7, 1fr);
+}
+/* 匿名テキストもグリッド レイアウトに参加するが、さまざまなグリッドプロパティで影響を与えるのがはるかに困難 (または不可能)*/
+
+/*
+最も基本的な単位はグリッド ラインです。
+1つ以上のグリッド ラインの配置を定義することで、グリッドの残りのコンポーネントを暗黙的に作成する。
+
+
+グリッド トラック
+
+2つの隣接するグリッド ライン間の連続したラン。
+言い換えると、グリッド列またはグリッド行になる。
+グリッド コンテナーの一方の端からもう一方の端まで続く。
+グリッド トラックのサイズは、それを定義するグリッド ラインの配置によって決まる。
+
+
+グリッドセル
+
+4 本のグリッド ラインで囲まれたスペースで、グリッド ラインが通っていないスペース。
+テーブル セルに似ている。
+グリッド レイアウトの最小単位。
+グリッドセルは、CSSグリッドプロパティで直接指定することはできない。
+つまり、特定のセルにグリッド アイテムを関連付ける必要があることを指定できるプロパティは以下を除いてない。
+
+
+グリッド領域
+4本のグリッド ラインで囲まれ、1つ以上のグリッドセルで構成される長方形の領域。
+領域は、1つのセルと同じか、グリッド内のすべてのセルと同じか、いずれか。
+グリッド領域は、CSS グリッドプロパティで直接指定できます。
+これにより、領域を定義して、グリッドアイテムを関連付けることができます。
+*/
+
+/* #grid {
+   display: grid;
+   grid-template-columns: [start col-a] 200px [col-b] 50% [col-c] 100px [stop end last];
+   grid-template-rows: [start masthead] 3em [content] 80% [footer] 2em [stop end];
+} */
+
+/*
+行と列は同じ名前空間を共有しないので、2つのコンテキストで同じ名前を再利用できる。
+コンテンツ行トラックのパーセンテージ値です。
+これは、グリッド コンテナーの高さを基準に計算される。
+高さが500ピクセルのコンテナーの場合、高さが400ピクセルのコンテンツ行が生成される(この行のパーセンテージ値は 80% であるため)。
+通常、これを行うには、グリッドコンテナーの高さを事前に知っておく必要がありますが、常にそうであるとは限らない。
+*/
+
+/*
+gridにおいてはパーセントはpxの値も固定幅になる。
+画面の大きさが決まったら自動的に固定されるため
+50%と指定しても500pxだったら250pxで固定される。
+minmaxで指定しても結局は 〇〇px以上〇〇px以下というふうに決まり、中身のコンテンツに応じて可変ではない。
+その範囲を超えた場合に対応できないので柔軟性に欠けてしまう。
+
+fractinal unit
+利用可能なスペースを特定の割合で分割し、その割合をさまざまな列に分配したい場合は、frユニットが役立ちます。
+fr は、グリッド内の残りのスペースの割合を表す柔軟なスペース量を指定できる。
+
+最も単純な例
+同等
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-columns: 25% 25% 25% 25%;
+
+2つ目のカラムを他の列の2倍にする
+grid-template-columns: 1fr 2fr 1fr;
+
+grid-template-columns: 1fr 3.14159fr 1fr;
+grid-template-columns: 15em 1fr 10%;
+
+width: 100em; grid-template-columns: 15em 4.5fr 3fr 10%;
+grid-template-columns: 15em 4.5fr minmax(5em,3fr) 10%;
+
+
+#gallery {
+   display: grid;
+   grid-template-columns: max-content max-content max-content max-content;
+   grid-template-rows: max-content max-content max-content;
+}
+
+グリッド仕様でブラウザーが最初に列のサイズを解決し、その後に行のサイズを解決するように指示されている。
+
+min-content および max-content キーワードに加えて、fit-content() 関数を使用すると、特定の種類のサイズ設定パターンをよりコンパクトに表現できます。
+解読するのは少し複雑ですが、努力する価値はある
+fit-content() 関数は、次のように <length> または <percentage> を引数として受け入れる:
+
+fit-content(argument) => min(max-content, max(min-content, argument))
+*/
+
+/* #thefollowing  {
+   display: grid;
+   grid-template-columns: fit-content(50ch) fit-content(50ch) fit-content(50ch);
+   font-family: monospace;
+} */
+
+/* #grid {
+   display: grid;
+   grid-template-columns: repeat(10, 5em);
+} */
+
+/* #grid {display: grid;
+   grid-template-columns: repeat(3, 2em 1fr 1fr);
+} */
+
+/* #grid {
+   display: grid;
+   grid-template-areas:
+      "header     header    header    header"
+      "leftside   content   content   rightside"
+      "leftside   footer    footer    footer";
+} */
+
+/* #grid {
+   display: grid;
+   grid-template-rows: 2em 2em;
+   grid-template-columns: repeat(6, 4em);
+}
+
+.box1 {background-color: #FCC; grid-column: 1; grid-row: 1 / 4;}
+.box2 {background-color: #FCC; grid-column: 2; grid-row: 3 / span 2;}
+.box3 {background-color: #FCC; grid-column: 3; grid-row: span 2 / 3;}
+.box4 {background-color: #FCC; grid-column: 4; grid-row: span 2 / 5;}
+.box5 {background-color: #FCC; grid-column: 5; grid-row: span 4 / 5;}
+.box6 {background-color: #FCC; grid-column: 6; grid-row: -1 / span 3;}
+.box7 {background-color: #FCC; grid-column: 7; grid-row: span 3 / -1;} */
+
+/* #grid {display: grid;
+   grid-template-rows: [begin] 2em [middle] 2em [end];
+   grid-template-columns: repeat(5, 5em);}
+.box1 {background-color: #FCC; grid-column: 1; grid-row: 2 / span end 2;}
+.box2 {background-color: #FCC; grid-column: 2; grid-row: 2 / span final;}
+.box3 {background-color: #FCC; grid-column: 3; grid-row: 1 / span 3 middle;}
+.box4 {background-color: #FCC; grid-column: 4; grid-row: span begin 2 / end;}
+.box5 {background-color: #FCC; grid-column: 5; grid-row: span 2 middle / begin;} */
+
+/* #grid {display: grid;
+   grid-template-rows: 200px 1fr 3em;
+   grid-template-columns: 20em 1fr 1fr 10em;
+   grid-template-areas:
+       "header     header    header    header"
+       "leftside   content   content   rightside"
+       "leftside   footer    footer    footer";}
+#masthead {grid-area: header;}
+#sidebar {grid-area: leftside;}
+#main {grid-area: content;}
+#navbar {grid-area: rightside;}
+#footer {grid-area: footer;} */
+
+/*
+grid:
+    "header header header header" 3em
+    ". content sidebar ." 1fr
+    "footer footer footer footer" 5em /
+    2em 3fr minmax(10em,1fr) 2em;
+
+同等
+
+grid-template-areas:
+    "header header header header"
+    ". content sidebar ."
+    "footer footer footer footer";
+grid-template-rows: 3em 1fr 5em;
+grid-template-columns: 2em 3fr minmax(10em,1fr) 2em;
+
+
+auto-fill と auto-fit は非常に似ていますが、1つだけ違う点。
+auto-fit では、アイテムが配置されなかったトラックは無くなる。
+
+*/
+
+
+/* Font */
+
+/*
+使用しているフォントがダウンロードに失敗した場合、またはユーザーのブラウザが理解できないファイル形式である場合、
+テキストは（最終的には）フォールバックフォントで表示される。
+
+フォントはデザインに不可欠に思えるかもしれませんが、特定のフォントの存在に頼ることはできないことを常に念頭に置く。
+フォントの読み込みが遅い場合、ブラウザは通常、テキストのレンダリングを遅らせる。
+これにより、ユーザーが読んでいる間にテキストが再描画されることはなくなりますが、ページにテキストがないのはよくない。
+
+汎用フォントはレンダリングスピードが優れている。
+フォールバックで使うことを推奨。　
+
+h1 {font-family: Arial, sans-serif;}
+h2 {font-family: Arvo, sans-serif;}
+p {font-family: 'Times New Roman', serif;}
+address {font-family: Chicago, sans-serif;}
+.signature {font-family: Author, cursive;}”
+
+*/
+
+/*
+フォントファミリーには引用符はつけない。引用符をつけるとブラウザはフォント名を探そうとする。
+スペースがある場合は引用符で囲む
+
+独自のフォントを使う場合は@font-faceルールを使って宣言する。
+ブラウザはurlからダウンロードし、自身のPCにはいっているかのように振る舞う。
+*/
+@font-face {
+   font-family: "Switzera";
+   src: url("SwitzeraADF-Regular.otf");
+}
+
+/*
+@font-face宣言では、参照されているすべてのフォントファイルが自動的に読み込まれるわけではない。
+@font-faceの目的は、font-faceの遅延読み込みを可能にすること。
+つまり、ドキュメントのレンダリングに必要なフェイスのみが読み込まれる。
+CSSで参照されているフォントファイルは、ページのレンダリングに必要でない場合はダウンロードされない。
+フォントファイルは通常キャッシュされ、ユーザーがサイト内を移動しても再ダウンロードされない。
+
+任意のフォントを読み込む機能は非常に強力ですが、次の点に注意。
+
+1. セキュリティ上の理由から、フォントファイルは、それを要求しているページと同じドメインから取得する必要がある。これには解決策がある。
+2. フォントのダウンロードを大量に必要とすると、読み込み時間が遅くなる可能性
+3. 文字数の多いフォントは、フォント ファイルのサイズを大きくする可能性。
+
+幸い、オンライン ツールとCSSを使用すると、文字セットを制限できる。
+フォントの読み込みが遅いと、スタイルが設定されていないテキストや非表示のテキストがちらつくことがある。
+CSS には、この問題に対処する方法もある。
+*/
+
+/* srcのurlフォールバックを宣言 */
+@font-face {
+   font-family: "Switzera";
+   src: url("SwitzeraADF-Regular.otf"),
+        url("https://example.com/fonts/SwitzeraADF-Regular.otf");
+}
+
+/*
+この場合、前述の同一オリジン ポリシーが一般的に適用されることに注意。
+そのため、他のサーバーにあるフォントのコピーを指定すると、そのサーバーがクロスオリジン アクセスを許可するように設定されていない限り、通常は失敗する。
+
+ユーザー エージェントが使用するように指示したフォントの種類を確実に理解するようにするには、オプションですが強く推奨される format() ヒントを使用する:
+*/
+
+@font-face {
+   font-family: "Switzera";
+   src: url("SwitzeraADF-Regular.otf") format("opentype"),
+        url("SwitzeraADF-Regular.true") format("truetype");
+        /* TrueType font files usually end in '.ttf' */
+}
+
+
+@font-face {
+   font-family: "Hiragino"; /* このfont-familyは記述子 */
+   src: local("Hiragino Kaku Gothic Pro"),
+        local("Hiragino Kaku Gothic Std");
+}
+
+/* 以下のfont-familyはプロパティ。記述子で宣言した短い名前が使える。 */
+h1, h2, h3 {font-family: Hiragino, sans-serif;}
+
+/*
+カスタマイズされたフォントを使用するときは、2つの点に留意する必要があります。
+1つ目
+   Web ページでフォントを使用する法的権利を持っている必要があること
+2つ目
+   そうすることが良い考えであるかどうか
+
+ストックフォトと同様に、商用フォントファミリには使用を管理するライセンスが付属しており、すべてのフォントライセンスがWebでの使用を許可しているわけではない。
+この質問を完全に回避するには、無料のオープンソースソフトウェア(FOSS)フォントのみを使用するか、
+ライセンスと形式変換の問題を自分で処理するGoogle FontsやAdob​​e Fontsなどの商用サービスを使用する。
+
+使用するフォントフェイスの量が増えるとサーバーの負荷が増えるからバランスが大事。
+
+とはいえ、画像最適化ツールが利用できるのと同じように、フォント最適化ツールも利用できる。
+通常、これらはサブセット化ツールであり、表示に実際に必要な記号のみを使用してフォントを構築する。
+Adobe Fonts や Fonts.com などのサービスを使用している場合は、サブセット化ツールが利用できるか、フォントが要求されたときに動的にサブセット化される。
+フォントをサブセット化する場合、Unicode 範囲記述子を使用して、カスタム フォントの使用をフォントファイル内の文字のみに制限できる。
+Font Squirrel などのサービスは、フォントをサブセット化し、生成されるCSSスニペットにUnicode範囲を提供します。
+ファイル サイズを小さくするには、サブセット化は Unicode 範囲だけでなくフォントファイルで行う必要があることに注意。
+
+
+範囲を制限する
+unicode-range: U+0026;  the Ampersand (&) character 
+unicode-range: U+590-5FF;  Hebrew characters 
+unicode-range: U+4E00-9FFF, U+FF00-FF9F, U+30??, U+A5;  Japanese
+  kanji, hiragana, and katakana, plus the yen/yuan currency symbol
+
+
+ページ上の 1 つの文字にフォントが必要な場合、フォント全体がダウンロードされる。
+使う文字の範囲が決まっているならそれだけのフォントファイルを作成した方が大幅にサイズを小さくできる。
+*/
+
+/*
+英語やロシア語、数学の記号などが混在したサイトの場合、ブラウザがそのページに必要なファイルだけダウンロードするように分けることができる
+*/
+@font-face {
+   font-family: "MyFont";
+   src: url("myfont-general.otf") format("opentype");
+}
+@font-face {
+   font-family: "MyFont";
+   src: url("myfont-cyrillic.otf") format("opentype");
+   unicode-range: U+04??, U+0500-052F, U+2DE0-2DFF, U+A640-A69F, U+1D2B-1D78;
+}
+@font-face {
+   font-family: "MyFont";
+   src: url("myfont-math.otf") format("opentype");
+   unicode-range: U+22??;   /* equivalent to U+2200-22FF */
+}
+
+body {font-family: MyFont, serif;}
+
+/* 
+ページはGoogle翻訳などの自動サービスで翻訳できることを覚えておいておく。
+Unicodeの範囲をあまりに厳しく制限すると(たとえば、英語で使用されるアクセントのない文字の範囲に制限すると)、たとえば、ページの自動翻訳バージョンをフランス語やスウェーデン語に翻訳すると、さまざまなフォント フェイスの文字がごちゃ混ぜになる可能性がある。
 */
