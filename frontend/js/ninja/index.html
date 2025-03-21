@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Web app lifecycle</title>
     <style>
@@ -23,19 +22,19 @@
             messageElement.textContent = message;
             element.appendChild(messageElement);
         }
-        let first = document.getElementById("first");
+        let first = document.querySelector("#first");
         addMessage(first, "Page loading");
     </script>
 
     <ul id="second"></ul>
 
     <script>
-        document.body.addEventListener("mousemove", function () {
-            let second = document.getElementById("second");
+        document.body.addEventListener("mousemove",  ()=> {
+            let second = document.querySelector("#second");
             addMessage(second, "Event: mousemove");
         });
-        document.body.addEventListener("click", function () {
-            let second = document.getElementById("second");
+        document.body.addEventListener("click",  ()=> {
+            let second = document.querySelector("#second");
             addMessage(second, "Event: click");
         });
     </script>
