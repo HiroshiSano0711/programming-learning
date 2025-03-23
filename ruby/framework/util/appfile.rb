@@ -1,4 +1,4 @@
-require './entry'
+require_relative './entry'
 
 class AppFile < Entry
   attr_reader :name

@@ -1,16 +1,33 @@
-require './appfile'
-require './folder'
+require_relative './appfile'
+require_relative './folder'
 require 'json'
+
+STRUCTURE = {
+  "app": {
+    "assets": {
+      "style.css": nil
+    },
+    "models": {
+      "base.rb": nil
+    },
+    "controllers": {
+      "application_controller.rb": nil
+    },
+    "views": {
+      "index.html": nil
+    }
+  },
+  "config": {
+    "route.rb": nil
+  }
+}
 
 class Generator
   def init(project_name)
-    structure_hash  = File.open("project_structure.json") do |f|
-      JSON.load(f)
-    end
     project = Folder.new(project_name)
 
     # 実際にディレクトリやファイルを生成する処理の責務がおかしい気がする。
-    construct_hierarchy(project, structure_hash)
+    construct_hierarchy(project, STRUCTURE)
     project.create(project.name)
   end
 

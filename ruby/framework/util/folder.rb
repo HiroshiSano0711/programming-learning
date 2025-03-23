@@ -1,4 +1,4 @@
-require './entry'
+require_relative './entry'
 
 class Folder < Entry
   attr_reader :name

@@ -1,4 +1,4 @@
-require './printer'
+require_relative './printer'
 
 class Entry
   include Printer

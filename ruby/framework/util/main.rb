@@ -1,4 +1,4 @@
-require './generator'
+require_relative './generator'
 
 case ARGV[0]
 when 'init'
