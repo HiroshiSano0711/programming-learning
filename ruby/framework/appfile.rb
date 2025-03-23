@@ -9,14 +9,15 @@ class AppFile < Entry
 
   def create(prefix)
     File.open(prefix, "w") do |f|
-      # TODO: ディレクトリの種類ごとにテンプレートを分けたい。
-      f.write('#write your code') 
+      f.write(template()) 
     end
   end
 
   def template
+    return '' unless @name.split('.').last == 'rb'
+
     <<~EOS
-      class #{@name.split('.').first.capitalize}
+      class #{@name.split('.').first.split('_').map(&:capitalize).join}
         #write your code
       end
     EOS
