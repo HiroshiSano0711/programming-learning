@@ -1,0 +1,20 @@
+{
+  "app": {
+    "assets": {
+      "style.css": null
+    },
+    "models": {
+      "base.rb": null
+    },
+    "controllers": {
+      "application_controller.rb": null
+    },
+    "views": {
+      
+      "index.html": null
+    }
+  },
+  "config": {
+    "route.rb": null
+  }
+}
