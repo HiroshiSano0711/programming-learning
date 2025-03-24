@@ -1,0 +1,13 @@
+app:
+  assets:
+    - style.css
+  models:
+    - base.rb
+  controllers:
+    - application_controller.rb
+  views:
+    - application.slim
+config:
+  - application.rb
+  - routes.rb
+  - db.yml

@@ -1,0 +1,9 @@
+app:
+  models:
+    - "{user_def}.rb"
+spec:
+  models:
+    - "{user_def}.rb"
+db:
+  migrations:
+    - "{user_def}.rb"

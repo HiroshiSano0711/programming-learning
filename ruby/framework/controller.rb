@@ -9,7 +9,7 @@ class Controller
 
   def render(target_file_name)
     Slim::Template.new(
-      File.join(App.project_root, 'app', 'views', "#{name}", "#{target_file_name}.slim")
+      File.join(AppConfig.project_name, 'app', 'views', "#{name}", "#{target_file_name}.slim")
     ).render
   end
 
