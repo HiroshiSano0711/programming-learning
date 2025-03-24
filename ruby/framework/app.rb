@@ -15,12 +15,11 @@ class App
     File.dirname(__FILE__)
   end
 
-  def self.project_root
-    "#{File.dirname(__FILE__)}/MyApp"
-  end
-
   def call(env)
-    result = router.dispatch(env['REQUEST_PATH'])
+    result = router.dispatch(
+      request_path: env['REQUEST_PATH'],
+      request_method: env['REQUEST_METHOD']
+    )
     [result.status, result.headers, result.content]
   end
 end

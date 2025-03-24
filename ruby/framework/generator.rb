@@ -36,13 +36,20 @@ class Generator
 
   # 別クラスにして委譲する形にする。
   def template(value)
-    return '' unless value.split('.').last == 'rb'
-
-    <<~EOS
-      class #{value.split('.').first.split('_').map(&:capitalize).join}
-        #write your code
-      end
-    EOS
+    case type
+    when 'controller'
+      <<~EOS
+        class #{value.split('.').first.split('_').map(&:capitalize).join} < Controller
+        end
+      EOS
+    when 'model'
+      <<~EOS
+        class #{value.split('.').first.split('_').map(&:capitalize).join}
+        end
+      EOS
+    else
+      ''
+    end
   end
 
   private
