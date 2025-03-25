@@ -4,10 +4,9 @@ app:
   models:
     - base.rb
   controllers:
-    - application_controller.rb
+    - base.rb
   views:
     - application.slim
 config:
   - application.rb
   - routes.rb
-  - db.yml

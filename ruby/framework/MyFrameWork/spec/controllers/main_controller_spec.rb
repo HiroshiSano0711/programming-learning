@@ -1,2 +1,0 @@
-class MainControllerSpec < Controller
-end
