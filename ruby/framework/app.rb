@@ -1,7 +1,9 @@
-require_relative './app_config.rb'
-require_relative './router.rb'
-require_relative './controller.rb'
+require_relative './app_config'
+require_relative './controller'
+require_relative './model'
+Dir[File.join(AppConfig.project_path, 'config', 'routes.rb')].each {|file| require file }
 
+require_relative './router.rb'
 Dir[File.join(AppConfig.project_path, 'app', '**', '*.rb')].each {|file| require file }
 
 class App

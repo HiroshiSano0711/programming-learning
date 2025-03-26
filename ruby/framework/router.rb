@@ -2,9 +2,7 @@ class Router
   attr_reader :routes
 
   def initialize
-    @routes = {
-      '/': 'users#index',
-    }
+    @routes = Route.routes
   end
 
   def dispatch(request_path:, request_method:)
