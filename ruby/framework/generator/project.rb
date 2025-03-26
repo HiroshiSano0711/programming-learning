@@ -1,41 +1,67 @@
 require_relative './base'
-require 'pry'
+
 module Generator
   class Project < Base
+    def initialize(name)
+      @name = name
+      @template_file = nil
+      @printer = Printer.new
+    end
+
+    def template_path
+      @template_file
+    end
+
     def create
-      default_dir_and_files = {
-        'app/assets' => 'assets/style.css',
-        'app/models' => 'models/base.rb',
-        'app/controllers' => 'controllers/base.rb',
-        'app/views' => 'views/application.slim',
-        'config' => 'config/routes.rb'
-      }
+      save_project_path
+      project_dirs
+      project_default_files
+    end
 
-      default_dir_and_files.each do |key, value|
-        path = @name + '/' + key
-        system('mkdir', '-p', path)
-        log path
+    # 最初にユーザーが作成したプロジェクト名を保存しておかないとプロジェクトのリソースパスがわからない
+    def save_project_path
+      File.open("./app_config.rb", "w") do |f|
+       f.write(
+        <<~EOS
+          class AppConfig
+            def self.project_path
+              '#{Dir.getwd + '/' + @name}'
+            end
 
-        FileUtils.cp "#{Dir.getwd}/generator/template/init/#{value}", "#{path}/#{value.split('/').last}"
-        log path + '/' + value.split('/').last
+            def self.project_name
+              '#{@name}'
+            end
+          end
+        EOS
+      )
       end
     end
 
-    def create_app_config_file(name)
-      File.open("./app_config.rb", "w") do |f|
-        f.write(
-          <<~EOS
-            class AppConfig
-              def self.project_path
-                '#{Dir.getwd}/#{name}'
-              end
+    def project_dirs
+      default_dir = %w(app/assets app/models app/controllers app/views config)
+      default_dir.each do |dir|
+        system('mkdir', '-p', "#{@name}/#{dir}")
+        log "#{@name}/#{dir}"
+      end
+    end
 
-              def self.project_name
-                '#{name}'
-              end
-            end
-          EOS
-        )
+    def project_default_files
+      default_files = %w(
+        app/assets/style.css.tt
+        app/models/base.rb.tt
+        app/controllers/base.rb.tt
+        app/views/application.slim.tt
+        config/application.rb.tt
+        config/routes.rb.tt
+      )
+      default_files.each do |file|
+        @template_file = "./generator/template/init/#{file}"
+        fn = file.delete_suffix('.tt')
+        File.open("#{project_root}/#{fn}", "w") do |f|
+          f.write(template)
+        end
+
+        log(@name + '/' + fn)
       end
     end
   end

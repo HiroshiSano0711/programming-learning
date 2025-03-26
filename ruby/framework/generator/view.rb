@@ -2,24 +2,27 @@ require_relative './base'
 
 module Generator
   class View < Base
+    def initialize(name, action)
+      @name = name
+      @action = action
+      @printer = Printer.new
+    end
+
     def source_path
       "#{project_root}/app/views"
     end
 
+    def source_file_name
+      "#{source_path}/#{snake_case(@name)}/#{@action}.slim"
+    end
+
+    def template_path
+      './generator/template/view/default.slim.tt'
+    end
+
     def create
-      File.open("#{source_path}/#{@name}.slim", "w") do |f|
-        f.write(
-          <<~EOS
-            doctype html
-            html
-              head
-                title #{AppConfig.project_name}
-                meta charset="utf-8"
-              body
-                h1 フレームワーク
-          EOS
-        )
-      end
+      system('mkdir', '-p', "#{source_path}/#{snake_case(@name)}")
+      super
     end
   end
 end

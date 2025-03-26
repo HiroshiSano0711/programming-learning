@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title #{AppConfig.project_name}
+    title <%= @name %>
     meta charset="utf-8"
   body
     h1 フレームワーク
