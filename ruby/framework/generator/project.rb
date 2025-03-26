@@ -1,15 +1,7 @@
 require_relative './base'
-
+require 'pry'
 module Generator
   class Project < Base
-    def source_path
-      project_root
-    end
-
-    def template_path
-      "#{Dir.getwd}/generator/template/init/"
-    end
-
     def create
       default_dir_and_files = {
         'app/assets' => 'assets/style.css',
@@ -21,10 +13,10 @@ module Generator
 
       default_dir_and_files.each do |key, value|
         path = @name + '/' + key
-        system('mkdir', '-p', source_path + '/' + path)
+        system('mkdir', '-p', path)
         log path
 
-        FileUtils.cp "#{template_path}#{value}", "#{path}/#{value.split('/').last}"
+        FileUtils.cp "#{Dir.getwd}/generator/template/init/#{value}", "#{path}/#{value.split('/').last}"
         log path + '/' + value.split('/').last
       end
     end

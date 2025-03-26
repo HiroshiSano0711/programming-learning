@@ -6,8 +6,12 @@ module Generator
       "#{AppConfig.project_name}/app/controllers"
     end
 
+    def source_file_name
+      "#{source_path}/#{snake_case(@name)}_controller.rb"
+    end
+
     def create
-      File.open("#{source_path}/#{snake_case(@name)}_controller.rb", "w") do |f|
+      File.open(source_file_name, "w") do |f|
         f.write(
           <<~EOS
             class #{@name.split('_').map(&:capitalize).join}Controller < BaseController
@@ -16,7 +20,7 @@ module Generator
         )
       end
 
-      log("#{source_path}/#{snake_case(@name)}_controller.rb")
+      log(source_file_name)
     end
   end
 end
