@@ -1,6 +1,0 @@
-app:
-  controllers:
-    - "{user_def}_controller.rb"
-spec:
-  controllers:
-    - "{user_def}_controller_spec.rb"

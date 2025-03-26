@@ -1,20 +1,27 @@
-require_relative './file_util'
+require 'fileutils'
+require_relative '../printer'
 
 module Generator
   class Base
-    attr_reader :type, :name
-
-    def initialize(type:, name:)
-      @file_util = FileUtil.new(type, name)
+    def initialize(name)
+      @name = name
+      @printer = Printer.new
     end
 
-    def project
-      @file_util.create_app_config_file
-      @file_util.create_template
+    def project_root
+      AppConfig.project_path
     end
 
-    def exec
-      @file_util.create_template
+    def log(desc)
+      @printer.write(desc)
+    end
+
+    def snake_case(str)
+      str.gsub(/::/, '/').
+      gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+      gsub(/([a-z\d])([A-Z])/,'\1_\2').
+      tr("-", "_").
+      downcase
     end
   end
 end

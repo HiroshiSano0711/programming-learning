@@ -1,5 +1,7 @@
-require_relative './generator/base'
 require_relative './app_config'
+require_relative './generator/project'
+require_relative './generator/model'
+require_relative './generator/controller'
 
 COMMANDS = %w(init g)
 GEN_OPTIONS = %w(project model controller)
@@ -11,9 +13,9 @@ end
 
 case ARGV[0]
 when 'init'
-  Generator::Base.new(type: 'project', name: ARGV[1]).project
+  Generator::Project.new(ARGV[1]).create
 when 'g'
-  if AppConfig.project_name.nil?
+  if AppConfig.project_path.nil?
     p '最初にプロジェクトを生成してください'
     exit
   elsif !(GEN_OPTIONS.include?(ARGV[1]))
@@ -24,5 +26,6 @@ when 'g'
     exit
   end
 
-  Generator::Base.new(type: ARGV[1], name: ARGV[2]).exec
+  klass = Object.const_get "Generator::#{ARGV[1].capitalize}"
+  klass.new(ARGV[2]).create
 end

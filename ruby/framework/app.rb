@@ -2,7 +2,7 @@ require_relative './app_config.rb'
 require_relative './router.rb'
 require_relative './controller.rb'
 
-Dir[File.join(File.dirname(__FILE__), AppConfig.project_name, '**', '*.rb')].each {|file| require file }
+Dir[File.join(File.dirname(__FILE__), AppConfig.project_path, '**', '*.rb')].each {|file| require file }
 
 class App
   attr_reader :router
