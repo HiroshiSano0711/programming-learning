@@ -1,7 +1,6 @@
 require_relative './controller'
 require_relative './view'
 
-require 'pry'
 module Generator
   class ControllerGenerator
     def initialize(name, actions)
@@ -10,7 +9,7 @@ module Generator
     end
 
     def create
-      Controller.new(@name).create
+      Controller.new(@name, @actions).create
       @actions.each do |action|
         View.new(@name, action).create
       end

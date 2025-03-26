@@ -1,2 +1,7 @@
 class <%= @name.split('_').map(&:capitalize).join %>Controller < BaseController
+  <% @actions.each do |action| %>
+  def <%= action %>
+    render '<%= action %>'
+  end
+  <% end %>
 end

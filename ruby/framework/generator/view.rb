@@ -9,7 +9,7 @@ module Generator
     end
 
     def source_path
-      "#{project_root}/app/views"
+      "#{AppConfig.project_name}/app/views"
     end
 
     def source_file_name
