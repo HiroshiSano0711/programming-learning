@@ -10,8 +10,14 @@ class Controller
 
   def render(target_file_name)
     Slim::Template.new(
-      File.join(AppConfig.project_path, 'app', 'views', "#{name}", "#{target_file_name}.slim")
-    ).render
+      File.join(AppConfig.project_path, 'app', 'views', "application.slim")
+    ).render(self)
+  end
+
+  def embed_view
+    Slim::Template.new(
+      File.join(AppConfig.project_path, 'app', 'views', "#{name}", "#{action}.slim")
+    ).render(self)
   end
 
   def call

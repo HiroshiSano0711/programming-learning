@@ -3,9 +3,7 @@ class Router
 
   def initialize
     @routes = {
-      '/': 'main#index',
-      '/hello': 'main#hello',
-      '/posts': 'posts#index'
+      '/': 'users#index',
     }
   end
 
