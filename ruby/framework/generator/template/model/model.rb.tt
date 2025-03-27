@@ -1,2 +1,4 @@
+# frozen_string_literal: true
+
 class <%= @name.split('_').map(&:capitalize).join %> < Base
 end

@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 require 'erb'
-require_relative '../printer'
+require_relative '../lib/printer'
 
 module Generator
   class Base
-    def initialize(name)
+    def initialize(name, actions)
       @name = name
+      @actions = actions || []
       @printer = Printer.new
     end
 
@@ -23,9 +26,7 @@ module Generator
     end
 
     def create
-      File.open(source_file_name, "w") do |f|
-        f.write(template)
-      end
+      File.write(source_file_name, template)
 
       log(source_file_name)
     end
@@ -35,11 +36,11 @@ module Generator
     end
 
     def snake_case(str)
-      str.gsub(/::/, '/').
-      gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-      gsub(/([a-z\d])([A-Z])/,'\1_\2').
-      tr("-", "_").
-      downcase
+      str.gsub('::', '/')
+         .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+         .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+         .tr('-', '_')
+         .downcase
     end
   end
 end

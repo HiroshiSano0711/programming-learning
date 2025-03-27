@@ -1,13 +1,9 @@
-require_relative './base'
+# frozen_string_literal: true
+
+require_relative 'base'
 
 module Generator
   class Controller < Base
-    def initialize(name, actions)
-      @name = name
-      @actions = actions || []
-      @printer = Printer.new
-    end
-
     def source_path
       "#{project_name}/app/controllers"
     end

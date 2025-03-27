@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class <%= @name.split('_').map(&:capitalize).join %>Controller < BaseController
   <% @actions.each do |action| %>
   def <%= action %>

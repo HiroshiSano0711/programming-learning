@@ -1,5 +1,7 @@
-require_relative './controller'
-require_relative './view'
+# frozen_string_literal: true
+
+require_relative 'controller'
+require_relative 'view'
 
 module Generator
   class ControllerGenerator
@@ -10,9 +12,7 @@ module Generator
 
     def create
       Controller.new(@name, @actions).create
-      @actions.each do |action|
-        View.new(@name, action).create
-      end
+      @actions.each { |action| View.new(@name, action).create }
     end
   end
 end

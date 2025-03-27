@@ -1,11 +1,12 @@
-require_relative './base'
+# frozen_string_literal: true
+
+require_relative 'base'
 
 module Generator
   class View < Base
     def initialize(name, action)
-      @name = name
+      super
       @action = action
-      @printer = Printer.new
     end
 
     def source_path

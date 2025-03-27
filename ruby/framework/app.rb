@@ -1,16 +1,24 @@
-require_relative './app_config'
-require_relative './controller'
-require_relative './model'
-Dir[File.join(AppConfig.project_path, 'config', 'routes.rb')].each {|file| require file }
+# frozen_string_literal: true
 
-require_relative './router.rb'
-Dir[File.join(AppConfig.project_path, 'app', '**', '*.rb')].each {|file| require file }
+require_relative 'app_config'
+require_relative 'lib/controller'
+require_relative 'lib/model'
+require_relative 'lib/router'
+require_relative 'lib/printer'
+
+# require File.join(AppConfig.project_path, 'config', 'routes.rb')
+require File.join(AppConfig.project_path, 'config', 'application.rb')
+
+app_files = Dir.glob(File.join(AppConfig.project_path, 'app', '**', '*.rb'))
+app_files.grep(/base_controller.rb|base.rb\Z/).each { |file| require file }
+app_files.grep(/^.*(?<!base_controller.rb|base.rb)\Z/).each { |file| require file }
 
 class App
   attr_reader :router
 
   def initialize
     @router = Router.new
+    @router.draw_routes
   end
 
   def self.root

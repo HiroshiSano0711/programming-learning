@@ -1,3 +1,0 @@
-class BaseController < Controller
-  
-end

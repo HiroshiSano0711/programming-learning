@@ -1,4 +1,6 @@
-require_relative './model'
+# frozen_string_literal: true
+
+require_relative 'model'
 
 module Generator
   class ModelGenerator
