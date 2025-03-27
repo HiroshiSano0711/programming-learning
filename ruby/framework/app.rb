@@ -6,8 +6,9 @@ require_relative 'lib/model'
 require_relative 'lib/router'
 require_relative 'lib/printer'
 
-# require File.join(AppConfig.project_path, 'config', 'routes.rb')
+# DSLで書けるようにしたらこのコメントをアウトする。
 require File.join(AppConfig.project_path, 'config', 'application.rb')
+require File.join(AppConfig.project_path, 'config', 'routes.rb')
 
 app_files = Dir.glob(File.join(AppConfig.project_path, 'app', '**', '*.rb'))
 app_files.grep(/base_controller.rb|base.rb\Z/).each { |file| require file }
@@ -18,7 +19,6 @@ class App
 
   def initialize
     @router = Router.new
-    @router.draw_routes
   end
 
   def self.root
