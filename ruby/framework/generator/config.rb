@@ -3,9 +3,9 @@
 require_relative 'base'
 
 module Generator
-  class Model < Base
+  class Config < Base
     def source_path
-      "#{project_name}/app/models"
+      "#{project_name}/config"
     end
 
     def source_file_name

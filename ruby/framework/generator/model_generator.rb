@@ -4,13 +4,13 @@ require_relative 'model'
 
 module Generator
   class ModelGenerator
-    def initialize(name, actions)
+    def initialize(name:, options:)
       @name = name
-      @actions = actions
+      @options = options
     end
 
     def create
-      Model.new(@name).create
+      Model.new(@name, 'model/model.rb.tt').create
       # マイグレーションファイルを作成
     end
   end

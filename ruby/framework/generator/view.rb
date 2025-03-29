@@ -4,21 +4,17 @@ require_relative 'base'
 
 module Generator
   class View < Base
-    def initialize(name, action)
-      super
+    def initialize(name, template_source, action)
+      super(name, template_source)
       @action = action
     end
 
     def source_path
-      "#{AppConfig.project_name}/app/views"
+      "#{project_name}/app/views"
     end
 
     def source_file_name
       "#{source_path}/#{snake_case(@name)}/#{@action}.slim"
-    end
-
-    def template_path
-      './generator/template/view/default.slim.tt'
     end
 
     def create

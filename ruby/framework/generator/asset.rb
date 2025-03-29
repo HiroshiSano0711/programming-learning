@@ -3,13 +3,13 @@
 require_relative 'base'
 
 module Generator
-  class Model < Base
+  class Asset < Base
     def source_path
-      "#{project_name}/app/models"
+      "#{project_name}/app/assets"
     end
 
     def source_file_name
-      "#{source_path}/#{snake_case(@name)}.rb"
+      "#{source_path}/#{snake_case(@name)}.css"
     end
   end
 end

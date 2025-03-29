@@ -6,9 +6,9 @@ require_relative '../lib/printer'
 
 module Generator
   class Base
-    def initialize(name, actions)
+    def initialize(name, template_source)
       @name = name
-      @actions = actions || []
+      @template_source = template_source
       @printer = Printer.new
     end
 
@@ -20,9 +20,16 @@ module Generator
       AppConfig.project_name
     end
 
+    def template_path
+      './generator/template/'
+    end
+
+    def template_source
+      "#{template_path}#{@template_source}"
+    end
+
     def template
-      template = File.read(template_path)
-      ERB.new(template).result(binding)
+      ERB.new(File.read(template_source)).result(binding)
     end
 
     def create

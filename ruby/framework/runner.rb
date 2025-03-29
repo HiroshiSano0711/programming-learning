@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'app_config'
-require_relative 'generator/project'
+require_relative 'generator/project_generator'
 require_relative 'generator/model_generator'
 require_relative 'generator/controller_generator'
 
@@ -15,7 +15,7 @@ end
 
 case ARGV[0]
 when 'init'
-  Generator::Project.new(ARGV[1], ARGV[2..]).create
+  Generator::ProjectGenerator.new(ARGV[1], ARGV[2..]).create
 when 'g'
   if AppConfig.project_path.nil?
     p '最初にプロジェクトを生成してください'
@@ -28,5 +28,5 @@ when 'g'
     exit
   end
   klass = Object.const_get "Generator::#{ARGV[1].capitalize}Generator"
-  klass.new(ARGV[2], ARGV[3..]).create
+  klass.new(name: ARGV[2], options: ARGV[3..]).create
 end

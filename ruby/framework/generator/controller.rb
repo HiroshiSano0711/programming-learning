@@ -9,11 +9,12 @@ module Generator
     end
 
     def source_file_name
-      "#{source_path}/#{snake_case(@name)}_controller.rb"
+      "#{source_path}/#{snake_case(@name)}/#{snake_case(@name)}_controller.rb"
     end
 
-    def template_path
-      './generator/template/controller/controller.rb.tt'
+    def create
+      system('mkdir', '-p', "#{source_path}/#{snake_case(@name)}")
+      super
     end
   end
 end
