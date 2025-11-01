@@ -181,7 +181,7 @@ asmMain:
 //
 //  15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
 //   m  m  m  m  d  d  d  d  d  y  y  y  y  y  y  y
-
+// 全て8ビットで扱っている。ビットが被る部分は0なのでorr演算をして問題ない
 			lea		x0, month
 			ldrb	w1, [x0]
 			lsl		w1, w1, #5
