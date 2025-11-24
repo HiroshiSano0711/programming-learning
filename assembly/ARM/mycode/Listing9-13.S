@@ -748,15 +748,11 @@ dontForceWidthZero:
     // decDigitsはprintfでいう"%5f"の"5"のようなフォーマットで表示する桁数を指定する値
     // 有効桁数以上の値は丸めないという仕様
 
-    add     x2, x0, decDigits // 丸め開始位置からindexを計算する
-    cmp     x2, #maxDigits
-    bhs     dontRound         // x2 >= maxDigits ならジャンプ
-
-
-    // ***************************************************************
-    // ※注意：おそらく書籍の間違いだと思われる。これ以降dontRoundまでは実際に実行されることはない
+    // 書籍ソースコード修正箇所。動かなかったら元に戻す
+    //add     x2, x0, decDigits
+    //cmp     x2, #maxDigits    // x2 >= maxDigits ならジャンプ
     //
-    // ここから下のコードは四捨五入を処理する例。
+    // ※注意：おそらく書籍の間違いだと思われる。これ以降dontRoundまでは実際に実行されることはない
     //
     // 上記のコードでx2がアドレスになってることに注意。
     //  add     x2, x0, decDigits
@@ -767,22 +763,17 @@ dontForceWidthZero:
     // の処理は必ずtrueになる。
     // アドレスを整数値としてみなして計算されるが、アドレス >= 数値に必ずなるから
     //
-    // また、この後に出てくる[x1, x2]はおかしい。x1は指数を示す整数値なのでアドレスではない
-    //  w1, [x0, x2]
-    // の間違いの可能性。
-    // 書籍では丸め処理を行うと説明がある適切に動作することが想定されていそう。
-    // なので、教育用で使われる書籍だから、教授が
-    //  「ここは実際には通らないけど、流れとしてはこうなる」
-    // と説明しているようなパターンではないと考えられる。
-    // 単純に著者の勘違い、ソースコードの間違いの可能性が高い
-    // ちゃんと動作するように修正するのはちょっと大変なのでコード読み終わった後に余裕があれば
+    // ↓修正後のコード
+    cmp     decDigits, #maxDigits
+    bhs     dontRound         // decDigits >= maxDigits ならジャンプ
+
 
     // 値を指定された有効桁数に丸めるために、まず「丸め対象となる最後の桁の **次の桁**」へ移動する
     // （この時点で X2 には小数点以下の桁数が入っている）。
     // その桁の値に 5 を加えて四捨五入を行う。
     // もし桁が繰り上がる場合は、繰り上がりが収まるまで前の桁にキャリーを伝播させる。
 
-    add     x2, x2, #1          // 丸め開始位置の次の数字を指すように
+    add     x2, decDigits, #1          // 丸め開始位置の次の数字を指すように
     ldrb    w1, [x0, x2]        // その値を読み込む
 
     add     w1, w1, #5          // 5を足して四捨五入の準備
@@ -836,8 +827,15 @@ repeatUntilX2eq0:
     subs    x2, x2, #2          // 1つ進んでるので2つ戻すことで現在の値の1つ前の値を指す
     bne     repeatUntilX2eq0    // インデックスが0になるまで続ける
 
+
+    // 書籍のソースコードの修正。
+    // ループを抜けたあとはインデックスは先頭文字を指しており、まだ先頭文字は1つ後ろに移動していない
+    // そのため先頭文字だけ手動で移動させる
+
     ldrb    w1, [x0, x2]
-    strb    w1, [x0, x2, #1]
+    add     x2, x2, #1
+    strb    w1, [x0, x2]
+    sub     x2, x2, #1
 
     mov     w1, #'1'            // 先頭に書くための'1'を用意
     strb    w1, [x0, x2]        // indexは0を指してるので先頭にそのまま書き込み
@@ -847,11 +845,12 @@ repeatUntilX2eq0:
 
 dontRound:
 
-    // 指数が正と負かで処理を切り分ける
+    // 指数が正か負かで処理を切り分ける
 
     mov     x5, xzr             // 出力バッファへのインデックスの初期化
     cmp     exponent, #0
     bge     positiveExponent    // exponent >= 0
+
 
     // 負の指数の処理
     // 0 ～ 1.0 の値をここで処理する（負の指数は10の負の累乗を意味する）
@@ -861,22 +860,26 @@ dontRound:
     // 3の意味は、先頭の "-0." の3文字を表示するためのスペースを確保するということ
     // x2は "." の後に出力する数字の桁数を示す
 
-    mov     x4, #4
-    add     x2, decDigits, #3
+    mov     x4, #4              // 最小出力幅は4
+    add     x2, decDigits, #3   // 指定された出力フォーマットの桁数の幅に"-0."（符合、整数部、小数点）の3文字分を足す
     cmp     x2, x4
     csel    x2, x2, x4, hs      // If x2 < x4, x2 = x4
 
+
+    // fWidthの最大出力幅を超えていないかチェックする。超えていたらエラー処理へジャンプ
     cmp     x2, fWidth
     bhi     widthTooBig
 
-    // This number will fit in the specified field
-    // width, so output any necessary leading pad
-    // characters. X3=number of padding characters
-    // to output.
+
+    // 固定幅の仕様なので空きスペースはパディング文字で埋める必要がある。
+    // 出力する値は右寄せ
+    // 余った幅＝先頭にパディングする必要のある文字数 を x3 に入れている
 
     sub     x3, fWidth, x2
     b.al    testWhileX3ltWidth
 
+
+// パディングの文字を先頭に埋める
 
 whileX3ltWidth:
     strb    fill, [outBuf, x5]
@@ -886,44 +889,61 @@ testWhileX3ltWidth:
     cmp     x2, fWidth
     blo     whileX3ltWidth
 
-    // Output " 0." or "-0.", depending on
-    // the sign of the number.
+    // " 0." または "-0." を出力する
+    // 負の指数の場合は0.から始まる
 
+
+    // 符号を書き込む
     strb    sign, [outBuf, x5]
     add     x5, x5, #1
+
+    // '0'を書き込む
     mov     w0, #'0'
     strb    w0, [outBuf, x5]
+
+    // '.'を書き込む
     add     x5, x5, #1
     mov     w0, #'.'
     strb    w0, [outBuf, x5]
     add     x5, x5, #1
+
+    // 3文字書き込んだので文字数を3増やす
     add     x3, x3, #3
 
-    // Now output the digits after the decimal point:
 
-    mov     x2, xzr             // Count the digits here
+    // 小数点以下の数字を出力するループ処理の準備
+    // rts.digitsにはFPDigits関数で変換した文字列が入ってる
+
+    mov     x2, xzr             // 桁数のカウントの初期化
     add     x1, fp, #rts.digits // lea x1, rts.digits
 
-    // If the exponent is currently negative, or if
-    // we've output more than 16 significant digits,
-    // just output a zero character.
+
+    // 指数が負の数、または16桁以上であるなら0の文字を出力する
 
 repeatUntilX3geWidth:
     mov     x0, #'0'
+
+
+    // 整数部の ' 0.' の部分（0乗）はすでに書き込んでるから、指数を１足してからループに入る
+
     adds    exponent, exponent, #1
     bmi     noMoreOutput
 
     cmp     x2, #maxDigits
     bge     noMoreOutput
 
+
+    // ここまできたら具体的に数字を書き込んでいく
+    // 例 1.2e-3 = 0.0012 だったら12の部分
+
     ldrb    w0, [x1]
     add     x1, x1, #1
 
 noMoreOutput:
     strb    w0, [outBuf, x5]
-    add     x5, x5, #1          // Index
-    add     x2, x2, #1          // Digits processed
-    add     x3, x3, #1          // Digit count
+    add     x5, x5, #1          // バッファーのIndex
+    add     x2, x2, #1          // 小数桁の最大数
+    add     x3, x3, #1          // 全体の出力文字数
     cmp     x3, fWidth
     blo     repeatUntilX3geWidth
     b.al    r64BufDone
@@ -934,49 +954,66 @@ widthTooBig:
     mov     x2, fWidth
     mov     w0, #'#'
 fillPound:
+    // "#"の文字を5文字埋める
+    // "#####"をエラーを示す出力とする
+
     strb    w0, [outBuf, x5]
-    add     x5, x5, #1          // Index
+    add     x5, x5, #1
     subs    x2, x2, #1
     bne     fillPound
     b.al    r64BufDone
 
 
-// Handle numbers with a positive exponent here.
+// 正の指数の処理
+// 1. 出力文字数（x3）を計算する（符号 + 整数部 + 小数部 + "."）
+// 2. 必要ならフィールド幅に合わせて前パディング
+// 3. digits を出力しながら exponent==0 になった時に "." を出力する
+// 4. digits を全部出したら 0 を出して埋める（小数部に足りない分）
 //
-// Compute # of print positions consumed by output string.
-// This is given by:
+// 負の指数の処理との大きな違い
 //
-//                   Exponent     // # of digits to left of "."
-//           +       2            // Sign + 1's digit
-//           +       decDigits    // Add in digits right of "."
-//           +       1            // If there is a decimal point
+// 負の指数では：
+// "0." を先に出力してから
+// exponent を +1 して 0 に近づけていた
+//  exponent < 0 の間は 0 を出す
+//  exponent == 0 になったら digits を出し始める
+//
+// 一方、正の指数では：
+// "0." を先に出力しない
+// digits を左へ押し出すために
+//  exponent を毎回 -1 して 0 に近づける
+//  exponent > 0 の間は digits を出し続ける（左側）
+//  exponent == 0 になった時に 小数点を出す
 
 positiveExponent:
 
-    mov     x3, exponent    // Digits to left of "."
-    add     x3, x3, #2      // sign posn.
-    cmp     decDigits, #0   // See if any fractional
-    beq     decPtsIs0       // part
+    // exponentは小数点の位置を計算するために使用する
+    // exponent = 整数部に必要な桁数 − 1
+    // 例
+    //  内部で正規化された文字列は 1234567890000000 のように16桁の整数になっているとする
+    // 正規化されているので
+    //  exponent = 4 だとすると
+    //   1.23456789 を右に4桁小数点を移動 → 12345.6789
+    //  exponent = 3 だったら
+    //  1.23456789 を右に3桁小数点を移動 → 1234.56789
+    // exponent + 1 = 整数部に必要な桁数になる
+    // 符号の１文字を加えるので
+    // exponent + 2 = (符号)+(整数部)の文字数となる
+    // x3 はフィールドに必要な合計文字数 を計算するためのレジスタとして扱っている
 
-    add     x3, x3, decDigits // Digits to right of "."
-    add     x3, x3, #1         // Make room for the "."
+    mov     x3, exponent
+    add     x3, x3, #2         // exponent + 2 = (符号)+(整数部)の文字数
+
+    // decDigits は printf の "%.Nf" の N に相当する、小数部の桁数
+    cmp     decDigits, #0      // 小数部を何桁出力するか確認
+    beq     decPtsIs0          // 小数部が0桁なら小数点出力用の処理はスキップ
+    add     x3, x3, decDigits  // 小数部の桁数を加算 → 全体の出力文字数を示す
+    add     x3, x3, #1         // 小数点 "." のための1文字分、文字数を追加
 
 decPtsIs0:
-
-    // Make sure the result will fit in the
-    // specified field width.
-
-    cmp     x3, fWidth
-    bhi     widthTooBig
-    beq     noFillChars
-
-    // If the actual number of print positions
-    // is less than the specified field width,
-    // output leading pad characters here.
-
-    subs    x2, fWidth, x3
-    beq     noFillChars
-
+    subs    x2, fWidth, x3     // パディング文字数 = フィールド幅 - 実際の文字数
+    bmi     widthTooBig        // x2 < 0 ならフィールド幅を超えている → エラー
+    beq     noFillChars        // x2 == 0 ならパディング不要
 
 fillChars:
     strb    fill, [outBuf, x5]
@@ -986,30 +1023,38 @@ fillChars:
 
 noFillChars:
 
-    // Output the sign character.
+    // 符号文字を書き込み
 
     strb    sign, [outBuf, x5]
     add     x5, x5, #1
 
-    // Okay, output the digits for the number here.
+
+    // 数字を書き込む準備
 
     mov     x2, xzr             // Counts  # of output chars.
     add     x1, fp, #rts.digits // lea x1, rts.digits
-
-
-    // Calculate the number of digits to output
-    // before and after the decimal point.
 
 
     add     x3, decDigits, exponent
     add     x3, x3, #1          // Always one digit before "."
 
 
-// If we've output fewer than 16 digits, go ahead
-// and output the next digit.  Beyond 16 digits,
-// output zeros.
+// 出力用の文字列を書き込む処理
 
 repeatUntilX3eq0:
+    // x2 >= maxDigitsの場合は0で埋める
+    // decDigits は 小数点以下の桁数 を表すパラメータで、printf の %.Nf の N に相当
+    // 浮動小数点（IEEE 754 double）の仕様上、内部で保持できる 有効数字は最大16桁程度（丸め誤差を考慮）。
+    // 整数部も含めて最大16桁だから、decDigitsが16以上ということは最大桁数を超えた指定なので、その分は0を埋めて表示する
+    // 例
+    // 1.234567890123456
+    // decDigits=16
+    // 出力結果
+    // '........... 1.2345678901234560'
+    // となるようにするため
+    // '............ 1.234567890123456'
+    // ではない
+    // あくまでフォーマットの指定に従って出力できるようにするための処理
 
     mov     w0, #'0'
     cmp     x2, #maxDigits
@@ -1018,11 +1063,9 @@ repeatUntilX3eq0:
     ldrb    w0, [x1]
     add     x1, x1, #1
 
-putChar:    strb    w0, [outBuf, x5]
+putChar:
+    strb    w0, [outBuf, x5]
     add     x5, x5, #1
-
-    // If the exponent decrements down to zero,
-    // then output a decimal point.
 
     cmp     exponent, #0
     bne     noDecimalPt
@@ -1030,40 +1073,63 @@ putChar:    strb    w0, [outBuf, x5]
     cmp     decDigits, #0
     beq     noDecimalPt
 
+
+    // exponentが0、かつdecDigitsが0でない場合だけ実行する。
+    // ここが小数点 "." を書き込む位置
+
     mov     w0, #'.'
     strb    w0, [outBuf, x5]
     add     x5, x5, #1
 
 noDecimalPt:
-    sub     exponent, exponent, #1  // Count down to "." output
-    add     x2, x2, #1    // # of digits thus far
-    subs    x3, x3, #1    // Total # of digits to output
+    sub     exponent, exponent, #1  // "." を出力するためにカウント
+    add     x2, x2, #1              // バッファーのインデックス更新で次の文字へ
+    subs    x3, x3, #1              // 合計出力文字数が0になるまで続ける。終了条件
     bne     repeatUntilX3eq0
 
 
-// Zero-terminate string and leave:
-
 r64BufDone:
+    // ゼロ終端文字を書き込んでleave
+
     strb    wzr, [outBuf, x5]
+
 clcAndRet:
-    msr     nzcv, xzr    //clc = No error
+    // msr命令は汎用レジスタの内容または定数をシステムレジスタへ書き込む。ARMアーキテクチャの命令。マクロじゃないよ。
+    // nzcvのフラグをすべて0にクリア
+    // clc = clear conditionの略かな
+
+    msr     nzcv, xzr    // clc = No error
     b.al    popRet
 
 strOverflow:
-    mov     x0, #-3 //String overflow
+    mov     x0, #-3     // String overflow
     b.al    ErrorExit
 
 valOutOfRange:
-    mov     x0, #-1 //Range error
-ErrorExit:
-    mrs     x1, nzcv
-    orr     x1, x1, #(1 << 29)
-    msr     nzcv, x1        // stc=error
-    strb    wzr, [outBuf]   // Just to be safe.
+    mov     x0, #-1     // Range error
 
-    // Change X0 on return:
+ErrorExit:
+    // 29ビット目 = Carryフラグ
+    // エラー通知用にCarryフラグを立てているだけ
+    // 呼び出し元では
+    //  bcs     fpError
+    // でCarryフラグでエラー判定を行っている
+
+    mrs     x1, nzcv            // nzcvのフラグをx1に退避
+    orr     x1, x1, #(1 << 29)  // 29bit目(Carryフラグ)を1にする
+    msr     nzcv, x1            // システムレジスタに書き込む
+    strb    wzr, [outBuf]       // エラー時にバッファを安全のため空にする
+
+
+    // スタックに退避させていたx0の情報をエラー情報に書き換えてからretする
+    // スタックに退避させたレジスタ群を復元するフローを取っているので、
+    // 単純に x0 を返すのではなく、スタック上の保存場所を書き換えてから ldp で復元してる
+    // ローカル変数に書き込んでから最後に復元するということ
 
     str     x0, [fp, #rts.x0x1]
+
+
+// レジスタを復元してret
 
 popRet:
     ldp     x0, x1, [fp, #rts.x0x1]
@@ -1082,116 +1148,123 @@ endp    r64ToStr
 //
 // expToBuf
 //
-// Unsigned integer to buffer.
-// Used to output up to 3-digit exponents.
+// 符号なし整数を文字バッファへ変換する。
+// 主に最大3桁の指数値（exponent）を書き込むために使用する。
 //
-// Inputs:
+// 【入力】
+//  X0:   変換したい符号なし整数
+//  X1:   出力する指数の桁数（1〜3）
+//  X2:   バッファへのポインタ（少なくとも4バイト以上必要）
 //
-//  X0:   Unsigned integer to convert
-//  X1:   Exponent print width 1-3
-//  X2:   Points at buffer (must have at least four bytes).
-//
-// Outputs:
-//
-//  Buffer contains the string representing the converted
-//  exponent.
-//
-//  Carry is clear on success, set on error.
+// 【出力】
+//  バッファには、変換された指数値の文字列が書き込まれる。
+//  正常終了時には Carry フラグはクリアされ、
+//  エラー時には Carry フラグがセットされる。
 
-            proc    expToBuf
-            stp     x0, lr, [sp, #-16]!
-            stp     x1, x3, [sp, #-16]!
-            stp     x4, x5, [sp, #-16]!
+proc    expToBuf
+    stp     x0, lr, [sp, #-16]!
+    stp     x1, x3, [sp, #-16]!
+    stp     x4, x5, [sp, #-16]!
 
-            mov     x5, xzr     // Initialize output string
-            mov     x4, #10     // For division by 10
+    mov     x5, xzr     // 出力する文字列の初期化
+    mov     x4, #10     // 割る数10
 
-// Verify exponent digit count is in the range 1-3:
 
-            cmp     x1, #1
-            blo     badExp
-            cmp     x1, #3
-            bhi     badExp
+    // 入力パラメータのチェック
 
-// Verify the actual exponent will fit in the number of digits:
+    cmp     x1, #1
+    blo     badExp
+    cmp     x1, #3
+    bhi     badExp
 
-            cmp     x1, #2
-            blo     oneDigit
-            beq     twoDigits
+    // 指数の桁数に応じて処理を分ける
 
-            // Must be 3:
+    cmp     x1, #2
+    blo     oneDigit
+    beq     twoDigits
 
-            cmp     x0, #1000
-            bhs     badExp
+    // 3Must be 3:
 
-// Convert 3-digit value to a string:
+    cmp     x0, #1000
+    bhs     badExp
 
-            udiv    x1, x0, x4      // X1=quotient
-            msub    x3, x1, x4, x0  // X3=remainder
-            orr     x3, x3, #'0'
-            orr     x5, x3, x5, lsl #8
 
-            udiv    x0, x1, x4      // X0=quotient
-            msub    x3, x0, x4, x1  // X3=remainder
-            orr     x3, x3, #'0'
-            orr     x5, x3, x5, lsl #8
+    // 10で割って余りを出し、1文字ずつ詰めていくのを3回繰り返す
 
-            udiv    x1, x0, x4      // X1=quotient
-            msub    x3, x1, x4, x0  // X3=remainder
-            orr     x3, x3, #'0'
-            orr     x5, x3, x5, lsl #8
+    udiv    x1, x0, x4      // X1=quotient
+    msub    x3, x1, x4, x0  // X3=remainder
+    orr     x3, x3, #'0'
+    orr     x5, x3, x5, lsl #8
 
-            b.al    outputExp
+    udiv    x0, x1, x4      // X0=quotient
+    msub    x3, x0, x4, x1  // X3=remainder
+    orr     x3, x3, #'0'
+    orr     x5, x3, x5, lsl #8
 
-// Single digit is easy:
+    udiv    x1, x0, x4      // X1=quotient
+    msub    x3, x1, x4, x0  // X3=remainder
+    orr     x3, x3, #'0'
+    orr     x5, x3, x5, lsl #8
+
+    b.al    outputExp
+
 
 oneDigit:
-            cmp     x0, #10
-            bhs     badExp
+    cmp     x0, #10         // x0 が 0〜9 であることを確認
+    bhs     badExp          // そうじゃなければエラーのフラグを立てて終了する
 
-            orr     x5, x0, #'0'
-            b.al    outputExp
+    orr     x5, x0, #'0'    // '0' を ORR して ASCII 数字へ変換してx5 に 1バイトで詰める
+    b.al    outputExp
 
-// Convert value in the range 10-99 to a string
-// containing two characters:
 
 twoDigits:
-            cmp     x0, #100
-            bhs     badExp
+    // 10で割って余りを出し、1文字ずつ詰めていくのを2回繰り返す
 
-            udiv    x1, x0, x4      // X1=quotient
-            msub    x3, x1, x4, x0  // X3=remainder
-            orr     x3, x3, #'0'
-            orr     x5, x3, x5, lsl #8
+    cmp     x0, #100
+    bhs     badExp
 
-            udiv    x0, x1, x4      // X0=quotient
-            msub    x3, x0, x4, x1  // X3=remainder
-            orr     x3, x3, #'0'
-            orr     x5, x3, x5, lsl #8
+    udiv    x1, x0, x4      // X1=quotient
+    msub    x3, x1, x4, x0  // X3=remainder
+    orr     x3, x3, #'0'
+    orr     x5, x3, x5, lsl #8
 
-
-// Store the string into the buffer (includes a zero
-// byte in the HO positions of W5):
+    udiv    x0, x1, x4      // X0=quotient
+    msub    x3, x0, x4, x1  // X3=remainder
+    orr     x3, x3, #'0'
+    orr     x5, x3, x5, lsl #8
 
 outputExp:
-            str     w5, [x2]
-            ldp     x4, x5, [sp], #16
-            ldp     x1, x3, [sp], #16
-            ldp     x0, lr, [sp], #16
-            msr     nzcv, xzr    //clc = No error
-            ret
-            leave
+    // 出力バッファへの書き込み。w5レジスタのHOのゼロバイトを含む
+    str     w5, [x2]
+
+    // レジスタの復元
+    ldp     x4, x5, [sp], #16
+    ldp     x1, x3, [sp], #16
+    ldp     x0, lr, [sp], #16
+
+    // フラグのリセット
+    msr     nzcv, xzr    //clc = No error
+
+    // fpを使っていないので単にretすればOK。leaveは不要
+    ret
 
 badExp:
-            ldp     x4, x5, [sp], #16
-            ldp     x1, x3, [sp], #16
-            ldp     x0, lr, [sp], #16
-            mrs     x0, nzcv
-            orr     x0, x0, #(1 << 29)
-            msr     nzcv, x0        // stc=error
-            mov     x0, #-1      // Value out of range
-            ret
-            endp    expToBuf
+    // レジスタの復元
+
+    ldp     x4, x5, [sp], #16
+    ldp     x1, x3, [sp], #16
+    ldp     x0, lr, [sp], #16
+
+
+    // エラー通知の設定
+    mrs     x0, nzcv
+    orr     x0, x0, #(1 << 29)
+    msr     nzcv, x0        // stc=error
+    mov     x0, #-1         // Value out of range
+
+    // fpを使っていないので単にretすればOK。leaveは不要
+    ret
+endp    expToBuf
 
 
 
@@ -1199,256 +1272,255 @@ badExp:
 //
 // e64ToStr
 //
-// Converts a REAL64 floating-point number to the
-// corresponding string of digits.  Note that this
-// function always emits the string using scientific
-// notation, use the r64ToStr routine for decimal notation.
+// REAL64 浮動小数点数を対応する文字列へ変換する。
+// この関数は常に **科学表記（指数表記）** で文字列を生成する。
+// 通常の小数表記を使いたい場合は r64ToStr を使用すること。
 //
-// On Entry:
+// 【入力】
 //
-//  D0:     (e64) Double-precision value to convert.
+//  D0 : (e64) 変換対象の倍精度浮動小数点数（double）
 //
-//  X0:     (buffer) e64ToStr stores the resulting characters in
-//          this buffer.
+//  X0 : (buffer) 変換後の文字列を書き込むバッファ
 //
-//  X1:     (width) Field width for the number (note that this
-//          is an *exact* field width, not a minimum
-//          field width).
+//  X1 : (width) 文字幅。
+//       ※「最小幅」ではなく **ちょうどこの幅に合わせて出力する**
 //
-//  X2:     (fill) Padding character if the number is smaller
-//          than the specified field width.
+//  X2 : (fill) 数値が width に満たない場合のパディング文字
 //
-//  X3:     (expDigs) Number of exponent digits (2 for real32
-//          and 3 for real64).
+//  X3 : (expDigs) 指数部の桁数
+//       （real32 なら 2 桁、real64 なら 3 桁）
 //
-//  X4:     (maxLength) Maximum buffer size.
+//  X4 : (maxLength) バッファの最大サイズ
 //
-// On Exit:
+// 【出力】
 //
-//  Buffer contains the newly formatted string.  If the
-//  formatted value does not fit in the width specified,
-//  e64ToStr will store "#" characters into this string.
+//  バッファには整形された文字列が格納される。
+//  もし指定した width に収まらない場合、
+//  バッファには "#" 文字が詰められる。
 //
-//  carry:  clear if no error, set if error.
-//          If error, X0 is
-//              -3 if string overflow
-//              -2 if bad width
-//              -1 if value out of range
+//  carry: クリア（0）= 正常終了
+//         セット（1）= エラー
+//
+//         エラー時、X0 には以下のいずれか:
+//             -3 : 文字列オーバーフロー
+//             -2 : 不正な width 値
+//             -1 : 数値が変換可能範囲外
 //
 //-----------------------------------------------------------
 //
-// Unlike the integer to string conversions, this routine
-// always right justifies the number in the specified
-// string.  Width must be a positive number, negative
-// values are illegal (actually, they are treated as
-// *really* big positive numbers which will always raise
-// a string overflow exception.
+// 整数変換ルーチンとは異なり、この関数は常に
+// **指定された幅の中で右寄せ** で出力する。
+// width は正の値でなければならない。
+// 負の値は不正で、実質的には「とても大きい幅」として
+// 扱われるため、必ず文字列オーバーフローになる。
 //
 //***********************************************************
 
-            proc        e64ToStr
+proc        e64ToStr
 
-#define     e2sWidth   x19      // chkNaNINF expects this here
-#define     e2sExp     x20
-#define     e2sFill    x21      // chkNaNINF expects this here
-#define     e2sBuffer  x22      // chkNaNINF expects this here
-#define     e2sMaxLen  x23
-#define     e2sExpDigs x24
+    #define     e2sWidth   x19      // chkNaNINF expects this here
+    #define     e2sExp     x20
+    #define     e2sFill    x21      // chkNaNINF expects this here
+    #define     e2sBuffer  x22      // chkNaNINF expects this here
+    #define     e2sMaxLen  x23
+    #define     e2sExpDigs x24
 
-#define     e2sSign    w25
-#define     eFailAdrs  x25      // chkNaNINF expects this here
-#define     e2sMantSz  x26
+    #define     e2sSign    w25
+    #define     eFailAdrs  x25      // chkNaNINF expects this here
+    #define     e2sMantSz  x26
 
-            locals  e2s
-            qword   e2s.x1x2
-            qword   e2s.x3x4
-            qword   e2s.x5x19
-            qword   e2s.x20x21
-            qword   e2s.x22x23
-            qword   e2s.x24x25
-            qword   e2s.x26x27
-            dword   e2s.x0
-            dword   e2s.d0
-            byte    e2s.digits, 64
-            byte    e2s.stack, 64
-            endl    e2s
+    locals  e2s
+        qword   e2s.x1x2
+        qword   e2s.x3x4
+        qword   e2s.x5x19
+        qword   e2s.x20x21
+        qword   e2s.x22x23
+        qword   e2s.x24x25
+        qword   e2s.x26x27
+        dword   e2s.x0
+        dword   e2s.d0
+        byte    e2s.digits, 64
+        byte    e2s.stack, 64
+    endl    e2s
 
-            // Build activation record and preserve registers:
+    // Build activation record and preserve registers:
 
-            enter   e2s.size
-            str     x0,       [fp, #e2s.x0]
-            stp     x1,  x2,  [fp, #e2s.x1x2]
-            stp     x3,  x4,  [fp, #e2s.x3x4]
-            stp     x5,  x19, [fp, #e2s.x5x19]
-            stp     x20, x21, [fp, #e2s.x20x21]
-            stp     x22, x23, [fp, #e2s.x22x23]
-            stp     x24, x25, [fp, #e2s.x24x25]
-            stp     x26, x27, [fp, #e2s.x26x27]
-            str     d0,       [fp, #e2s.d0]
+    enter   e2s.size
+    str     x0,       [fp, #e2s.x0]
+    stp     x1,  x2,  [fp, #e2s.x1x2]
+    stp     x3,  x4,  [fp, #e2s.x3x4]
+    stp     x5,  x19, [fp, #e2s.x5x19]
+    stp     x20, x21, [fp, #e2s.x20x21]
+    stp     x22, x23, [fp, #e2s.x22x23]
+    stp     x24, x25, [fp, #e2s.x24x25]
+    stp     x26, x27, [fp, #e2s.x26x27]
+    str     d0,       [fp, #e2s.d0]
 
-            // Move important data to non-volatile registers:
 
-            mov     e2sBuffer, x0
-            mov     e2sWidth, x1
-            mov     e2sFill, x2
-            mov     e2sExpDigs, x3
-            mov     e2sMaxLen, x4
+    // 重要なデータをnon-volatileレジスタに保存
 
-            // See if the width is greater than the buffer size:
+    mov     e2sBuffer, x0
+    mov     e2sWidth, x1
+    mov     e2sFill, x2
+    mov     e2sExpDigs, x3
+    mov     e2sMaxLen, x4
 
-            cmp     e2sWidth, e2sMaxLen
-            bhs     strOvfl
 
-            strb    wzr, [e2sBuffer, e2sWidth]  // 0-terminate str
+    // 幅がバッファーのサイズより大きくないかチェック
 
-// First, make sure the width isn't zero.
+    cmp     e2sWidth, e2sMaxLen
+    bhs     strOvfl
 
-            cmp     e2sWidth, #0
-            beq     valOutOfRng
+    strb    wzr, [e2sBuffer, e2sWidth]  // 0-terminate str
 
-// Just to be on the safe side, don't allow widths greater
-// than 1024:
 
-            cmp     e2sWidth, #1024
-            bhi     badWidth
+    // 幅が0でないことをはじめに保証する
 
-// Check for NaN and INF
+    cmp     e2sWidth, #0
+    beq     valOutOfRng
 
-            lea     failAdrs, exit_eToBuf   // Note: X25, used before
-            bl      chkNaNINF               // e2sSign (also X25).
 
-// Okay, do the conversion.
+    // 安全のために1024より大きい幅は許可しない
 
-            add     x0, fp, #e2s.digits // lea x1, e2s.digits
-            bl      FPDigits        // Convert D0 to digit str
-            mov     e2sExp, x1      // Save away exponent result
-            mov     e2sSign, w2     // Save mantissa sign char
+    cmp     e2sWidth, #1024
+    bhi     badWidth
 
-// Verify that there is sufficient room for the mantissa's sign,
-// the decimal point, two mantissa digits, the "E",
-// and the exponent's sign.  Also add in the number of digits
-// required by the exponent (2 for single, 3 for double).
-//
-// -1.2e+00    :real4
-// -1.2e+000   :real8
 
-            add     x2, e2sExpDigs, #6    // Minimum number of posns
-            cmp     x2, e2sWidth
-            bls     goodWidth
+    // NaNとINFをチェックする
+    // NaNかINFだった場合は以降の変換処理をスキップするために戻りアドレスを設定する
 
-// Output a sequence of "#...#" chars (to the specified width)
-// if the width value is not large enough to hold the
-// conversion:
+    lea     eFailAdrs, exit_eToBuf
+    bl      chkNaNINF
 
-            mov     x2, e2sWidth
-            mov     x0, #'#'
-            mov     x1, e2sBuffer
-fillPnd:    strb    w0, [x1]
-            add     x1, x1, #1
-            subs    x2, x2, #1
-            bne     fillPnd
-            b.al    exit_eToBuf
 
-// Okay, the width is sufficient to hold the number, do the
-// conversion and output the string here:
+    // 例外処理を終えたので変換を行う
+
+    add     x0, fp, #e2s.digits // lea x1, e2s.digits
+    bl      FPDigits            // D0を数字に変換する
+    mov     e2sExp, x1          // 指数の結果を保持する
+    mov     e2sSign, w2         // 符号の文字を保持する
+
+    // 科学表記法なので指数部の桁数（e2sExpDigs）を省いたら最低6文字分のスペースは必要
+    // [sign][digit][.][digits...] e [+/-][exp digits]
+    // [exp digits]を除いて6箇所ある
+
+    add     x2, e2sExpDigs, #6    // Minimum number of posns
+    cmp     x2, e2sWidth
+    bls     goodWidth
+
+
+    // 最低限の長さに満たない場合は "#####" を埋めて終わる。
+
+    mov     x2, e2sWidth
+    mov     x0, #'#'
+    mov     x1, e2sBuffer
+fillPnd:
+    strb    w0, [x1]
+    add     x1, x1, #1
+    subs    x2, x2, #1
+    bne     fillPnd
+    b.al    exit_eToBuf
+
+
+// 幅が数字を保持するのに足りるので、出力する文字列の変換を行う
 
 goodWidth:
-            // Compute the # of mantissa digits to display,
-            // not counting mantissa sign, decimal point,
-            // "E", and exponent sign.
+    // Compute the # of mantissa digits to display,
+    // not counting mantissa sign, decimal point,
+    // "E", and exponent sign.
 
-            sub     e2sMantSz, e2sWidth, e2sExpDigs
-            sub     e2sMantSz, e2sMantSz, #4
+    sub     e2sMantSz, e2sWidth, e2sExpDigs
+    sub     e2sMantSz, e2sMantSz, #4
 
-            // Round the number to the specified number of
-            // print positions. (Note: since there are a
-            // maximum of 16 significant digits, don't
-            // bother with the rounding if the field width
-            // is greater than 16 digits.)
+    // Round the number to the specified number of
+    // print positions. (Note: since there are a
+    // maximum of 16 significant digits, don't
+    // bother with the rounding if the field width
+    // is greater than 16 digits.)
 
-            cmp     e2sMantSz, #maxDigits
-            bhs     noNeedToRound
+    cmp     e2sMantSz, #maxDigits
+    bhs     noNeedToRound
 
-            // To round the value to the number of
-            // significant digits, go to the digit just
-            // beyond the last one we are considering (e2sMantSz
-            // currently contains the number of decimal
-            // positions) and add 5 to that digit.
-            // Propagate any overflow into the remaining
-            // digit positions.
+    // To round the value to the number of
+    // significant digits, go to the digit just
+    // beyond the last one we are considering (e2sMantSz
+    // currently contains the number of decimal
+    // positions) and add 5 to that digit.
+    // Propagate any overflow into the remaining
+    // digit positions.
 
-            add     x1, e2sMantSz, #1
-            add     x2, fp, #e2s.digits // lea x2, e2s.digits
-            ldrb    w0, [x2, x1]        // Get least sig digit + 1.
-            add     w0, w0, #5          // Round (e.g., +0.5 ).
-            cmp     w0, #'9'
-            bhi     whileDigGT9
-            b.al    noNeedToRound
+    add     x1, e2sMantSz, #1
+    add     x2, fp, #e2s.digits // lea x2, e2s.digits
+    ldrb    w0, [x2, x1]        // Get least sig digit + 1.
+    add     w0, w0, #5          // Round (e.g., +0.5 ).
+    cmp     w0, #'9'
+    bhi     whileDigGT9
+    b.al    noNeedToRound
 
 // Sneak this code in here, after a branch, so the
 // loop below doesn't get broken up.
 
 firstDigitInNumber:
 
-            // If we get to this point, then we've hit the
-            // first digit in the number.  So we've got to
-            // shift all the characters down one position
-            // in the string of bytes and put a "1" in the
-            // first character position.
+    // If we get to this point, then we've hit the
+    // first digit in the number.  So we've got to
+    // shift all the characters down one position
+    // in the string of bytes and put a "1" in the
+    // first character position.
 
-            ldr     x0, [x2, #8]
-            str     x0, [x2, #9]
-            ldr     x0, [x2]
-            str     x0, [x2, #1]
+    ldr     x0, [x2, #8]
+    str     x0, [x2, #9]
+    ldr     x0, [x2]
+    str     x0, [x2, #1]
 
-            mov     x0, #'1'        // Store '1' in 1st
-            strb    w0, [x2]        // digit position
+    mov     x0, #'1'        // Store '1' in 1st
+    strb    w0, [x2]        // digit position
 
-            // Bump exponent by one as the shift did
-            // a divide by 10.
+    // Bump exponent by one as the shift did
+    // a divide by 10.
 
-            add     e2sExp, e2sExp, #1
-            b.al    noNeedToRound
+    add     e2sExp, e2sExp, #1
+    b.al    noNeedToRound
 
 // Subtract out overflow and add the carry into the previous
 // digit (unless we hit the first digit in the number).
 
 whileDigGT9:
-            sub     w0, w0, #10
-            strb    w0, [x2, x1]
-            subs    x1, x1, #1
-            bmi     firstDigitInNumber
+    sub     w0, w0, #10
+    strb    w0, [x2, x1]
+    subs    x1, x1, #1
+    bmi     firstDigitInNumber
 
-            // Add in carry to previous digit:
+    // Add in carry to previous digit:
 
-            ldrb    w0, [x2, x1]
-            add     w0, w0, #1
-            strb    w0, [x2, x1]
-            cmp     w0, #'9'        // Overflow if char > '9'
-            bhi     whileDigGT9
+    ldrb    w0, [x2, x1]
+    add     w0, w0, #1
+    strb    w0, [x2, x1]
+    cmp     w0, #'9'        // Overflow if char > '9'
+    bhi     whileDigGT9
 
 noNeedToRound:
-            add     x2, fp, #e2s.digits // lea x2, e2s.digits
+    add     x2, fp, #e2s.digits // lea x2, e2s.digits
 
 
 // Okay, emit the string at this point.  This is pretty easy
 // since all we really need to do is copy data from the
 // digits array and add an exponent (plus a few other simple chars).
 
-            mov     x1, #0      // Count output mantissa digits.
-            strb    e2sSign, [e2sBuffer], #1
+    mov     x1, #0      // Count output mantissa digits.
+    strb    e2sSign, [e2sBuffer], #1
 
 // Output the first character and a following decimal point
 // if there are more than two mantissa digits to output.
 
-            ldrb    w0, [x2]
-            strb    w0, [e2sBuffer], #1
-            add     x1, x1, #1
-            cmp     x1, e2sMantSz
-            beq     noDecPt
+    ldrb    w0, [x2]
+    strb    w0, [e2sBuffer], #1
+    add     x1, x1, #1
+    cmp     x1, e2sMantSz
+    beq     noDecPt
 
-            mov     w0, #'.'
-            strb    w0, [e2sBuffer], #1
+    mov     w0, #'.'
+    strb    w0, [e2sBuffer], #1
 
 noDecPt:
 
@@ -1457,77 +1529,79 @@ noDecPt:
 // more than 16 digits, this routine will output zeros
 // for the additional digits.
 
-            b.al    whileX2ltMantSizeTest
+    b.al    whileX2ltMantSizeTest
 
 whileX2ltMantSize:
 
-            mov     w0, #'0'
-            cmp     x1, #maxDigits
-            bhs     justPut0
+    mov     w0, #'0'
+    cmp     x1, #maxDigits
+    bhs     justPut0
 
-            ldrb    w0, [x2, x1]
+    ldrb    w0, [x2, x1]
 
 justPut0:
-            strb    w0, [e2sBuffer], #1
-            add     x1, x1, #1
+    strb    w0, [e2sBuffer], #1
+    add     x1, x1, #1
 
 whileX2ltMantSizeTest:
 
-            cmp     x1, e2sMantSz
-            blo     whileX2ltMantSize
+    cmp     x1, e2sMantSz
+    blo     whileX2ltMantSize
 
 // Output the exponent:
 
-            mov     w0, #'e'
-            strb    w0, [e2sBuffer], #1
-            mov     w0, #'+'
-            mov     w4, #'-'
-            neg     x5, e2sExp
+    mov     w0, #'e'
+    strb    w0, [e2sBuffer], #1
+    mov     w0, #'+'
+    mov     w4, #'-'
+    neg     x5, e2sExp
 
-            cmp     e2sExp, #0
-            csel    w0, w0, w4, ge
-            csel    e2sExp, e2sExp, x5, ge
+    cmp     e2sExp, #0
+    csel    w0, w0, w4, ge
+    csel    e2sExp, e2sExp, x5, ge
 
-            strb    w0, [e2sBuffer], #1
+    strb    w0, [e2sBuffer], #1
 
 
-            mov     x0, e2sExp
-            mov     x1, e2sExpDigs
-            mov     x2, e2sBuffer
-            bl      expToBuf
-            bcs     error
+    mov     x0, e2sExp
+    mov     x1, e2sExpDigs
+    mov     x2, e2sBuffer
+    bl      expToBuf
+    bcs     error
 
 exit_eToBuf:
-            msr     nzcv, xzr    //clc = No error
-            ldr     x0, [fp, #e2s.x0]
+    msr     nzcv, xzr    //clc = No error
+    ldr     x0, [fp, #e2s.x0]
 
 returnE64:
-            ldp     x1,  x2,  [fp, #e2s.x1x2]
-            ldp     x3,  x4,  [fp, #e2s.x3x4]
-            ldp     x5,  x19, [fp, #e2s.x5x19]
-            ldp     x20, x21, [fp, #e2s.x20x21]
-            ldp     x22, x23, [fp, #e2s.x22x23]
-            ldp     x24, x25, [fp, #e2s.x24x25]
-            ldp     x26, x27, [fp, #e2s.x26x27]
-            ldr     d0,       [fp, #e2s.d0]
-            leave
+    ldp     x1,  x2,  [fp, #e2s.x1x2]
+    ldp     x3,  x4,  [fp, #e2s.x3x4]
+    ldp     x5,  x19, [fp, #e2s.x5x19]
+    ldp     x20, x21, [fp, #e2s.x20x21]
+    ldp     x22, x23, [fp, #e2s.x22x23]
+    ldp     x24, x25, [fp, #e2s.x24x25]
+    ldp     x26, x27, [fp, #e2s.x26x27]
+    ldr     d0,       [fp, #e2s.d0]
+    leave
 
+strOvfl:
+    mov     x0, #-3
+    b.al    error
 
-strOvfl:    mov     x0, #-3
-            b.al    error
-
-badWidth:   mov     x0, #-2
-            b.al    error
+badWidth:
+    mov     x0, #-2
+    b.al    error
 
 valOutOfRng:
-            mov     x0, #-1
-error:
-            mrs     x1, nzcv
-            orr     x1, x1, #(1 << 29)
-            msr     nzcv, x1        // stc=error
-            b.al    returnE64
+    mov     x0, #-1
 
-            endp    e64ToStr
+error:
+    mrs     x1, nzcv
+    orr     x1, x1, #(1 << 29)
+    msr     nzcv, x1        // stc=error
+    b.al    returnE64
+
+endp    e64ToStr
 
 
 
@@ -1536,49 +1610,49 @@ error:
 // Utility functions to convert Real64 values and print
 // the string results:
 
-            proc    r64Print
-            stp     x0, x1, [sp, #-16]!
-            stp     x2, x3, [sp, #-16]!
-            stp     x4, x5, [sp, #-16]!
-            stp     x6, x7, [sp, #-16]!
-            stp     x8, lr, [sp, #-16]!
-            sub     sp, sp, #64
+proc    r64Print
+    stp     x0, x1, [sp, #-16]!
+    stp     x2, x3, [sp, #-16]!
+    stp     x4, x5, [sp, #-16]!
+    stp     x6, x7, [sp, #-16]!
+    stp     x8, lr, [sp, #-16]!
+    sub     sp, sp, #64
 
-            lea     x0, fmtStr1
-            lea     x1, r64str_1
-            mstr    x1, [sp]
-            bl      printf
+    lea     x0, fmtStr1
+    lea     x1, r64str_1
+    mstr    x1, [sp]
+    bl      printf
 
-            add     sp, sp, #64
-            ldp     x8, lr, [sp], #16
-            ldp     x6, x7, [sp], #16
-            ldp     x4, x5, [sp], #16
-            ldp     x2, x3, [sp], #16
-            ldp     x0, x1, [sp], #16
-            ret
-            endp    r64Print
+    add     sp, sp, #64
+    ldp     x8, lr, [sp], #16
+    ldp     x6, x7, [sp], #16
+    ldp     x4, x5, [sp], #16
+    ldp     x2, x3, [sp], #16
+    ldp     x0, x1, [sp], #16
+    ret
+endp    r64Print
 
-            proc    e64Print
-            stp     x0, x1, [sp, #-16]!
-            stp     x2, x3, [sp, #-16]!
-            stp     x4, x5, [sp, #-16]!
-            stp     x6, x7, [sp, #-16]!
-            stp     x8, lr, [sp, #-16]!
-            sub     sp, sp, #64
+proc    e64Print
+    stp     x0, x1, [sp, #-16]!
+    stp     x2, x3, [sp, #-16]!
+    stp     x4, x5, [sp, #-16]!
+    stp     x6, x7, [sp, #-16]!
+    stp     x8, lr, [sp, #-16]!
+    sub     sp, sp, #64
 
-            lea     x0, fmtStr3
-            lea     x1, r64str_1
-            mstr    x1, [sp]
-            bl      printf
+    lea     x0, fmtStr3
+    lea     x1, r64str_1
+    mstr    x1, [sp]
+    bl      printf
 
-            add     sp, sp, #64
-            ldp     x8, lr, [sp], #16
-            ldp     x6, x7, [sp], #16
-            ldp     x4, x5, [sp], #16
-            ldp     x2, x3, [sp], #16
-            ldp     x0, x1, [sp], #16
-            ret
-            endp    e64Print
+    add     sp, sp, #64
+    ldp     x8, lr, [sp], #16
+    ldp     x6, x7, [sp], #16
+    ldp     x4, x5, [sp], #16
+    ldp     x2, x3, [sp], #16
+    ldp     x0, x1, [sp], #16
+    ret
+endp    e64Print
 
 
 /////////////////////////////////////////////////////////
@@ -1616,6 +1690,7 @@ eCnt         =       (. - e64_1)
 
 eSizes:     .word    6, 9, 8, 12, 14, 16, 18, 20, 12, 12, 12, 12, 8, 8
 expSizes:   .word    3, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2
+
 
 // Here is the "asmMain" function.
 
