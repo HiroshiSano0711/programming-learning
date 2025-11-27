@@ -748,22 +748,6 @@ dontForceWidthZero:
     // decDigitsはprintfでいう"%5f"の"5"のようなフォーマットで表示する桁数を指定する値
     // 有効桁数以上の値は丸めないという仕様
 
-    // 書籍ソースコード修正箇所。動かなかったら元に戻す
-    //add     x2, x0, decDigits
-    //cmp     x2, #maxDigits    // x2 >= maxDigits ならジャンプ
-    //
-    // ※注意：おそらく書籍の間違いだと思われる。これ以降dontRoundまでは実際に実行されることはない
-    //
-    // 上記のコードでx2がアドレスになってることに注意。
-    //  add     x2, x0, decDigits
-    //  x0がバッファーへのポインタなので、ポインタ演算になっている
-    //  よって
-    //  cmp     x2, #maxDigits
-    //  bhs     dontRound
-    // の処理は必ずtrueになる。
-    // アドレスを整数値としてみなして計算されるが、アドレス >= 数値に必ずなるから
-    //
-    // ↓修正後のコード
     cmp     decDigits, #maxDigits
     bhs     dontRound         // decDigits >= maxDigits ならジャンプ
 
@@ -1425,65 +1409,43 @@ fillPnd:
 // 幅が数字を保持するのに足りるので、出力する文字列の変換を行う
 
 goodWidth:
-    // Compute the # of mantissa digits to display,
-    // not counting mantissa sign, decimal point,
-    // "E", and exponent sign.
-
+    // 出力するsignificandのサイズを計算
     sub     e2sMantSz, e2sWidth, e2sExpDigs
+
+    // 全体から符号、小数点、e、指数の符合の4文字は省くからマイナス4
     sub     e2sMantSz, e2sMantSz, #4
 
-    // Round the number to the specified number of
-    // print positions. (Note: since there are a
-    // maximum of 16 significant digits, don't
-    // bother with the rounding if the field width
-    // is greater than 16 digits.)
-
+    // 16桁より多かったら丸める
     cmp     e2sMantSz, #maxDigits
     bhs     noNeedToRound
 
-    // To round the value to the number of
-    // significant digits, go to the digit just
-    // beyond the last one we are considering (e2sMantSz
-    // currently contains the number of decimal
-    // positions) and add 5 to that digit.
-    // Propagate any overflow into the remaining
-    // digit positions.
-
-    add     x1, e2sMantSz, #1
+    // 丸め処理。四捨五入
+    add     x1, e2sMantSz, #1   // 丸める対象の桁へ移動。サイズ+1
     add     x2, fp, #e2s.digits // lea x2, e2s.digits
-    ldrb    w0, [x2, x1]        // Get least sig digit + 1.
-    add     w0, w0, #5          // Round (e.g., +0.5 ).
+    ldrb    w0, [x2, x1]        // その値を取得する
+    add     w0, w0, #5
+
+    // 5を足して9より大きいなら繰り上がり処理へ
     cmp     w0, #'9'
     bhi     whileDigGT9
+
+    // そうじゃなければ通常処理へ
     b.al    noNeedToRound
 
-// Sneak this code in here, after a branch, so the
-// loop below doesn't get broken up.
 
+// 最上位桁まで繰り上がるようなら各数字を1つ後ろへずらし、先頭へ1を追加する処理
+// 9.9999 のような数を 4 桁に丸めると 1.000e+1 のように正しく出力するため
 firstDigitInNumber:
-
-    // If we get to this point, then we've hit the
-    // first digit in the number.  So we've got to
-    // shift all the characters down one position
-    // in the string of bytes and put a "1" in the
-    // first character position.
-
     ldr     x0, [x2, #8]
     str     x0, [x2, #9]
     ldr     x0, [x2]
     str     x0, [x2, #1]
 
-    mov     x0, #'1'        // Store '1' in 1st
-    strb    w0, [x2]        // digit position
-
-    // Bump exponent by one as the shift did
-    // a divide by 10.
+    mov     x0, #'1'
+    strb    w0, [x2]
 
     add     e2sExp, e2sExp, #1
     b.al    noNeedToRound
-
-// Subtract out overflow and add the carry into the previous
-// digit (unless we hit the first digit in the number).
 
 whileDigGT9:
     sub     w0, w0, #10
@@ -1491,28 +1453,20 @@ whileDigGT9:
     subs    x1, x1, #1
     bmi     firstDigitInNumber
 
-    // Add in carry to previous digit:
-
     ldrb    w0, [x2, x1]
     add     w0, w0, #1
     strb    w0, [x2, x1]
-    cmp     w0, #'9'        // Overflow if char > '9'
+    cmp     w0, #'9'
     bhi     whileDigGT9
 
 noNeedToRound:
-    add     x2, fp, #e2s.digits // lea x2, e2s.digits
+    add     x2, fp, #e2s.digits
+    mov     x1, #0
 
-
-// Okay, emit the string at this point.  This is pretty easy
-// since all we really need to do is copy data from the
-// digits array and add an exponent (plus a few other simple chars).
-
-    mov     x1, #0      // Count output mantissa digits.
+    // 符号の書き込みしてポストインクリメント
     strb    e2sSign, [e2sBuffer], #1
 
-// Output the first character and a following decimal point
-// if there are more than two mantissa digits to output.
-
+    // 最初の1桁＋小数点の書き込みして、それぞれポストインクリメント
     ldrb    w0, [x2]
     strb    w0, [e2sBuffer], #1
     add     x1, x1, #1
@@ -1523,16 +1477,9 @@ noNeedToRound:
     strb    w0, [e2sBuffer], #1
 
 noDecPt:
-
-// Output any remaining mantissa digits here.
-// Note that if the caller requests the output of
-// more than 16 digits, this routine will output zeros
-// for the additional digits.
-
     b.al    whileX2ltMantSizeTest
 
 whileX2ltMantSize:
-
     mov     w0, #'0'
     cmp     x1, #maxDigits
     bhs     justPut0
@@ -1543,31 +1490,32 @@ justPut0:
     strb    w0, [e2sBuffer], #1
     add     x1, x1, #1
 
+// 残りの有効桁数を出力する。16桁を超える場合は0を書き込む。
 whileX2ltMantSizeTest:
-
     cmp     x1, e2sMantSz
     blo     whileX2ltMantSize
 
-// Output the exponent:
-
+    // 指数部の書き込み
+    // 'e'と指数の符号を書き込んでから、指数値を expToBuf関数 で書き込む
     mov     w0, #'e'
     strb    w0, [e2sBuffer], #1
     mov     w0, #'+'
     mov     w4, #'-'
-    neg     x5, e2sExp
 
-    cmp     e2sExp, #0
-    csel    w0, w0, w4, ge
-    csel    e2sExp, e2sExp, x5, ge
+    // 指数の符号に応じて出力文字と指数の値を調整する
+    neg     x5, e2sExp              // x5 = -e2sExp
+    cmp     e2sExp, #0              // e2sExp が 0 以上かどうかをチェック
+    csel    w0, w0, w4, ge          // w0 = (e2sExp >= 0) ? w0 : w4
+    csel    e2sExp, e2sExp, x5, ge  // e2sExp = (e2sExp >= 0) ? e2sExp : -e2sExp
+    strb    w0, [e2sBuffer], #1     // 符号の書き込み
 
-    strb    w0, [e2sBuffer], #1
 
-
+    // expToBufを呼んで、指数の値を書き込む
     mov     x0, e2sExp
     mov     x1, e2sExpDigs
     mov     x2, e2sBuffer
     bl      expToBuf
-    bcs     error
+    bcs     error               // Carryフラグが立ってる場合はエラー
 
 exit_eToBuf:
     msr     nzcv, xzr    //clc = No error
@@ -1604,11 +1552,16 @@ error:
 endp    e64ToStr
 
 
-
-/////////////////////////////////////////////////////////
-//
-// Utility functions to convert Real64 values and print
-// the string results:
+// アドレスの安全性や呼び出し規約の準拠のためのラッパー関数
+// PIE+ASLR対応と考えてOK
+// 動的にアドレスを解決して実行できるから遠すぎて相対アドレスで読めないってことがなくなる
+// PIE や ASLR が有効だと、実行時に各モジュールや文字列リテラルの配置はランダム化される
+// そのため、静的に決まったアドレス（コンパイル時の絶対アドレス）に直接アクセスしてはいけない。
+// このラッパー関数では：
+//  lea x0, fmtStr1 のように 相対オフセットで文字列アドレスをレジスタにロード
+//  mstr でスタックに格納して printf に渡す
+// という流れになっているので、実行時に正しいアドレスに解決される
+// 文字列が遠すぎて相対アドレスで届かないとか、ASLRでロードアドレスが変わったから参照できないという問題を回避
 
 proc    r64Print
     stp     x0, x1, [sp, #-16]!
@@ -1692,7 +1645,26 @@ eSizes:     .word    6, 9, 8, 12, 14, 16, 18, 20, 12, 12, 12, 12, 8, 8
 expSizes:   .word    3, 3, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 2, 2
 
 
-// Here is the "asmMain" function.
+// asmMain function.
+//
+// データ準備
+// r64_1 と e64_1 にテスト用の数値（double）を置く
+// rSizes / eSizes / expSizes にフォーマット指定（幅や有効桁数）を置く
+//
+// F 表記出力ループ
+//  固定小数点風に表示する場合（r64ToStr）
+//  decDigits を変えながらループ
+//  r64Print で出力
+//
+// E 表記出力ループ
+//  指数表記で表示する場合（e64ToStr）
+//   幅や指数桁数を配列から取得
+//  e64Print で出力
+//   エラー処理
+//  r64ToStr / e64ToStr が返すエラーをチェック
+//  fpError ラベルで printf に出力
+// r64ToBuf と e64ToBuf の動作確認用のループがメインになっているだけ。
+// 特別な演算はほぼなくて、各数値を変換 → バッファに入れる → 出力、という繰り返し
 
 proc    asmMain, public
 

@@ -1,18 +1,20 @@
 // Listing 9-17
 //
-// Real string to floating-point conversion
+// 文字列で表現された浮動小数点数を、double（64-bit浮動小数）に変換する
 
-            #include    "aoaa.inc"
+#include    "aoaa.inc"
 
-false       =           0
-true        =           1                                                           
-tab         =           9
+false = 0
+true  = 1
+tab   = 9
 
-            .section    .rodata, ""
+.section    .rodata, ""
 ttlStr:     .asciz      "Listing 9-17"
 fmtStr1:    .asciz      "strToR64: str='%s', value=%e\n"
 errFmtStr:  .asciz      "strToR64 error, code=%ld\n"
-           
+
+// テスト用のサンプルデータ
+
 fStr1a:     .asciz      " 1.234e56"
 fStr1b:     .asciz      "\t-1.234e+56"
 fStr1c:     .asciz      "1.234e-56"
@@ -39,7 +41,10 @@ fStr5c:     .asciz      "0"
 fStr5d:     .asciz      "1."
 fStr6a:     .asciz      "0.000000000000000000001"
 
-            .align      3
+
+// .dword が8バイト(64bit)データだから、8バイト境界に揃える
+
+.align      3
 values:     .dword      fStr1a, fStr1b, fStr1c, fStr1d
             .dword      fStr2a, fStr2b, fStr2c, fStr2d
             .dword      fStr3a, fStr3b
@@ -62,571 +67,454 @@ PotTbl:     .double     1.0e+256
             .double     1.0e+1
             .double     1.0e+0
 
-            .data
+.data
 r8Val:      .double     0.0
 
-            
-            .code
-            .extern     printf
 
-///////////////////////////////////////////////////////////////
-//
-// Debugging code:
-
-        .macro  pushVol
-         stp    d0, d1, [sp, #-16]!
-         stp    x0, x1, [sp, #-16]!
-         stp    x2, x3, [sp, #-16]!
-         stp    x4, x5, [sp, #-16]!
-         stp    x6, x7, [sp, #-16]!
-         stp    x8, x9, [sp, #-16]!
-         stp    x10, x11, [sp, #-16]!
-         stp    x12, x13, [sp, #-16]!
-         stp    x14, x15, [sp, #-16]!
-         sub    sp, sp, #64
-        .endm
-
-        .macro  popVol
-         add    sp, sp, #64
-         ldp    x14, x15, [sp], #16
-         ldp    x12, x13, [sp], #16
-         ldp    x10, x11, [sp], #16
-         ldp    x8, x9, [sp], #16
-         ldp    x6, x7, [sp], #16
-         ldp    x4, x5, [sp], #16
-         ldp    x2, x3, [sp], #16
-         ldp    x0, x1, [sp], #16
-         ldp    d0, d1, [sp], #16
-        .endm
-
-
-rtnAdrs     =       8           // Offset to rtn adrs from FP
-
-            proc    print
-            
-            locals  print
-            qword   print.x0x1
-            qword   print.x2x3
-            qword   print.x4x5
-            qword   print.x6x7
-            qword   print.x8x9
-            qword   print.x10x11
-            qword   print.x12x13
-            qword   print.x14x15
-            byte    stackSpace, 64
-            endl    print
-            
-            enter   print.size
-            
-            // Assembly language convention-- save all the
-            // registers whose values we change. Spares
-            // caller from having to preserve volatile
-            // registers. Note that as this code calls
-            // the write() function (using the ARM ABI)
-            // we have to preserve all volatile registers.
-
-            stp     x0, x1, [fp, #print.x0x1]
-            stp     x2, x3, [fp, #print.x2x3]
-            stp     x4, x5, [fp, #print.x4x5]
-            stp     x6, x7, [fp, #print.x6x7]
-            stp     x8, x9, [fp, #print.x8x9]
-            stp     x10, x11, [fp, #print.x10x11]
-            stp     x12, x13, [fp, #print.x12x13]
-            stp     x14, x15, [fp, #print.x14x15]
-            
-                
-            // Compute the length of the string immediately
-            // following the call to this procedure.
-              
-            mov     x1, lr              //Get pointer to string
-search4_0:  ldrb    w2, [x1], #1        //Get next char
-            cmp     w2,  #0             //At end of string?
-            bne     search4_0           //If not, keep searching
-            sub     x2, x1, lr          //Compute string length
-            
-            // LR now points just beyond the zero byte. We need to
-            // make sure this address is 4-byte aligned:
-
-            add     x1, x1, #3
-            and     x1, x1, #-4         // 0xfff...fff0
-            
-            // X1 points just beyond the zero byte and padding.
-            // Save it as the new return address:
-
-            str     x1, [fp, #rtnAdrs]
-            
-            // Call write to print the string to the console
-            //
-            // write( fd, bufAdrs, len);
-            //
-            // fd in X0 (this will be 0 for stdout)
-            // bufAdrs in X1
-            // len in X2
-
-            mov     x0, xzr         //stdout = 0
-            mov     x1, lr          //Pointer to string
-            mstr    x1, [sp]
-            bl      write
-            
-            // Restore the registers we used:
-
-            ldp     x0, x1, [fp, #print.x0x1]
-            ldp     x2, x3, [fp, #print.x2x3]
-            ldp     x4, x5, [fp, #print.x4x5]
-            ldp     x6, x7, [fp, #print.x6x7]
-            ldp     x8, x9, [fp, #print.x8x9]
-            ldp     x10, x11, [fp, #print.x10x11]
-            ldp     x12, x13, [fp, #print.x12x13]
-            ldp     x14, x15, [fp, #print.x14x15]
-            leave                   //Return to caller
-            endp    print
-
-
+.code
+.extern     printf
 
 ///////////////////////////////////////////////////////////
-//            
+//
 // Return program title to C++ program:
 
-            proc    getTitle, public
-            lea     x0, ttlStr
-            ret
-            endp    getTitle
+proc    getTitle, public
+    lea     x0, ttlStr
+    ret
+endp    getTitle
+
 
 //*********************************************************
-//                                                         
-// strToR64-                                                   
 //
-// On entry:
-//                                                         
-//  X0: points at a string of characters that represent a   
-//      floating point value.  
+// strToR64
 //
-// On return:
+// 【入力】
 //
-//  D0: Converted result
-//  X0: On return, X0 points at the first character this 
-//      routine couldn't convert (if no error).
+//  X0: 浮動小数点数を表す文字列へのポインタ
 //
-//  C:  Carry flag is clear if no error, set if error.
-//      X0 is preserved if an error, X1 contains an
-//      error code if an error occurs (else X1 is
-//      preserved).          
-//                                                         
+// 【出力】
+//
+//  D0: 変換された浮動小数点値
+//  X0:（正常終了時）変換できなかった最初の文字を指す
+//
+//  C:  キャリーフラグ
+//      正常時はクリア、エラー時はセットされる。
+//      エラー発生時は X0 の値は保存される。
+//      エラー時は X1 にエラーコードが格納される
+//      （正常時は X1 の値は保持される）。
+//
 //*********************************************************
 
-            proc    strToR64
-            
-            locals  sr
-            qword   sr.x1x2
-            qword   sr.x3x4
-            qword   sr.x5x6
-            qword   sr.x7x0
-            dword   sr.d1
-            byte    sr.stack, 64    //Not really needed, but...
-            endl    sr
-            
-            enter   sr.size
-            
-// Defines to give registers more
-// meaningful names:
+proc    strToR64
 
-#define mant    x1      //Mantissa value
-#define sigDig  x2      //Mantissa significant digits
-#define expAcc  x2      //Exponent accumulator
-#define sign    w3      //Mantissa sign
-#define fpExp   x4      //Exponent
-#define expSign w5      //Exponent sign
-#define ch      w6      //Current character
-#define xch     x6      //Current character (64 bits)
-#define ten     x7      //The value 10
+    locals  sr
+        qword   sr.x1x2
+        qword   sr.x3x4
+        qword   sr.x5x6
+        qword   sr.x7x0
+        dword   sr.d1
+        byte    sr.stack, 64    //Not really needed, but...
+    endl    sr
 
-            // Preserve the registers this
-            // code modifies:
-            
-            stp     x1, x2, [fp, #sr.x1x2]
-            stp     x3, x4, [fp, #sr.x3x4]
-            stp     x5, x6, [fp, #sr.x5x6]
-            stp     x7, x0, [fp, #sr.x7x0]
-            str     d1,     [fp, #sr.d1  ]
-            
-            // Useful initialization:
-            
-            mov     fpExp, xzr      //X3 Decimal exponent value
-            mov     mant, xzr       //X0 Mantissa value    
-            mov     sign, wzr       //W2 Assume non-negative
-            
-            // Initialize sigDig with 16, the number of
-            // significant digits left to process.
-            
-            mov     sigDig, #16     //X1
+    enter   sr.size
 
-            // Verify that X0 is not NULL.
-            
-            cmp     x0, xzr
-            beq     refNULL
-                    
-// Skip over any leading space or tab characters in the sequence.
-            
-            sub     x0, x0, #1      //Will inc'd in loop
+    // より意味のある名前をレジスタに定義
+
+    #define mant    x1      // 仮数部の値
+    #define sigDig  x2      // 仮数部の有効桁数
+    #define expAcc  x2      // 指数の累積値
+    #define sign    w3      // 仮数部の符号
+    #define fpExp   x4      // 10進指数
+    #define expSign w5      // 指数部の符号
+    #define ch      w6      // 現在の文字
+    #define xch     x6      // 現在の文字（64ビット）
+    #define ten     x7      // 定数 10
+
+    // このコードが変更するレジスターを退避
+
+    stp     x1, x2, [fp, #sr.x1x2]
+    stp     x3, x4, [fp, #sr.x3x4]
+    stp     x5, x6, [fp, #sr.x5x6]
+    stp     x7, x0, [fp, #sr.x7x0]
+    str     d1,     [fp, #sr.d1  ]
+
+    // 便利な初期化
+
+    mov     fpExp, xzr      // 10進指数の値を 0 に初期化
+    mov     mant, xzr       // 仮数部の値を 0 に初期化
+    mov     sign, wzr       // 符号を「正」と仮定して初期化
+
+    // sigDig を 16 に初期化（残りの有効桁数）
+
+    mov     sigDig, #16     //X1
+
+    // X0がNULLでないことを保証する
+
+    cmp     x0, xzr
+    beq     refNULL
+
+    // スペースとタブ文字をスキップする
+
+    sub     x0, x0, #1
 whileWSLoop:
-            ldrb    ch, [x0, #1]!   //W5
-            cmp     ch, #' '
-            beq     whileWSLoop
-            cmp     ch, #tab
-            beq     whileWSLoop
-            
-            // Check for + or -
-            
-            cmp     ch, #'+'
-            beq     skipSign
-            
-            cmp     ch, #'-'
-            cinc    sign, sign, eq  //W2
-            bne     noSign
-            
-skipSign:   ldrb    ch, [x0, #1]!   //Skip '-'
-noSign: 
-            
-            // At this point we're beyond any leading sign
-            // character. Therefore, the next character must
-            // be a decimal digit or a decimal point.
-            
-            sub     ch, ch, #'0'    //Quick test for '0' to '9'
-            cmp     ch, #9
-            bls     scanDigits      //Branch if '0' to '9'
+    ldrb    ch, [x0, #1]!
+    cmp     ch, #' '
+    beq     whileWSLoop
+    cmp     ch, #tab
+    beq     whileWSLoop
 
-            cmp     ch, #'.'-'0'    //Check for '.'  
-            bne     convError
+    // + か - をチェックする
 
-            
-            // If the first character is a decimal point,
-            // then the second character needs to be a
-            // decimal digit.
-                            
-            ldrb    ch, [x0, #1]!   //W5 Skip period
-            cmp     ch, #'0'
-            blo     convError
-            cmp     ch, #'9'
-            bhi     convError
-            b.al    whileDigit2 
+    cmp     ch, #'+'
+    beq     skipSign
+
+    cmp     ch, #'-'
+    cinc    sign, sign, eq  // if ch == sign, sign = sign + 1, else sign = sign
+    bne     noSign
+
+skipSign:
+    ldrb    ch, [x0, #1]!   // 符号をスキップ
+noSign:
+
+    // この時点で符号まで読んだので、次の文字は数字か小数点でないといけない
+
+    sub     ch, ch, #'0'
+    cmp     ch, #9
+    bls     scanDigits
+
+    cmp     ch, #'.'-'0'    //Check for '.'
+    bne     convError
+
+
+    // 最初の文字が小数点だった場合は２番目の文字は数字であることが求められる
+
+    ldrb    ch, [x0, #1]!   // Skip period
+    cmp     ch, #'0'
+    blo     convError
+    cmp     ch, #'9'
+    bhi     convError
+    b.al    whileDigit2
 
 // Scan for digits at the beginning of the number:
 
-scanDigits: mov     ten, #10        //X6 Used to multiply by 10
-            add     ch, ch, #'0'    //Restore character
+scanDigits:
+    mov     ten, #10        // かける数
+
+    // ループ開始時点では chはASCII 文字という構造を統一するために文字に直してる。
+    // 文字→数値→文字って直していて一見無駄だけど
+    add     ch, ch, #'0'
+
+// 小数点より左側（整数部）の処理
 whileADigit:
-            sub     ch, ch, #'0'    //Quick way to test for
-            cmp     ch, #10         // a range and convert
-            bhs     notDigit        // to an integer
+    sub     ch, ch, #'0'
+    cmp     ch, #10
+    bhs     notDigit
 
-            // Ignore any leading zeros in the number
-            // We have a leading '0' if the mantissa is 0
-            // and the current character is '0'
-            
-            cmp     mant, xzr       //Ignore leading zeros
-            ccmp    ch, #0, #0, eq
-            beq     Beyond16
-            
-            // Each digit to the left of the decimal
-            // point increases the number by an
-            // additional power of ten.  Deal with that
-            // here.
+    // if (mant == 0 && ch == 0) { goto Beyond16 } と同じ
+    // まだ数値が始まっていない間の 0 は無視する
+    // 数値が始まった後の 0 は有効な桁として扱う
+    // "001"の0は意味がないけど、"100"の0は桁数を示すので処理する、ということ
+    // 整数部と仮数部もすべて同じ整数として詰め込み、fpExpで小数点の位置を計算している
 
-            add     fpExp, fpExp, #1     
+    cmp     mant, xzr
+    ccmp    ch, #0, #0, eq
+    beq     Beyond16
 
-            // Save all the significant digits, but ignore
-            // any digits beyond the 16th digit.
-            
-            cmp     sigDig, xzr     //X1
-            beq     Beyond16
-            
-            // Count down the number of significant digits
-            
-            sub     sigDig, sigDig, #1
-            
-            // Multiply the accumulator (mant) by 10 and
-            // add in the current digit. Note that ch
-            // has already been converted to an integer.
-            
-            madd    mant, mant, ten, xch    //X1, X7, X6
-            
-            // Because we multiplied the exponent by 10,
-            // we need to undo the increment of fpExp.
-            
-            sub     fpExp, fpExp, #1                
-                    
-Beyond16:   ldrb    ch, [x0, #1]!   //Get next char
-            b.al    whileADigit
-            
-            
-// If we encountered a non-digit character,
-// check for a decimal point:
-            
-notDigit:   
-            cmp     ch, #'.'-'0'    //See if the decimal point
-            bne     whileDigit2
-                        
-// Okay, process any digits to the right of the decimal point.
-// If this code falls through from the above, it skips the
-// decimal point.
-            
+    add     fpExp, fpExp, #1
+
+    cmp     sigDig, xzr
+    beq     Beyond16
+
+    // 有効桁数のカウントダウン
+
+    sub     sigDig, sigDig, #1
+
+    madd    mant, mant, ten, xch    // mant = mant * ten + xch
+
+    sub     fpExp, fpExp, #1        // 最終的にmant*10^fpExp を掛ける指数になる予定の値
+
+Beyond16:
+    ldrb    ch, [x0, #1]!
+    b.al    whileADigit
+
+
+// 小数点に達したら、仮数部の処理を始める
+notDigit:
+    cmp     ch, #'.'-'0'
+    bne     whileDigit2
+
 getNextChar:
-            ldrb    ch, [x0, #1]!   //Get the next character
+    ldrb    ch, [x0, #1]!   // 小数点をスキップ
+
+// 小数点より右側（小数部）の処理
 whileDigit2:
-            sub     ch, ch, #'0'
-            cmp     ch, #10
-            bhs     noDigit2
-            
-            // Ignore digits after the 16th signficant
-            // digit, but don�t count leading zeros
-            // as signficant digits.
+    sub     ch, ch, #'0'
+    cmp     ch, #10
+    bhs     noDigit2
 
-            cmp     mant, xzr       //Ignore leading zeros
-            ccmp    ch, wzr, #0, eq         
-            ccmp    sigDig, xzr, #0, eq  //X1
-            beq     getNextChar
-                  
-            // Each digit to the right of the decimal point decreases
-            // the number by an additional power of ten.  Deal with
-            // that here.
+    // 0がひたすら続くだけで有効桁数を使い切ってしまうケースは省いて安全にするため。
+    // 例：0.0000000000000000000001
+    // if (mant==0 && ch==0 && sigDig==0) { goto getNextChar; }
+    cmp     mant, xzr
+    ccmp    ch, wzr, #0, eq
+    ccmp    sigDig, xzr, #0, eq
+    beq     getNextChar
 
-            sub     fpExp, fpExp, #1     
+    sub     fpExp, fpExp, #1
 
-            // Count down the number of significant digits
-            
-            sub     sigDig, sigDig, #1
+    sub     sigDig, sigDig, #1
 
-            // Multiply the accumulator (mant) by 10 and
-            // add in the current digit. Note that ch
-            // has already been converted to an integer.
-            
-            madd    mant, mant, ten, xch    //X0, X6, X5
-            b.al    getNextChar
-
-                    
-// At this point, we've finished processing the mantissa.
-// Now see if there is an exponent we need to deal with.
+    madd    mant, mant, ten, xch
+    b.al    getNextChar
 
 noDigit2:
-            mov     expSign, wzr    //W5 Initialize exp sign
-            mov     expAcc, xzr     //X2 Initialize exponent
-            cmp     ch, #'e'-'0'
-            beq     hasExponent
-            cmp     ch, #'E'-'0'
-            bne     noExponent
-            
+    // 指数部があるかどうかのチェック。
+    // 'e' か 'E' だったら exponent 処理へ
+    // そうでなければ exponent なしという分岐。
+
+    // 指数部の計算に入るので関連するレジスタを初期化
+    mov     expSign, wzr
+    mov     expAcc, xzr
+
+    cmp     ch, #'e'-'0'
+    beq     hasExponent
+    cmp     ch, #'E'-'0'
+    bne     noExponent
+
 hasExponent:
-            ldrb    ch, [x0, #1]!           // Skip the "E"
-            cmp     ch, #'-'                //W6
-            cinc    expSign, expSign, eq    //W5
-            beq     doNextChar_2
-            cmp     ch, #'+'
-            bne     getExponent
-            
+    // 指数部の符合を判定して符号を設定する。
+    //  正:expSign = 0
+    //  負:expSign = 1
+
+    ldrb    ch, [x0, #1]!           // Skip the "E"
+    cmp     ch, #'-'
+    cinc    expSign, expSign, eq
+    beq     doNextChar_2
+    cmp     ch, #'+'
+    bne     getExponent
+
 doNextChar_2:
-            ldrb    ch, [x0, #1]!   //Skip '+' or '-'
-                    
-            
-// Okay, we're past the "E" and the optional sign at this
-// point.  We must have at least one decimal digit.
-            
+    ldrb    ch, [x0, #1]!   //Skip '+' or '-'
+
+
+// ここまできたら指数値を処理するだけ。
+// 少なくとも1つの数字が求められる
+
 getExponent:
-            sub     ch, ch, #'0'    //W6
-            cmp     ch, #10
-            bhs     convError
-            
-            mov     expAcc, xzr   // Compute exponent value in X2
-ExpLoop:    ldrb    ch, [x0], #1
-            sub     ch, ch, #'0'
-            cmp     ch, #10
-            bhs     ExpDone
-            
-            madd    expAcc, expAcc, ten, xch    //X2, X7, X6
-            b.al    ExpLoop
+    sub     ch, ch, #'0'    //W6
+    cmp     ch, #10
+    bhs     convError
 
-            
-// If the exponent was negative, negate our computed result.
-            
+    mov     expAcc, xzr   // Compute exponent value in X2
+ExpLoop:
+    ldrb    ch, [x0], #1
+    sub     ch, ch, #'0'
+    cmp     ch, #10
+    bhs     ExpDone
+
+    madd    expAcc, expAcc, ten, xch    // expAcc = expAcc * ten + xch
+    b.al    ExpLoop
+
+
+// 指数が負なら反転させる
+
 ExpDone:
-            cmp     expSign, #false //W5
-            beq     noNegExp
-            
-            neg     expAcc, expAcc  //X2
-                    
+    // false = 0
+    // expSign == false
+    cmp     expSign, #false
+    beq     noNegExp
+
+    neg     expAcc, expAcc  // 負なら反転
+
 noNegExp:
+    // 仮数部の桁数と合わせて最終的な指数値を計算する
+    add     fpExp, fpExp, expAcc
 
-// Add in the computed decimal exponent with the exponent
-// accumulator.
-            
-            add     fpExp, fpExp, expAcc    //X4, X2
-            
 noExponent:
-                    
-// verify that the exponent is between -324 and +308 (which
-// is the maximum dynamic range for a 64-bit FP value).
+    // IEEE-754 double の10進指数の実用範囲（おおよそ -324 ～ +308）に収まっているかを確認。
+    // 超えていれば voor（Value out of range）
 
-            mov     x5, #308        //Reuse expSign here
-            cmp     fpExp, x5
-            bgt     voor            //Value out of range
-            mov     x5, #-324
-            cmp     fpExp, x5
-            blt     voor
-            
-            
-// Now convert the mantissa value into a float.
+    mov     x5, #308
+    cmp     fpExp, x5
+    bgt     voor
+    mov     x5, #-324
+    cmp     fpExp, x5
+    blt     voor
 
-            ucvtf   d0, mant        //X1
-            
-// Okay, we've got the mantissa into D0.  Now multiply 
-// D0 by 10 raised to the value of the computed exponent
-// (currently in fpExp).
-//
-// This code uses power of 10 tables to help make the 
-// computation a little more accurate.
-//
-// We want to determine which power of ten is just less than the
-// value of our exponent.  The powers of ten we are checking are
-// 10**256, 10**128, 10**64, 10**32, etc.  A slick way to
-// do this check is by shifting the bits in the exponent
-// to the left.  Bit #8 is the 256 bit.  So if this bit is set,
-// our exponent is >= 10**256.  If not, check the next bit down
-// to see if our exponent >= 10**128, etc.
 
-            mov     x1, -8  //Initial index into power of ten table
-            cmp     fpExp, xzr  //X4
-            bpl     positiveExponent
-            
-            // Handle negative exponents here.
-            
-            neg     fpExp, fpExp
-            lsl     fpExp, fpExp, #55 //Bits 0..8 -> 55..63
-            lea     x6, PotTbl
+    // 仮数（整数化された mant）を double に変換。
+    // ucvtf: Unsigned Convert To Floating-point
+    //  符号なし整数（unsigned integer）を浮動小数点数（float / double）に変換する命令
+    ucvtf   d0, mant
+
+
+    // やりたいこと
+    // d0 = mant × 10^fpExpを できるだけ誤差少なく、かつ 高速に計算したい。
+    // 「10回掛け算する」みたいな単純手段ではなく：
+    // 10^256, 10^128, 10^64, 10^32, ... 10^1
+    // という あらかじめ用意されたテーブルを使って、指数をビット走査型で適用する。
+    // 指数変換でやった処理と同じ
+
+    mov     x1, -8      // 10^n乗テーブルの初期インデックス
+    cmp     fpExp, xzr
+    bpl     positiveExponent
+
+    // 負の指数の処理
+    // fpExp の各ビットを上から順番に調べたい
+    // if (exp & (1 << N)) { 掛ける / 割る }
+    // という普通のビットテストをやりたいけど、それを 分岐なし + 高速で行いたい
+    //
+    // adds    fpExp, fpExp, fpExp
+    // は fpExp <<= 1 だけど同時に
+    // いちばん左のビット（bit63）が Carry フラグに出る。
+    // Carryフラグが立ったかどうかを判定基準にしてる。
+    //
+    // 1回目のループ：
+    // 最上位だった bit8 が Carry に出る
+    // → 10^256 を使うかどうか判定
+    //
+    // 2回目：
+    // 次の bit7 が Carry に出る
+    // → 10^128 を使うかどうか判定
+    // …と続く。
+
+    neg     fpExp, fpExp
+    lsl     fpExp, fpExp, #55 // Bits 0..8 -> 55..63
+    lea     x6, PotTbl
 whileExpNE0:
-            add     x1, x1, #8          //Next index into PotTbl
-            adds    fpExp, fpExp, fpExp //(LSL) Need current POT?
-            bcc     testExp0
-            
-            ldr     d1, [x6, x1]
-            fdiv    d0, d0, d1
+    add     x1, x1, #8          // PotTblの次のインデックス
+    adds    fpExp, fpExp, fpExp // fpExp <<= 1
+    bcc     testExp0            // Branch if Carry Clear → C = 0 のとき分岐
 
-testExp0:   cmp     fpExp, xzr
-            bne     whileExpNE0
-            b.al    doMantissaSign
+    ldr     d1, [x6, x1]
+    fdiv    d0, d0, d1
+
+testExp0:
+    cmp     fpExp, xzr
+    bne     whileExpNE0
+    b.al    doMantissaSign
 
 
 // Handle positive exponents here.
-                    
+
 positiveExponent:
-            lea     x6, PotTbl
-            lsl     fpExp, fpExp, #55       // Bits 0..8 -> 55..63.
-            b.al    testExpis0_2
+    lea     x6, PotTbl
+    lsl     fpExp, fpExp, #55       // Bits 0..8 -> 55..63.
+    b.al    testExpis0_2
 
 whileExpNE0_2:
-            add     x1, x1, #8
-            adds    fpExp, fpExp, fpExp     // (LSL)
-            bcc     testExpis0_2
-                    
-            
+    add     x1, x1, #8
+    adds    fpExp, fpExp, fpExp     // (LSL)
+    bcc     testExpis0_2
 
-            ldr     d1, [x6, x1]
-            fmul    d0, d0, d1
-            
+    ldr     d1, [x6, x1]
+    fmul    d0, d0, d1      // 負の指数の処理と違うのはここだけ
+
 testExpis0_2:
-            cmp     fpExp, xzr
-            bne     whileExpNE0_2
+    cmp     fpExp, xzr
+    bne     whileExpNE0_2
 
 
-// If the mantissa was negative, negate the result down here.
+// 仮数部の符合が負なら結果を反転させる
 
 doMantissaSign:
-            cmp     sign, #false            //W3
-            beq     mantNotNegative
-            
-            fneg    d0, d0
+    cmp     sign, #false
+    beq     mantNotNegative
 
-// Successful return here. Note: does not restore x0
-// on successful conversion.
-                    
+    fneg    d0, d0
+
+// 正常終了処理。x0は復元しない
+
 mantNotNegative:
-            msr     nzcv, xzr   //clr c = No error
-            ldp     x1, x2, [fp, #sr.x1x2]
-            ldp     x3, x4, [fp, #sr.x3x4]
-            ldp     x5, x6, [fp, #sr.x5x6]
-            ldr     x7,     [fp, #sr.x7x0]
-            ldr     d1,     [fp, #sr.d1  ]
-            leave
-            
-// Error returns down here. Returns error code in X0:
+    msr     nzcv, xzr   //clr c = No error
+    ldp     x1, x2, [fp, #sr.x1x2]
+    ldp     x3, x4, [fp, #sr.x3x4]
+    ldp     x5, x6, [fp, #sr.x5x6]
+    ldr     x7,     [fp, #sr.x7x0]
+    ldr     d1,     [fp, #sr.d1  ]
+    leave
+
+// エラー処理。エラーコードを返す
 
 refNULL:    mov     x1, #-3
-            b.al    ErrorExit
+    b.al    ErrorExit
 
 convError:  mov     x1, #-2
-            b.al    ErrorExit
+    b.al    ErrorExit
 
 voor:       mov     x1, #-1 //Value out of range
-            b.al    ErrorExit
+    b.al    ErrorExit
 
 illChar:    mov     x1, #-4
 
-// Note: on error, this code restores x0.
+// エラーではx0を復元する
 
 ErrorExit:
-            str     x1, [fp, #sr.x1x2]  // Return error code in X1
-            mrs     x1, nzcv            //Return error in carry flag
-            orr     x1, x1, #(1 << 29)
-            msr     nzcv, x1            // set c=error
-            ldp     x1, x2, [fp, #sr.x1x2]
-            ldp     x3, x4, [fp, #sr.x3x4]
-            ldp     x5, x6, [fp, #sr.x5x6]
-            ldp     x7, x0, [fp, #sr.x7x0]
-            ldr     d1,     [fp, #sr.d1  ]
-            leave
+    str     x1, [fp, #sr.x1x2]  // Return error code in X1
+    mrs     x1, nzcv            //Return error in carry flag
+    orr     x1, x1, #(1 << 29)
+    msr     nzcv, x1            // set c=error
+    ldp     x1, x2, [fp, #sr.x1x2]
+    ldp     x3, x4, [fp, #sr.x3x4]
+    ldp     x5, x6, [fp, #sr.x5x6]
+    ldp     x7, x0, [fp, #sr.x7x0]
+    ldr     d1,     [fp, #sr.d1  ]
+    leave
 
-            endp    strToR64
+endp    strToR64
 
+// 第9章が終わるので所感
+// 整数変換 (mant の蓄積)
+// 有効桁管理 (sigDig)
+// 指数部処理 (e±n)
+// 範囲チェック
+// ポテンステーブル
+// Carry を使ったビット走査
+// 最後の符号処理
+// この章でやってきたことの集大成みたいなコードでした。
+// 疲れた
 
-            
-                    
 //////////////////////////////////////////////////////////////
-//            
+//
 // Here is the "asmMain" function.
 
-        
-            proc    asmMain, public
-            
-            locals  am
-            dword   am.x20
-            byte    stack, 64
-            endl    am
-            
-            enter   am.size
-            str     x20, [fp, #am.x20]
+
+proc    asmMain, public
+
+    locals  am
+        dword   am.x20
+        byte    stack, 64
+    endl    am
+
+    enter   am.size
+    str     x20, [fp, #am.x20]
 
 
-// Test floating-point conversion:
-            
-            lea     x20, values
+    // Test floating-point conversion:
+
+    lea     x20, values
 ValuesLp:   ldr     x0, [x20]
-            cmp     x0, xzr
-            beq     allDone
+    cmp     x0, xzr
+    beq     allDone
 
-            bl      strToR64
-            bcs     fpError
+    bl      strToR64
+    bcs     fpError
 
-            
-            lea     x0, fmtStr1
-            ldr     x1, [x20]
-            mstr    x1, [sp]
-            mstr    d0, [sp, #8]
-            bl      printf
-            add     x20, x20, #8
-            b.al    ValuesLp            
- 
-fpError:    lea     x0, errFmtStr
-            mstr    x1, [sp]        // Error code from strToR64
-            bl      printf
-             
-allDone:    ldr     x20, [fp, #am.x20]
-            leave
-            endp    asmMain
+
+    lea     x0, fmtStr1
+    ldr     x1, [x20]
+    mstr    x1, [sp]
+    mstr    d0, [sp, #8]
+    bl      printf
+    add     x20, x20, #8
+    b.al    ValuesLp
+
+fpError:
+    lea     x0, errFmtStr
+    mstr    x1, [sp]        // Error code from strToR64
+    bl      printf
+
+allDone:
+    ldr     x20, [fp, #am.x20]
+    leave
+endp    asmMain
