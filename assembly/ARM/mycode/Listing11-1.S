@@ -9,71 +9,65 @@
 .pool
 ttlStr: wastr  "Listing 11-1"
 
-// Format strings for printf:
+
+// printfのフォーマット文字列:
 
 fmtPV:  wastr   " %08lx %08lx %08lx %08lx"
 nl:     wastr   "\n"
 
 
-// Sample data to sort
-// (eight unsigned 32-bit integers
-// to be loaded into vector
-// registers).
+// ソート用のサンプルデータ
+// 4バイト(32bit)*8個の符合なし整数
 
 qval1:  .word   8, 7, 6, 4
 qval2:  .word   3, 2, 1, 0
 
-// Lookup tables for TBL instruction.
-// used to move around integers
-// within the vector registers.
-//
-// TBL works with bytes; the following
-// constants map 32-bit integers to
-// a block of four bytes in the
-// vector registers.
+// tbl命令のためのLookupテーブル
+// tblはバイト単位で動作するので、32bitの整数をあてるなら4バイトを1つのブロックとしてマッピングする
 
 _a = 0x03020100
 _b = 0x07060504
 _c = 0x0b0a0908
 _d = 0x0f0e0d0c
-
 _e = 0x13121110
 _f = 0x17161514
 _g = 0x1b1a1918
 _h = 0x1f1e1d1c
 
-_e1 = 0x03020100    // Special case
-_f1 = 0x07060504    // for single-
-_g1 = 0x0b0a0908    // register lists.
+_e1 = 0x03020100
+_f1 = 0x07060504
+_g1 = 0x0b0a0908
 _h1 = 0x0f0e0d0c
 
+// 比較ネットワークを距離を半分にしていきならが比較、入れ替えを行うアルゴリズム→バイトニックソート
+// lut1～10 は、bitonic merge の距離4→2→1 の比較順を再現するためのシャッフルテーブル(要素が8個の場合)
+// 簡単にいうと、半分で比較をしていけば、それぞれ左半分は右半分より小さいのが集まる、右半分は大きいのが集まる
+// それを距離を縮めて繰り返していけばソートできるという理論
+// 数学的に証明されているが、証明までやると本題から外れるので割愛。
+// 概要だけ知っていればいい。
+
+// 距離4 のステージ
 lut1:   .word   _f1, _e1, _h1, _g1
 lut2:   .word   _a, _f, _c, _h
 lut3:   .word   _b, _e, _d, _g
+
+// 距離2 のステージ
 lut4:   .word   _h1, _g1, _f1, _e1
 lut5:   .word   _a, _b, _g, _h
 lut6:   .word   _c, _d, _f, _e
+
+// 距離1 のステージ
 lut7:   .word   _a, _e, _b, _f
 lut8:   .word   _c, _g, _d, _h
 lut9:   .word   _a, _e, _b, _f
 lut10:  .word   _c, _g, _d, _h
 
 
-
-// Usual function that returns
-// a pointer to the name of this
-// program in the X0 register.
-
 proc    getTitle, public
     lea     x0, ttlStr
     ret
 endp    getTitle
 
-// printV
-//
-// Prints the two 128-bit values sitting
-// on the top of the stack (prior to call)
-// as hexadecimal values.
 
 proc    printV
 
@@ -88,17 +82,11 @@ proc    printV
 
     enter   p.size
 
-    // Preserve vector registers
-    // (this program uses them).
-
     str     q0, [fp, #p.v0]
     str     q1, [fp, #p.v1]
     str     q2, [fp, #p.v2]
     str     q3, [fp, #p.v3]
     str     q4, [fp, #p.v4]
-
-    // Print the first value on
-    // the stack:
 
     ldr		w1, [fp, #16]
     ldr		w2, [fp, #20]
@@ -111,8 +99,6 @@ proc    printV
     mstr    x4, [sp, #24]
     bl      printf
 
-    // Print the second value on
-    // the stack:
 
     ldr		w1, [fp, #32]
     ldr		w2, [fp, #36]
@@ -125,8 +111,10 @@ proc    printV
     mstr    x4, [sp, #24]
     bl      printf
 
+
     lea     x0, nl
     bl      printf
+
 
     ldr     q0, [fp, #p.v0]
     ldr     q1, [fp, #p.v1]
@@ -140,14 +128,14 @@ endp    printV
 
 proc    asmMain, public
 
-    // Reserve stack space for parameters:
-
     locals  am
         byte    am.stk, 64
     endl    am
 
     enter   am.size
 
+    // v0とq0は同じ128itだが、v0レジスターは型のない総称を示す。
+    // 128bitにデータを読み込む場合は型を指定したqNレジスターがを指定する必要がある
     ldr     q0, qval1
     ldr     q1, qval2
 
@@ -174,7 +162,7 @@ proc    asmMain, public
     // → O(n log² n)
     //
     // 普通に CPU上の単体コアでやると：
-    //  ビットニックソートは遅い部類
+    //  バイトニックソートは遅い部類
     //  QuickSort などの方が圧倒的に速い。O(n log n)だから
     //
     // では、なぜBitnicSortを使うのか？
@@ -187,7 +175,7 @@ proc    asmMain, public
     // 2. 並列性が異常に高い
     //  普通のソート：
     //      1 個ずつ比較 → 分岐 → メモリ移動(値を入れ替え)
-    //  ビットニック：
+    //  バイトニック：
     //      複数ペアを同時比較
     //      複数ペアを同時交換
     //  これが GPUでは爆速になる。
@@ -239,6 +227,9 @@ proc    asmMain, public
     // → v3 = [ 8, 7, 6, 4 ]
 
 
+    // これで半分が小さい群、もう半分が大きい群でわけることができた
+    // 半分ソートできたようなもの
+
     // Step 2:
 
     ldr     q4, lut1
@@ -274,49 +265,128 @@ proc    asmMain, public
     umin    v0.4s, v2.4s, v3.4s
     umax    v1.4s, v2.4s, v3.4s
 
-    ldr     q4, lut2
+    ldr     q4, lut2            // lut2:   .word   _a, _f, _c, _h
+    // lut2: .word _a, _f, _c, _h
+    // lut3: .word _b, _e, _d, _g
+    // 何をやってるのかわかりづらいので、lut2,lut3の中身を可視化
+    // {v0.16b, v1.16b}はレジスタを結合して32バイトの配列として扱う命令式
+    // _a   0x03020100  v0[0]（値=3）
+    // _b   0x07060504  v0[1]（値=2）
+    // _c   0x0b0a0908  v0[2]（値=1）
+    // _d   0x0f0e0d0c  v0[3]（値=0）
+    // _e   0x13121110  v1[0]（値=7）
+    // _f   0x17161514  v1[1]（値=8）
+    // _g   0x1b1a1918  v1[2]（値=4）
+    // _h   0x1f1e1d1c  v1[3]（値=6）
+    // 出力がv2.16bで16バイトなので、32バイトの中から16個のデータを抽出する動作になる
+
     tbl     v2.16b, {v0.16b, v1.16b}, v4.16b
+
+    // lut2は _a, _f, _c, _h なので
+    // v0[0]（値=3）
+    // v1[1]（値=8）
+    // v0[2]（値=1）
+    // v1[3]（値=6）
 
     ldr     q4, lut3
     tbl     v3.16b, {v0.16b, v1.16b}, v4.16b
+
+    // lut3は _b, _e, _d, _g なので
+    // v0[1]（値=2）
+    // v1[0]（値=7）
+    // v0[3]（値=0）
+    // v1[2]（値=4）
+    //
+    // 結果
+    // v2 = [3, 8, 1, 6]
+    // v3 = [2, 7, 0, 4]
 
     // Step 3:
 
     umin    v0.4s, v2.4s, v3.4s
     umax    v1.4s, v2.4s, v3.4s
 
+
+    // ここまでで、tbl命令が何をやっているのかわかったので、あとは結果だけを示す
     // Step 4:
 
-    ldr     q4, lut4
+    ldr     q4, lut4            // lut4 = [ _h1, _g1, _f1, _e1 ]  逆順にする
     tbl     v1.16b, {v1.16b}, v4.16b
+    // v1 = [3, 8, 1, 6]→ v1 = [6,1,8,3]
+
+    // v0 = [2, 7, 0, 4]
+    // v1 = [6, 1, 8, 3]
 
     umin    v2.4s, v0.4s, v1.4s
+    // [min(2,6), min(7,1), min(0,8), min(4,3)]
+    // v2 = [2, 1, 0, 3]
+
     umax    v3.4s, v0.4s, v1.4s
+    // [max(2,6), max(7,1), max(0,8), max(4,3)]
+    // v3 = [6, 7, 8, 4]
 
-    ldr     q4, lut5
+    ldr     q4, lut5    // lut5 = [ _a, _b, _g, _h ]
     tbl     v0.16b, {v2.16b, v3.16b}, v4.16b
-    ldr     q4, lut6
-    tbl     v1.16b, {v2.16b, v3.16b}, v4.16b
+    // v0 = [ v2[0], v2[1], v3[2], v3[3] ]
+    // v0 = [ 2, 1, 8, 4 ]
 
+    ldr     q4, lut6    // lut6 = [ _c, _d, _f, _e ]
+    tbl     v1.16b, {v2.16b, v3.16b}, v4.16b
+    // v1 = [ v2[2], v2[3], v3[1], v3[0] ]
+    // v1 = [ 0, 3, 7, 6 ]
+
+    // parewise min 隣同士で比較して最小
     uminp   v2.4s, v0.4s, v1.4s
-    umaxp   v3.4s, v0.4s, v1.4s
+    // v2[0] = min(2,1) = 1
+    // v2[1] = min(8,4) = 4
+    // v2[2] = min(0,3) = 0
+    // v2[3] = min(7,6) = 6
+    // → v2 = [1,4,0,6]
 
-    ldr     q4, lut7
+    // parewise min 隣同士で比較して最大
+    umaxp   v3.4s, v0.4s, v1.4s
+    // v3[0] = max(2,1) = 2
+    // v3[1] = max(8,4) = 8
+    // v3[2] = max(0,3) = 3
+    // v3[3] = max(7,6) = 7
+    // → v3 = [2,8,3,7]
+
+
+    // v2 = [1,4,0,6]
+    // v3 = [2,8,3,7]
+    ldr     q4, lut7    // lut7 = [ _a,_e,_b,_f ] = lanes 0,4,1,5
     tbl     v0.16b, {v2.16b, v3.16b}, v4.16b
-    ldr     q4, lut8
+    // v0 = [ v2[0], v3[0], v2[1], v3[1] ]
+    // v0 = [ 1,2,4,8 ]
+
+    ldr     q4, lut8    // lut8 = [ _c,_g,_d,_h ] = lanes 2,6,3,7
     tbl     v1.16b, {v2.16b, v3.16b}, v4.16b
+    // v1 = [ v2[2], v3[2], v2[3], v3[3] ]
+    // v1 = [ 0,3,6,7 ]
 
     umin    v2.4s, v0.4s, v1.4s
+    // [min(1,0), min(2,3), min(4,6), min(8,7)]
+    // v2 = [0,2,4,7]
+
     umax    v3.4s, v0.4s, v1.4s
+    // [max(1,0), max(2,3), max(4,6), max(8,7)]
+    // v3 = [1,3,6,8]
 
-    // Merge results:
 
-    ldr     q4, lut9
+    // 結果をマージする
+
+    ldr     q4, lut9    // lut9 = [0,4,1,5]
     tbl     v0.16b, {v2.16b, v3.16b}, v4.16b
-    ldr     q4, lut10
+    // v0 = [ v2[0], v3[0], v2[1], v3[1] ]
+    // v0 = [ 0,1,2,3 ]
+
+    ldr     q4, lut10   // lut10 = [2,6,3,7]
     tbl     v1.16b, {v2.16b, v3.16b}, v4.16b
+    // v1 = [ v2[2], v3[2], v2[3], v3[3] ]
+    // v1 = [ 4,6,7,8 ]
 
 
+    // 結果をprintfで表示
     str     q0, [sp]
     str     q1, [sp, #16]
     bl      printV
