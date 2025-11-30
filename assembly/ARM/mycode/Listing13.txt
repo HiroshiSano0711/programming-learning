@@ -1,0 +1,921 @@
+13章（CPP＋Gas CTL のマクロ説明）
+要点だけ抑えれば十分だとおもわれる
+
+① .s と .S の違い（CPP が入るかどうか）
+
+これは最重要。
+
+拡張子	動き
+.s	CPP を通さず Gas が直接 assemble
+.S	CPP (Cプリプロセッサ) → Gas の順で処理
+
+これを知らないと「なんで #define が効かないの？」みたいなバグになる。
+
+これは本当に使う
+
+実数定数を定義したい時
+
+条件コンパイルを使いたい時
+
+デバッグオンオフを一括管理したい時
+
+② Gas の equ (.equ/.set/=) は実数に弱い → CPP の #define が便利
+
+本の中にもある通り
+
+pi = 3.14159
+.double pi
+
+
+→ Gas は「浮動小数として使えない」と怒る。
+
+しかし
+
+#define pi 3.14159
+.double pi
+
+なら OK。
+浮動小数の定数を作りたい時は CPP の #define が便利ではある。
+
+
+③ 条件コンパイル (#ifdef / #ifndef / #if) はデバッグに超便利
+
+これも実戦で使う。
+
+例：
+
+//#define debug    // 有効化する時はコメントアウト外す
+
+#ifdef debug
+    #warning *** DEBUG build
+    mstr x0, [sp]
+    bl printf
+#else
+    #warning *** RELEASE build
+#endif
+
+メリット
+大量の print デバッグをON/OFFできる
+コードを削除しなくていい
+GAS のパフォーマンスに影響なし
+release ビルドで debug が完全に除去される
+
+🔸 重要度は低いが “知ってると便利” な部分
+④ 関数型マクロ（lcl(arg) → [fp,#arg]）
+
+例：
+
+#define lcl(a) [fp, #a]
+
+ldr w0, lcl(varName)
+→ldr w0, [fp,#varName]
+
+読みやすさを少し上げる程度。
+
+⑤ 可変引数マクロ、文字置換など
+これは「こんなことできるんだ〜」で終わりで十分。
+
+（13.2.5.3〜13.2.5.11）は “ほぼ全部スルーでOK”。
+ただし、2〜3箇所だけ重要なので、そこさえ押さえれば十分。
+
+この章の 80% は 使うことがまずないと思われる。
+必要になったときに調べればいいかな
+
+必須で覚えておくべきポイント（ごく少数）
+① マクロ引数の括弧（13.2.5.3）
+
+これだけは実害が出る。
+
+#define reserve(a) ( (a) + 1 )
+
+
+すべての引数に ( ) を付ける
+マクロ全体も ( ) で包む
+
+これは C と同じで、これを知らないと
+算術が壊れる or GAS が解釈を間違える という実害が出る。
+
+→ ここだけは理解する価値がある。
+
+② VA_ARGS で「可変長引数を展開するだけ」（13.2.5.4）
+
+これも軽量で便利。
+
+#define bytes(...) __VA_ARGS__
+
+.byte bytes(1,2,3,4)   →   .byte 1,2,3,4
+
+
+点リストの自動展開をしたい時だけ役立つ。
+
+→ dtoStr のテーブル定義とかで、
+16 個の初期値を並べたい時は便利かも。
+
+③ マクロは単一行しか展開できない（13.2.5.6）
+
+これ重要。
+
+CPP マクロは
+
+#define M()   mov x0,1  \
+            mov x1,2
+
+
+みたいに書いても、CPP が全部 “1行に潰す”。
+
+結果：
+
+mov x0,1 mov x1,2
+
+→ Gas がパースできず死ぬ。
+
+複数の命令を展開したい場合は GAS マクロ（13.3）を使うべき。
+
+これは覚えておく価値あり。
+
+以下は、読んでもほぼ使わないか、アセンブリ用途としてはメリットが薄い。
+
+× テキスト連結（##）や stringify（#）
+
+文字列処理、トークン操作のためのもの。
+
+Gas アセンブリで必要になることはほぼゼロ。
+
+× if_else マクロ・ブールマクロ・プローブマクロ
+
+これは「Cプリプロセッサを虐待して無理やり if を作る遊び」。
+実用には向かないし、可読性も最悪。
+
+実際のアセンブリでは使わない。
+
+× マクロで再帰や map（13.2.5.9 の巨大トリック集）
+
+これ全部“CPP を悪用したアクロバット”。
+
+例：
+
+CPP に再帰が無いから eval1024 を作って無理やり模倣
+
+map(macro, arg1,arg2…) を実現するための狂った仕掛け
+
+probe(), secondArg() などの黒魔術
+
+→ こんなの使ったらデバッグ不能になるだけ。使う必要なし。
+（作者も「beyond the scope」と言ってる通り）
+
+× command-line defines の細かい挙動
+
+OS 切り替えくらいにしか使わない。
+
+① CPP（プリプロセッサ）と GAS の違い
+
+.S なら CPP → GAS の順で処理される
+
+#define や #if/#ifdef は CPP の機能
+
+GAS の .if/.rept/.macro は CPP が終わったあとに実行
+
+使い分けの指針
+やりたいこと	使うもの
+実数定義	CPP
+1行のテキスト置換	CPP
+複数行の命令展開	GAS
+ループ展開	GAS
+条件分岐（複雑）	GAS
+② GAS の条件・ループ・マクロ（CTL）
+
+Gas の CTL は実際に aoaa.inc の中で大量に使われている。
+
+条件分岐
+
+.if / .elseif / .else / .endif
+
+.ifeq, .ifc, .ifdef, .ifb etc.
+
+ループ
+
+.rept N → N回繰り返す
+
+.irp name, a,b,c → 各値で1回ずつ展開
+
+.irpc name, "abc" → 各文字で1回ずつ展開
+
+マクロ
+
+.macro name params ... .endm
+
+必須引数 arg:req
+
+省略可能 arg=default
+
+可変長 arg:vararg
+
+パラメータ展開は \arg
+
+文字列連結は \arg\()suffix
+
+ループ内部でもマクロ展開可能
+
+再帰可能（CPPは不可）
+
+.exitm で途中終了
+
+\@ でユニークラベル
+
+③ aoaa.inc の内部構造を理解するための知識
+
+13章は最終的に aoaa.inc のソースが完全に読めるようになるための学習。
+
+aoaa.inc の要素：
+
+OS差異吸収
+
+macOS は先頭に _ が必要 → CPP で一括定義
+
+lea マクロは OS によって違う → GAS マクロで切替
+
+可変パラメータ関連
+
+printf や可変長引数を Windows/Mac/Linux 間で統一
+
+構造体・args・locals 定義
+
+struct/args/locals が GAS CTL の集大成
+
+__struct_offset などの内部変数でオフセット計算
+
+.irp や .rept を組み合わせて自動 offset を生成
+
+proc / endp / enter / leave
+
+関数宣言を超簡潔にするための syntactic sugar
+
+goto の実装
+
+64bit の任意アドレスへ安全にジャンプ
+
+④ Macro を生成する Macro（13.5）
+
+これは見た目が派手だけど概念は簡単。
+
+ガワとなる「メタ・マクロ」を実行すると、その場で新しい .macro を書き出す。
+
+例：
+
+varProc funcName
+
+これを実行すると、_funcName というマクロを動的生成してくれる。
+
+使いどころ：
+
+HLL風の呼び出しシンタックスを作る
+
+可変長引数の共通コードをまとめる
+
+特定パターンのマクロを量産する
+
+巨大な変換関数を持つコードではメタマクロは普通に役立つ。
+
+⑤ CPP vs GAS の使い分け（13.6）
+
+最後に作者の結論：
+
+CPP も GAS も両方使うのが最強。
+どちらか一方に絞る必要はない。
+
+判定基準：
+
+目的	推奨
+実数定義 / 単純置換	CPP
+1行関数風マクロ	CPP
+複数行命令展開	GAS
+ループ生成	GAS
+条件分岐（多段）	GAS
+文字列連結・安全なトークン処理	GAS
+メタマクロ	GAS
+
+あとは実際にaoaa.incを見て、わからない部分を調べていけばとりあえず大丈夫
+
+
+
+まず最初に：GAS の基本文法ルール
+
+aoaa.inc を読む前に、これだけ知っておくと読み解きがスムーズ。
+
+1. CPP（プリプロセッサ）と GAS（アセンブラ）の順序
+
+.S ファイルは次の順で処理される：
+
+CPP → GAS → リンカ
+
+
+つまり：
+
+#define, #ifdef, #error は CPP
+
+.macro, .if, .irp, .rept, .set は GAS
+
+そして CPP は GAS を知らない
+GAS は CPP シンボルがどう展開されたかしか知らない。
+
+2. GAS のマクロ基本文法
+.macro name parm1, parm2:req, parm3=default, parm4:vararg
+    ... 展開されるコード ...
+.endm
+
+
+parm:req → 必須
+
+parm=default → 指定なければ default
+
+parm:vararg → 可変引数（a,b,c が入る）
+
+展開するには \parm を書く。
+
+3. GAS の条件分岐
+.if EXPR
+.elseif EXPR
+.else
+.endif
+
+
+ブーリアン条件は：
+
+0 → false
+
+非0 → true
+
+4. GAS のループ（超重要）
+.rept n → n回繰り返す
+.irp param, a,b,c → 各値で1回展開
+.irpc param, "abc" → 各文字で展開
+
+aoaa.inc では構造体や vararg で多用。
+
+5. ラベル生成の特殊トークン
+\() → パラメータと直後の文字を分離する
+
+（var\id みたいな誤解を防ぐ）
+
+\@ → マクロ展開ごとにユニーク番号
+
+（ユニークラベル作成用）
+
+6. .set, .equ の違い
+命令	意味
+.equ name, value	name = value（再定義不可）
+.set name, value	name = value（再定義可）
+
+aoaa.inc の内部状態（__struct_offset）は .set 的な書き換え式で管理。
+
+
+【１】 ヘッダー & 多重インクルード防止
+#ifndef aoaa_inc
+#define aoaa_inc 0
+
+
+これは C ヘッダでもお馴染みの「一度だけ読み込ませる」仕組み。
+
+最初の include → aoaa_inc は未定義 → 読む
+
+2回目の include → aoaa_inc が定義済み → 全部スキップ
+
+GAS はインクルードより CPP の include を使うため、この方法が必須。
+
+【２】 OS 判定の整理（Darwin / Linux → isMacOS / isLinux へ）
+#ifdef Darwin
+    #define isMacOS (1)
+    #undef isLinux
+    #undef Darwin
+#endif
+
+
+Makefile が -DDarwin=1 を渡してくるパターンと、-DisMacOS=1 を渡してくるパターンの両対応。
+
+続いて：
+
+#ifndef isMacOS
+#define isMacOS (0)
+#else
+#undef isMacOS
+#define isMacOS (1)
+#endif
+
+
+ポイント：
+
+CPP は #ifdef isMacOS した瞬間、isMacOS が何であっても展開する
+
+#define isMacOS (1) の形に統一するのが目的
+
+Linuxも同様。
+
+そして OS の整合性チェック：
+
+#if (isMacOS+isLinux) != 1
+    #error "Exactly one of isMacOS or isLinux must be 1"
+#endif
+
+
+どちらか片方だけが 1 でなければエラー。
+
+【３】 ここから OS 別の GAS マクロ部分に入る
+macOS の場合（isMacOS == 1）
+
+最初の大部分は シンボル名の置換：
+
+#define printf _printf
+
+
+macOS の Mach-O 形式では 外部シンボル名に '_' がつくため。
+
+例：
+
+Linux → printf
+
+macOS → _printf
+
+これを #define により コード側を共通化してる。
+
+
+◆ lea マクロ（重要）
+
+macOS 版：
+
+.macro lea reg, mem
+    adrp \reg, \mem@PAGE
+    add  \reg, \reg, \mem@PAGEOFF
+.endm
+
+
+Linux 版：
+
+.macro lea reg, mem
+    adrp \reg, \mem
+    add  \reg, \reg, :lo12:\mem
+.endm
+
+
+どちらも：
+
+「任意シンボルのアドレスを reg にロードする」
+
+ただし **PIE（位置独立実行）**の違いで構文が異なる。
+
+【４】 variadic parameter のスタック積み (macOS only)
+
+macOS の ABI では：
+
+可変長引数は レジスタにも置くし、スタックにもコピーしておく必要あり
+
+だから：
+
+vparm2 mem
+    lea x1, mem
+    ldr x1, [x1]
+    str x1, [sp]
+
+
+Linux は必要ないのでスタック書き込みが無い。
+
+【５】 次章：構造体定義マクロ（aoaa.inc の核心部）
+
+ここが一番難しい部分で、13章の後半で詳しく解説されていたところ。
+
+内部状態：
+
+__inStruct = 0
+__inArgs = 0
+__inLocals = 0
+__dir = 1
+
+
+これらは GAS の CTL 変数で .set 的に再代入可能。
+
+
+ARM64 のシステムコール
+
+Linux でも macOS でも、ユーザー空間 → カーネル空間 へ移行するために
+
+SVC  #immediate
+
+という命令（Supervisor Call）を使う。
+
+ただし どのレジスタに syscall 番号を入れるかは OS 依存。
+
+Linux AArch64 の仕様
+
+Linux の場合：
+
+x8 = システムコール番号
+x0〜x5 = 引数
+svc #0
+
+だから aoaa.inc の Linux 版はこうなっている：
+
+#define svcReg x8
+#define OSint 0
+
+svc #0 を使う。
+
+
+macOS (Darwin) ARM64 の仕様
+
+macOS / iOS のカーネル (XNU) は Linux と違う規則を使う。
+
+x16 に syscall 番号を置く
+
+svc #0x80 を叩く
+
+という独自ルール。
+
+だから：
+
+#define svcReg x16
+#define OSint 0x80
+
+となっている。
+
+
+① lea の差分の理由（PAGE/PAGEOFF vs :lo12:）
+macOS（Clangアセンブラ）
+adrp reg, mem@PAGE
+add  reg, reg, mem@PAGEOFF
+
+Linux（GNU as）
+adrp reg, mem
+add  reg, reg, :lo12:mem
+
+
+これは GAS と Clang アセンブラが
+同じ「シンボルの位置」を指定するための記法が違うから。
+
+内部動作は同じ：
+
+adrp が「4KB アラインのページ基底アドレス」を載せる
+
+add がページ内オフセットを足す
+
+これで PIE（位置非依存実行形式）にも対応できる。
+
+② mstr / mstrb / mstrh が macOS で非必須・Linuxで空展開な理由
+macOS（Clang）
+
+可変引数関数（printfなど）を呼ぶとき、引数の一部をスタックにも積むルールがある
+
+なので mstr → str として展開し、第2〜8引数をスタックに置く必要がある。
+
+Linux
+
+可変引数でも X0〜X7 のレジスタだけを使う
+（スタックに積む必要がない）
+
+だから Linux では mstr が「空マクロ」になっている：
+
+.macro mstr operands:vararg
+.endm
+
+→ 書いても展開されない。
+
+
+③ vparm2〜vparm8 の分岐が2段構えの理由
+#elif isLinux
+   (Linux向けのマクロを定義)
+#endif
+
+#if isLinux == 1
+   (Linux向けvparm系を定義)
+#endif
+
+
+なぜ 2 回 Linux の判定があるのか？
+これが分かると macro の仕組み理解が深まる。
+
+理由：
+
+#elif isLinux は CPP の条件分岐
+
+#if isLinux == 1 は CPP の条件分岐（再チェック）
+
+つまり：
+
+最初のブロックは「Linux か macOS かで大きく振り分ける」
+
+次のブロックは「Linux のとき追加で vparm を定義」
+
+これをまとめて書くと読みづらくなるため、潔く2段階に分けているだけ。
+
+
+.global の役割
+.global asmMain
+.global getTitle
+.global readLine
+.global printf
+
+これは C からリンクできるように、シンボルを公開しているだけ。
+
+特に asmMain は C 側の main() の代わりに使われるので、外部可視性が強制的に必要になる。
+
+毎回 .global をソースに書くのは面倒だし忘れるので、ヘッダにまとめている。
+
+aoaa.inc にある理由
+
+書籍全体で共通する関数を自動で公開するため
+
+間違って .global を書き忘れてリンクエラーになる”のを防ぐため
+
+macOS / Linux の差分（名前に _ つけるなど）もここで吸収
+
+🧠 .qword マクロの本当の意味
+
+「GAS には .qword がなく .octa だけあるのでエイリアスを作っている」
+
+というのが正確。
+
+GAS はなぜか：
+
+.byte → 1 バイト
+
+.hword / .half（環境による） → 2 バイト
+
+.word → 4 バイト
+
+.dword → 8 バイト
+
+.qword は存在しない
+
+.octa → 16 バイト
+
+という微妙な指令セットになってる。
+
+そのため、16バイトを簡単に書きたいときに：
+
+.qword value
+
+と書けるように、エイリアスとしてマクロ化している。
+
+なぜ .qword が必要？
+
+理由は2つある。
+
+① 「16 バイト値を自然に書きたい」
+
+.octa は聞き慣れないので：
+
+.qword someConstant
+
+のほうが読みやすい。
+
+AoAAの後半で SIMD（NEON）命令を使う場面では、16バイト単位のデータテーブルがよく出てくる。
+
+.qword 0x112233445566778899AABBCCDDEEFF00
+
+
+はかなり読みやすい。
+
+② MS MASM や他のアセンブラは .qword を使う
+
+つまり アセンブラ間の共通化 を意識している。
+
+.qword value:vararg の意味（Gas マクロ文法）
+
+.macro .qword value:vararg
+    .octa \value
+.endm
+
+
+これは
+
+.qword 1, 2, 3, 4 のように可変引数にも対応
+
+Macros 内で \value で展開
+
+.octa に 16バイトを渡すという動作。
+
+
+
+.code, enter, leave, goto, getErrno
+
+ここはすべて 読みやすい便利マクロの集合。
+
+特に：
+
+enter/leave は 関数プロローグ/エピローグのテンプレ化
+
+Cコンパイラが生成するのとほぼ同じ。
+
+enter N
+
+↓展開
+
+stp fp, lr, [sp, #-16]!
+mov fp, sp
+sub sp, sp, #aligned(N)
+
+
+locals のサイズを 16バイト境界に合わせる のがキモ。
+
+goto は 64bit アドレス空間どこへでも飛べる "遠距離ジャンプ"
+
+普通の b / bl は 26bit の符号付きオフセットしか飛べない。
+
+だから AoAA は 64bit の絶対アドレスジャンプを実現するために：
+
+adr   x16, 0f        ; PC相対でラベルの場所にアクセス
+ldr   x17, 0f        ; そこに埋め込んである相対オフセットをロード
+add   x16, x16, x17  ; 実際の目的アドレスを計算
+br    x16            ; 絶対ジャンプ
+
+と工夫している。
+
+CCMP の即値用ビット ccxx 系
+
+これも単なる「利便性」の定義だけど…
+
+ここは AoAA の中でも意外に重要！
+
+理由：
+
+ccmp 命令は ARM の 珍しい複合条件設定命令
+
+第二オペランドに “次の条件フラグ状態 (NZCV)” を埋め込む必要がある
+
+その ビットパターンを覚えてられない
+
+なので、
+
+ccne = 0b0000
+cceq = 0b0100
+
+のように読みやすくしてる。
+
+
+逆条件のマクロ・逆分岐（bnlt / bnge…）
+
+ここは “便利だけど ARM の命名がわかれば不要” な層。
+
+例：
+
+bnlt label   ; not <  → >=
+
+
+だから展開は：
+
+bge label
+
+これも単なる読みやすさのための糖衣構文。
+
+最後の大きな塊：volatile_save 構造体
+
+C ライブラリ関数を呼ぶときは「ボラタイルレジスタを退避する必要がある」
+
+ARM64 の ABI（AArch64 Procedure Call Standard）では、
+
+x0〜x7: 引数
+
+x8〜x15: scratch
+
+x19〜x28: 保存すべき
+
+V0〜V7: scratch
+
+V8〜V15: callee-save
+
+など決まりがある。
+
+特に printf() など 可変引数関数 を呼ぶときは、
+呼び出し側が 多くのレジスタを退避しておかないと破壊される。
+
+AoAA の例は安全のため：
+
+→ すべての volatile レジスタを構造体に丸ごと保存して復元する
+
+という方式を採用している。
+
+つまり
+
+struct volatile_save
+    qword x0x1
+    qword x2x3
+
+
+は
+
+x0 と x1 を 16バイトにまとめて保存
+
+x2 と x3 を 16バイト
+
+…
+
+v0 ~ v15 を 16バイトずつ保存
+
+という巨大な保存領域を定義している。
+
+サイズは：
+
+(16 qword for X registers) + (16 qword for V registers)
+= 32 * 16 = 512 bytes
+
+512 バイトで全 volatile レジスタを保存できる領域を作っている。
+
+
+aoaa.inc の構造体システムは、以下の「内部状態変数」を使って動く：
+
+変数名	役割
+__inStruct	struct マクロ内である（通常の構造）
+__inArgs	args マクロ内である（関数引数領域）
+__inLocals	locals マクロ内である（ローカル変数領域）
+__struct_offset	現在の構造体のオフセット
+__dir	オフセットの方向（+1 = 正方向, -1 = 逆方向）
+__salign	アライメント計算用
+
+つまり、複雑な構造定義を実現するために「状態マシン」を作っている。
+
+struct / args / locals マクロを呼ぶたびに「状態マシン」が切り替わるみたいな感じ。
+
+
+✔ 1. 初期値は全て 0 または 1 で設定されている
+__inStruct = 0
+__inArgs    = 0
+__inLocals  = 0
+__dir       = 1
+
+
+これは「まだ struct も args も locals も始まっていない」状態。
+
+✔ 2. struct マクロを呼ぶと構造体モードになる
+.macro struct name initialOffset=0
+__inStruct = 1
+__inLocals = 0
+__inArgs   = 0
+__struct_offset = \initialOffset
+\name\().base = \initialOffset
+__dir = 1
+
+
+つまり：
+
+「struct 始めます！」宣言
+
+オフセットを初期化
+
+この struct の base を記録
+
+フィールドは正方向に増加（__dir=1）
+
+✔ 3. args マクロは引数領域（スタック上の正方向）
+__inArgs = 1
+__dir    = 1
+__struct_offset = initialOffset (16)
+
+
+ARM64 ABI の影響で、
+引数領域は FP から +方向のメモリ（つまり正方向）。
+
+✔ 4. locals マクロはローカル変数領域（逆方向）
+
+ローカル変数は FP から負方向へ伸びるので：
+
+__inLocals = 1
+__dir = -1
+__struct_offset = 0
+
+
+これは非常に ARM64 ABI に忠実。
+
+つまり：
+
+✔ locals は “下へ伸びるスタックフレーム” を表現
+✔ struct / args は “上へ伸びるデータ構造” を表現
+そして各フィールドマクロがこの状態を参照する
+
+たとえば byte マクロ：
+
+.if __dir > 0
+    name = __struct_offset
+    __struct_offset += elements
+.else
+    __struct_offset += elements
+    name = -__struct_offset
+.endif
+
+
+つまり：
+
+✔ 正方向の場合（struct / args）
+a = 0
+offset -> 0,1,2,3...
+
+✔ 逆方向の場合（locals）
+offset = 0
+offset → -8, -16, -24 ...
+a = -8
+
+
+ARM のローカル変数の典型的な配置。
+
+「上書きしていない変数はデフォルト値になる」
+
+struct / args / locals の「状態マシン」になっている
+
+ここが「Cプリプロセッサだけでは無理」な理由。
