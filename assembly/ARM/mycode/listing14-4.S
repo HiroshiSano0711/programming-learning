@@ -224,7 +224,7 @@ endp    prtResult
 //
 // Main program to test the code:
 
-// ループでテストしてるだけだから解説は省略でいいかな
+// 順番にも文字列を読み込んでテストしてるだけだから解説は省略でいいかな
 proc    asmMain, public
 
     locals  lcl

@@ -4,27 +4,17 @@
 
 #include    "aoaa.inc"
 
-
-// Assembly language string data structure:
-
 struct  string, -16
     dword   string.allocPtr // at offset -16
     word    string.maxlen   // at offset -8
     word    string.len      // at offset -4
     byte    string.chars    // at offset 0
-
-    // Note: characters in string occupy offsets
-    // 0... in this structure.
-
 ends    string
 
 
 
 
 // str.buf:
-//
-// Allocate storage for an empty string
-// with the specified maximum size:
 
 .macro  str.buf strName, maxSize
     .align  4   //Align on 16-byte boundary
@@ -36,9 +26,6 @@ ends    string
 
 
 // str.literal:
-//
-// Allocate storage for a string buffer and initialize
-// it with a string literal:
 
 .macro  str.literal strName, strChars
     .align  4   //Align on 16-byte boundary
@@ -46,14 +33,9 @@ ends    string
     .word   len_\strName    //string.maxlen
     .word   len_\strName    //string.len
 
-    // Emit the string data and compute the
-    // string's length:
-
     \strName:   .ascii  "\strChars"
     len_\strName=       .-\strName
     .byte   0   // Zero-terminating byte
-
-    //Ensure object is multiple of 16 bytes:
 
     .align  4
 .endm
@@ -81,9 +63,6 @@ str.literal source, "Hello there, world! How's it going?"
 .code
 
 ttlStr:     wastr  "Listing14-5"
-
-// Standard getTitle function.
-// Returns pointer to program name in X0
 
 proc    getTitle, public
     lea    x0, ttlStr
@@ -123,83 +102,63 @@ proc    str.substr
 
     enter   str_substr.size
 
-    // Preserve X0...X7 and V0:
-
     str     q0,     [fp, #str_substr.saveV0]
     stp     x0, x1, [fp, #str_substr.saveX0X1]
     stp     x2, x3, [fp, #str_substr.saveX2X3]
     stp     x6, x7, [fp, #str_substr.saveX6X7]
 
 
-    // Handle the exceptional conditions:
-    //
-    // 1. Index > source.len   (return empty string)
+    // 例外処理
+    // Index >= source.len
+    // 一般的に要素数とインデックスは1違う
+    // 要素数は1からはじまり、インデックスは0から始まる
+    // そのためhigher or sameの条件でないといけない
+    // どの文字にもマッチしないので空文字で返す処理
 
     ldr     w6, [x0, #string.len]
     cmp     w1, w6
     bhs     returnEmpty
 
-    // 2. index + substr length > source length.
-    // If so, reduce the length to match the end
-    // of the string:
+    // index + substr length > source length
+    // なら文字列の末尾にマッチするように長さを減らす
 
-    add     w7, w1, w2      //W7=index + substr length
+    add     w7, w1, w2      // w7 = index + substr length
     cmp     w6, w7
-    csel    w6, w6, w7, ls  //W6=min(source len, sum)
-    sub     w6, w6, w1      //W6 = actual length
+    csel    w6, w6, w7, ls  // w6 = min(source len, index + substr length)
+    sub     w6, w6, w1      // w6 = 実際にコピーする長さ
 
     // 3. Substr length > destination maxlen
-    //    (fail):
+    // コピーできないのでfailとしてエラー終了
 
     ldr     w7, [x3, #string.maxlen]
-    cmp     w6, w7          //Carry set if
-    bhi     str.sub.exit    // W6 >= W7
+    cmp     w6, w7          // Carry set
+    bhi     str.sub.exit    // w6 >= w7
 
-    // At this point, W6 contains the actual number of
-    // characters we're going to copy from the source
-    // to the destination. This could be less than the
-    // length passed in W2 if the index+substr length
-    // exceeded the length of the source string.
+    // w6が実際にコピーする長さ。ループカウンタとして使うので保存しておく
+    str     w6, [x3, #string.len]
 
-    str     w6, [x3, #string.len]   //Save as dest len
-
-    // Point X0 at the first character of the substring
-    // to copy to the destination string (base address
-    // plus starting index):
-
-    add     x0, x0, w1, uxtw
+    add     x0, x0, w1, uxtw  // uxtw = 32-bit を符号なし拡張して64bitにする
     b.al    test16
 
-    // Copy the substring 16 bytes at a time:
-
+// Neonを使い16バイト未満になるまで16バイトずつコピーする
 copy16:
-    ldr     q0, [x0], #16   //Get bytes to copy
-    str     q0, [x3], #16   //Store into dest
-
-    // Decrement the number of characters to copy by
-    // 16, quit if the result is negative (meaning
-    // there were fewer than 16 characters left to
-    // copy). Remember, subs sets the flags the same
-    // as cmp, so the following compares the value in
-    // W6 against 16 and branches to copy16 if there
-    // are 16 or more characters left to copy.
+    ldr     q0, [x0], #16
+    str     q0, [x3], #16
 test16:
+    // カウンタを減算してからループなので、ループ抜けるときは負の数になる
     subs    w6, w6, #16
-    bhs     copy16
+    bhs     copy16  // w6 >=16
 
-    // W6 has gone negative. Need to add 16 to determine
-    // the number of bytes left to copy
+    add     w6, w6, #16          // 0 〜 15にする
 
-    add     w6, w6, #16          //Now W6 contains 0 to 15
+    // 上位 32bit を 強制的に 0 にする。実質 ゼロ拡張と同じ
+    and     x6, x6, #0xFFFFFFFF
 
-    // Switch statement based on the number of characters
-    // left to copy in the substring. Handle as a special
-    // case each of the 0...15 bytes to copy.
-
-    and     x6, x6, #0xFFFFFFFF  //Zero-extend to 64 bits
+    // ジャンプテーブルの先頭アドレスを読み込む
     adr     x7, JmpTbl
-    ldr     w6, [x7, x6, lsl #2] // *4 for 32-bit entries
-    add     x7, x7, w6, sxtw     // Sign-extend W0 to 64 bits
+
+    ldr     w6, [x7, x6, lsl #2] // .wordで定義されてるので4バイト単位に直してoffsetを計算
+    add     x7, x7, w6, sxtw     // 相対ラベルは 負値も取り得るので符号は維持して拡張
     br      x7
 
 JmpTbl:
@@ -219,9 +178,6 @@ JmpTbl:
     .word   _13bytesToCopy-JmpTbl
     .word   _14bytesToCopy-JmpTbl
     .word   _15bytesToCopy-JmpTbl
-
-// Special case copying 1-15 bytes:
-
 
 _14bytesToCopy:
     ldr     x7, [x0], #8
@@ -293,10 +249,6 @@ _1byteToCopy:
     ldrb    w7, [x0], #1
     strb    w7, [x3], #1
 
-// Branch here after copying all string data.
-// Need to add a zero-terminating byte to the
-// end of the destination string:
-
 str.sub.success:
     strb    wzr, [x3]       //Zero-terminating byte
     adds    wzr, wzr, wzr   //Clear carry for success
@@ -308,9 +260,8 @@ str.sub.exit:
     ldp     x6, x7, [fp, #str_substr.saveX6X7]
     leave
 
-// Special case where the code just returns an empty string
-
 returnEmpty:
+    // string構造体の lenを0に設定して終了
     strh    wzr, [x3, #string.len]
     b.al    str.sub.success
 
