@@ -58,7 +58,12 @@ Lvar *find_lvar(Token *tok){
 
 /*
 
-文法規則
+文法規則EBNF（BNF拡張）
+?   = 0回 または 1回  （省略可能）
+*   = 0回以上の繰り返し
++   = 1回以上の繰り返し
+|　 = 選択
+
 program    = stmt*
 stmt       = expr ";" | "return" expr ";"
 expr       = assign
@@ -69,6 +74,12 @@ add        = mul ("+" mul | "-" mul)*
 mul        = unary ("*" unary | "/" unary)*
 unary      = ("+" | "-")? term
 term       = num | ident | "(" expr ")"
+↑構文解析の仕事
+
+字句解析の仕事
+↓終端記号　それ以上分解できない記号列（トークン）
+num        = [0-9]+
+ident      = [a-zA-Z_][a-zA-Z0-9_]*
 
 */
 
@@ -209,7 +220,7 @@ Node *term(){
     } else {
       lvar = new_lvar(tok);
       node->offset = lvar->offset;
-    } 
+    }
     return node;
   }
 
