@@ -1,0 +1,97 @@
+body {
+  color: #222;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: #0069ff;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.bl_media {
+  display: flex;
+  align-items: center;
+}
+
+.bl_media_imgWrapper {
+  flex: 0 1 27.58333%;
+  margin: 0 3.33333% 0 0;
+}
+
+.bl_media_imgWrapper > img {
+  width: 100%;
+}
+
+.bl_media_body {
+  flex: 1;
+}
+
+.bl_media_body > *:last-child {
+  margin-bottom: 0;
+}
+
+.bl_media_ttl {
+  margin-bottom: 10px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.bl_media_txt {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .bl_media {
+    display: block;
+  }
+
+  .bl_media_imgWrapper {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* カード */
+.bl_card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+}
+
+.bl_card_imgWrapper {
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.bl_card_imgWrapper > img {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.bl_card_body {
+  padding: 15px;
+}
+
+.bl_card_body > *:last-child {
+  margin-bottom: 0;
+}
+
+.bl_card_ttl {
+  margin-bottom: 5px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.bl_card_txt {
+  color: #777;
+  margin-top: 0;
+}

@@ -1,0 +1,77 @@
+/* 元々のスタイリング */
+.btn {
+  display: inline-block;
+  width: 300px;
+  padding: 20px 10px;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  transition: .25s;
+  border-width: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  color: #fff;
+  background-color: #dd742c;
+}
+
+.l-header {
+  max-width: 1230px;
+  margin-right: auto;
+  margin-left: auto;
+  border-bottom: 1px solid #ddd;
+  text-align: right;
+}
+
+.l-header .btn {
+  width: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+} */
+
+/* 変更後 */
+.l-header {
+  max-width: 1230px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: right;
+  border-bottom: 1px solid #ddd;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: .25s;
+  border-width: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  cursor: pointer;
+}
+
+.btn-nav {
+  background-color: #dd742c;
+  color: #fff;
+}
+
+.btn-default {
+  background-color: #fff;
+  color: #333;
+}
+
+.btn-small {
+  width: 80px;
+  font-size: 14px;
+}
+
+.btn-long {
+  width: 160px;
+}
+
+.p-entryList {
+  border: 1px solid #FF0000; padding: 20px;
+}
+
+.p-features__list {
+  border: 5px dotted #000880; padding: 40px;
+}
+

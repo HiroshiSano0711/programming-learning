@@ -1,0 +1,101 @@
+/*
+Foundation
+*/
+*, *::after, *::before {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* 16px * 62.5% = 10px */
+/*
+24px
+font-size: 2.4rem;
+*/
+/* html, body {
+  font-size: 62.5%;
+} */
+
+/*
+Layout
+*/
+.l-header {
+  width: 100%;
+  max-width: 1230px;
+  display: flex; 
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.l-nav {
+  max-width: 100%;
+}
+
+/*
+Object/Component
+*/
+.c-link {
+  background-color: transparent;
+}
+
+.c-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.c-txt--lg {
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+}
+
+.c-txt--sm {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+}
+
+/*
+Object/Project
+*/
+.p-header {
+  width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 56px 0 36px;
+}
+
+.p-header__logo {
+  margin: 0px 30px;
+}
+
+.p-header__link {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: #157992;
+}
+
+.p-txt-link {
+  line-height: 1.0;
+}
+
+.p-txt-link--sans-serif {
+  line-height: 1.0;
+  font-family: sans-serif;
+}
+
+.p-link:hover {
+  color: #741f8a;
+}
+
+/*
+Object/Utility
+*/
+.u-border-btm {
+  border-bottom: 1px solid #ddd;
+}
+
+.u-mt-s {
+  margin-top: 11px;
+}

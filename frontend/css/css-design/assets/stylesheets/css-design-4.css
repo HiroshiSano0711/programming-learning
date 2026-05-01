@@ -1,0 +1,242 @@
+body {
+  color: #222;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: #0069ff;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+/* -----------
+    header
+------------- */
+.ly_header {
+  padding-top: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ly_header_inner {
+  max-width: 1230px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bl_headerUtils {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.bl_headerUtils_logo {
+  width: 150px;
+}
+
+.bl_headerUtils .el_btn {
+  width: auto;
+  padding: 10px 20px;
+  box-shadow: none;
+}
+
+.bl_headerNav {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.bl_headerNav_item {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.bl_headerNav_item:last-child .bl_headerNav_link::after {
+  content: none;
+}
+
+.bl_headerNav_link {
+  position: relative;
+  display: block;
+  padding: 15px 5px;
+  border-bottom: 4px solid transparent;
+  color: #222;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.bl_headerNav_link:focus,
+.bl_headerNav_link:hover {
+  border-bottom-color: #e25c00;
+}
+
+.bl_headerNav_link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 20px;
+  background-color: #ddd;
+  transform: translateY(-50%);
+}
+
+/* -----------
+    footer 
+------------- */
+.ly_footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #222;
+}
+
+.hp_btGray {
+  border-top: 1px solid #777 !important;
+}
+
+.ly_footer_inner {
+  max-width: 1230px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+.bl_footerNav {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+.bl_footerNav_item {
+  flex: 1;
+  text-align: center;
+}
+
+.bl_footerNav_item > *:last-child {
+  margin-bottom: 0;
+}
+
+.bl_footerNav_item:last-child .bl_footerNav_link::after {
+  content: none;
+}
+
+.bl_footerNav_link {
+  position: relative;
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.bl_footerNav_link:focus,
+.bl_footerNav_link:hover {
+  text-decoration: underline;
+}
+
+.bl_footerNav_link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 15px;
+  background-color: currentColor;
+  transform: translateY(-50%);
+}
+
+.bl_footerChildNav {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.bl_footerChildNav_item {
+  margin-bottom: 10px;
+}
+
+.bl_footerChildNav_link {
+  color: #ddd;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.bl_footerChildNav_link:focus,
+.bl_footerChildNav_link:hover {
+  text-decoration: underline;
+}
+
+.el_footerCopyright {
+  display: block;
+  color: #ddd;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* -----------
+    contents 
+------------- */
+.ly_cont {
+  max-width: 1230px;
+  padding: 60px 15px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+.hp_bgcBase {
+  background-color: #efefef !important;
+}
+
+.el_btn.el_btn__arrowRight {
+  position: relative;
+  padding-right: 2em;
+  padding-left: 1.38em;
+}
+
+.el_btn.el_btn__arrowRight::after {
+  content: '\f061';
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  top: 50%;
+  right: .83em;
+  transform: translateY(-50%);
+}
+
+.el_btn {
+  display: inline-block;
+  width: 300px;
+  max-width: 100%;
+  padding: 20px 10px;
+  background-color: #e25c00;
+  border: 2px solid transparent;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  color: #fff;
+  font-size: 1.125rem;
+  text-align: center;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.el_btn:focus,
+.el_btn:hover {
+  background-color: #fff;
+  border-color: currentColor;
+  color: #e25c00;
+}
+

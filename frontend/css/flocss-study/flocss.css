@@ -1,0 +1,93 @@
+/* 
+Foudation
+共通で適用しそうなもの
+
+Layout
+x Compnent→
+Projectで３回以上同じスタイルがでてきたらComponent
+
+Rule of Three→リファクタリング
+パターンがあるはず
+
+3,6
+3,6,9,12
+3,6,12
+2,4,8
+2,4,6,8,
+
+CSS ボックスモデル
+*/
+/* 
+HTMLの文書的な構造に関係しない、スタイルで使う
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*
+Layout
+*/
+.l-header {
+  /* レイアウトに関するスタイルのみ */
+}
+
+.header {
+  padding-top: 20px;
+  border-bottom: 1px solid #ddd;
+  max-width: 1230px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#header {
+  width: 100%;
+  padding: 40px 0 20px;
+}
+header {
+  width: 100%;
+}
+.nav {
+  width: 1120px;
+  margin: 0 auto;
+}
+.nav .menu {
+  display: flex;
+  justify-content: center;
+}
+.nav .menu li {
+  margin: 16px;
+}
+.nav .menu li.img {
+  margin: 0;
+}
+.nav .menu li.img a {
+  padding-top: 0;
+  padding-right: 9px;
+  padding-bottom: 0;
+}
+.nav .menu li a {
+  padding: 10px 14px;
+  color: #157992;
+  text-align: center;
+  line-height: 1.0;
+}
+.nav .menu li a span {
+  display: block;
+}
+.nav .menu li a .en {
+  font-size: 20px;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  letter-spacing: 0.15em;
+}
+.nav .menu li a .jp {
+  margin: 11px auto 0;
+  font-size: 9px;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+}
+.nav .menu li a:hover {
+  color: #741f8a;
+}

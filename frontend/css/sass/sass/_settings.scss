@@ -1,0 +1,39 @@
+@charset "UTF-8";
+// =======================
+// サイトの基本設定
+// ========================
+
+// 幅関係の設定
+$width-base: 1200px;
+$width-main: 800px;
+$width-side: 360px;
+
+// 色関係
+$base-color: #ccc;
+$dark-color: #ddd;
+
+// フォント関係の設定
+$font-base: "Yu Gothic", Sans-serif;
+$font-serif: "Yu Mincho", serif;
+
+$breakpoints: (
+  sp: "screen and (max-width: 599px)",
+  pc: "screen and (min-width: 600px)",
+);
+
+@mixin media($breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+.container {
+    background-color: white;
+    @include media(pc) {
+        background-color: red;
+    }
+    @include media(sp) {
+        background-color: blue;
+    }
+}
+
