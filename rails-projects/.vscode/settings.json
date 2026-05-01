@@ -1,3 +1,4 @@
 {
-  "editor.fontFamily": "'Source Han Code JP'"
+  "editor.fontFamily": "'Source Han Code JP'",
+  "editor.unicodeHighlight.enabled": false,
 }
