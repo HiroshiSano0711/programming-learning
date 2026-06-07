@@ -9,3 +9,5 @@ lex-yacc-compiler/unix_utf8/
 vue-js/fullstack-vue/fullstack-vue-code/
 source/
 **/__pycache__/**
+
+/rails-projects/**
