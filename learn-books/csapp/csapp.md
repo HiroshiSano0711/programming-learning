@@ -488,3 +488,353 @@ linux> gcc -Og -c mstore.c
 ような14バイトのシーケンスが埋め込まれている
 
 マシンで実行されるプログラムとは、単なる「命令を表すバイト列の連なり」にすぎない
+
+
+練習問題2.16
+Fill in the table below showing the effects of the different shift operations on single-
+byte quantities. The best way to think about shift operations is to work with binary
+representations. Convert the initial values to binary, perform the shifts, and then
+convert back to hexadecimal. Each of the answers should be 8 binary digits or 2
+hexadecimal digits.
+
+a
+Hex 0xD4
+Binary 0b1101_0100
+
+a << 2
+Binary 0x0101_0000
+Hex 0x50
+
+Logical
+a >> 3
+Binary 0b0001_1010
+Hex 0x1A
+
+Arithmetic
+a >> 3
+Binary 0b1111_1010
+Hex 0xFA
+
+
+a
+Hex 0x64
+Binary 0b0110_0100
+
+a << 2
+Binary 0x1001_0000
+Hex 0x90
+
+Logical
+a >> 3
+Binary 0b0000_1100
+Hex 0x0C
+
+Arithmetic
+a >> 3
+Binary 0b0000_1100
+Hex 0x0C
+
+
+a
+Hex 0x72
+Binary 0b0111_0010
+
+a << 2
+Binary 0x1100_1000
+Hex 0xC8
+
+Logical
+a >> 3
+Binary 0b0000_1110
+Hex 0x0E
+
+Arithmetic
+a >> 3
+Binary 0b0000_1110
+Hex 0x0E
+
+
+a
+Hex 0x44
+Binary 0b0100_0100
+
+a << 2
+Binary 0x0001_0000
+Hex 0x10
+
+Logical
+a >> 3
+Binary 0b0000_1000
+Hex 0x08
+
+Arithmetic
+a >> 3
+Binary 0b0000_1000
+Hex 0x09
+
+
+練習問題2.17
+0x1
+0001
+2^0 = 1
+-2^3*0 + 2^0 = 1
+
+0xB
+1011
+2^3 + 2^1 + 2^0 = 11
+-2^3 + 2^1 + 2^0 = -5
+
+0x2
+0010
+2^1 = 2
+-2^3*0 + 2^1 = 2
+
+0x7
+0111
+2^2 + 2^1 + 2^0 = 7
+-2^3*0 + 2^2 + 2^1 + 2^0 = 7
+
+0xC
+1100
+2^3 + 2^2 = 12
+-2^3*1 + 2^2 = -4
+
+A.$0x2e0L
+  0b0010_1110_0000
+  2^9 + 2^7 + 2^6 + 2^5 = 512 + 128 + 64 + 32 = 736
+  736 即値
+
+B. -0x58
+  0b0101_1000
+  64 + 16 + 8 = 88
+  -88 アドレス演算
+
+C. 0x28(%rdi),%rax
+  0b0010_1000
+  32 + 8 = 40
+  40 アドレス演算
+
+D. -0x30(%rsp)
+  0b0011_0000
+  32 + 16 = 48
+  -48 アドレス演算
+
+E. 0x78(%rsp),%rax
+  0b0111_1000
+  64 + 32 + 16 + 8 = 120
+  アドレス演算
+F. %rax,0x88(%rdi)
+  0b1000_1000
+  128 + 8 = 136
+  アドレス演算
+
+G. 0x1f8(%rsp),%rax
+  0b0001_1111_1000
+  256 + 128 + 64 + 32 + 16 + 8 = 504
+
+H. %rax,0xc0(%rsp)
+  0b1100_0000
+  128 + 64 = 192
+
+I. -0x48(%rsp,%rdx,8),%rax
+  0b0100_1000
+  64 + 8 = 72
+
+ベースとなる16進数を覚えて分解できると速くできるようになる。
+やってればそのうち慣れる。
+
+16 = 0x10
+32 = 0x20
+64 = 0x40
+128 = 0x80
+256 = 0x100
+512 = 0x200
+
+0x18 = 24
+0x20 = 32
+0x28 = 40
+0x30 = 48
+0x40 = 64
+0x58 = 88
+0x78 = 120
+0x88 = 136
+0xc0 = 192
+0x80 = 128
+0x100 = 256
+0x200 = 512
+0x400 = 1024
+
+
+練習問題2.19
+x T2U4(x)
+−1 1111 15
+−5 1011 11
+−6 1010 10
+−4 1100 12
+1 0001 1
+8 1000? 表現不可
+
+
+練習問題2.20
+2.19がなぜ成り立つのか説明しなさい。
+
+mod 2^wの剰余環
+
+x ≡ 2^w + x (mod 2^w)
+-x ≡ 2^w + -x (mod 2^w)
+
+x = Σi=0 w-1 xi * 2^i
+
+!x = Σi=0 w-1 (1 -xi)  * 2^i
+   = (Σi=0 w-1 2^i) - (Σi=0 w-1 xi * 2^i)
+   = 2^w - 1 - x
+!x + 1 = 2^w - x
+!x + 1 = - x (mod 2^w)
+
+wビット整数は Z/(2^w)Z の元として扱える。
+
+負数 x (<0) は
+
+x ≡ x + 2^w (mod 2^w)
+
+であるため、x を表すビット列はunsigned では x + 2^w と解釈される。
+
+したがって
+  T2U_w(x) = x + 2^w (x < 0)
+となる。
+非負数の場合は signed と unsigned の表現が一致するため
+  T2U_w(x) = x (x ≥ 0)
+である。
+
+
+練習問題2.21
+Expression Type Evaluation
+-2147483647-1 == 2147483648U unsigned true
+-2147483647-1 < 2147483647   signed true
+-2147483647-1U < 2147483647  unsigned false
+-2147483647-1 < -2147483647  signed true
+-2147483647-1U < -2147483647 unsigned false
+
+練習問題2.22
+-2^w + 2^w - 1 = 2^w - 1
+-2^w + 2^w - 1 + 2^w - 2 = 2^w - 2
+-2^w + 2^w - 1 + ... + 2^w - i = 2^w - i
+の性質が成り立つため、符号付きで符号拡張する場合は符号ビットで埋めれば良い
+
+
+練習問題2.23
+
+int fun1(unsigned word) {
+  return (int) ((word << 24) >> 24);
+}
+
+int fun2(unsigned word) {
+  return ((int) word << 24) >> 24;
+}
+
+fun1:unsigned のまま右シフトするため論理シフト。
+下位8ビットを unsigned 値として取り出す。
+
+fun2:(int) にキャストしてから右シフトするため、通常の処理系では算術シフト。
+
+下位8ビットを signed 値として取り出し、符号拡張する。
+
+なお signed の右シフトは C 標準では implementation-defined だが、
+現代の主要CPU・コンパイラではほぼ算術シフト。
+
+
+Hex Truncated Unsigned Truncated Unsigned Two’s Complement Truncated Two’s Complement
+1 1 1 1 1 1
+3 3 3 3 3 3
+5 5 5 5 5 -3
+C 4 12 4 -4 -4
+E 6 14 6 -2 -2
+ビットを切り捨てたときに2の補数としてみると負の数に変わるのが面白い
+unsignedはこの辺りがバグの温床になったりするので、signed onlyの言語もある。
+
+
+練習問題2.27
+
+直前の定理をそのまま使うだけ。
+
+int uadd_ok(unsigned x, unsigned y)
+{
+    unsigned s = x + y;
+    return s >= x;
+}
+
+int uadd_ok(unsigned x, unsigned y)
+{
+    unsigned s = x + y;
+    return s >= y;
+}
+でも同じ
+
+
+練習問題2.28
+
+Hex Decimal Inverse Decimal Inverse Hex
+
+1 1 15 F
+4 4 12 C
+7 7 9 9
+A 10 6 6
+E 14 2 2
+
+
+signed加算も実体は mod 2^w の加算であり、結果を two’s complement として読み直しているだけ。
+signed専用の回路があるわけではない。
+
+オーバーフロー判定
+正 + 正 = 負
+負 + 負 = 正
+
+正 + 負
+は必ずオーバーフローせず範囲内に収まる
+
+2.30
+int tadd_ok(int x, int y)
+{
+    int sum = x + y;
+
+    if (x > 0 && y > 0 && sum <= 0)
+        return 0;
+    if (x < 0 && y < 0 && sum >= 0)
+        return 0;
+    return 1;
+}
+
+
+/* Determine whether arguments can be subtracted without overflow */
+/* WARNING: This code is buggy. */
+int tsub_ok(int x, int y) {
+  return tadd_ok(x, -y);
+}
+yに最小値が入ると表現ができないのでオーバーフローする可能性がある。
+
+掛け算の回路の考え方
+      1000   (8)
+×      110   (6)
+------------
+     0000    (8×0)
+    10000    (8<<1)
++ 100000     (8<<2)
+------------
+  110000     (48)
+
+
+浮動小数点数はThe Art of ARM assemblyとGreat Codeでやったから飛ばしていいかな
+
+符号、指数部、仮数部、
+±無限大
+NaN
+ゲタをはかせる
+正規化
+指数部が全部0の場合は特殊
+32bitが単精度
+64bitが倍精度
+
+浮動小数点数は表現の仕方が全然違うし、bit数は有限なので正確に小数点数を表すのが不可能。
+そのため計算によっては誤差が必ず出る。
+
+FPU、XMMレジスタとか専用のハードウェアやレジスタ、命令が用意されている
